@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Manan360.pk - Study Portal</title>
+
+<style>
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background: #f2f5f8;
+    color: #222;
+}
+
+header {
+    background: #1769aa;
+    color: white;
+    text-align: center;
+    padding: 20px;
+}
+
+header h1 {
+    margin: 0;
+}
+
+.container {
+    max-width: 900px;
+    margin: 25px auto;
+    padding: 15px;
+}
+
+.card {
+    background: white;
+    padding: 25px;
+    margin-bottom: 20px;
+    border-radius: 14px;
+    box-shadow: 0 3px 12px rgba(0,0,0,0.12);
+}
+
+.login-box {
+    max-width: 420px;
+    margin: 60px auto;
+}
+
+input {
+    width: 100%;
+    padding: 13px;
+    margin: 8px 0;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    font-size: 16px;
+}
+
+button {
+    width: 100%;
+    padding: 13px;
+    margin-top: 10px;
+    border: 0;
+    border-radius: 8px;
+    background: #1769aa;
+    color: white;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+button:hover {
+    background: #0d4f82;
+}
+
+.section-title {
+    color: #1769aa;
+    border-bottom: 2px solid #1769aa;
+    padding-bottom: 8px;
+}
+
+.file-box {
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    padding: 15px;
+    margin: 12px 0;
+}
+
+.file-buttons {
+    display: flex;
+    gap: 10px;
+    margin-top: 10px;
+}
+
+.file-buttons a {
+    flex: 1;
+    text-align: center;
+    text-decoration: none;
+    padding: 11px;
+    border-radius: 7px;
+    color: white;
+    background: #1769aa;
+}
+
+.file-buttons a.download {
+    background: #16833b;
+}
+
+.logout {
+    background: #c62828;
+}
+
+#error {
+    color: red;
+    text-align: center;
+    margin-top: 10px;
+}
+
+#website {
+    display: none;
+}
+</style>
+</head>
+
+<body>
+
+<!-- LOGIN -->
+<div id="loginPage">
+
+    <header>
+        <h1>Manan360.pk</h1>
+        <p>Student Login</p>
+    </header>
+
+    <div class="login-box card">
+
+        <h2>🔐 Login</h2>
+
+        <input
+            type="text"
+            id="username"
+            placeholder="Username"
+        >
+
+        <input
+            type="password"
+            id="password"
+            placeholder="Password"
+        >
+
+        <button onclick="login()">Login</button>
+
+        <p id="error"></p>
+
+    </div>
+
+</div>
+
+
+<!-- WEBSITE -->
+<div id="website">
+
+<header>
+    <h1>Manan360.pk</h1>
+    <p>Notes & Test Papers</p>
+</header>
+
+<div class="container">
+
+    <div class="card">
+        <h2>📚 Welcome</h2>
+        <p>اپنی Class منتخب کریں اور Notes / Test Papers کھولیں۔</p>
+
+        <button class="logout" onclick="logout()">
+            Logout
+        </button>
+    </div>
+
+
+    <!-- CLASS 9TH -->
+    <div class="card">
+
+        <h2 class="section-title">
+            📚 Class 9th
+        </h2>
+
+        <div class="file-box">
+
+            <h3>📄 Class 9th Urdu Test Paper</h3>
+
+            <!-- اپنی اصل GitHub file کا نام یہاں لگائیں -->
+            <div class="file-buttons">
+
+                <a
+                    href="Class-9th-Urdu-Test-Paper.pdf"
+                    target="_blank">
+                    Open File
+                </a>
+
+                <a
+                    class="download"
+                    href="Class-9th-Urdu-Test-Paper.pdf"
+                    download>
+                    Download
+                </a>
+
+            </div>
+
+        </div>
+
+        <!-- مزید 9th class files یہاں add کریں -->
+
+    </div>
+
+
+    <!-- CLASS 10TH -->
+    <div class="card">
+
+        <h2 class="section-title">
+            📖 Class 10th
+        </h2>
+
+        <div class="file-box">
+
+            <h3>📄 Class 10th Test Paper</h3>
+
+            <!-- اپنی اصل GitHub file کا نام یہاں لگائیں -->
+            <div class="file-buttons">
+
+                <a
+                    href="Class-10th-Test-Paper.pdf"
+                    target="_blank">
+                    Open File
+                </a>
+
+                <a
+                    class="download"
+                    href="Class-10th-Test-Paper.pdf"
+                    download>
+                    Download
+                </a>
+
+            </div>
+
+        </div>
+
+        <!-- مزید 10th class files یہاں add کریں -->
+
+    </div>
+
+</div>
+
+</div>
+
+
+<script>
+
+/* پانچ Username */
+const users = [
+    "322202990",
+    "322202440",
+    "322505434",
+    "327589969",
+    "359953999"
+];
+
+/* مشترکہ Password */
+const commonPassword = "1999908774";
+
+
+function login() {
+
+    const username =
+        document.getElementById("username").value.trim();
+
+    const password =
+        document.getElementById("password").value;
+
+    if (
+        users.includes(username) &&
+        password === commonPassword
+    ) {
+
+        document.getElementById("loginPage").style.display = "none";
+        document.getElementById("website").style.display = "block";
+
+    } else {
+
+        document.getElementById("error").innerText =
+            "Username یا Password غلط ہے۔";
+
+    }
+}
+
+
+function logout() {
+
+    document.getElementById("website").style.display = "none";
+    document.getElementById("loginPage").style.display = "block";
+
+    document.getElementById("username").value = "";
+    document.getElementById("password").value = "";
+    document.getElementById("error").innerText = "";
+}
+
+</script>
+
+</body>
+</html>
