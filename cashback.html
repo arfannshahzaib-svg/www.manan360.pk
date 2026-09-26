@@ -1,41 +1,179 @@
-div class="container">
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Manan360 - Rs.100 Cashback</title>
+
+<style>
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background: #f4f6f8;
+  color: #222;
+}
+
+.container {
+  max-width: 500px;
+  margin: 40px auto;
+  padding: 20px;
+}
+
+.card {
+  background: white;
+  padding: 25px;
+  border-radius: 15px;
+  box-shadow: 0 4px 15px rgba(0,0,0,.10);
+  text-align: center;
+}
+
+h1 {
+  margin-top: 0;
+}
+
+.cashback {
+  font-size: 34px;
+  font-weight: bold;
+  margin: 15px 0;
+}
+
+.timer {
+  font-size: 28px;
+  font-weight: bold;
+  margin: 20px 0;
+}
+
+input {
+  width: 100%;
+  padding: 13px;
+  margin: 8px 0;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  font-size: 16px;
+  box-sizing: border-box;
+}
+
+button {
+  width: 100%;
+  padding: 14px;
+  margin-top: 12px;
+  border: none;
+  border-radius: 8px;
+  background: #111;
+  color: white;
+  font-size: 17px;
+}
+
+button:disabled {
+  background: #999;
+}
+
+.message {
+  margin-top: 15px;
+  font-weight: bold;
+}
+</style>
+</head>
+
+<body>
+
+<div class="container">
   <div class="card">
 
-    <!-- اگر آپ کے logo کا نام مختلف ہے تو یہاں تبدیل کریں -->
-    <img src="logo.png" class="logo" alt="Manan360 Logo">
+    <h1>Manan360</h1>
 
-    <h1>Manan360.pk</h1>
+    <div class="cashback">Rs.100 Cashback</div>
 
-    <div class="cashback">
-      Rs. 100 Cashback
-    </div>
+    <p>
+      Stay on this page for 1 minute and then submit your details.
+    </p>
 
-    <div class="info">
-      ویب سائٹ پر کم از کم <b>1 منٹ</b> رہیں۔<br>
-      ایک منٹ مکمل ہونے کے بعد Cashback فارم مکمل کریں۔
-    </div>
-
-    <div id="timer" class="timer">
-      01:00
-    </div>
+    <div class="timer" id="timer">01:00</div>
 
     <form id="cashbackForm">
 
-      <label for="name">آپ کا نام</label>
       <input
         type="text"
         id="name"
-        placeholder="اپنا نام لکھیں"
+        placeholder="Enter your name"
         required
       >
 
-      <label for="method">Payment Method</label>
-      <select id="method" required>
-        <option value="">منتخب کریں</option>
-        <option value="Easypaisa">Easypaisa</option>
-        <option value="JazzCash">JazzCash</option>
-      </select>
+      <input
+        type="tel"
+        id="phone"
+        placeholder="Enter your phone number"
+        required
+      >
 
-      <label for="account">
+      <button type="submit" id="submitBtn" disabled>
+        Wait 1 Minute
+      </button>
 
-        
+    </form>
+
+    <div class="message" id="message"></div>
+
+  </div>
+</div>
+
+<script>
+
+let seconds = 60;
+
+const timer = document.getElementById("timer");
+const submitBtn = document.getElementById("submitBtn");
+const message = document.getElementById("message");
+
+const countdown = setInterval(function () {
+
+  seconds--;
+
+  let minutes = Math.floor(seconds / 60);
+  let secs = seconds % 60;
+
+  timer.textContent =
+    String(minutes).padStart(2, "0") +
+    ":" +
+    String(secs).padStart(2, "0");
+
+  if (seconds <= 0) {
+
+    clearInterval(countdown);
+
+    timer.textContent = "00:00";
+
+    submitBtn.disabled = false;
+    submitBtn.textContent = "Submit Cashback Request";
+  }
+
+}, 1000);
+
+
+document.getElementById("cashbackForm").addEventListener("submit", function(e) {
+
+  e.preventDefault();
+
+  const name = document.getElementById("name").value.trim();
+  const phone = document.getElementById("phone").value.trim();
+
+  if (!name || !phone) {
+    message.textContent = "Please enter your name and phone number.";
+    return;
+  }
+
+  message.textContent =
+    "Your Cashback request has been submitted successfully.";
+
+  document.getElementById("cashbackForm").reset();
+
+  submitBtn.disabled = true;
+  submitBtn.textContent = "Submitted";
+
+});
+
+</script>
+
+</body>
+</html>
