@@ -7,71 +7,78 @@
 <title>Manan360 - Rs.100 Cashback</title>
 
 <style>
-body {
-  margin: 0;
-  font-family: Arial, sans-serif;
-  background: #f4f6f8;
-  color: #222;
+body{
+  margin:0;
+  font-family:Arial,sans-serif;
+  background:#f3f4f6;
 }
 
-.container {
-  max-width: 500px;
-  margin: 40px auto;
-  padding: 20px;
+.container{
+  max-width:500px;
+  margin:30px auto;
+  padding:20px;
 }
 
-.card {
-  background: white;
-  padding: 25px;
-  border-radius: 15px;
-  box-shadow: 0 4px 15px rgba(0,0,0,.10);
-  text-align: center;
+.card{
+  background:white;
+  padding:25px;
+  border-radius:15px;
+  box-shadow:0 4px 15px rgba(0,0,0,.12);
 }
 
-h1 {
-  margin-top: 0;
+h1{
+  text-align:center;
 }
 
-.cashback {
-  font-size: 34px;
-  font-weight: bold;
-  margin: 15px 0;
+.cashback{
+  text-align:center;
+  font-size:32px;
+  font-weight:bold;
+  margin:15px 0;
 }
 
-.timer {
-  font-size: 28px;
-  font-weight: bold;
-  margin: 20px 0;
+.timer{
+  text-align:center;
+  font-size:28px;
+  font-weight:bold;
+  margin:20px 0;
 }
 
-input {
-  width: 100%;
-  padding: 13px;
-  margin: 8px 0;
-  border: 1px solid #ccc;
-  border-radius: 8px;
-  font-size: 16px;
-  box-sizing: border-box;
+label{
+  display:block;
+  margin-top:12px;
+  font-weight:bold;
 }
 
-button {
-  width: 100%;
-  padding: 14px;
-  margin-top: 12px;
-  border: none;
-  border-radius: 8px;
-  background: #111;
-  color: white;
-  font-size: 17px;
+input,select{
+  width:100%;
+  padding:13px;
+  margin-top:6px;
+  border:1px solid #ccc;
+  border-radius:8px;
+  box-sizing:border-box;
+  font-size:16px;
 }
 
-button:disabled {
-  background: #999;
+button{
+  width:100%;
+  padding:14px;
+  margin-top:20px;
+  border:0;
+  border-radius:8px;
+  background:#111;
+  color:white;
+  font-size:17px;
 }
 
-.message {
-  margin-top: 15px;
-  font-weight: bold;
+button:disabled{
+  background:#999;
+}
+
+#message{
+  text-align:center;
+  margin-top:15px;
+  font-weight:bold;
 }
 </style>
 </head>
@@ -79,43 +86,52 @@ button:disabled {
 <body>
 
 <div class="container">
-  <div class="card">
+<div class="card">
 
-    <h1>Manan360</h1>
+<h1>Manan360</h1>
 
-    <div class="cashback">Rs.100 Cashback</div>
+<div class="cashback">Rs.100 Cashback</div>
 
-    <p>
-      Stay on this page for 1 minute and then submit your details.
-    </p>
+<p style="text-align:center;">
+Cashback request کے لیے 1 منٹ مکمل کریں۔
+</p>
 
-    <div class="timer" id="timer">01:00</div>
+<div class="timer" id="timer">01:00</div>
 
-    <form id="cashbackForm">
+<form id="cashbackForm">
 
-      <input
-        type="text"
-        id="name"
-        placeholder="Enter your name"
-        required
-      >
+<label>Account Name</label>
+<input
+  type="text"
+  id="accountName"
+  placeholder="Account holder name"
+  required
+>
 
-      <input
-        type="tel"
-        id="phone"
-        placeholder="Enter your phone number"
-        required
-      >
+<label>Payment Method</label>
+<select id="paymentMethod" required>
+  <option value="">Select payment method</option>
+  <option value="EasyPaisa">EasyPaisa</option>
+  <option value="JazzCash">JazzCash</option>
+</select>
 
-      <button type="submit" id="submitBtn" disabled>
-        Wait 1 Minute
-      </button>
+<label>Account Number</label>
+<input
+  type="tel"
+  id="accountNumber"
+  placeholder="EasyPaisa / JazzCash number"
+  required
+>
 
-    </form>
+<button id="submitBtn" type="submit" disabled>
+Wait 1 Minute
+</button>
 
-    <div class="message" id="message"></div>
+</form>
 
-  </div>
+<div id="message"></div>
+
+</div>
 </div>
 
 <script>
@@ -126,7 +142,7 @@ const timer = document.getElementById("timer");
 const submitBtn = document.getElementById("submitBtn");
 const message = document.getElementById("message");
 
-const countdown = setInterval(function () {
+const countdown = setInterval(function(){
 
   seconds--;
 
@@ -134,11 +150,11 @@ const countdown = setInterval(function () {
   let secs = seconds % 60;
 
   timer.textContent =
-    String(minutes).padStart(2, "0") +
+    String(minutes).padStart(2,"0") +
     ":" +
-    String(secs).padStart(2, "0");
+    String(secs).padStart(2,"0");
 
-  if (seconds <= 0) {
+  if(seconds <= 0){
 
     clearInterval(countdown);
 
@@ -148,25 +164,31 @@ const countdown = setInterval(function () {
     submitBtn.textContent = "Submit Cashback Request";
   }
 
-}, 1000);
+},1000);
 
 
-document.getElementById("cashbackForm").addEventListener("submit", function(e) {
+document.getElementById("cashbackForm").addEventListener("submit",function(e){
 
   e.preventDefault();
 
-  const name = document.getElementById("name").value.trim();
-  const phone = document.getElementById("phone").value.trim();
+  const accountName =
+    document.getElementById("accountName").value.trim();
 
-  if (!name || !phone) {
-    message.textContent = "Please enter your name and phone number.";
+  const paymentMethod =
+    document.getElementById("paymentMethod").value;
+
+  const accountNumber =
+    document.getElementById("accountNumber").value.trim();
+
+  if(!accountName || !paymentMethod || !accountNumber){
+    message.textContent = "Please complete all fields.";
     return;
   }
 
   message.textContent =
     "Your Cashback request has been submitted successfully.";
 
-  document.getElementById("cashbackForm").reset();
+  this.reset();
 
   submitBtn.disabled = true;
   submitBtn.textContent = "Submitted";
