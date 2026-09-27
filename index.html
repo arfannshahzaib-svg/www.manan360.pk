@@ -118,6 +118,24 @@ button:hover {
 #website {
     display: none;
 }
+
+/* CASHBACK BUTTON */
+.cashback-button {
+    display: block;
+    background: #16a34a;
+    color: white;
+    padding: 15px;
+    margin: 20px 0;
+    border-radius: 10px;
+    text-align: center;
+    text-decoration: none;
+    font-size: 20px;
+    font-weight: bold;
+}
+
+.cashback-button:hover {
+    background: #15803d;
+}
 </style>
 </head>
 
@@ -147,7 +165,9 @@ button:hover {
             placeholder="Password"
         >
 
-        <button onclick="login()">Login</button>
+        <button onclick="login()">
+            Login
+        </button>
 
         <p id="error"></p>
 
@@ -166,14 +186,28 @@ button:hover {
 
 <div class="container">
 
+    <!-- WELCOME -->
     <div class="card">
+
         <h2>📚 Welcome</h2>
-        <p>اپنی Class منتخب کریں اور Notes / Test Papers کھولیں۔</p>
+
+        <p>
+            اپنی Class منتخب کریں اور Notes / Test Papers کھولیں۔
+        </p>
 
         <button class="logout" onclick="logout()">
             Logout
         </button>
+
     </div>
+
+
+    <!-- CASHBACK -->
+    <a
+        href="cashback.html"
+        class="cashback-button">
+        💰 Rs.100 Cashback
+    </a>
 
 
     <!-- CLASS 9TH -->
@@ -185,9 +219,10 @@ button:hover {
 
         <div class="file-box">
 
-            <h3>📄 Class 9th Urdu Test Paper</h3>
+            <h3>
+                📄 Class 9th Urdu Test Paper
+            </h3>
 
-            <!-- اپنی اصل GitHub file کا نام یہاں لگائیں -->
             <div class="file-buttons">
 
                 <a
@@ -206,8 +241,6 @@ button:hover {
             </div>
 
         </div>
-
-        <!-- مزید 9th class files یہاں add کریں -->
 
     </div>
 
@@ -221,9 +254,10 @@ button:hover {
 
         <div class="file-box">
 
-            <h3>📄 Class 10th Test Paper</h3>
+            <h3>
+                📄 Class 10th Test Paper
+            </h3>
 
-            <!-- اپنی اصل GitHub file کا نام یہاں لگائیں -->
             <div class="file-buttons">
 
                 <a
@@ -242,8 +276,6 @@ button:hover {
             </div>
 
         </div>
-
-        <!-- مزید 10th class files یہاں add کریں -->
 
     </div>
 
@@ -281,6 +313,7 @@ function login() {
     ) {
 
         document.getElementById("loginPage").style.display = "none";
+
         document.getElementById("website").style.display = "block";
 
     } else {
@@ -295,28 +328,18 @@ function login() {
 function logout() {
 
     document.getElementById("website").style.display = "none";
+
     document.getElementById("loginPage").style.display = "block";
 
     document.getElementById("username").value = "";
+
     document.getElementById("password").value = "";
+
     document.getElementById("error").innerText = "";
+
 }
 
 </script>
 
 </body>
 </html>
-<a href="cashback.html" style="
-display:block;
-background:#16a34a;
-color:white;
-padding:15px;
-margin:20px 0;
-border-radius:10px;
-text-align:center;
-text-decoration:none;
-font-size:20px;
-font-weight:bold;
-">
-💰 Rs.100 Cashback
-</a>
