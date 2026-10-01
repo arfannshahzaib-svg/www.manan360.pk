@@ -72,6 +72,22 @@ button:hover {
     background: #0d4f82;
 }
 
+.biometric {
+    background: #7c3aed;
+}
+
+.biometric:hover {
+    background: #5b21b6;
+}
+
+.register {
+    background: #16a34a;
+}
+
+.register:hover {
+    background: #15803d;
+}
+
 .section-title {
     color: #1769aa;
     border-bottom: 2px solid #1769aa;
@@ -115,11 +131,16 @@ button:hover {
     margin-top: 10px;
 }
 
+#bioStatus {
+    text-align: center;
+    margin-top: 12px;
+    font-weight: bold;
+}
+
 #website {
     display: none;
 }
 
-/* CASHBACK BUTTON */
 .cashback-button {
     display: block;
     background: #16a34a;
@@ -169,7 +190,20 @@ button:hover {
             Login
         </button>
 
+        <button
+            class="register"
+            onclick="registerBiometric()">
+            👆 Register Fingerprint / Face
+        </button>
+
+        <button
+            class="biometric"
+            onclick="biometricLogin()">
+            🔐 Fingerprint / Face Login
+        </button>
+
         <p id="error"></p>
+        <p id="bioStatus"></p>
 
     </div>
 
@@ -186,7 +220,6 @@ button:hover {
 
 <div class="container">
 
-    <!-- WELCOME -->
     <div class="card">
 
         <h2>📚 Welcome</h2>
@@ -287,7 +320,7 @@ button:hover {
 
 <script>
 
-/* پانچ Username */
+/* Users */
 const users = [
     "322202990",
     "322202440",
@@ -296,9 +329,13 @@ const users = [
     "359953999"
 ];
 
-/* مشترکہ Password */
+/* Common Password */
 const commonPassword = "1999908774";
 
+
+/* =========================
+   NORMAL LOGIN
+========================= */
 
 function login() {
 
@@ -321,23 +358,289 @@ function login() {
 
         document.getElementById("error").innerText =
             "Username یا Password غلط ہے۔";
-
     }
 }
 
 
+/* =========================
+   CHECK BIOMETRIC SUPPORT
+========================= */
+
+function biometricSupported() {
+
+    return (
+        window.PublicKeyCredential &&
+        typeof window.PublicKeyCredential === "function"
+    );
+}
+
+
+/* =========================
+   REGISTER FINGERPRINT / FACE
+========================= */
+
+async function registerBiometric() {
+
+    const username =
+        document.getElementById("username").value.trim();
+
+    if (!users.includes(username)) {
+
+        document.getElementById("bioStatus").innerText =
+            "پہلے درست Username لکھیں۔";
+
+        return;
+    }
+
+    if (!biometricSupported()) {
+
+        document.getElementById("bioStatus").innerText =
+            "اس device/browser میں biometric verification دستیاب نہیں۔";
+
+        return;
+    }
+
+    try {
+
+        const challenge = crypto.getRandomValues(
+            new Uint8Array(32)
+        );
+
+        const userId = crypto.getRandomValues(
+            new Uint8Array(16)
+        );
+
+        const credential =
+            await navigator.credentials.create({
+
+                publicKey: {
+
+                    challenge: challenge,
+
+                    rp: {
+                        name: "Manan360.pk"
+                    },
+
+                    user: {
+
+                        id: userId,
+
+                        name: username,
+
+                        displayName: username
+                    },
+
+                    pubKeyCredParams: [
+
+                        {
+                            type: "public-key",
+                            alg: -7
+                        },
+
+                        {
+                            type: "public-key",
+                            alg: -257
+                        }
+
+                    ],
+
+                    authenticatorSelection: {
+
+                        authenticatorAttachment: "platform",
+
+                        userVerification: "required"
+                    },
+
+                    timeout: 60000,
+
+                    attestation: "none"
+                }
+
+            });
+
+
+        if (credential) {
+
+            const credentialId =
+                arrayBufferToBase64(
+                    credential.rawId
+                );
+
+            localStorage.setItem(
+                "manan360_biometric_" + username,
+                credentialId
+            );
+
+            document.getElementById("bioStatus").innerText =
+                "✅ Fingerprint / Face کامیابی سے register ہوگیا۔";
+
+        }
+
+    } catch (error) {
+
+        document.getElementById("bioStatus").innerText =
+            "❌ Biometric registration مکمل نہیں ہو سکی۔";
+
+        console.log(error);
+    }
+}
+
+
+/* =========================
+   BIOMETRIC LOGIN
+========================= */
+
+async function biometricLogin() {
+
+    const username =
+        document.getElementById("username").value.trim();
+
+    if (!users.includes(username)) {
+
+        document.getElementById("bioStatus").innerText =
+            "پہلے اپنا Username لکھیں۔";
+
+        return;
+    }
+
+    const savedCredential =
+        localStorage.getItem(
+            "manan360_biometric_" + username
+        );
+
+    if (!savedCredential) {
+
+        document.getElementById("bioStatus").innerText =
+            "اس Username کے لیے پہلے Fingerprint / Face register کریں۔";
+
+        return;
+    }
+
+    if (!biometricSupported()) {
+
+        document.getElementById("bioStatus").innerText =
+            "اس device/browser میں biometric verification دستیاب نہیں۔";
+
+        return;
+    }
+
+    try {
+
+        const credentialId =
+            base64ToArrayBuffer(savedCredential);
+
+        const challenge = crypto.getRandomValues(
+            new Uint8Array(32)
+        );
+
+        const credential =
+            await navigator.credentials.get({
+
+                publicKey: {
+
+                    challenge: challenge,
+
+                    allowCredentials: [
+
+                        {
+                            type: "public-key",
+                            id: credentialId
+                        }
+
+                    ],
+
+                    userVerification: "required",
+
+                    timeout: 60000
+                }
+
+            });
+
+
+        if (credential) {
+
+            document.getElementById("loginPage").style.display =
+                "none";
+
+            document.getElementById("website").style.display =
+                "block";
+
+            document.getElementById("bioStatus").innerText =
+                "";
+
+        }
+
+    } catch (error) {
+
+        document.getElementById("bioStatus").innerText =
+            "❌ Fingerprint / Face verification ناکام ہوئی۔";
+
+        console.log(error);
+    }
+}
+
+
+/* =========================
+   CONVERT FUNCTIONS
+========================= */
+
+function arrayBufferToBase64(buffer) {
+
+    let binary = "";
+
+    const bytes =
+        new Uint8Array(buffer);
+
+    for (let i = 0; i < bytes.byteLength; i++) {
+
+        binary += String.fromCharCode(bytes[i]);
+    }
+
+    return btoa(binary);
+}
+
+
+function base64ToArrayBuffer(base64) {
+
+    const binary =
+        atob(base64);
+
+    const bytes =
+        new Uint8Array(binary.length);
+
+    for (let i = 0; i < binary.length; i++) {
+
+        bytes[i] =
+            binary.charCodeAt(i);
+    }
+
+    return bytes.buffer;
+}
+
+
+/* =========================
+   LOGOUT
+========================= */
+
 function logout() {
 
-    document.getElementById("website").style.display = "none";
+    document.getElementById("website").style.display =
+        "none";
 
-    document.getElementById("loginPage").style.display = "block";
+    document.getElementById("loginPage").style.display =
+        "block";
 
-    document.getElementById("username").value = "";
+    document.getElementById("username").value =
+        "";
 
-    document.getElementById("password").value = "";
+    document.getElementById("password").value =
+        "";
 
-    document.getElementById("error").innerText = "";
+    document.getElementById("error").innerText =
+        "";
 
+    document.getElementById("bioStatus").innerText =
+        "";
 }
 
 </script>
