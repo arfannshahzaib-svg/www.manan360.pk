@@ -1,11 +1,8 @@
-<!DOCTYPE html>
-<html lang="en">
+<!DOCTYPE html><html lang="en">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Manan360.pk - Student Portal</title>
-
-<style>
+<title>Manan360.pk - Student Portal</title><style>
 *{
     box-sizing:border-box;
     margin:0;
@@ -327,6 +324,31 @@ h1{
     box-shadow:0 7px 16px rgba(0,0,0,.25);
 }
 
+/* SUPPORT */
+
+.support{
+    display:block;
+    width:100%;
+    max-width:320px;
+    margin:22px auto 0;
+    padding:13px 18px;
+    text-align:center;
+    text-decoration:none;
+    background:#25D366;
+    color:white;
+    font-size:16px;
+    font-weight:bold;
+    border-radius:12px;
+    box-shadow:0 7px 18px rgba(0,0,0,.18);
+    transition:.3s;
+}
+
+.support:hover{
+    transform:translateY(-2px);
+    box-shadow:0 9px 22px rgba(0,0,0,.25);
+    background:#20bd5a;
+}
+
 @media(max-width:600px){
 
     .box{
@@ -354,182 +376,168 @@ h1{
         grid-template-columns:1fr;
     }
 }
-</style>
-</head>
+</style></head><body><div class="background"></div><!-- LOGIN --><section id="loginPage" class="page"><div class="box">
 
-<body>
+    <div class="logo">M</div>
 
-<div class="background"></div>
+    <h1>Manan360.pk</h1>
 
-<!-- LOGIN -->
+    <div class="subtitle">
+        Student Login Portal
+    </div>
 
-<section id="loginPage" class="page">
+    <input
+        class="input"
+        type="text"
+        id="username"
+        placeholder="Username"
+        autocomplete="username"
+    >
 
-    <div class="box">
+    <input
+        class="input"
+        type="password"
+        id="password"
+        placeholder="Password"
+        autocomplete="current-password"
+    >
 
-        <div class="logo">M</div>
+    <button class="btn" onclick="login()">
+        Login
+    </button>
 
-        <h1>Manan360.pk</h1>
+    <div class="error" id="loginError">
+        Invalid username or password.
+    </div>
 
-        <div class="subtitle">
-            Student Login Portal
+</div>
+
+</section><!-- NAME PAGE --><section id="namePage" class="page"><div class="box name-box">
+
+    <div class="logo">M</div>
+
+    <div class="name-question">
+        What is your name?
+    </div>
+
+    <div class="name-small">
+        Please enter your name to continue
+    </div>
+
+    <input
+        class="input"
+        type="text"
+        id="visitorName"
+        placeholder="Enter your name"
+        maxlength="40"
+    >
+
+    <button class="btn" onclick="continueToHome()">
+        Continue
+    </button>
+
+</div>
+
+</section><!-- HOME --><section id="homePage"><div class="container">
+
+    <header class="header">
+
+        <div>
+            <div class="site-title">
+                Manan360.pk
+            </div>
+
+            <div class="site-subtitle">
+                Notes & Test Papers
+            </div>
         </div>
 
-        <input
-            class="input"
-            type="text"
-            id="username"
-            placeholder="Username"
-            autocomplete="username"
-        >
-
-        <input
-            class="input"
-            type="password"
-            id="password"
-            placeholder="Password"
-            autocomplete="current-password"
-        >
-
-        <button class="btn" onclick="login()">
-            Login
+        <button class="logout" onclick="logout()">
+            Sign Out
         </button>
 
-        <div class="error" id="loginError">
-            Invalid username or password.
+    </header>
+
+    <div class="welcome">
+
+        <h2>
+            Hello,
+            <span class="user-name" id="displayName">
+                User
+            </span>
+        </h2>
+
+        <div class="intro">
+            My name is <strong>Abdur Manan</strong>.<br>
+            Welcome to Manan360.pk.
         </div>
 
     </div>
 
-</section>
+    <div class="cards">
 
-<!-- NAME PAGE -->
+        <!-- CLASS 9 -->
 
-<section id="namePage" class="page">
+        <div class="card">
 
-    <div class="box name-box">
+            <div class="icon">📚</div>
 
-        <div class="logo">M</div>
+            <h3>Class 9th</h3>
 
-        <div class="name-question">
-            What is your name?
-        </div>
+            <p>
+                Notes & Test Papers
+            </p>
 
-        <div class="name-small">
-            Please enter your name to continue
-        </div>
-
-        <input
-            class="input"
-            type="text"
-            id="visitorName"
-            placeholder="Enter your name"
-            maxlength="40"
-        >
-
-        <button class="btn" onclick="continueToHome()">
-            Continue
-        </button>
-
-    </div>
-
-</section>
-
-<!-- HOME -->
-
-<section id="homePage">
-
-    <div class="container">
-
-        <header class="header">
-
-            <div>
-                <div class="site-title">
-                    Manan360.pk
-                </div>
-
-                <div class="site-subtitle">
-                    Notes & Test Papers
-                </div>
-            </div>
-
-            <button class="logout" onclick="logout()">
-                Sign Out
-            </button>
-
-        </header>
-
-        <div class="welcome">
-
-            <h2>
-                Hello,
-                <span class="user-name" id="displayName">
-                    User
-                </span>
-            </h2>
-
-            <div class="intro">
-                My name is <strong>Abdur Manan</strong>.<br>
-                Welcome to Manan360.pk.
-            </div>
+            <a
+                href="Class-9th-Urdu-Test-Paper.pdf"
+                class="open"
+                target="_blank"
+                rel="noopener"
+            >
+                Open
+            </a>
 
         </div>
 
-        <div class="cards">
+        <!-- CLASS 10 -->
 
-            <!-- CLASS 9 -->
+        <div class="card">
 
-            <div class="card">
+            <div class="icon">📖</div>
 
-                <div class="icon">📚</div>
+            <h3>Class 10th</h3>
 
-                <h3>Class 9th</h3>
+            <p>
+                Notes & Test Papers
+            </p>
 
-                <p>
-                    Notes & Test Papers
-                </p>
-
-                <a
-                    href="Class-9th-Urdu-Test-Paper.pdf"
-                    class="open"
-                    target="_blank"
-                    rel="noopener"
-                >
-                    Open
-                </a>
-
-            </div>
-
-            <!-- CLASS 10 -->
-
-            <div class="card">
-
-                <div class="icon">📖</div>
-
-                <h3>Class 10th</h3>
-
-                <p>
-                    Notes & Test Papers
-                </p>
-
-                <a
-                    href="Class-10th-Urdu-Test-Paper.pdf"
-                    class="open"
-                    target="_blank"
-                    rel="noopener"
-                >
-                    Open
-                </a>
-
-            </div>
+            <a
+                href="Class-10th-Urdu-Test-Paper.pdf"
+                class="open"
+                target="_blank"
+                rel="noopener"
+            >
+                Open
+            </a>
 
         </div>
 
     </div>
 
-</section>
+    <!-- SUPPORT TEAM -->
 
-<script>
+    <a
+        href="https://wa.me/923447232654?text=Assalam-o-Alaikum%20Manan360%20Support%20Team"
+        class="support"
+        target="_blank"
+        rel="noopener"
+    >
+        💬 Support Team
+    </a>
+
+</div>
+
+</section><script>
 
 /* LOGIN USERS */
 
@@ -695,7 +703,5 @@ document.addEventListener("keydown", function(event){
 
 });
 
-</script>
-
-</body>
+</script></body>
 </html>
