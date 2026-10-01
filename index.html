@@ -3,7 +3,8 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Manan360.pk - Study Portal</title>
+
+<title>Manan360.pk - Notes & Test Papers</title>
 
 <style>
 * {
@@ -13,329 +14,593 @@
 body {
     margin: 0;
     font-family: Arial, sans-serif;
-    background: #f2f5f8;
+    background: #f1f5f9;
     color: #222;
 }
 
-header {
-    background: #1769aa;
-    color: white;
-    text-align: center;
+/* =========================
+   LOGIN PAGE
+========================= */
+
+#loginPage {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     padding: 20px;
 }
 
-header h1 {
-    margin: 0;
-}
-
-.container {
-    max-width: 900px;
-    margin: 25px auto;
-    padding: 15px;
-}
-
-.card {
-    background: white;
-    padding: 25px;
-    margin-bottom: 20px;
-    border-radius: 14px;
-    box-shadow: 0 3px 12px rgba(0,0,0,0.12);
-}
-
 .login-box {
-    max-width: 420px;
-    margin: 60px auto;
+    width: 100%;
+    max-width: 390px;
+    background: white;
+    padding: 30px 25px;
+    border-radius: 18px;
+    box-shadow: 0 8px 30px rgba(0,0,0,0.12);
+    text-align: center;
 }
 
-input {
+.login-title {
+    font-size: 30px;
+    font-weight: bold;
+    color: #1769aa;
+    margin-bottom: 8px;
+}
+
+.login-subtitle {
+    color: #666;
+    margin-bottom: 25px;
+}
+
+.login-box input {
     width: 100%;
-    padding: 13px;
-    margin: 8px 0;
+    padding: 14px;
+    margin-bottom: 15px;
     border: 1px solid #ccc;
-    border-radius: 8px;
+    border-radius: 9px;
     font-size: 16px;
+    outline: none;
 }
 
-button {
+.login-box input:focus {
+    border-color: #1769aa;
+}
+
+.login-btn {
     width: 100%;
-    padding: 13px;
-    margin-top: 10px;
-    border: 0;
-    border-radius: 8px;
+    padding: 14px;
+    border: none;
+    border-radius: 9px;
     background: #1769aa;
     color: white;
-    font-size: 16px;
+    font-size: 17px;
     cursor: pointer;
 }
 
-button:hover {
-    background: #0d4f82;
+.login-btn:active {
+    transform: scale(0.98);
 }
 
-.biometric {
-    background: #7c3aed;
+#errorMessage {
+    color: #d62828;
+    margin-top: 15px;
+    display: none;
 }
 
-.biometric:hover {
-    background: #5b21b6;
+/* =========================
+   MAIN WEBSITE
+========================= */
+
+#mainPage {
+    display: none;
 }
 
-.register {
+.header {
+    background: #1769aa;
+    color: white;
+    text-align: center;
+    padding: 34px 15px;
+}
+
+.header h1 {
+    margin: 0;
+    font-size: 42px;
+}
+
+.header p {
+    margin: 12px 0 0;
+    font-size: 20px;
+}
+
+/* =========================
+   CONTENT
+========================= */
+
+.container {
+    width: 94%;
+    max-width: 850px;
+    margin: 28px auto;
+}
+
+.welcome-card {
+    background: white;
+    border-radius: 18px;
+    padding: 28px;
+    box-shadow: 0 5px 20px rgba(0,0,0,0.08);
+    margin-bottom: 20px;
+}
+
+.welcome-card h2 {
+    margin: 0 0 15px;
+    font-size: 28px;
+}
+
+.welcome-card p {
+    font-size: 18px;
+    line-height: 1.7;
+    margin: 0 0 20px;
+}
+
+/* =========================
+   LOGOUT
+========================= */
+
+.logout-btn {
+    width: 100%;
+    padding: 14px;
+    border: none;
+    border-radius: 9px;
+    background: #d62828;
+    color: white;
+    font-size: 18px;
+    cursor: pointer;
+}
+
+/* =========================
+   CASHBACK
+========================= */
+
+.cashback-btn {
+    display: block;
+    width: 100%;
+    padding: 18px;
+    margin-bottom: 28px;
+    border: none;
+    border-radius: 14px;
     background: #16a34a;
+    color: white;
+    font-size: 22px;
+    font-weight: bold;
+    cursor: pointer;
+    text-align: center;
 }
 
-.register:hover {
-    background: #15803d;
+/* =========================
+   CLASS CARD
+========================= */
+
+.class-card {
+    background: white;
+    border-radius: 18px;
+    padding: 28px;
+    margin-bottom: 25px;
+    box-shadow: 0 5px 20px rgba(0,0,0,0.08);
 }
 
-.section-title {
+.class-card h2 {
+    margin: 0 0 25px;
     color: #1769aa;
-    border-bottom: 2px solid #1769aa;
-    padding-bottom: 8px;
+    font-size: 30px;
+    border-bottom: 3px solid #1769aa;
+    padding-bottom: 12px;
 }
 
-.file-box {
+.file-card {
     border: 1px solid #ddd;
-    border-radius: 10px;
-    padding: 15px;
-    margin: 12px 0;
+    border-radius: 14px;
+    padding: 20px;
+    margin-bottom: 15px;
+}
+
+.file-title {
+    font-size: 21px;
+    font-weight: bold;
+    margin-bottom: 18px;
 }
 
 .file-buttons {
     display: flex;
-    gap: 10px;
-    margin-top: 10px;
+    gap: 15px;
 }
 
 .file-buttons a {
     flex: 1;
-    text-align: center;
     text-decoration: none;
-    padding: 11px;
-    border-radius: 7px;
+}
+
+.open-btn,
+.download-btn {
+    width: 100%;
+    padding: 13px 8px;
+    border: none;
+    border-radius: 9px;
     color: white;
+    font-size: 17px;
+    text-align: center;
+    display: block;
+}
+
+.open-btn {
     background: #1769aa;
 }
 
-.file-buttons a.download {
-    background: #16833b;
-}
-
-.logout {
-    background: #c62828;
-}
-
-#error {
-    color: red;
-    text-align: center;
-    margin-top: 10px;
-}
-
-#bioStatus {
-    text-align: center;
-    margin-top: 12px;
-    font-weight: bold;
-}
-
-#website {
-    display: none;
-}
-
-.cashback-button {
-    display: block;
+.download-btn {
     background: #16a34a;
-    color: white;
-    padding: 15px;
-    margin: 20px 0;
-    border-radius: 10px;
-    text-align: center;
-    text-decoration: none;
-    font-size: 20px;
-    font-weight: bold;
 }
 
-.cashback-button:hover {
-    background: #15803d;
+/* =========================
+   LOGOUT MODAL
+========================= */
+
+.logout-modal {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,0.50);
+    z-index: 9999;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+}
+
+.logout-box {
+    width: 100%;
+    max-width: 360px;
+    background: white;
+    border-radius: 18px;
+    padding: 25px;
+    text-align: center;
+    box-shadow: 0 10px 40px rgba(0,0,0,0.25);
+}
+
+.logout-box h2 {
+    margin: 0 0 10px;
+    font-size: 26px;
+}
+
+.logout-box p {
+    color: #555;
+    margin-bottom: 25px;
+}
+
+.logout-actions {
+    display: flex;
+    gap: 12px;
+}
+
+.logout-actions button {
+    flex: 1;
+    padding: 13px 8px;
+    border: none;
+    border-radius: 9px;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+.cancel-btn {
+    background: #e5e7eb;
+    color: #222;
+}
+
+.signout-btn {
+    background: #d62828;
+    color: white;
+}
+
+/* =========================
+   MOBILE
+========================= */
+
+@media (max-width: 600px) {
+
+    .header {
+        padding: 30px 12px;
+    }
+
+    .header h1 {
+        font-size: 34px;
+    }
+
+    .header p {
+        font-size: 18px;
+    }
+
+    .container {
+        width: 92%;
+    }
+
+    .welcome-card {
+        padding: 24px;
+    }
+
+    .class-card {
+        padding: 22px;
+    }
+
+    .class-card h2 {
+        font-size: 27px;
+    }
+
+    .file-buttons {
+        gap: 10px;
+    }
+
+    .open-btn,
+    .download-btn {
+        font-size: 16px;
+    }
 }
 </style>
 </head>
 
 <body>
 
-<!-- LOGIN -->
+
+<!-- ==================================================
+     LOGIN PAGE
+================================================== -->
+
 <div id="loginPage">
 
-    <header>
-        <h1>Manan360.pk</h1>
-        <p>Student Login</p>
-    </header>
+    <div class="login-box">
 
-    <div class="login-box card">
+        <div class="login-title">
+            Manan360.pk
+        </div>
 
-        <h2>🔐 Login</h2>
+        <div class="login-subtitle">
+            Student Login
+        </div>
 
         <input
             type="text"
             id="username"
             placeholder="Username"
+            autocomplete="username"
         >
 
         <input
             type="password"
             id="password"
             placeholder="Password"
+            autocomplete="current-password"
         >
 
-        <button onclick="login()">
+        <button class="login-btn" onclick="login()">
             Login
         </button>
 
-        <button
-            class="register"
-            onclick="registerBiometric()">
-            👆 Register Fingerprint / Face
-        </button>
-
-        <button
-            class="biometric"
-            onclick="biometricLogin()">
-            🔐 Fingerprint / Face Login
-        </button>
-
-        <p id="error"></p>
-        <p id="bioStatus"></p>
+        <div id="errorMessage">
+            Invalid username or password
+        </div>
 
     </div>
 
 </div>
 
 
-<!-- WEBSITE -->
-<div id="website">
+<!-- ==================================================
+     MAIN WEBSITE
+================================================== -->
 
-<header>
-    <h1>Manan360.pk</h1>
-    <p>Notes & Test Papers</p>
-</header>
+<div id="mainPage">
 
-<div class="container">
+    <!-- Header -->
+    <div class="header">
 
-    <div class="card">
-
-        <h2>📚 Welcome</h2>
+        <h1>Manan360.pk</h1>
 
         <p>
-            اپنی Class منتخب کریں اور Notes / Test Papers کھولیں۔
+            Notes & Test Papers
         </p>
 
-        <button class="logout" onclick="logout()">
-            Logout
+    </div>
+
+
+    <div class="container">
+
+
+        <!-- Welcome -->
+        <div class="welcome-card">
+
+            <h2>
+                📚 Welcome
+            </h2>
+
+            <p>
+                اپنی Class اور Notes / Test Papers منتخب کریں اور اپنی پڑھائی شروع کریں۔
+            </p>
+
+            <button
+                class="logout-btn"
+                onclick="openLogoutBox()">
+                Logout
+            </button>
+
+        </div>
+
+
+        <!-- Cashback -->
+        <button
+            class="cashback-btn"
+            onclick="openCashback()">
+            💰 Rs. 100 Cashback
         </button>
 
-    </div>
 
+        <!-- Class 9 -->
+        <div class="class-card">
 
-    <!-- CASHBACK -->
-    <a
-        href="https://docs.google.com/forms/d/e/1FAIpQLSfBHT5Sza4sKuFzogzGLGmIo4QbK7cHhgr01heRtmK2z7ny7Q/viewform?usp=header"
-        class="cashback-button"
-        target="_blank">
-        💰 Rs.100 Cashback
-    </a>
+            <h2>
+                📚 Class 9th
+            </h2>
 
+            <div class="file-card">
 
-    <!-- CLASS 9TH -->
-    <div class="card">
+                <div class="file-title">
+                    📄 Class 9th Urdu Test Paper
+                </div>
 
-        <h2 class="section-title">
-            📚 Class 9th
-        </h2>
+                <div class="file-buttons">
 
-        <div class="file-box">
+                    <a
+                        href="Class-9th-Urdu-Test-Paper.pdf"
+                        target="_blank"
+                        class="open-btn">
+                        Open File
+                    </a>
 
-            <h3>
-                📄 Class 9th Urdu Test Paper
-            </h3>
+                    <a
+                        href="Class-9th-Urdu-Test-Paper.pdf"
+                        download
+                        class="download-btn">
+                        Download
+                    </a>
 
-            <div class="file-buttons">
-
-                <a
-                    href="Class-9th-Urdu-Test-Paper.pdf"
-                    target="_blank">
-                    Open File
-                </a>
-
-                <a
-                    class="download"
-                    href="Class-9th-Urdu-Test-Paper.pdf"
-                    download>
-                    Download
-                </a>
+                </div>
 
             </div>
 
         </div>
 
-    </div>
 
+        <!-- Class 10 -->
+        <div class="class-card">
 
-    <!-- CLASS 10TH -->
-    <div class="card">
+            <h2>
+                📚 Class 10th
+            </h2>
 
-        <h2 class="section-title">
-            📖 Class 10th
-        </h2>
+            <div class="file-card">
 
-        <div class="file-box">
+                <div class="file-title">
+                    📄 Class 10th Test Paper
+                </div>
 
-            <h3>
-                📄 Class 10th Test Paper
-            </h3>
+                <div class="file-buttons">
 
-            <div class="file-buttons">
+                    <a
+                        href="Class-10th-Test-Paper.pdf"
+                        target="_blank"
+                        class="open-btn">
+                        Open File
+                    </a>
 
-                <a
-                    href="Class-10th-Test-Paper.pdf"
-                    target="_blank">
-                    Open File
-                </a>
+                    <a
+                        href="Class-10th-Test-Paper.pdf"
+                        download
+                        class="download-btn">
+                        Download
+                    </a>
 
-                <a
-                    class="download"
-                    href="Class-10th-Test-Paper.pdf"
-                    download>
-                    Download
-                </a>
+                </div>
 
             </div>
 
         </div>
+
 
     </div>
 
 </div>
+
+
+<!-- ==================================================
+     LOGOUT CONFIRMATION
+================================================== -->
+
+<div
+    id="logoutModal"
+    class="logout-modal">
+
+    <div class="logout-box">
+
+        <h2>
+            Sign Out
+        </h2>
+
+        <p>
+            Are you sure you want to sign out?
+        </p>
+
+        <div class="logout-actions">
+
+            <button
+                class="cancel-btn"
+                onclick="closeLogoutBox()">
+                Cancel
+            </button>
+
+            <button
+                class="signout-btn"
+                onclick="signOut()">
+                Sign Out
+            </button>
+
+        </div>
+
+    </div>
 
 </div>
 
 
 <script>
 
-/* Users */
-const users = [
-    "322202990",
-    "322202440",
-    "322505434",
-    "327589969",
-    "359953999"
-];
+/* ==================================================
+   LOGIN DETAILS
+================================================== */
 
-/* Common Password */
-const commonPassword = "1999908774";
+/*
+   یہاں اپنے usernames اور password تبدیل کر سکتے ہیں۔
+*/
+
+const users = {
+
+    "student1": "12345",
+    "student2": "12345",
+    "student3": "12345",
+    "student4": "12345",
+    "student5": "12345"
+
+};
 
 
-/* =========================
-   NORMAL LOGIN
-========================= */
+/* ==================================================
+   CHECK LOGIN
+================================================== */
+
+function checkLogin() {
+
+    if (localStorage.getItem("manan360_logged_in") === "true") {
+
+        document.getElementById("loginPage").style.display = "none";
+
+        document.getElementById("mainPage").style.display = "block";
+
+    } else {
+
+        document.getElementById("loginPage").style.display = "flex";
+
+        document.getElementById("mainPage").style.display = "none";
+
+    }
+
+}
+
+
+/* ==================================================
+   LOGIN
+================================================== */
 
 function login() {
 
@@ -345,303 +610,120 @@ function login() {
     const password =
         document.getElementById("password").value;
 
-    if (
-        users.includes(username) &&
-        password === commonPassword
-    ) {
+    const error =
+        document.getElementById("errorMessage");
+
+
+    if (users[username] && users[username] === password) {
+
+        localStorage.setItem(
+            "manan360_logged_in",
+            "true"
+        );
+
+        localStorage.setItem(
+            "manan360_username",
+            username
+        );
+
+        error.style.display = "none";
 
         document.getElementById("loginPage").style.display = "none";
 
-        document.getElementById("website").style.display = "block";
+        document.getElementById("mainPage").style.display = "block";
 
     } else {
 
-        document.getElementById("error").innerText =
-            "Username یا Password غلط ہے۔";
+        error.style.display = "block";
+
     }
+
 }
 
 
-/* =========================
-   CHECK BIOMETRIC SUPPORT
-========================= */
+/* ==================================================
+   ENTER KEY LOGIN
+================================================== */
 
-function biometricSupported() {
+document.getElementById("password").addEventListener(
+    "keydown",
+    function(event) {
 
-    return (
-        window.PublicKeyCredential &&
-        typeof window.PublicKeyCredential === "function"
+        if (event.key === "Enter") {
+
+            login();
+
+        }
+
+    }
+);
+
+
+/* ==================================================
+   LOGOUT BOX OPEN
+================================================== */
+
+function openLogoutBox() {
+
+    document.getElementById("logoutModal").style.display = "flex";
+
+}
+
+
+/* ==================================================
+   LOGOUT BOX CLOSE
+================================================== */
+
+function closeLogoutBox() {
+
+    document.getElementById("logoutModal").style.display = "none";
+
+}
+
+
+/* ==================================================
+   SIGN OUT
+================================================== */
+
+function signOut() {
+
+    localStorage.removeItem(
+        "manan360_logged_in"
     );
+
+    localStorage.removeItem(
+        "manan360_username"
+    );
+
+    document.getElementById("logoutModal").style.display = "none";
+
+    document.getElementById("mainPage").style.display = "none";
+
+    document.getElementById("loginPage").style.display = "flex";
+
+    document.getElementById("username").value = "";
+
+    document.getElementById("password").value = "";
+
 }
 
 
-/* =========================
-   REGISTER FINGERPRINT / FACE
-========================= */
+/* ==================================================
+   CASHBACK
+================================================== */
 
-async function registerBiometric() {
+function openCashback() {
 
-    const username =
-        document.getElementById("username").value.trim();
+    window.location.href = "cashback.html";
 
-    if (!users.includes(username)) {
-
-        document.getElementById("bioStatus").innerText =
-            "پہلے درست Username لکھیں۔";
-
-        return;
-    }
-
-    if (!biometricSupported()) {
-
-        document.getElementById("bioStatus").innerText =
-            "اس device/browser میں biometric verification دستیاب نہیں۔";
-
-        return;
-    }
-
-    try {
-
-        const challenge = crypto.getRandomValues(
-            new Uint8Array(32)
-        );
-
-        const userId = crypto.getRandomValues(
-            new Uint8Array(16)
-        );
-
-        const credential =
-            await navigator.credentials.create({
-
-                publicKey: {
-
-                    challenge: challenge,
-
-                    rp: {
-                        name: "Manan360.pk"
-                    },
-
-                    user: {
-
-                        id: userId,
-
-                        name: username,
-
-                        displayName: username
-                    },
-
-                    pubKeyCredParams: [
-
-                        {
-                            type: "public-key",
-                            alg: -7
-                        },
-
-                        {
-                            type: "public-key",
-                            alg: -257
-                        }
-
-                    ],
-
-                    authenticatorSelection: {
-
-                        authenticatorAttachment: "platform",
-
-                        userVerification: "required"
-                    },
-
-                    timeout: 60000,
-
-                    attestation: "none"
-                }
-
-            });
-
-
-        if (credential) {
-
-            const credentialId =
-                arrayBufferToBase64(
-                    credential.rawId
-                );
-
-            localStorage.setItem(
-                "manan360_biometric_" + username,
-                credentialId
-            );
-
-            document.getElementById("bioStatus").innerText =
-                "✅ Fingerprint / Face کامیابی سے register ہوگیا۔";
-
-        }
-
-    } catch (error) {
-
-        document.getElementById("bioStatus").innerText =
-            "❌ Biometric registration مکمل نہیں ہو سکی۔";
-
-        console.log(error);
-    }
 }
 
 
-/* =========================
-   BIOMETRIC LOGIN
-========================= */
+/* ==================================================
+   START
+================================================== */
 
-async function biometricLogin() {
-
-    const username =
-        document.getElementById("username").value.trim();
-
-    if (!users.includes(username)) {
-
-        document.getElementById("bioStatus").innerText =
-            "پہلے اپنا Username لکھیں۔";
-
-        return;
-    }
-
-    const savedCredential =
-        localStorage.getItem(
-            "manan360_biometric_" + username
-        );
-
-    if (!savedCredential) {
-
-        document.getElementById("bioStatus").innerText =
-            "اس Username کے لیے پہلے Fingerprint / Face register کریں۔";
-
-        return;
-    }
-
-    if (!biometricSupported()) {
-
-        document.getElementById("bioStatus").innerText =
-            "اس device/browser میں biometric verification دستیاب نہیں۔";
-
-        return;
-    }
-
-    try {
-
-        const credentialId =
-            base64ToArrayBuffer(savedCredential);
-
-        const challenge = crypto.getRandomValues(
-            new Uint8Array(32)
-        );
-
-        const credential =
-            await navigator.credentials.get({
-
-                publicKey: {
-
-                    challenge: challenge,
-
-                    allowCredentials: [
-
-                        {
-                            type: "public-key",
-                            id: credentialId
-                        }
-
-                    ],
-
-                    userVerification: "required",
-
-                    timeout: 60000
-                }
-
-            });
-
-
-        if (credential) {
-
-            document.getElementById("loginPage").style.display =
-                "none";
-
-            document.getElementById("website").style.display =
-                "block";
-
-            document.getElementById("bioStatus").innerText =
-                "";
-
-        }
-
-    } catch (error) {
-
-        document.getElementById("bioStatus").innerText =
-            "❌ Fingerprint / Face verification ناکام ہوئی۔";
-
-        console.log(error);
-    }
-}
-
-
-/* =========================
-   CONVERT FUNCTIONS
-========================= */
-
-function arrayBufferToBase64(buffer) {
-
-    let binary = "";
-
-    const bytes =
-        new Uint8Array(buffer);
-
-    for (let i = 0; i < bytes.byteLength; i++) {
-
-        binary += String.fromCharCode(bytes[i]);
-    }
-
-    return btoa(binary);
-}
-
-
-function base64ToArrayBuffer(base64) {
-
-    const binary =
-        atob(base64);
-
-    const bytes =
-        new Uint8Array(binary.length);
-
-    for (let i = 0; i < binary.length; i++) {
-
-        bytes[i] =
-            binary.charCodeAt(i);
-    }
-
-    return bytes.buffer;
-}
-
-
-/* =========================
-   LOGOUT
-========================= */
-
-function logout() {
-
-    document.getElementById("website").style.display =
-        "none";
-
-    document.getElementById("loginPage").style.display =
-        "block";
-
-    document.getElementById("username").value =
-        "";
-
-    document.getElementById("password").value =
-        "";
-
-    document.getElementById("error").innerText =
-        "";
-
-    document.getElementById("bioStatus").innerText =
-        "";
-}
+checkLogin();
 
 </script>
 
