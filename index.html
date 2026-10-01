@@ -28,6 +28,7 @@ body {
     align-items: center;
     justify-content: center;
     padding: 20px;
+    background: linear-gradient(135deg, #eef2ff, #f8fafc, #ecfeff);
 }
 
 .login-box {
@@ -35,21 +36,47 @@ body {
     max-width: 390px;
     background: white;
     padding: 30px 25px;
-    border-radius: 18px;
+    border-radius: 20px;
     box-shadow: 0 8px 30px rgba(0,0,0,0.12);
     text-align: center;
+}
+
+/* Multicolor top line */
+
+.login-box::before {
+    content: "";
+    display: block;
+    height: 5px;
+    border-radius: 20px;
+    margin: -30px -25px 25px -25px;
+    background: linear-gradient(
+        90deg,
+        #1769aa,
+        #7c3aed,
+        #ec4899,
+        #f59e0b,
+        #16a34a
+    );
 }
 
 .login-title {
     font-size: 30px;
     font-weight: bold;
-    color: #1769aa;
+    background: linear-gradient(
+        90deg,
+        #1769aa,
+        #7c3aed,
+        #ec4899
+    );
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
     margin-bottom: 8px;
 }
 
 .login-subtitle {
     color: #666;
     margin-bottom: 25px;
+    font-size: 16px;
 }
 
 .login-box input {
@@ -63,7 +90,8 @@ body {
 }
 
 .login-box input:focus {
-    border-color: #1769aa;
+    border-color: #7c3aed;
+    box-shadow: 0 0 0 3px rgba(124,58,237,0.10);
 }
 
 .login-btn {
@@ -71,10 +99,16 @@ body {
     padding: 14px;
     border: none;
     border-radius: 9px;
-    background: #1769aa;
+    background: linear-gradient(
+        90deg,
+        #1769aa,
+        #7c3aed,
+        #ec4899
+    );
     color: white;
     font-size: 17px;
     cursor: pointer;
+    font-weight: bold;
 }
 
 .login-btn:active {
@@ -395,7 +429,6 @@ body {
 
 <div id="mainPage">
 
-    <!-- Header -->
     <div class="header">
 
         <h1>Manan360.pk</h1>
@@ -409,8 +442,6 @@ body {
 
     <div class="container">
 
-
-        <!-- Welcome -->
         <div class="welcome-card">
 
             <h2>
@@ -431,6 +462,7 @@ body {
 
 
         <!-- Cashback -->
+
         <button
             class="cashback-btn"
             onclick="openCashback()">
@@ -439,6 +471,7 @@ body {
 
 
         <!-- Class 9 -->
+
         <div class="class-card">
 
             <h2>
@@ -475,6 +508,7 @@ body {
 
 
         <!-- Class 10 -->
+
         <div class="class-card">
 
             <h2>
@@ -508,7 +542,6 @@ body {
             </div>
 
         </div>
-
 
     </div>
 
@@ -557,20 +590,16 @@ body {
 <script>
 
 /* ==================================================
-   LOGIN DETAILS
+   VIP USERS
 ================================================== */
-
-/*
-   یہاں اپنے usernames اور password تبدیل کر سکتے ہیں۔
-*/
 
 const users = {
 
-    "student1": "12345",
-    "student2": "12345",
-    "student3": "12345",
-    "student4": "12345",
-    "student5": "12345"
+    "359953999": "1999908774",
+    "327589969": "1999908774",
+    "322202440": "1999908774",
+    "322202990": "1999908774",
+    "322505434": "1999908774"
 
 };
 
@@ -581,17 +610,24 @@ const users = {
 
 function checkLogin() {
 
-    if (localStorage.getItem("manan360_logged_in") === "true") {
+    if (
+        localStorage.getItem("manan360_logged_in")
+        === "true"
+    ) {
 
-        document.getElementById("loginPage").style.display = "none";
+        document.getElementById("loginPage")
+            .style.display = "none";
 
-        document.getElementById("mainPage").style.display = "block";
+        document.getElementById("mainPage")
+            .style.display = "block";
 
     } else {
 
-        document.getElementById("loginPage").style.display = "flex";
+        document.getElementById("loginPage")
+            .style.display = "flex";
 
-        document.getElementById("mainPage").style.display = "none";
+        document.getElementById("mainPage")
+            .style.display = "none";
 
     }
 
@@ -605,16 +641,22 @@ function checkLogin() {
 function login() {
 
     const username =
-        document.getElementById("username").value.trim();
+        document.getElementById("username")
+        .value
+        .trim();
 
     const password =
-        document.getElementById("password").value;
+        document.getElementById("password")
+        .value;
 
     const error =
         document.getElementById("errorMessage");
 
 
-    if (users[username] && users[username] === password) {
+    if (
+        users[username] &&
+        users[username] === password
+    ) {
 
         localStorage.setItem(
             "manan360_logged_in",
@@ -628,9 +670,11 @@ function login() {
 
         error.style.display = "none";
 
-        document.getElementById("loginPage").style.display = "none";
+        document.getElementById("loginPage")
+            .style.display = "none";
 
-        document.getElementById("mainPage").style.display = "block";
+        document.getElementById("mainPage")
+            .style.display = "block";
 
     } else {
 
@@ -645,7 +689,8 @@ function login() {
    ENTER KEY LOGIN
 ================================================== */
 
-document.getElementById("password").addEventListener(
+document.getElementById("password")
+.addEventListener(
     "keydown",
     function(event) {
 
@@ -665,7 +710,8 @@ document.getElementById("password").addEventListener(
 
 function openLogoutBox() {
 
-    document.getElementById("logoutModal").style.display = "flex";
+    document.getElementById("logoutModal")
+        .style.display = "flex";
 
 }
 
@@ -676,7 +722,8 @@ function openLogoutBox() {
 
 function closeLogoutBox() {
 
-    document.getElementById("logoutModal").style.display = "none";
+    document.getElementById("logoutModal")
+        .style.display = "none";
 
 }
 
@@ -695,15 +742,20 @@ function signOut() {
         "manan360_username"
     );
 
-    document.getElementById("logoutModal").style.display = "none";
+    document.getElementById("logoutModal")
+        .style.display = "none";
 
-    document.getElementById("mainPage").style.display = "none";
+    document.getElementById("mainPage")
+        .style.display = "none";
 
-    document.getElementById("loginPage").style.display = "flex";
+    document.getElementById("loginPage")
+        .style.display = "flex";
 
-    document.getElementById("username").value = "";
+    document.getElementById("username")
+        .value = "";
 
-    document.getElementById("password").value = "";
+    document.getElementById("password")
+        .value = "";
 
 }
 
