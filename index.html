@@ -397,6 +397,9 @@ h1{
     background:#20bd5a;
 }
 
+
+/* ORDER POPUP */
+
 .popup{
     display:none;
     position:fixed;
@@ -410,36 +413,89 @@ h1{
 
 .popup-box{
     width:100%;
-    max-width:350px;
+    max-width:370px;
     background:white;
-    border-radius:20px;
-    padding:25px;
+    border-radius:22px;
+    padding:26px;
     text-align:center;
     box-shadow:0 20px 50px rgba(0,0,0,.4);
+    animation:popupIn .35s ease;
+}
+
+@keyframes popupIn{
+    from{
+        opacity:0;
+        transform:scale(.8);
+    }
+    to{
+        opacity:1;
+        transform:scale(1);
+    }
 }
 
 .popup-box h3{
-    font-size:22px;
-    margin-bottom:10px;
+    font-size:23px;
+    margin-bottom:18px;
     color:#222;
 }
 
-.popup-box p{
-    color:#666;
+.order-info{
+    background:#f5f5f5;
+    border-radius:14px;
+    padding:15px;
+    text-align:left;
+    margin-bottom:16px;
+    line-height:1.8;
     font-size:14px;
-    line-height:1.6;
-    margin-bottom:18px;
+    color:#444;
 }
 
-.close-popup{
+.demo-note{
+    background:#fff4d6;
+    color:#8a5a00;
+    padding:10px;
+    border-radius:10px;
+    font-size:13px;
+    margin-bottom:16px;
+}
+
+.place-order{
     width:100%;
     border:0;
-    padding:11px;
-    border-radius:10px;
-    background:#222;
+    padding:13px;
+    border-radius:11px;
+    background:linear-gradient(90deg,#00a86b,#00c853);
     color:white;
+    font-size:16px;
     font-weight:bold;
     cursor:pointer;
+    transition:.3s;
+}
+
+.place-order:hover{
+    transform:translateY(-2px);
+    box-shadow:0 7px 16px rgba(0,0,0,.2);
+}
+
+.success-message{
+    display:none;
+}
+
+.success-message h3{
+    color:#00a86b;
+    margin-bottom:12px;
+}
+
+.success-message p{
+    color:#555;
+    line-height:1.7;
+    font-size:15px;
+}
+
+.ceo{
+    margin-top:15px;
+    font-weight:bold;
+    color:#222;
 }
 
 @media(max-width:600px){
@@ -570,7 +626,6 @@ Continue
 
 <div class="container">
 
-
 <header class="header">
 
 <div>
@@ -584,7 +639,6 @@ Notes & Test Papers
 </div>
 
 </div>
-
 
 <div class="header-right">
 
@@ -698,11 +752,8 @@ rel="noopener"
 
 </div>
 
-
 </div>
 
-
-<!-- SUPPORT -->
 
 <a
 href="https://wa.me/923447232654?text=Assalam-o-Alaikum%20Manan360%20Support%20Team"
@@ -718,28 +769,74 @@ rel="noopener"
 </section>
 
 
-<!-- BUY POPUP -->
+<!-- ORDER POPUP -->
 
 <div class="popup" id="buyPopup">
 
 <div class="popup-box">
 
+<!-- ORDER FORM -->
+
+<div id="orderForm">
+
 <h3>
 🛒 Note Order
 </h3>
 
-<p id="orderText"></p>
+<div class="order-info">
 
-<p>
-Price: <strong>Rs. 100</strong>
-</p>
+<div>
+<strong>Notes:</strong>
+<span id="orderNote"></span>
+</div>
+
+<div>
+<strong>Customer:</strong>
+<span id="orderCustomer"></span>
+</div>
+
+<div>
+<strong>Price:</strong>
+Rs. 100
+</div>
+
+</div>
+
+<div class="demo-note">
+This is a Demo Order.
+</div>
 
 <button
-class="close-popup"
-onclick="closePopup()"
+class="place-order"
+onclick="placeOrder()"
 >
-Close
+Place Order
 </button>
+
+</div>
+
+
+<!-- SUCCESS -->
+
+<div
+id="successMessage"
+class="success-message"
+>
+
+<h3>
+✅ Order Placed
+</h3>
+
+<p>
+Thank you for your Order!
+</p>
+
+<p class="ceo">
+Personally,<br>
+CEO Abdul Manan
+</p>
+
+</div>
 
 </div>
 
@@ -747,7 +844,6 @@ Close
 
 
 <script>
-
 
 /* LOGIN USERS */
 
@@ -836,22 +932,28 @@ function buyNote(noteName){
 const name =
 sessionStorage.getItem("manan360_name") || "User";
 
-document.getElementById("orderText").innerHTML =
-"Note: <strong>"+noteName+"</strong><br><br>" +
-"Customer: <strong>"+name+"</strong><br><br>" +
-"Price: <strong>Rs. 100</strong><br><br>" +
-"This is a demo order.";
+document.getElementById("orderNote").textContent =
+noteName;
+
+document.getElementById("orderCustomer").textContent =
+name;
+
+document.getElementById("orderForm").style.display="block";
+
+document.getElementById("successMessage").style.display="none";
 
 document.getElementById("buyPopup").style.display="flex";
 
 }
 
 
-/* CLOSE POPUP */
+/* PLACE ORDER */
 
-function closePopup(){
+function placeOrder(){
 
-document.getElementById("buyPopup").style.display="none";
+document.getElementById("orderForm").style.display="none";
+
+document.getElementById("successMessage").style.display="block";
 
 }
 
@@ -944,4 +1046,4 @@ continueToHome();
 </script>
 
 </body>
-</html>
+    </html>
