@@ -336,9 +336,6 @@ h1{
     border-radius:12px;
 }
 
-
-/* ORDER POPUP */
-
 .popup{
     display:none;
     position:fixed;
@@ -454,9 +451,6 @@ h1{
     cursor:pointer;
 }
 
-
-/* BLUE SIDE NOTIFICATION */
-
 .side-success{
     position:fixed;
     top:22px;
@@ -506,9 +500,6 @@ h1{
     margin-bottom:2px;
 }
 
-
-/* INSUFFICIENT BALANCE */
-
 .balance-error{
     display:none;
     background:#ffe8e8;
@@ -519,7 +510,6 @@ h1{
     font-size:13px;
     font-weight:bold;
 }
-
 
 @media(max-width:600px){
 
@@ -559,7 +549,6 @@ h1{
         right:12px;
         width:235px;
     }
-
 }
 
 </style>
@@ -568,7 +557,6 @@ h1{
 <body>
 
 <div class="background"></div>
-
 
 <!-- LOGIN -->
 
@@ -589,6 +577,7 @@ class="input"
 type="text"
 id="username"
 placeholder="Username"
+autocomplete="username"
 >
 
 <input
@@ -596,9 +585,10 @@ class="input"
 type="password"
 id="password"
 placeholder="Password"
+autocomplete="current-password"
 >
 
-<button class="btn" onclick="login()">
+<button type="button" class="btn" id="loginButton">
 Login
 </button>
 
@@ -635,7 +625,7 @@ placeholder="Enter your name"
 maxlength="40"
 >
 
-<button class="btn" onclick="continueToHome()">
+<button type="button" class="btn" id="continueButton">
 Continue
 </button>
 
@@ -671,7 +661,7 @@ Notes & Test Papers
 <span id="balanceAmount">20,000</span>
 </div>
 
-<button class="logout" onclick="logout()">
+<button type="button" class="logout" id="logoutButton">
 Sign Out
 </button>
 
@@ -699,7 +689,6 @@ Welcome to Manan360.pk.
 
 <div class="cards">
 
-
 <!-- CLASS 9 -->
 
 <div class="card">
@@ -715,11 +704,9 @@ Rs. 100
 </div>
 
 <button
+type="button"
 class="buy-btn"
-onclick="buyNote(
-'Class 9th Urdu Test Paper',
-'Class-9th-Urdu-Test-Paper.pdf'
-)"
+onclick="buyNote('Class 9th Urdu Test Paper','Class-9th-Urdu-Test-Paper.pdf')"
 >
 🛒 Buy Note
 </button>
@@ -750,11 +737,9 @@ Rs. 100
 </div>
 
 <button
+type="button"
 class="buy-btn"
-onclick="buyNote(
-'Class 10th Urdu Test Paper',
-'Class-10th-Urdu-Test-Paper.pdf'
-)"
+onclick="buyNote('Class 10th Urdu Test Paper','Class-10th-Urdu-Test-Paper.pdf')"
 >
 🛒 Buy Note
 </button>
@@ -825,6 +810,7 @@ Rs. 100 will be deducted from your Demo Balance after purchase.
 </div>
 
 <button
+type="button"
 class="place-order"
 onclick="placeOrder()"
 >
@@ -869,6 +855,7 @@ download
 </a>
 
 <button
+type="button"
 class="close-btn"
 onclick="closePopup()"
 >
@@ -884,10 +871,7 @@ Close
 
 <!-- BLUE SIDE SUCCESS -->
 
-<div
-class="side-success"
-id="sideSuccess"
->
+<div class="side-success" id="sideSuccess">
 
 <div class="side-check">
 ✓
@@ -909,18 +893,16 @@ Order completed successfully.
 <script>
 
 /* =========================
-   LOGIN USERS
+   USERS
 ========================= */
 
 const users = {
-
-"1999908774":"1999908774",
-"359953999":"1999908774",
-"327589969":"1999908774",
-"322202440":"1999908774",
-"322202990":"1999908774",
-"322505434":"1999908774"
-
+    "1999908774":"1999908774",
+    "359953999":"1999908774",
+    "327589969":"1999908774",
+    "322202440":"1999908774",
+    "322202990":"1999908774",
+    "322505434":"1999908774"
 };
 
 
@@ -932,77 +914,61 @@ const PRICE = 100;
 
 
 /* =========================
-   DEMO BALANCE
-=========================
-
-   First installation:
-   Rs. 20,000
-
-   After purchase:
-   Rs. 19,900
-
-   Refresh:
-   Same balance remains
-
-   The special version key makes
-   sure the old 10,000 balance
-   is replaced once.
+   STORAGE
 ========================= */
 
-const BALANCE_KEY =
-"manan360_demo_balance";
+const BALANCE_KEY = "manan360_demo_balance";
 
-const BALANCE_VERSION_KEY =
-"manan360_balance_version";
-
-const CURRENT_BALANCE_VERSION =
-"20000_v1";
-
-let savedBalanceVersion =
-localStorage.getItem(BALANCE_VERSION_KEY);
-
-let demoBalance;
+let demoBalance = Number(
+    localStorage.getItem(BALANCE_KEY)
+);
 
 
-/* FIRST TIME NEW VERSION */
+/* =========================
+   FIRST BALANCE
+========================= */
 
-if(savedBalanceVersion !== CURRENT_BALANCE_VERSION){
-
+if(
+    !Number.isFinite(demoBalance) ||
+    demoBalance < 0 ||
+    demoBalance === 10000
+){
     demoBalance = 20000;
 
     localStorage.setItem(
         BALANCE_KEY,
-        demoBalance
+        String(demoBalance)
     );
-
-    localStorage.setItem(
-        BALANCE_VERSION_KEY,
-        CURRENT_BALANCE_VERSION
-    );
-
-}else{
-
-    demoBalance =
-    Number(localStorage.getItem(BALANCE_KEY));
-
-    if(
-        !Number.isFinite(demoBalance) ||
-        demoBalance < 0
-    ){
-
-        demoBalance = 20000;
-
-        localStorage.setItem(
-            BALANCE_KEY,
-            demoBalance
-        );
-
-    }
-
 }
 
 
 let selectedPDF = "";
+
+
+/* =========================
+   PAGE ELEMENTS
+========================= */
+
+const loginPage =
+    document.getElementById("loginPage");
+
+const namePage =
+    document.getElementById("namePage");
+
+const homePage =
+    document.getElementById("homePage");
+
+const usernameInput =
+    document.getElementById("username");
+
+const passwordInput =
+    document.getElementById("password");
+
+const visitorNameInput =
+    document.getElementById("visitorName");
+
+const loginError =
+    document.getElementById("loginError");
 
 
 /* =========================
@@ -1011,16 +977,57 @@ let selectedPDF = "";
 
 function updateBalance(){
 
-    const balanceElement =
-    document.getElementById("balanceAmount");
-
-    balanceElement.textContent =
-    demoBalance.toLocaleString();
+    document.getElementById(
+        "balanceAmount"
+    ).textContent =
+        demoBalance.toLocaleString();
 
     localStorage.setItem(
         BALANCE_KEY,
-        demoBalance
+        String(demoBalance)
     );
+}
+
+
+/* =========================
+   SHOW LOGIN
+========================= */
+
+function showLogin(){
+
+    loginPage.style.display = "flex";
+    namePage.style.display = "none";
+    homePage.style.display = "none";
+
+}
+
+
+/* =========================
+   SHOW NAME
+========================= */
+
+function showName(){
+
+    loginPage.style.display = "none";
+    namePage.style.display = "flex";
+    homePage.style.display = "none";
+
+    visitorNameInput.focus();
+
+}
+
+
+/* =========================
+   SHOW HOME
+========================= */
+
+function showHome(){
+
+    loginPage.style.display = "none";
+    namePage.style.display = "none";
+    homePage.style.display = "block";
+
+    updateBalance();
 
 }
 
@@ -1032,33 +1039,50 @@ function updateBalance(){
 function login(){
 
     const username =
-    document.getElementById("username").value.trim();
+        usernameInput.value.trim();
 
     const password =
-    document.getElementById("password").value.trim();
-
-    const error =
-    document.getElementById("loginError");
+        passwordInput.value.trim();
 
 
-    if(users[username] === password){
+    /* EMPTY CHECK */
 
-        error.style.display="none";
+    if(username === "" || password === ""){
+
+        loginError.textContent =
+            "Please enter username and password.";
+
+        loginError.style.display = "block";
+
+        return;
+    }
+
+
+    /* LOGIN CHECK */
+
+    if(
+        Object.prototype.hasOwnProperty.call(
+            users,
+            username
+        ) &&
+        users[username] === password
+    ){
+
+        loginError.style.display = "none";
 
         sessionStorage.setItem(
             "manan360_logged_in",
             "true"
         );
 
-        document.getElementById("loginPage").style.display="none";
-
-        document.getElementById("namePage").style.display="flex";
-
-        document.getElementById("visitorName").focus();
+        showName();
 
     }else{
 
-        error.style.display="block";
+        loginError.textContent =
+            "Invalid username or password.";
+
+        loginError.style.display = "block";
 
     }
 
@@ -1066,37 +1090,35 @@ function login(){
 
 
 /* =========================
-   NAME
+   CONTINUE
 ========================= */
 
 function continueToHome(){
 
     const name =
-    document.getElementById("visitorName").value.trim();
+        visitorNameInput.value.trim();
 
-    if(name===""){
 
-        document.getElementById("visitorName").focus();
+    if(name === ""){
+
+        visitorNameInput.focus();
 
         return;
-
     }
 
-    document.getElementById("displayName").textContent =
-    name;
+
+    document.getElementById(
+        "displayName"
+    ).textContent = name;
+
 
     sessionStorage.setItem(
         "manan360_name",
         name
     );
 
-    document.getElementById("namePage").style.display =
-    "none";
 
-    document.getElementById("homePage").style.display =
-    "block";
-
-    updateBalance();
+    showHome();
 
 }
 
@@ -1108,28 +1130,42 @@ function continueToHome(){
 function buyNote(noteName,pdfFile){
 
     const name =
-    sessionStorage.getItem("manan360_name") || "User";
+        sessionStorage.getItem(
+            "manan360_name"
+        ) || "User";
 
-    document.getElementById("orderNote").textContent =
-    noteName;
 
-    document.getElementById("orderCustomer").textContent =
-    name;
+    document.getElementById(
+        "orderNote"
+    ).textContent = noteName;
 
-    selectedPDF =
-    pdfFile;
 
-    document.getElementById("balanceError").style.display =
-    "none";
+    document.getElementById(
+        "orderCustomer"
+    ).textContent = name;
 
-    document.getElementById("orderForm").style.display =
-    "block";
 
-    document.getElementById("successMessage").style.display =
-    "none";
+    selectedPDF = pdfFile;
 
-    document.getElementById("buyPopup").style.display =
-    "flex";
+
+    document.getElementById(
+        "balanceError"
+    ).style.display = "none";
+
+
+    document.getElementById(
+        "orderForm"
+    ).style.display = "block";
+
+
+    document.getElementById(
+        "successMessage"
+    ).style.display = "none";
+
+
+    document.getElementById(
+        "buyPopup"
+    ).style.display = "flex";
 
 }
 
@@ -1141,62 +1177,57 @@ function buyNote(noteName,pdfFile){
 function placeOrder(){
 
     const balanceError =
-    document.getElementById("balanceError");
+        document.getElementById(
+            "balanceError"
+        );
 
-
-    /* CHECK BALANCE */
 
     if(demoBalance < PRICE){
 
         balanceError.style.display =
-        "block";
+            "block";
 
         return;
-
     }
 
 
-    /* DEDUCT Rs.100 */
+    /* DEDUCT */
 
     demoBalance =
-    demoBalance - PRICE;
+        demoBalance - PRICE;
 
 
-    /* SAVE NEW BALANCE */
-
-    localStorage.setItem(
-        BALANCE_KEY,
-        demoBalance
-    );
-
-
-    /* UPDATE SCREEN */
+    /* SAVE */
 
     updateBalance();
 
 
-    /* SHOW SUCCESS */
+    /* CHANGE POPUP */
 
-    document.getElementById("orderForm").style.display =
-    "none";
-
-    document.getElementById("successMessage").style.display =
-    "block";
+    document.getElementById(
+        "orderForm"
+    ).style.display = "none";
 
 
-    /* DOWNLOAD FILE */
-
-    const downloadButton =
-    document.getElementById("downloadButton");
-
-    downloadButton.href =
-    selectedPDF;
+    document.getElementById(
+        "successMessage"
+    ).style.display = "block";
 
 
-    /* BLUE SIDE NOTIFICATION */
+    /* PDF */
+
+    document.getElementById(
+        "downloadButton"
+    ).href = selectedPDF;
+
+
+    /* BLUE MESSAGE */
 
     const notification =
-    document.getElementById("sideSuccess");
+        document.getElementById(
+            "sideSuccess"
+        );
+
 
     notification.classList.add("show");
 
@@ -1216,8 +1247,9 @@ function placeOrder(){
 
 function closePopup(){
 
-    document.getElementById("buyPopup").style.display =
-    "none";
+    document.getElementById(
+        "buyPopup"
+    ).style.display = "none";
 
 }
 
@@ -1236,105 +1268,90 @@ function logout(){
         "manan360_name"
     );
 
-    document.getElementById("homePage").style.display =
-    "none";
 
-    document.getElementById("namePage").style.display =
-    "none";
+    usernameInput.value = "";
+    passwordInput.value = "";
+    visitorNameInput.value = "";
 
-    document.getElementById("loginPage").style.display =
-    "flex";
 
-    document.getElementById("username").value =
-    "";
+    loginError.style.display = "none";
 
-    document.getElementById("password").value =
-    "";
 
-    document.getElementById("visitorName").value =
-    "";
+    showLogin();
 
 }
 
 
 /* =========================
-   PAGE LOAD
+   BUTTON EVENTS
 ========================= */
 
-window.onload=function(){
-
-    updateBalance();
-
-    const loggedIn =
-    sessionStorage.getItem(
-        "manan360_logged_in"
-    );
-
-    const savedName =
-    sessionStorage.getItem(
-        "manan360_name"
-    );
+document.getElementById(
+    "loginButton"
+).addEventListener(
+    "click",
+    login
+);
 
 
-    if(loggedIn==="true"){
+document.getElementById(
+    "continueButton"
+).addEventListener(
+    "click",
+    continueToHome
+);
 
-        if(savedName){
 
-            document.getElementById("displayName").textContent =
-            savedName;
-
-            document.getElementById("loginPage").style.display =
-            "none";
-
-            document.getElementById("namePage").style.display =
-            "none";
-
-            document.getElementById("homePage").style.display =
-            "block";
-
-        }else{
-
-            document.getElementById("loginPage").style.display =
-            "none";
-
-            document.getElementById("namePage").style.display =
-            "flex";
-
-        }
-
-    }
-
-};
+document.getElementById(
+    "logoutButton"
+).addEventListener(
+    "click",
+    logout
+);
 
 
 /* =========================
    ENTER KEY
 ========================= */
 
-document.addEventListener(
+usernameInput.addEventListener(
     "keydown",
     function(event){
 
-        if(event.key==="Enter"){
-
-            if(
-                document.activeElement.id==="username" ||
-                document.activeElement.id==="password"
-            ){
-
-                login();
-
-            }
-
-            else if(
-                document.activeElement.id==="visitorName"
-            ){
-
-                continueToHome();
-
-            }
-
+        if(event.key === "Enter"){
+            event.preventDefault();
+            login();
         }
 
     }
 );
+
+
+passwordInput.addEventListener(
+    "keydown",
+    function(event){
+
+        if(event.key === "Enter"){
+            event.preventDefault();
+            login();
+        }
+
+    }
+);
+
+
+visitorNameInput.addEventListener(
+    "keydown",
+    function(event){
+
+        if(event.key === "Enter"){
+            event.preventDefault();
+            continueToHome();
+        }
+
+    }
+);
+
+
+/* =========================
+   PAGE
