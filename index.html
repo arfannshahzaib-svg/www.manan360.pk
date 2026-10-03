@@ -1,8 +1,13 @@
-<!DOCTYPE html><html lang="en">
+<!DOCTYPE html>
+<html lang="en">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Manan360.pk - Student Portal</title><style>
+
+<title>Manan360.pk - Student Portal</title>
+
+<style>
+
 *{
     box-sizing:border-box;
     margin:0;
@@ -192,6 +197,7 @@ h1{
     justify-content:space-between;
     align-items:center;
     gap:12px;
+    flex-wrap:wrap;
     box-shadow:0 12px 35px rgba(0,0,0,.22);
     margin-bottom:20px;
     animation:drop .7s ease;
@@ -218,6 +224,25 @@ h1{
     color:#777;
     font-size:12px;
     margin-top:4px;
+}
+
+.header-right{
+    display:flex;
+    align-items:center;
+    gap:8px;
+    flex-wrap:wrap;
+    justify-content:flex-end;
+}
+
+.demo-balance{
+    background:linear-gradient(90deg,#00a86b,#00c853);
+    color:white;
+    padding:10px 14px;
+    border-radius:10px;
+    font-size:14px;
+    font-weight:bold;
+    white-space:nowrap;
+    box-shadow:0 5px 12px rgba(0,0,0,.15);
 }
 
 .logout{
@@ -305,14 +330,41 @@ h1{
 .card p{
     color:#777;
     font-size:13px;
-    margin-bottom:15px;
+    margin-bottom:12px;
+}
+
+.price{
+    font-size:20px;
+    font-weight:bold;
+    color:#111;
+    margin:8px 0 13px;
+}
+
+.buy-btn{
+    display:block;
+    width:100%;
+    border:0;
+    color:white;
+    background:linear-gradient(90deg,#ff0066,#6a00ff,#007bff);
+    padding:12px 15px;
+    border-radius:11px;
+    font-weight:bold;
+    font-size:15px;
+    cursor:pointer;
+    transition:.3s;
+    margin-bottom:9px;
+}
+
+.buy-btn:hover{
+    transform:translateY(-2px);
+    box-shadow:0 7px 16px rgba(0,0,0,.25);
 }
 
 .open{
-    display:inline-block;
-    color:white;
+    display:block;
+    color:#333;
     text-decoration:none;
-    background:linear-gradient(90deg,#6a00ff,#007bff);
+    background:#eeeeee;
     padding:10px 18px;
     border-radius:10px;
     font-weight:bold;
@@ -320,11 +372,8 @@ h1{
 }
 
 .open:hover{
-    transform:translateY(-2px);
-    box-shadow:0 7px 16px rgba(0,0,0,.25);
+    background:#dddddd;
 }
-
-/* SUPPORT */
 
 .support{
     display:block;
@@ -345,8 +394,52 @@ h1{
 
 .support:hover{
     transform:translateY(-2px);
-    box-shadow:0 9px 22px rgba(0,0,0,.25);
     background:#20bd5a;
+}
+
+.popup{
+    display:none;
+    position:fixed;
+    inset:0;
+    background:rgba(0,0,0,.65);
+    align-items:center;
+    justify-content:center;
+    padding:20px;
+    z-index:9999;
+}
+
+.popup-box{
+    width:100%;
+    max-width:350px;
+    background:white;
+    border-radius:20px;
+    padding:25px;
+    text-align:center;
+    box-shadow:0 20px 50px rgba(0,0,0,.4);
+}
+
+.popup-box h3{
+    font-size:22px;
+    margin-bottom:10px;
+    color:#222;
+}
+
+.popup-box p{
+    color:#666;
+    font-size:14px;
+    line-height:1.6;
+    margin-bottom:18px;
+}
+
+.close-popup{
+    width:100%;
+    border:0;
+    padding:11px;
+    border-radius:10px;
+    background:#222;
+    color:white;
+    font-weight:bold;
+    cursor:pointer;
 }
 
 @media(max-width:600px){
@@ -363,6 +456,16 @@ h1{
         font-size:18px;
     }
 
+    .header-right{
+        width:100%;
+        justify-content:space-between;
+    }
+
+    .demo-balance{
+        font-size:13px;
+        padding:9px 11px;
+    }
+
     .logout{
         padding:9px 12px;
         font-size:12px;
@@ -376,179 +479,286 @@ h1{
         grid-template-columns:1fr;
     }
 }
-</style></head><body><div class="background"></div><!-- LOGIN --><section id="loginPage" class="page"><div class="box">
 
-    <div class="logo">M</div>
+</style>
+</head>
 
-    <h1>Manan360.pk</h1>
+<body>
 
-    <div class="subtitle">
-        Student Login Portal
-    </div>
+<div class="background"></div>
 
-    <input
-        class="input"
-        type="text"
-        id="username"
-        placeholder="Username"
-        autocomplete="username"
-    >
 
-    <input
-        class="input"
-        type="password"
-        id="password"
-        placeholder="Password"
-        autocomplete="current-password"
-    >
+<!-- LOGIN -->
 
-    <button class="btn" onclick="login()">
-        Login
-    </button>
+<section id="loginPage" class="page">
 
-    <div class="error" id="loginError">
-        Invalid username or password.
-    </div>
+<div class="box">
+
+<div class="logo">M</div>
+
+<h1>Manan360.pk</h1>
+
+<div class="subtitle">
+Student Login Portal
+</div>
+
+<input
+class="input"
+type="text"
+id="username"
+placeholder="Username"
+autocomplete="username"
+>
+
+<input
+class="input"
+type="password"
+id="password"
+placeholder="Password"
+autocomplete="current-password"
+>
+
+<button class="btn" onclick="login()">
+Login
+</button>
+
+<div class="error" id="loginError">
+Invalid username or password.
+</div>
 
 </div>
 
-</section><!-- NAME PAGE --><section id="namePage" class="page"><div class="box name-box">
+</section>
 
-    <div class="logo">M</div>
 
-    <div class="name-question">
-        What is your name?
-    </div>
+<!-- NAME PAGE -->
 
-    <div class="name-small">
-        Please enter your name to continue
-    </div>
+<section id="namePage" class="page">
 
-    <input
-        class="input"
-        type="text"
-        id="visitorName"
-        placeholder="Enter your name"
-        maxlength="40"
-    >
+<div class="box name-box">
 
-    <button class="btn" onclick="continueToHome()">
-        Continue
-    </button>
+<div class="logo">M</div>
+
+<div class="name-question">
+What is your name?
+</div>
+
+<div class="name-small">
+Please enter your name to continue
+</div>
+
+<input
+class="input"
+type="text"
+id="visitorName"
+placeholder="Enter your name"
+maxlength="40"
+>
+
+<button class="btn" onclick="continueToHome()">
+Continue
+</button>
 
 </div>
 
-</section><!-- HOME --><section id="homePage"><div class="container">
+</section>
 
-    <header class="header">
 
-        <div>
-            <div class="site-title">
-                Manan360.pk
-            </div>
+<!-- HOME -->
 
-            <div class="site-subtitle">
-                Notes & Test Papers
-            </div>
-        </div>
+<section id="homePage">
 
-        <button class="logout" onclick="logout()">
-            Sign Out
-        </button>
+<div class="container">
 
-    </header>
 
-    <div class="welcome">
+<header class="header">
 
-        <h2>
-            Hello,
-            <span class="user-name" id="displayName">
-                User
-            </span>
-        </h2>
+<div>
 
-        <div class="intro">
-            My name is <strong>Abdur Manan</strong>.<br>
-            Welcome to Manan360.pk.
-        </div>
+<div class="site-title">
+Manan360.pk
+</div>
 
-    </div>
-
-    <div class="cards">
-
-        <!-- CLASS 9 -->
-
-        <div class="card">
-
-            <div class="icon">📚</div>
-
-            <h3>Class 9th</h3>
-
-            <p>
-                Notes & Test Papers
-            </p>
-
-            <a
-                href="Class-9th-Urdu-Test-Paper.pdf"
-                class="open"
-                target="_blank"
-                rel="noopener"
-            >
-                Open
-            </a>
-
-        </div>
-
-        <!-- CLASS 10 -->
-
-        <div class="card">
-
-            <div class="icon">📖</div>
-
-            <h3>Class 10th</h3>
-
-            <p>
-                Notes & Test Papers
-            </p>
-
-            <a
-                href="Class-10th-Urdu-Test-Paper.pdf"
-                class="open"
-                target="_blank"
-                rel="noopener"
-            >
-                Open
-            </a>
-
-        </div>
-
-    </div>
-
-    <!-- SUPPORT TEAM -->
-
-    <a
-        href="https://wa.me/923447232654?text=Assalam-o-Alaikum%20Manan360%20Support%20Team"
-        class="support"
-        target="_blank"
-        rel="noopener"
-    >
-        💬 Support Team
-    </a>
+<div class="site-subtitle">
+Notes & Test Papers
+</div>
 
 </div>
 
-</section><script>
+
+<div class="header-right">
+
+<div class="demo-balance">
+💰 Demo Balance: Rs. 10,000
+</div>
+
+<button class="logout" onclick="logout()">
+Sign Out
+</button>
+
+</div>
+
+</header>
+
+
+<div class="welcome">
+
+<h2>
+Hello,
+<span class="user-name" id="displayName">
+User
+</span>
+</h2>
+
+<div class="intro">
+My name is <strong>Abdur Manan</strong>.<br>
+Welcome to Manan360.pk.
+</div>
+
+</div>
+
+
+<div class="cards">
+
+
+<!-- CLASS 9 -->
+
+<div class="card">
+
+<div class="icon">
+📚
+</div>
+
+<h3>
+Class 9th
+</h3>
+
+<p>
+Urdu Test Paper
+</p>
+
+<div class="price">
+Rs. 100
+</div>
+
+<button
+class="buy-btn"
+onclick="buyNote('Class 9th Urdu Test Paper')"
+>
+🛒 Buy Note
+</button>
+
+<a
+href="Class-9th-Urdu-Test-Paper.pdf"
+class="open"
+target="_blank"
+rel="noopener"
+>
+📄 Open Note
+</a>
+
+</div>
+
+
+<!-- CLASS 10 -->
+
+<div class="card">
+
+<div class="icon">
+📖
+</div>
+
+<h3>
+Class 10th
+</h3>
+
+<p>
+Urdu Test Paper
+</p>
+
+<div class="price">
+Rs. 100
+</div>
+
+<button
+class="buy-btn"
+onclick="buyNote('Class 10th Urdu Test Paper')"
+>
+🛒 Buy Note
+</button>
+
+<a
+href="Class-10th-Urdu-Test-Paper.pdf"
+class="open"
+target="_blank"
+rel="noopener"
+>
+📄 Open Note
+</a>
+
+</div>
+
+
+</div>
+
+
+<!-- SUPPORT -->
+
+<a
+href="https://wa.me/923447232654?text=Assalam-o-Alaikum%20Manan360%20Support%20Team"
+class="support"
+target="_blank"
+rel="noopener"
+>
+💬 Support Team
+</a>
+
+</div>
+
+</section>
+
+
+<!-- BUY POPUP -->
+
+<div class="popup" id="buyPopup">
+
+<div class="popup-box">
+
+<h3>
+🛒 Note Order
+</h3>
+
+<p id="orderText"></p>
+
+<p>
+Price: <strong>Rs. 100</strong>
+</p>
+
+<button
+class="close-popup"
+onclick="closePopup()"
+>
+Close
+</button>
+
+</div>
+
+</div>
+
+
+<script>
+
 
 /* LOGIN USERS */
 
 const users = {
 
-    "1999908774": "1999908774",
-    "359953999": "1999908774",
-    "327589969": "1999908774",
-    "322202440": "1999908774",
-    "322202990": "1999908774",
-    "322505434": "1999908774"
+"1999908774":"1999908774",
+"359953999":"1999908774",
+"327589969":"1999908774",
+"322202440":"1999908774",
+"322202990":"1999908774",
+"322505434":"1999908774"
 
 };
 
@@ -557,37 +767,36 @@ const users = {
 
 function login(){
 
-    const username =
-        document.getElementById("username").value.trim();
+const username =
+document.getElementById("username").value.trim();
 
-    const password =
-        document.getElementById("password").value.trim();
+const password =
+document.getElementById("password").value.trim();
 
-    const error =
-        document.getElementById("loginError");
+const error =
+document.getElementById("loginError");
 
-    if(users[username] === password){
+if(users[username] === password){
 
-        error.style.display = "none";
+error.style.display="none";
 
-        sessionStorage.setItem(
-            "manan360_logged_in",
-            "true"
-        );
+sessionStorage.setItem(
+"manan360_logged_in",
+"true"
+);
 
-        document.getElementById("loginPage").style.display =
-            "none";
+document.getElementById("loginPage").style.display="none";
 
-        document.getElementById("namePage").style.display =
-            "flex";
+document.getElementById("namePage").style.display="flex";
 
-        document.getElementById("visitorName").focus();
+document.getElementById("visitorName").focus();
 
-    }else{
+}else{
 
-        error.style.display = "block";
+error.style.display="block";
 
-    }
+}
+
 }
 
 
@@ -595,29 +804,55 @@ function login(){
 
 function continueToHome(){
 
-    const name =
-        document.getElementById("visitorName").value.trim();
+const name =
+document.getElementById("visitorName").value.trim();
 
-    if(name === ""){
+if(name===""){
 
-        document.getElementById("visitorName").focus();
+document.getElementById("visitorName").focus();
 
-        return;
-    }
+return;
 
-    document.getElementById("displayName").textContent =
-        name;
+}
 
-    sessionStorage.setItem(
-        "manan360_name",
-        name
-    );
+document.getElementById("displayName").textContent=name;
 
-    document.getElementById("namePage").style.display =
-        "none";
+sessionStorage.setItem(
+"manan360_name",
+name
+);
 
-    document.getElementById("homePage").style.display =
-        "block";
+document.getElementById("namePage").style.display="none";
+
+document.getElementById("homePage").style.display="block";
+
+}
+
+
+/* BUY NOTE */
+
+function buyNote(noteName){
+
+const name =
+sessionStorage.getItem("manan360_name") || "User";
+
+document.getElementById("orderText").innerHTML =
+"Note: <strong>"+noteName+"</strong><br><br>" +
+"Customer: <strong>"+name+"</strong><br><br>" +
+"Price: <strong>Rs. 100</strong><br><br>" +
+"This is a demo order.";
+
+document.getElementById("buyPopup").style.display="flex";
+
+}
+
+
+/* CLOSE POPUP */
+
+function closePopup(){
+
+document.getElementById("buyPopup").style.display="none";
+
 }
 
 
@@ -625,83 +860,88 @@ function continueToHome(){
 
 function logout(){
 
-    sessionStorage.removeItem("manan360_logged_in");
-    sessionStorage.removeItem("manan360_name");
+sessionStorage.removeItem("manan360_logged_in");
 
-    document.getElementById("homePage").style.display =
-        "none";
+sessionStorage.removeItem("manan360_name");
 
-    document.getElementById("namePage").style.display =
-        "none";
+document.getElementById("homePage").style.display="none";
 
-    document.getElementById("loginPage").style.display =
-        "flex";
+document.getElementById("namePage").style.display="none";
 
-    document.getElementById("username").value = "";
-    document.getElementById("password").value = "";
-    document.getElementById("visitorName").value = "";
+document.getElementById("loginPage").style.display="flex";
+
+document.getElementById("username").value="";
+
+document.getElementById("password").value="";
+
+document.getElementById("visitorName").value="";
+
 }
 
 
 /* PAGE LOAD */
 
-window.onload = function(){
+window.onload=function(){
 
-    const loggedIn =
-        sessionStorage.getItem("manan360_logged_in");
+const loggedIn =
+sessionStorage.getItem("manan360_logged_in");
 
-    const savedName =
-        sessionStorage.getItem("manan360_name");
+const savedName =
+sessionStorage.getItem("manan360_name");
 
-    if(loggedIn === "true"){
+if(loggedIn==="true"){
 
-        if(savedName){
+if(savedName){
 
-            document.getElementById("displayName").textContent =
-                savedName;
+document.getElementById("displayName").textContent=savedName;
 
-            document.getElementById("loginPage").style.display =
-                "none";
+document.getElementById("loginPage").style.display="none";
 
-            document.getElementById("namePage").style.display =
-                "none";
+document.getElementById("namePage").style.display="none";
 
-            document.getElementById("homePage").style.display =
-                "block";
+document.getElementById("homePage").style.display="block";
 
-        }else{
+}else{
 
-            document.getElementById("loginPage").style.display =
-                "none";
+document.getElementById("loginPage").style.display="none";
 
-            document.getElementById("namePage").style.display =
-                "flex";
-        }
-    }
+document.getElementById("namePage").style.display="flex";
+
+}
+
+}
+
 };
 
 
-/* ENTER KEY SUPPORT */
+/* ENTER KEY */
 
-document.addEventListener("keydown", function(event){
+document.addEventListener("keydown",function(event){
 
-    if(event.key === "Enter"){
+if(event.key==="Enter"){
 
-        if(
-            document.activeElement.id === "username" ||
-            document.activeElement.id === "password"
-        ){
-            login();
-        }
+if(
+document.activeElement.id==="username" ||
+document.activeElement.id==="password"
+){
 
-        else if(
-            document.activeElement.id === "visitorName"
-        ){
-            continueToHome();
-        }
-    }
+login();
+
+}
+
+else if(
+document.activeElement.id==="visitorName"
+){
+
+continueToHome();
+
+}
+
+}
 
 });
 
-</script></body>
+</script>
+
+</body>
 </html>
