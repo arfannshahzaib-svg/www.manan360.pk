@@ -507,7 +507,7 @@ h1{
 }
 
 
-/* BALANCE ERROR */
+/* INSUFFICIENT BALANCE */
 
 .balance-error{
     display:none;
@@ -908,7 +908,6 @@ Order completed successfully.
 
 <script>
 
-
 /* LOGIN USERS */
 
 const users = {
@@ -929,15 +928,29 @@ const PRICE = 100;
 
 
 /*
-   DEMO BALANCE
-   STARTING BALANCE = Rs. 20,000
+IMPORTANT:
+DEMO BALANCE STARTS AT Rs. 20,000
 */
 
 let demoBalance =
 Number(localStorage.getItem("manan360_demo_balance"));
 
-if(!Number.isFinite(demoBalance)){
+
+/*
+If old balance is missing OR old balance was 10,000,
+reset it to 20,000.
+*/
+
+if(
+    !Number.isFinite(demoBalance) ||
+    demoBalance === 10000
+){
     demoBalance = 20000;
+
+    localStorage.setItem(
+        "manan360_demo_balance",
+        demoBalance
+    );
 }
 
 let selectedPDF = "";
@@ -947,13 +960,13 @@ let selectedPDF = "";
 
 function updateBalance(){
 
-document.getElementById("balanceAmount").textContent =
-demoBalance.toLocaleString();
+    document.getElementById("balanceAmount").textContent =
+    demoBalance.toLocaleString();
 
-localStorage.setItem(
-"manan360_demo_balance",
-demoBalance
-);
+    localStorage.setItem(
+        "manan360_demo_balance",
+        demoBalance
+    );
 
 }
 
@@ -962,36 +975,36 @@ demoBalance
 
 function login(){
 
-const username =
-document.getElementById("username").value.trim();
+    const username =
+    document.getElementById("username").value.trim();
 
-const password =
-document.getElementById("password").value.trim();
+    const password =
+    document.getElementById("password").value.trim();
 
-const error =
-document.getElementById("loginError");
+    const error =
+    document.getElementById("loginError");
 
 
-if(users[username] === password){
+    if(users[username] === password){
 
-error.style.display="none";
+        error.style.display="none";
 
-sessionStorage.setItem(
-"manan360_logged_in",
-"true"
-);
+        sessionStorage.setItem(
+            "manan360_logged_in",
+            "true"
+        );
 
-document.getElementById("loginPage").style.display="none";
+        document.getElementById("loginPage").style.display="none";
 
-document.getElementById("namePage").style.display="flex";
+        document.getElementById("namePage").style.display="flex";
 
-document.getElementById("visitorName").focus();
+        document.getElementById("visitorName").focus();
 
-}else{
+    }else{
 
-error.style.display="block";
+        error.style.display="block";
 
-}
+    }
 
 }
 
@@ -1000,29 +1013,30 @@ error.style.display="block";
 
 function continueToHome(){
 
-const name =
-document.getElementById("visitorName").value.trim();
+    const name =
+    document.getElementById("visitorName").value.trim();
 
-if(name===""){
+    if(name===""){
 
-document.getElementById("visitorName").focus();
+        document.getElementById("visitorName").focus();
 
-return;
+        return;
 
-}
+    }
 
-document.getElementById("displayName").textContent=name;
+    document.getElementById("displayName").textContent =
+    name;
 
-sessionStorage.setItem(
-"manan360_name",
-name
-);
+    sessionStorage.setItem(
+        "manan360_name",
+        name
+    );
 
-document.getElementById("namePage").style.display="none";
+    document.getElementById("namePage").style.display="none";
 
-document.getElementById("homePage").style.display="block";
+    document.getElementById("homePage").style.display="block";
 
-updateBalance();
+    updateBalance();
 
 }
 
@@ -1031,24 +1045,29 @@ updateBalance();
 
 function buyNote(noteName,pdfFile){
 
-const name =
-sessionStorage.getItem("manan360_name") || "User";
+    const name =
+    sessionStorage.getItem("manan360_name") || "User";
 
-document.getElementById("orderNote").textContent =
-noteName;
+    document.getElementById("orderNote").textContent =
+    noteName;
 
-document.getElementById("orderCustomer").textContent =
-name;
+    document.getElementById("orderCustomer").textContent =
+    name;
 
-selectedPDF = pdfFile;
+    selectedPDF =
+    pdfFile;
 
-document.getElementById("balanceError").style.display="none";
+    document.getElementById("balanceError").style.display =
+    "none";
 
-document.getElementById("orderForm").style.display="block";
+    document.getElementById("orderForm").style.display =
+    "block";
 
-document.getElementById("successMessage").style.display="none";
+    document.getElementById("successMessage").style.display =
+    "none";
 
-document.getElementById("buyPopup").style.display="flex";
+    document.getElementById("buyPopup").style.display =
+    "flex";
 
 }
 
@@ -1057,58 +1076,61 @@ document.getElementById("buyPopup").style.display="flex";
 
 function placeOrder(){
 
-const balanceError =
-document.getElementById("balanceError");
+    const balanceError =
+    document.getElementById("balanceError");
 
 
-/* CHECK BALANCE */
+    /* CHECK BALANCE */
 
-if(demoBalance < PRICE){
+    if(demoBalance < PRICE){
 
-balanceError.style.display="block";
+        balanceError.style.display =
+        "block";
 
-return;
+        return;
 
-}
-
-
-/* DEDUCT Rs.100 */
-
-demoBalance =
-demoBalance - PRICE;
-
-updateBalance();
+    }
 
 
-/* SHOW SUCCESS */
+    /* DEDUCT Rs.100 */
 
-document.getElementById("orderForm").style.display="none";
+    demoBalance =
+    demoBalance - PRICE;
 
-document.getElementById("successMessage").style.display="block";
-
-
-/* DOWNLOAD FILE */
-
-const downloadButton =
-document.getElementById("downloadButton");
-
-downloadButton.href =
-selectedPDF;
+    updateBalance();
 
 
-/* BLUE SIDE NOTIFICATION */
+    /* SHOW SUCCESS */
 
-const notification =
-document.getElementById("sideSuccess");
+    document.getElementById("orderForm").style.display =
+    "none";
 
-notification.classList.add("show");
+    document.getElementById("successMessage").style.display =
+    "block";
 
 
-setTimeout(function(){
+    /* DOWNLOAD FILE */
 
-notification.classList.remove("show");
+    const downloadButton =
+    document.getElementById("downloadButton");
 
-},3500);
+    downloadButton.href =
+    selectedPDF;
+
+
+    /* BLUE SIDE NOTIFICATION */
+
+    const notification =
+    document.getElementById("sideSuccess");
+
+    notification.classList.add("show");
+
+
+    setTimeout(function(){
+
+        notification.classList.remove("show");
+
+    },3500);
 
 }
 
@@ -1117,7 +1139,8 @@ notification.classList.remove("show");
 
 function closePopup(){
 
-document.getElementById("buyPopup").style.display="none";
+    document.getElementById("buyPopup").style.display =
+    "none";
 
 }
 
@@ -1126,21 +1149,31 @@ document.getElementById("buyPopup").style.display="none";
 
 function logout(){
 
-sessionStorage.removeItem("manan360_logged_in");
+    sessionStorage.removeItem(
+        "manan360_logged_in"
+    );
 
-sessionStorage.removeItem("manan360_name");
+    sessionStorage.removeItem(
+        "manan360_name"
+    );
 
-document.getElementById("homePage").style.display="none";
+    document.getElementById("homePage").style.display =
+    "none";
 
-document.getElementById("namePage").style.display="none";
+    document.getElementById("namePage").style.display =
+    "none";
 
-document.getElementById("loginPage").style.display="flex";
+    document.getElementById("loginPage").style.display =
+    "flex";
 
-document.getElementById("username").value="";
+    document.getElementById("username").value =
+    "";
 
-document.getElementById("password").value="";
+    document.getElementById("password").value =
+    "";
 
-document.getElementById("visitorName").value="";
+    document.getElementById("visitorName").value =
+    "";
 
 }
 
@@ -1149,67 +1182,79 @@ document.getElementById("visitorName").value="";
 
 window.onload=function(){
 
-updateBalance();
+    updateBalance();
 
-const loggedIn =
-sessionStorage.getItem("manan360_logged_in");
+    const loggedIn =
+    sessionStorage.getItem(
+        "manan360_logged_in"
+    );
 
-const savedName =
-sessionStorage.getItem("manan360_name");
+    const savedName =
+    sessionStorage.getItem(
+        "manan360_name"
+    );
 
 
-if(loggedIn==="true"){
+    if(loggedIn==="true"){
 
-if(savedName){
+        if(savedName){
 
-document.getElementById("displayName").textContent =
-savedName;
+            document.getElementById("displayName").textContent =
+            savedName;
 
-document.getElementById("loginPage").style.display="none";
+            document.getElementById("loginPage").style.display =
+            "none";
 
-document.getElementById("namePage").style.display="none";
+            document.getElementById("namePage").style.display =
+            "none";
 
-document.getElementById("homePage").style.display="block";
+            document.getElementById("homePage").style.display =
+            "block";
 
-}else{
+        }else{
 
-document.getElementById("loginPage").style.display="none";
+            document.getElementById("loginPage").style.display =
+            "none";
 
-document.getElementById("namePage").style.display="flex";
+            document.getElementById("namePage").style.display =
+            "flex";
 
-}
+        }
 
-}
+    }
 
 };
 
 
 /* ENTER KEY */
 
-document.addEventListener("keydown",function(event){
+document.addEventListener(
+    "keydown",
+    function(event){
 
-if(event.key==="Enter"){
+        if(event.key==="Enter"){
 
-if(
-document.activeElement.id==="username" ||
-document.activeElement.id==="password"
-){
+            if(
+                document.activeElement.id==="username" ||
+                document.activeElement.id==="password"
+            ){
 
-login();
+                login();
 
-}
+            }
 
-else if(
-document.activeElement.id==="visitorName"
-){
+            else if(
+                document.activeElement.id==="visitorName"
+            ){
 
-continueToHome();
+                continueToHome();
 
-}
+            }
 
-}
+        }
 
-});
+    }
+);
 
 </script>
 
