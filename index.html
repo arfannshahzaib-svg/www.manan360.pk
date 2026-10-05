@@ -15,8 +15,8 @@
 body{
     font-family:Arial,Helvetica,sans-serif;
     min-height:100vh;
+    color:white;
     overflow-x:hidden;
-    color:#fff;
 }
 
 .background{
@@ -24,90 +24,83 @@ body{
     inset:0;
     z-index:-2;
     background:linear-gradient(
-        -45deg,
-        #071952,
-        #088395,
-        #35A29F,
-        #F2CD5C,
-        #FF6B6B,
-        #6C5CE7
+        135deg,
+        #ff7e5f,
+        #feb47b,
+        #86a8e7,
+        #7f7fd5,
+        #43cea2
     );
-    background-size:500% 500%;
-    animation:bgMove 15s ease infinite;
+    background-size:400% 400%;
+    animation:bg 12s ease infinite;
 }
 
-@keyframes bgMove{
+@keyframes bg{
     0%{background-position:0% 50%}
     50%{background-position:100% 50%}
     100%{background-position:0% 50%}
 }
 
-.overlay{
-    position:fixed;
-    inset:0;
-    background:rgba(0,0,0,.18);
-    z-index:-1;
-}
-
 .page{
     min-height:100vh;
     display:flex;
-    align-items:center;
     justify-content:center;
+    align-items:center;
     padding:20px;
 }
 
 .card{
     width:100%;
     max-width:430px;
-    background:rgba(255,255,255,.14);
+    padding:30px 22px;
+    border-radius:28px;
+    background:rgba(255,255,255,.18);
+    border:1px solid rgba(255,255,255,.35);
     backdrop-filter:blur(15px);
     -webkit-backdrop-filter:blur(15px);
-    border:1px solid rgba(255,255,255,.25);
-    border-radius:25px;
-    padding:28px 22px;
     box-shadow:0 15px 45px rgba(0,0,0,.25);
     text-align:center;
 }
 
 h1{
-    font-size:29px;
+    font-size:30px;
     margin-bottom:8px;
 }
 
 h2{
-    font-size:23px;
-    margin-bottom:10px;
+    font-size:24px;
+    margin:15px 0 10px;
 }
 
 .subtitle{
-    font-size:14px;
+    font-size:15px;
     opacity:.9;
-    margin-bottom:22px;
+    margin-bottom:20px;
 }
 
 input{
     width:100%;
-    padding:15px;
-    border:none;
-    outline:none;
-    border-radius:13px;
-    margin-bottom:12px;
-    font-size:16px;
+    padding:16px;
+    margin-bottom:13px;
+    border:0;
+    outline:0;
+    border-radius:14px;
+    font-size:17px;
     text-align:center;
+    background:white;
+    color:#222;
 }
 
 button{
     width:100%;
-    border:none;
-    padding:14px;
-    border-radius:13px;
-    font-size:16px;
+    padding:15px;
+    border:0;
+    border-radius:14px;
+    background:linear-gradient(135deg,#087cff,#00b894);
+    color:white;
+    font-size:17px;
     font-weight:bold;
     cursor:pointer;
-    color:#fff;
-    background:linear-gradient(135deg,#0066ff,#00a878);
-    box-shadow:0 6px 18px rgba(0,0,0,.2);
 }
 
 button:active{
@@ -121,28 +114,37 @@ button:active{
     font-weight:bold;
 }
 
+.hidden{
+    display:none !important;
+}
+
 /* Fingerprint */
-.fingerprint-box{
-    margin:20px auto;
+
+.fingerprint{
     width:190px;
     height:190px;
+    margin:25px auto 18px;
     border-radius:50%;
-    background:rgba(255,255,255,.15);
-    border:3px solid rgba(255,255,255,.65);
+    background:rgba(255,255,255,.18);
+    border:3px solid rgba(255,255,255,.7);
     display:flex;
-    align-items:center;
     justify-content:center;
+    align-items:center;
     position:relative;
     overflow:hidden;
     cursor:pointer;
 }
 
-.fingerprint-box img{
+.fingerprint img{
     width:125px;
     height:125px;
     object-fit:contain;
     border-radius:50%;
-    background:#fff;
+    background:white;
+}
+
+.fingerprint-icon{
+    font-size:95px;
 }
 
 .scan-line{
@@ -153,135 +155,106 @@ button:active{
     height:3px;
     background:#00ff9d;
     box-shadow:0 0 15px #00ff9d;
-    animation:scan 1.3s linear infinite;
 }
 
 .scanning .scan-line{
     display:block;
+    animation:scan 1.2s linear infinite;
 }
 
 @keyframes scan{
-    0%{top:20px}
-    50%{top:165px}
-    100%{top:20px}
+    0%{top:15px}
+    50%{top:172px}
+    100%{top:15px}
 }
 
-.progress-wrap{
+.progress-box{
     width:100%;
     height:12px;
-    background:rgba(255,255,255,.25);
     border-radius:20px;
+    background:rgba(255,255,255,.25);
     overflow:hidden;
-    margin:15px 0 8px;
+    margin-top:18px;
 }
 
 .progress{
     width:0%;
     height:100%;
     background:#00ff9d;
-    transition:width .2s linear;
-}
-
-.timer{
-    font-size:14px;
-    margin-bottom:14px;
 }
 
 .success{
     color:#00ff9d;
-    font-weight:bold;
-}
-
-/* Name page */
-.name-icon{
-    width:80px;
-    height:80px;
-    margin:0 auto 15px;
-    border-radius:50%;
-    background:rgba(255,255,255,.2);
-    display:flex;
-    align-items:center;
-    justify-content:center;
-    font-size:40px;
 }
 
 /* Home */
-.home-card{
-    max-width:650px;
-}
 
 .balance{
-    margin:15px 0;
+    margin:20px 0;
     padding:18px;
     border-radius:18px;
-    background:rgba(0,0,0,.2);
+    background:rgba(0,0,0,.18);
 }
 
 .balance small{
     display:block;
-    opacity:.8;
-    margin-bottom:5px;
+    margin-bottom:6px;
 }
 
 .balance strong{
     font-size:30px;
 }
 
-.note-grid{
+.notes{
     display:grid;
     grid-template-columns:1fr 1fr;
-    gap:15px;
-    margin-top:20px;
+    gap:14px;
 }
 
 .note{
+    padding:17px 12px;
+    border-radius:18px;
     background:rgba(255,255,255,.14);
     border:1px solid rgba(255,255,255,.25);
-    border-radius:18px;
-    padding:18px 12px;
 }
 
 .note h3{
     font-size:17px;
-    margin-bottom:10px;
+    margin-bottom:8px;
 }
 
 .note p{
     font-size:13px;
-    opacity:.9;
     margin-bottom:12px;
 }
 
 .note button{
-    font-size:14px;
-    padding:11px;
+    font-size:13px;
+    padding:11px 5px;
 }
 
 .logout{
     margin-top:18px;
-    background:rgba(255,255,255,.2);
+    background:rgba(0,0,0,.25);
 }
 
-.hidden{
-    display:none !important;
-}
+/* Popup */
 
-/* Order popup */
 .popup{
     position:fixed;
     inset:0;
-    background:rgba(0,0,0,.65);
     display:none;
     align-items:center;
     justify-content:center;
     padding:20px;
-    z-index:20;
+    background:rgba(0,0,0,.65);
+    z-index:100;
 }
 
 .popup-box{
     width:100%;
     max-width:380px;
-    background:#fff;
+    background:white;
     color:#222;
     border-radius:22px;
     padding:25px;
@@ -292,46 +265,35 @@ button:active{
     color:#111;
 }
 
-.popup-box p{
-    margin:10px 0 18px;
-}
-
 .popup-buttons{
     display:flex;
     gap:10px;
-}
-
-.popup-buttons button{
-    color:#fff;
+    margin-top:18px;
 }
 
 .cancel{
-    background:#777 !important;
-}
-
-.order-success{
-    font-size:45px;
-    margin-bottom:10px;
+    background:#777;
 }
 
 .download{
     display:block;
-    text-decoration:none;
-    background:#087cff;
-    color:white;
+    margin-top:12px;
     padding:13px;
     border-radius:12px;
-    margin-top:12px;
+    background:#087cff;
+    color:white;
+    text-decoration:none;
     font-weight:bold;
 }
 
-@media(max-width:500px){
-    .note-grid{
-        grid-template-columns:1fr;
-    }
+.check{
+    font-size:55px;
+    color:#00a878;
+}
 
-    .card{
-        padding:24px 18px;
+@media(max-width:500px){
+    .notes{
+        grid-template-columns:1fr;
     }
 }
 </style>
@@ -340,94 +302,117 @@ button:active{
 <body>
 
 <div class="background"></div>
-<div class="overlay"></div>
+
 
 <!-- ================= LOGIN ================= -->
-<section id="loginPage" class="page">
+
+<div id="loginPage" class="page">
+
     <div class="card">
 
         <h1>Manan360.pk</h1>
-        <div class="subtitle">Student Portal</div>
+
+        <p class="subtitle">
+            Student Portal
+        </p>
 
         <h2>Login</h2>
-        <p class="subtitle">Enter your registered username and password</p>
+
+        <p class="subtitle">
+            Enter your registered username and password
+        </p>
 
         <input
-            type="text"
             id="username"
+            type="text"
             placeholder="Username"
             autocomplete="username"
         >
 
         <input
-            type="password"
             id="password"
+            type="password"
             placeholder="Password"
             autocomplete="current-password"
         >
 
-        <button type="button" onclick="loginUser()">
+        <button type="button" id="loginButton">
             Login
         </button>
 
         <div id="loginMessage" class="message"></div>
 
     </div>
-</section>
+
+</div>
 
 
 <!-- ================= FINGERPRINT ================= -->
-<section id="fingerPage" class="page hidden">
+
+<div id="fingerPage" class="page hidden">
+
     <div class="card">
 
-        <h1>Employee Verification</h1>
+        <h1>Fingerprint Verification</h1>
 
         <p class="subtitle">
-            Fingerprint Demo Verification
+            Demo / Employee Verification
         </p>
 
-        <div class="fingerprint-box" id="fingerprintBox"
-             onclick="startFingerprint()">
+        <div
+            id="fingerprint"
+            class="fingerprint"
+        >
 
             <img
+                id="fingerImage"
                 src="fingerprint.jpg"
                 alt="Fingerprint"
-                onerror="this.style.display='none';document.getElementById('fingerIcon').style.display='block';"
+                onerror="showFingerprintIcon()"
             >
 
             <div
-                id="fingerIcon"
-                style="display:none;font-size:85px;"
+                id="fingerprintIcon"
+                class="fingerprint-icon hidden"
             >
                 ☝
             </div>
 
             <div class="scan-line"></div>
+
         </div>
 
         <p id="fingerText">
             Tap fingerprint to start verification
         </p>
 
-        <div class="progress-wrap">
-            <div id="progress" class="progress"></div>
+        <div class="progress-box">
+            <div
+                id="progress"
+                class="progress"
+            ></div>
         </div>
 
-        <div id="timer" class="timer">
+        <p id="timer" style="margin-top:10px;">
             60 seconds
-        </div>
+        </p>
 
         <div id="fingerMessage" class="message"></div>
 
     </div>
-</section>
+
+</div>
 
 
 <!-- ================= NAME ================= -->
-<section id="namePage" class="page hidden">
+
+<div id="namePage" class="page hidden">
+
     <div class="card">
 
-        <div class="name-icon">👤</div>
+        <div style="font-size:65px;">
+            👤
+        </div>
 
         <h1>Welcome</h1>
 
@@ -436,78 +421,116 @@ button:active{
         </p>
 
         <input
-            type="text"
             id="visitorName"
+            type="text"
             placeholder="What is your name?"
             maxlength="40"
         >
 
-        <button type="button" onclick="saveName()">
+        <button type="button" id="continueButton">
             Continue
         </button>
 
         <div id="nameMessage" class="message"></div>
 
     </div>
-</section>
+
+</div>
 
 
 <!-- ================= HOME ================= -->
-<section id="homePage" class="page hidden">
-    <div class="card home-card">
+
+<div id="homePage" class="page hidden">
+
+    <div class="card" style="max-width:650px;">
 
         <h1 id="helloName">
             Hello
         </h1>
 
         <p class="subtitle">
-            My name is Abdur Manan. Welcome to Manan360.pk.
+            My name is Abdur Manan.
+            Welcome to Manan360.pk.
         </p>
 
         <div class="balance">
-            <small>Demo Balance</small>
-            <strong id="balanceText">Rs. 20,000</strong>
-        </div>
 
-        <div class="note-grid">
+            <small>
+                Demo Balance
+            </small>
 
-            <!-- CLASS 9 -->
-            <div class="note">
-                <h3>Class 9th Urdu</h3>
-                <p>Urdu Test Paper</p>
-
-                <button type="button"
-                        onclick="openOrder('Class 9th Urdu Test Paper','Class-9th-Urdu-Test-Paper.pdf')">
-                    Buy Note - Rs.100
-                </button>
-            </div>
-
-            <!-- CLASS 10 -->
-            <div class="note">
-                <h3>Class 10th Urdu</h3>
-                <p>Urdu Test Paper</p>
-
-                <button type="button"
-                        onclick="openOrder('Class 10th Urdu Test Paper','Class-10th-Urdu-Test-Paper.pdf')">
-                    Buy Note - Rs.100
-                </button>
-            </div>
+            <strong id="balance">
+                Rs. 20,000
+            </strong>
 
         </div>
+
+
+        <div class="notes">
+
+            <div class="note">
+
+                <h3>
+                    Class 9th Urdu
+                </h3>
+
+                <p>
+                    Urdu Test Paper
+                </p>
+
+                <button
+                    type="button"
+                    onclick="openOrder(
+                        'Class 9th Urdu Test Paper',
+                        'Class-9th-Urdu-Test-Paper.pdf'
+                    )"
+                >
+                    Buy Note - Rs.100
+                </button>
+
+            </div>
+
+
+            <div class="note">
+
+                <h3>
+                    Class 10th Urdu
+                </h3>
+
+                <p>
+                    Urdu Test Paper
+                </p>
+
+                <button
+                    type="button"
+                    onclick="openOrder(
+                        'Class 10th Urdu Test Paper',
+                        'Class-10th-Urdu-Test-Paper.pdf'
+                    )"
+                >
+                    Buy Note - Rs.100
+                </button>
+
+            </div>
+
+        </div>
+
 
         <button
             type="button"
             class="logout"
-            onclick="logoutUser()"
+            onclick="logout()"
         >
             Sign Out
         </button>
 
     </div>
-</section>
+
+</div>
 
 
 <!-- ================= ORDER POPUP ================= -->
+
 <div id="orderPopup" class="popup">
 
     <div class="popup-box">
@@ -516,14 +539,17 @@ button:active{
 
             <h2>Place Order</h2>
 
-            <p id="orderText"></p>
+            <p id="orderName"></p>
 
-            <p>
+            <p style="margin-top:10px;">
                 Price: <b>Rs.100</b>
             </p>
 
-            <p>
-                Balance: <b id="popupBalance">Rs.20,000</b>
+            <p style="margin-top:8px;">
+                Balance:
+                <b id="popupBalance">
+                    Rs.20,000
+                </b>
             </p>
 
             <div class="popup-buttons">
@@ -550,22 +576,23 @@ button:active{
 
         <div id="orderSuccess" class="hidden">
 
-            <div class="order-success">
+            <div class="check">
                 ✓
             </div>
 
-            <h2>Transaction Successful</h2>
+            <h2>
+                Transaction Successful
+            </h2>
 
-            <p>
+            <p style="margin-top:10px;">
                 Thank you for order personally
                 <b>CEO Abdul Manan</b>
             </p>
 
             <a
-                id="downloadLink"
+                id="downloadPDF"
                 class="download"
                 href="#"
-                target="_blank"
                 download
             >
                 Download PDF
@@ -593,54 +620,40 @@ button:active{
 ========================================================= */
 
 const users = {
-    "1999908774":"1999908774",
-    "359953999":"1999908774",
-    "327589969":"1999908774",
-    "322202440":"1999908774",
-    "322202990":"1999908774",
-    "322505434":"1999908774"
+    "1999908774": "1999908774",
+    "359953999": "1999908774",
+    "327589969": "1999908774",
+    "322202440": "1999908774",
+    "322202990": "1999908774",
+    "322505434": "1999908774"
 };
 
 
 /* =========================================================
-   GLOBAL VARIABLES
+   PAGE SWITCH
 ========================================================= */
 
-let scanRunning = false;
-let scanInterval = null;
+function showPage(id){
 
-let selectedNote = "";
-let selectedPDF = "";
+    document
+        .getElementById("loginPage")
+        .classList.add("hidden");
 
+    document
+        .getElementById("fingerPage")
+        .classList.add("hidden");
 
-/* =========================================================
-   PAGE FUNCTION
-========================================================= */
+    document
+        .getElementById("namePage")
+        .classList.add("hidden");
 
-function showPage(pageId){
+    document
+        .getElementById("homePage")
+        .classList.add("hidden");
 
-    const pages = [
-        "loginPage",
-        "fingerPage",
-        "namePage",
-        "homePage"
-    ];
-
-    pages.forEach(function(id){
-
-        const page = document.getElementById(id);
-
-        if(page){
-            page.classList.add("hidden");
-        }
-
-    });
-
-    const selected = document.getElementById(pageId);
-
-    if(selected){
-        selected.classList.remove("hidden");
-    }
+    document
+        .getElementById(id)
+        .classList.remove("hidden");
 }
 
 
@@ -648,136 +661,178 @@ function showPage(pageId){
    LOGIN
 ========================================================= */
 
-function loginUser(){
+document
+    .getElementById("loginButton")
+    .addEventListener("click", function(){
 
-    const username =
-        document.getElementById("username").value.trim();
+        const username =
+            document
+            .getElementById("username")
+            .value
+            .trim();
 
-    const password =
-        document.getElementById("password").value;
+        const password =
+            document
+            .getElementById("password")
+            .value
+            .trim();
 
-    const message =
-        document.getElementById("loginMessage");
-
-    if(!username || !password){
-
-        message.textContent =
-            "Please enter username and password.";
-
-        message.style.color = "#ffdddd";
-
-        return;
-    }
+        const message =
+            document
+            .getElementById("loginMessage");
 
 
-    if(
-        Object.prototype.hasOwnProperty.call(users, username)
-        &&
-        users[username] === password
-    ){
+        if(username === "" || password === ""){
 
-        sessionStorage.setItem(
-            "manan360_logged_in",
-            "true"
-        );
+            message.textContent =
+                "Please enter username and password.";
 
-        sessionStorage.setItem(
-            "manan360_username",
-            username
-        );
+            message.style.color =
+                "#ffdddd";
 
-        message.textContent = "";
+            return;
+        }
 
-        showPage("fingerPage");
 
-        resetFingerprint();
+        if(
+            users[username] !== undefined &&
+            users[username] === password
+        ){
 
-    }else{
+            sessionStorage.setItem(
+                "manan360_login",
+                "yes"
+            );
 
-        message.textContent =
-            "Invalid username or password.";
+            sessionStorage.setItem(
+                "manan360_username",
+                username
+            );
 
-        message.style.color = "#ffdddd";
-    }
+            message.textContent = "";
+
+            showPage("fingerPage");
+
+            resetFingerprint();
+
+        }
+        else{
+
+            message.textContent =
+                "Invalid username or password.";
+
+            message.style.color =
+                "#ffdddd";
+
+        }
+
+    });
+
+
+/* =========================================================
+   ENTER KEY LOGIN
+========================================================= */
+
+document
+    .getElementById("password")
+    .addEventListener("keydown", function(event){
+
+        if(event.key === "Enter"){
+            document
+                .getElementById("loginButton")
+                .click();
+        }
+
+    });
+
+
+/* =========================================================
+   FINGERPRINT IMAGE FALLBACK
+========================================================= */
+
+function showFingerprintIcon(){
+
+    document
+        .getElementById("fingerImage")
+        .style.display = "none";
+
+    document
+        .getElementById("fingerprintIcon")
+        .classList.remove("hidden");
 }
 
 
 /* =========================================================
-   FINGERPRINT DEMO
+   FINGERPRINT
 ========================================================= */
+
+let fingerprintRunning = false;
+let fingerprintTimer = null;
 
 function resetFingerprint(){
 
-    clearInterval(scanInterval);
+    fingerprintRunning = false;
 
-    scanRunning = false;
-
-    const box =
-        document.getElementById("fingerprintBox");
-
-    const progress =
-        document.getElementById("progress");
-
-    const timer =
-        document.getElementById("timer");
-
-    const text =
-        document.getElementById("fingerText");
-
-    const message =
-        document.getElementById("fingerMessage");
-
-    if(box){
-        box.classList.remove("scanning");
+    if(fingerprintTimer){
+        clearInterval(fingerprintTimer);
     }
 
-    if(progress){
-        progress.style.width = "0%";
-    }
+    document
+        .getElementById("fingerprint")
+        .classList.remove("scanning");
 
-    if(timer){
-        timer.textContent = "60 seconds";
-    }
+    document
+        .getElementById("progress")
+        .style.width = "0%";
 
-    if(text){
-        text.textContent =
-            "Tap fingerprint to start verification";
-    }
+    document
+        .getElementById("timer")
+        .textContent = "60 seconds";
 
-    if(message){
-        message.textContent = "";
-        message.className = "message";
-    }
+    document
+        .getElementById("fingerText")
+        .textContent =
+        "Tap fingerprint to start verification";
+
+    document
+        .getElementById("fingerMessage")
+        .textContent = "";
 }
+
+
+document
+    .getElementById("fingerprint")
+    .addEventListener("click", startFingerprint);
 
 
 function startFingerprint(){
 
-    if(scanRunning){
+    if(fingerprintRunning){
         return;
     }
 
-    scanRunning = true;
-
-    const box =
-        document.getElementById("fingerprintBox");
-
-    const progress =
-        document.getElementById("progress");
-
-    const timer =
-        document.getElementById("timer");
-
-    const text =
-        document.getElementById("fingerText");
-
-    const message =
-        document.getElementById("fingerMessage");
+    fingerprintRunning = true;
 
 
     if(navigator.vibrate){
         navigator.vibrate(80);
     }
+
+
+    const box =
+        document.getElementById("fingerprint");
+
+    const progress =
+        document.getElementById("progress");
+
+    const timer =
+        document.getElementById("timer");
+
+    const text =
+        document.getElementById("fingerText");
+
+    const message =
+        document.getElementById("fingerMessage");
 
 
     box.classList.add("scanning");
@@ -791,77 +846,81 @@ function startFingerprint(){
 
     let seconds = 0;
 
-    const totalSeconds = 60;
+
+    fingerprintTimer =
+        setInterval(function(){
+
+            seconds++;
 
 
-    scanInterval = setInterval(function(){
+            const percent =
+                (seconds / 60) * 100;
 
-        seconds++;
+            progress.style.width =
+                percent + "%";
 
-        const percent =
-            Math.min(
-                100,
-                (seconds / totalSeconds) * 100
-            );
-
-        progress.style.width =
-            percent + "%";
-
-
-        const remaining =
-            totalSeconds - seconds;
-
-        timer.textContent =
-            remaining + " seconds";
-
-
-        if(seconds >= totalSeconds){
-
-            clearInterval(scanInterval);
-
-            scanRunning = false;
-
-            box.classList.remove("scanning");
-
-            progress.style.width = "100%";
 
             timer.textContent =
-                "Verification Complete";
-
-            text.textContent =
-                "Fingerprint verified successfully.";
-
-            message.textContent =
-                "✓ Verification Successful";
-
-            message.className =
-                "message success";
+                (60 - seconds) +
+                " seconds";
 
 
-            if(navigator.vibrate){
-                navigator.vibrate([80,50,80]);
+            if(seconds >= 60){
+
+                clearInterval(
+                    fingerprintTimer
+                );
+
+                fingerprintRunning = false;
+
+                box.classList.remove(
+                    "scanning"
+                );
+
+                progress.style.width =
+                    "100%";
+
+                timer.textContent =
+                    "Verification Complete";
+
+                text.textContent =
+                    "Fingerprint verified successfully.";
+
+                message.textContent =
+                    "✓ Verification Successful";
+
+                message.className =
+                    "message success";
+
+
+                sessionStorage.setItem(
+                    "manan360_fingerprint",
+                    "yes"
+                );
+
+
+                if(navigator.vibrate){
+                    navigator.vibrate(
+                        [80,50,80]
+                    );
+                }
+
+
+                setTimeout(function(){
+
+                    showPage("namePage");
+
+                    document
+                        .getElementById(
+                            "visitorName"
+                        )
+                        .focus();
+
+                },1000);
+
             }
 
-
-            sessionStorage.setItem(
-                "manan360_fingerprint_verified",
-                "true"
-            );
-
-
-            setTimeout(function(){
-
-                showPage("namePage");
-
-                document.getElementById(
-                    "visitorName"
-                ).focus();
-
-            },1200);
-
-        }
-
-    },1000);
+        },1000);
 }
 
 
@@ -869,17 +928,36 @@ function startFingerprint(){
    NAME
 ========================================================= */
 
+document
+    .getElementById("continueButton")
+    .addEventListener("click", saveName);
+
+
+document
+    .getElementById("visitorName")
+    .addEventListener("keydown", function(event){
+
+        if(event.key === "Enter"){
+            saveName();
+        }
+
+    });
+
+
 function saveName(){
 
     const name =
-        document.getElementById("visitorName")
-        .value.trim();
+        document
+        .getElementById("visitorName")
+        .value
+        .trim();
 
     const message =
-        document.getElementById("nameMessage");
+        document
+        .getElementById("nameMessage");
 
 
-    if(!name){
+    if(name === ""){
 
         message.textContent =
             "Please enter your name.";
@@ -892,20 +970,20 @@ function saveName(){
 
 
     sessionStorage.setItem(
-        "manan360_visitor_name",
+        "manan360_name",
         name
     );
 
 
-    document.getElementById(
-        "helloName"
-    ).textContent =
+    document
+        .getElementById("helloName")
+        .textContent =
         "Hello, " + name;
 
 
     showPage("homePage");
 
-    loadBalance();
+    updateBalance();
 }
 
 
@@ -915,57 +993,54 @@ function saveName(){
 
 function getBalance(){
 
-    const saved =
+    let value =
         localStorage.getItem(
-            "manan360_demo_balance"
+            "manan360_balance"
         );
 
-    if(saved === null){
+
+    if(value === null){
+
+        value = "20000";
 
         localStorage.setItem(
-            "manan360_demo_balance",
-            "20000"
+            "manan360_balance",
+            value
         );
+    }
 
+
+    const number =
+        parseInt(value,10);
+
+
+    if(isNaN(number)){
         return 20000;
     }
 
-    const value =
-        parseInt(saved,10);
 
-    if(isNaN(value)){
-        return 20000;
-    }
-
-    return value;
+    return number;
 }
 
 
-function setBalance(value){
+function updateBalance(){
 
-    localStorage.setItem(
-        "manan360_demo_balance",
-        String(value)
-    );
-
-    loadBalance();
-}
-
-
-function loadBalance(){
-
-    const balance =
+    const amount =
         getBalance();
 
-    document.getElementById(
-        "balanceText"
-    ).textContent =
-        "Rs. " + balance.toLocaleString();
 
-    document.getElementById(
-        "popupBalance"
-    ).textContent =
-        "Rs. " + balance.toLocaleString();
+    document
+        .getElementById("balance")
+        .textContent =
+        "Rs. " +
+        amount.toLocaleString();
+
+
+    document
+        .getElementById("popupBalance")
+        .textContent =
+        "Rs. " +
+        amount.toLocaleString();
 }
 
 
@@ -973,49 +1048,44 @@ function loadBalance(){
    ORDER
 ========================================================= */
 
-function openOrder(noteName,pdfFile){
-
-    selectedNote = noteName;
-    selectedPDF = pdfFile;
-
-    const balance =
-        getBalance();
+let selectedPDF = "";
 
 
-    document.getElementById(
-        "orderText"
-    ).textContent =
-        noteName;
+function openOrder(name,pdf){
+
+    selectedPDF = pdf;
 
 
-    document.getElementById(
-        "popupBalance"
-    ).textContent =
-        "Rs. " + balance.toLocaleString();
+    document
+        .getElementById("orderName")
+        .textContent = name;
 
 
-    document.getElementById(
-        "orderConfirm"
-    ).classList.remove("hidden");
+    updateBalance();
 
 
-    document.getElementById(
-        "orderSuccess"
-    ).classList.add("hidden");
+    document
+        .getElementById("orderConfirm")
+        .classList.remove("hidden");
 
 
-    document.getElementById(
-        "orderPopup"
-    ).style.display =
+    document
+        .getElementById("orderSuccess")
+        .classList.add("hidden");
+
+
+    document
+        .getElementById("orderPopup")
+        .style.display =
         "flex";
 }
 
 
 function closeOrder(){
 
-    document.getElementById(
-        "orderPopup"
-    ).style.display =
+    document
+        .getElementById("orderPopup")
+        .style.display =
         "none";
 }
 
@@ -1036,73 +1106,24 @@ function placeOrder(){
     }
 
 
-    balance -= 100;
-
-    setBalance(balance);
-
-
-    document.getElementById(
-        "orderConfirm"
-    ).classList.add("hidden");
+    balance =
+        balance - 100;
 
 
-    document.getElementById(
-        "orderSuccess"
-    ).classList.remove("hidden");
-
-
-    const download =
-        document.getElementById(
-            "downloadLink"
-        );
-
-    download.href =
-        selectedPDF;
-
-    download.textContent =
-        "Download PDF";
-
-
-    document.getElementById(
-        "popupBalance"
-    ).textContent =
-        "Rs. " + balance.toLocaleString();
-}
-
-
-/* =========================================================
-   LOGOUT
-========================================================= */
-
-function logoutUser(){
-
-    clearInterval(scanInterval);
-
-    sessionStorage.removeItem(
-        "manan360_logged_in"
-    );
-
-    sessionStorage.removeItem(
-        "manan360_username"
-    );
-
-    sessionStorage.removeItem(
-        "manan360_fingerprint_verified"
-    );
-
-    sessionStorage.removeItem(
-        "manan360_visitor_name"
+    localStorage.setItem(
+        "manan360_balance",
+        String(balance)
     );
 
 
-    document.getElementById(
-        "username"
-    ).value = "";
+    updateBalance();
 
-    document.getElementById(
-        "password"
-    ).value = "";
 
-    document.getElementById(
-        "visitorName"
-    ).value = 
+    document
+        .getElementById("orderConfirm")
+        .classList.add("hidden");
+
+
+    document
+        .getElementById("orderSuccess")
+        .classList.remove(
