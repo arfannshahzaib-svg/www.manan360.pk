@@ -128,39 +128,70 @@ h1{
     font-size:13px;
 }
 
-#namePage{
-    display:none;
-}
+
+/* =========================
+   FINGERPRINT
+========================= */
 
 #fingerPage{
     display:none;
 }
 
-/* FINGERPRINT PAGE */
-
-.finger-card{
+.finger-box{
     width:100%;
     max-width:390px;
     background:rgba(255,255,255,.97);
     border-radius:24px;
-    padding:25px 22px 30px;
+    padding:25px 22px;
     text-align:center;
     box-shadow:0 20px 60px rgba(0,0,0,.35);
 }
 
+.demo-label{
+    display:inline-block;
+    background:#fff3cd;
+    color:#856404;
+    padding:7px 12px;
+    border-radius:20px;
+    font-size:12px;
+    font-weight:bold;
+    margin-bottom:15px;
+}
+
+.finger-title{
+    font-size:24px;
+    font-weight:bold;
+    color:#222;
+    margin-bottom:5px;
+}
+
+.finger-subtitle{
+    color:#777;
+    font-size:13px;
+    margin-bottom:18px;
+}
+
+
+/* PROFILE */
+
 .profile-photo{
     width:95px;
     height:95px;
-    margin:0 auto 14px;
     border-radius:50%;
+    margin:0 auto 12px;
     overflow:hidden;
-    border:4px solid #24c9a6;
-    background:linear-gradient(135deg,#6a00ff,#007bff);
+    border:4px solid #6a00ff;
+    background:linear-gradient(
+        135deg,
+        #ff0066,
+        #6a00ff,
+        #007bff
+    );
     display:flex;
     align-items:center;
     justify-content:center;
     color:white;
-    font-size:35px;
+    font-size:38px;
     font-weight:bold;
 }
 
@@ -170,154 +201,153 @@ h1{
     object-fit:cover;
 }
 
-.finger-card h2{
+.photo-button{
+    border:0;
+    background:#eeeeee;
     color:#222;
-    font-size:24px;
-    margin-bottom:18px;
+    padding:9px 14px;
+    border-radius:10px;
+    font-size:13px;
+    font-weight:bold;
+    cursor:pointer;
+    margin-bottom:15px;
 }
 
 .profile-info{
+    background:#f5f5f5;
+    border-radius:14px;
+    padding:12px;
     text-align:left;
-    background:#f6f6f6;
-    border-radius:15px;
-    padding:14px 16px;
-    margin-bottom:22px;
+    margin-bottom:18px;
+    font-size:13px;
+    line-height:1.8;
 }
 
-.profile-row{
-    display:flex;
-    justify-content:space-between;
-    gap:10px;
-    padding:8px 0;
-    border-bottom:1px solid #e4e4e4;
-    font-size:14px;
-}
-
-.profile-row:last-child{
-    border-bottom:0;
-}
-
-.profile-row span:first-child{
-    color:#777;
-    font-weight:bold;
-}
-
-.profile-row span:last-child{
+.profile-info strong{
     color:#222;
-    text-align:right;
 }
 
-.fingerprint-title{
-    color:#555;
-    font-size:17px;
-    margin-bottom:12px;
-}
 
-.fingerprint-box{
-    width:145px;
-    height:145px;
-    margin:0 auto;
-    border-radius:50%;
+/* FINGERPRINT AREA */
+
+.fingerprint-area{
+    width:180px;
+    height:180px;
+    margin:10px auto 15px;
+    border-radius:25px;
+    background:#111;
     display:flex;
     align-items:center;
     justify-content:center;
     position:relative;
+    overflow:hidden;
     cursor:pointer;
-    user-select:none;
-    -webkit-tap-highlight-color:transparent;
+    box-shadow:0 10px 30px rgba(0,0,0,.3);
 }
 
-.fingerprint{
-    width:105px;
-    height:105px;
-    fill:none;
-    stroke:#24c9a6;
-    stroke-width:4;
-    stroke-linecap:round;
-    stroke-linejoin:round;
-    transition:.2s;
-}
-
-.fingerprint-box:active .fingerprint{
-    transform:scale(.93);
+.fingerprint-area img{
+    width:125px;
+    height:155px;
+    object-fit:cover;
+    border-radius:50%;
+    opacity:.9;
 }
 
 .scan-line{
     position:absolute;
-    left:20px;
-    right:20px;
-    top:25px;
+    left:15px;
+    right:15px;
     height:3px;
-    background:#24c9a6;
-    box-shadow:0 0 12px #24c9a6;
-    opacity:0;
-    border-radius:10px;
+    top:20px;
+    background:#00ff88;
+    box-shadow:0 0 15px #00ff88;
+    display:none;
 }
 
 .scanning .scan-line{
-    opacity:1;
-    animation:scan 1.2s linear infinite;
+    display:block;
+    animation:scan 1.4s linear infinite;
 }
 
 @keyframes scan{
-    0%{top:25px}
-    50%{top:118px}
-    100%{top:25px}
+    0%{top:20px}
+    50%{top:155px}
+    100%{top:20px}
 }
 
 .finger-status{
-    min-height:25px;
-    margin-top:8px;
-    color:#777;
-    font-size:15px;
+    color:#555;
+    font-size:14px;
+    min-height:22px;
+    margin-bottom:10px;
 }
 
-.finger-progress{
+.progress-wrap{
     width:100%;
-    height:8px;
-    background:#e9e9e9;
-    border-radius:20px;
+    height:9px;
+    background:#eeeeee;
+    border-radius:10px;
     overflow:hidden;
-    margin-top:15px;
-    display:none;
+    margin-bottom:15px;
 }
 
-.finger-progress-bar{
+.progress-bar{
     width:0%;
     height:100%;
-    background:#24c9a6;
-    border-radius:20px;
+    background:linear-gradient(
+        90deg,
+        #ff0066,
+        #6a00ff,
+        #007bff
+    );
     transition:width .2s linear;
 }
 
-.finger-success{
-    display:none;
-    margin-top:18px;
-    color:#00a86b;
-    font-size:17px;
-    font-weight:bold;
-}
-
-.success-check{
-    display:inline-flex;
-    width:30px;
-    height:30px;
-    border-radius:50%;
-    background:#24c9a6;
+.finger-button{
+    width:100%;
+    height:48px;
+    border:0;
+    border-radius:12px;
     color:white;
-    align-items:center;
-    justify-content:center;
-    margin-right:6px;
+    background:linear-gradient(
+        90deg,
+        #ff0066,
+        #6a00ff,
+        #007bff
+    );
+    font-size:15px;
+    font-weight:bold;
+    cursor:pointer;
 }
 
-.demo-text{
-    margin-top:18px;
-    font-size:11px;
-    color:#aaa;
+.finger-button:disabled{
+    opacity:.7;
+}
+
+.success-finger{
+    display:none;
+    background:#e8fff3;
+    color:#00864b;
+    padding:11px;
+    border-radius:10px;
+    font-size:14px;
+    font-weight:bold;
+    margin-top:10px;
 }
 
 
-/* HOME */
+/* =========================
+   NAME
+========================= */
+
+#namePage{
+    display:none;
+}
+
+
+/* =========================
+   HOME
+========================= */
 
 #homePage{
     display:none;
@@ -363,7 +393,11 @@ h1{
 }
 
 .demo-balance{
-    background:linear-gradient(90deg,#00a86b,#00c853);
+    background:linear-gradient(
+        90deg,
+        #00a86b,
+        #00c853
+    );
     color:white;
     padding:10px 14px;
     border-radius:10px;
@@ -397,7 +431,12 @@ h1{
 }
 
 .user-name{
-    background:linear-gradient(90deg,#ff0066,#6a00ff,#007bff);
+    background:linear-gradient(
+        90deg,
+        #ff0066,
+        #6a00ff,
+        #007bff
+    );
     -webkit-background-clip:text;
     color:transparent;
 }
@@ -450,7 +489,12 @@ h1{
     width:100%;
     border:0;
     color:white;
-    background:linear-gradient(90deg,#ff0066,#6a00ff,#007bff);
+    background:linear-gradient(
+        90deg,
+        #ff0066,
+        #6a00ff,
+        #007bff
+    );
     padding:12px 15px;
     border-radius:11px;
     font-weight:bold;
@@ -499,7 +543,9 @@ h1{
 }
 
 
-/* POPUP */
+/* =========================
+   POPUP
+========================= */
 
 .popup{
     display:none;
@@ -569,7 +615,11 @@ h1{
     border:0;
     padding:13px;
     border-radius:11px;
-    background:linear-gradient(90deg,#00a86b,#00c853);
+    background:linear-gradient(
+        90deg,
+        #00a86b,
+        #00c853
+    );
     color:white;
     font-size:16px;
     font-weight:bold;
@@ -621,7 +671,9 @@ h1{
     font-weight:bold;
 }
 
+
 @media(max-width:600px){
+
     .cards{
         grid-template-columns:1fr;
     }
@@ -630,6 +682,7 @@ h1{
         width:100%;
         justify-content:space-between;
     }
+
 }
 </style>
 </head>
@@ -639,7 +692,9 @@ h1{
 <div class="background"></div>
 
 
-<!-- LOGIN -->
+<!-- =========================
+     LOGIN
+========================= -->
 
 <section id="loginPage" class="page">
 
@@ -649,13 +704,16 @@ h1{
 
 <h1>Manan360.pk</h1>
 
-<div class="subtitle">Student Login Portal</div>
+<div class="subtitle">
+Student Login Portal
+</div>
 
 <input
 class="input"
 type="text"
 id="username"
 placeholder="Username"
+autocomplete="username"
 >
 
 <input
@@ -663,113 +721,126 @@ class="input"
 type="password"
 id="password"
 placeholder="Password"
+autocomplete="current-password"
 >
 
-<button class="btn" onclick="login()">
+<button
+class="btn"
+onclick="login()"
+>
 Login
 </button>
 
-<div class="error" id="loginError">
+<div
+class="error"
+id="loginError"
+>
 Invalid username or password.
 </div>
 
 </div>
-
 </section>
 
 
-<!-- FINGERPRINT VERIFICATION -->
+<!-- =========================
+     FINGERPRINT
+========================= -->
 
 <section id="fingerPage" class="page">
 
-<div class="finger-card">
+<div class="finger-box">
 
-<div class="profile-photo">
+<div class="demo-label">
+DEMO / EMPLOYEE VERIFICATION
+</div>
 
-<!-- اگر اپنی تصویر لگانی ہو تو profile.jpg نام کی تصویر upload کریں -->
+<div class="finger-title">
+Fingerprint Scan
+</div>
+
+<div class="finger-subtitle">
+Choose profile photo and start demo scan
+</div>
+
+
+<!-- PROFILE PHOTO -->
+
+<div
+class="profile-photo"
+id="profilePhotoBox"
+>
+
+<span id="profileInitial">
+M
+</span>
+
 <img
-src="profile.jpg"
+id="profilePreview"
+src=""
 alt="Profile"
-onerror="this.style.display='none';this.parentElement.innerHTML='M';"
+style="display:none;"
 >
 
 </div>
 
-<h2>Irfan Anjum</h2>
+
+<input
+type="file"
+id="profilePicker"
+accept="image/*"
+style="display:none;"
+onchange="chooseProfilePhoto(event)"
+>
+
+
+<button
+type="button"
+class="photo-button"
+onclick="document.getElementById('profilePicker').click()"
+>
+📷 Choose Profile Photo
+</button>
+
+
+<!-- PROFILE DETAILS -->
 
 <div class="profile-info">
 
-<div class="profile-row">
-<span>Name</span>
-<span>Irfan Anjum</span>
+<div>
+<strong>Name:</strong>
+Abdul Manan
 </div>
 
-<div class="profile-row">
-<span>Father Name</span>
-<span>Abdul Manan</span>
+<div>
+<strong>Father Name:</strong>
+Irfan Anjum
 </div>
 
-<div class="profile-row">
-<span>CNIC</span>
-<span>*************</span>
+<div>
+<strong>CNIC:</strong>
+***********
 </div>
 
-<div class="profile-row">
-<span>Date of Birth</span>
-<span>********</span>
+<div>
+<strong>DOB:</strong>
+**/**/****
 </div>
 
 </div>
 
-<div class="fingerprint-title">
-Login with fingerprint
-</div>
 
+<!-- FINGERPRINT -->
 
 <div
-class="fingerprint-box"
-id="fingerprintBox"
+class="fingerprint-area"
+id="fingerprintArea"
 onclick="startFingerprint()"
 >
 
-<svg
-class="fingerprint"
-viewBox="0 0 100 100"
+<img
+src="fingerprint.jpg"
+alt="Fingerprint Demo"
 >
-
-<path d="M50 10
-C27 10 12 27 12 48
-C12 67 23 81 23 91"/>
-
-<path d="M50 19
-C33 19 21 32 21 48
-C21 65 29 74 29 88"/>
-
-<path d="M50 28
-C39 28 30 37 30 49
-C30 62 36 68 36 83"/>
-
-<path d="M50 37
-C45 37 40 42 40 49
-C40 58 44 62 44 76"/>
-
-<path d="M50 10
-C73 10 88 27 88 48
-C88 67 77 81 77 91"/>
-
-<path d="M50 19
-C67 19 79 32 79 48
-C79 65 71 74 71 88"/>
-
-<path d="M50 28
-C61 28 70 37 70 49
-C70 62 64 68 64 83"/>
-
-<path d="M50 37
-C55 37 60 42 60 49
-C60 58 56 62 56 76"/>
-
-</svg>
 
 <div class="scan-line"></div>
 
@@ -780,43 +851,43 @@ C60 58 56 62 56 76"/>
 class="finger-status"
 id="fingerStatus"
 >
-Tap fingerprint to start
+Ready for demo scan
 </div>
 
 
-<div
-class="finger-progress"
-id="fingerProgress"
->
+<div class="progress-wrap">
 
 <div
-class="finger-progress-bar"
-id="fingerProgressBar"
+class="progress-bar"
+id="fingerProgress"
 ></div>
 
 </div>
 
 
+<button
+class="finger-button"
+onclick="startFingerprint()"
+id="fingerButton"
+>
+Start Fingerprint Scan
+</button>
+
+
 <div
-class="finger-success"
+class="success-finger"
 id="fingerSuccess"
 >
-
-<span class="success-check">✓</span>
-Verification Successful
-
-</div>
-
-<div class="demo-text">
-Demo verification — no fingerprint data is collected.
+✓ Demo scan completed successfully
 </div>
 
 </div>
-
 </section>
 
 
-<!-- NAME -->
+<!-- =========================
+     NAME
+========================= -->
 
 <section id="namePage" class="page">
 
@@ -824,7 +895,13 @@ Demo verification — no fingerprint data is collected.
 
 <div class="logo">M</div>
 
-<div style="font-size:25px;font-weight:bold;margin-bottom:10px;">
+<div
+style="
+font-size:25px;
+font-weight:bold;
+margin-bottom:10px;
+"
+>
 What is your name?
 </div>
 
@@ -848,11 +925,12 @@ Continue
 </button>
 
 </div>
-
 </section>
 
 
-<!-- HOME -->
+<!-- =========================
+     HOME
+========================= -->
 
 <section id="homePage">
 
@@ -871,6 +949,7 @@ Notes & Test Papers
 </div>
 
 </div>
+
 
 <div class="header-right">
 
@@ -903,8 +982,11 @@ User
 </h2>
 
 <div class="intro">
+
 My name is <strong>Abdur Manan</strong>.<br>
+
 Welcome to Manan360.pk.
+
 </div>
 
 </div>
@@ -917,11 +999,17 @@ Welcome to Manan360.pk.
 
 <div class="card">
 
-<div class="icon">📚</div>
+<div class="icon">
+📚
+</div>
 
-<h3>Class 9th</h3>
+<h3>
+Class 9th
+</h3>
 
-<p>Urdu Test Paper</p>
+<p>
+Urdu Test Paper
+</p>
 
 <div class="price">
 Rs. 100
@@ -962,11 +1050,17 @@ download
 
 <div class="card">
 
-<div class="icon">📖</div>
+<div class="icon">
+📖
+</div>
 
-<h3>Class 10th</h3>
+<h3>
+Class 10th
+</h3>
 
-<p>Urdu Test Paper</p>
+<p>
+Urdu Test Paper
+</p>
 
 <div class="price">
 Rs. 100
@@ -1014,11 +1108,12 @@ target="_blank"
 </a>
 
 </div>
-
 </section>
 
 
-<!-- ORDER POPUP -->
+<!-- =========================
+     ORDER POPUP
+========================= -->
 
 <div
 class="popup"
@@ -1037,7 +1132,9 @@ onclick="closePopup()"
 
 <div id="orderForm">
 
-<h3>🛒 Note Order</h3>
+<h3>
+🛒 Note Order
+</h3>
 
 <div class="order-info">
 
@@ -1111,329 +1208,229 @@ onclick="closePopup()"
 </div>
 
 </div>
-
 </div>
 
 
 <script>
 
-/* USERS */
+/* =========================
+   USERS
+========================= */
 
 const users = {
 
-"1999908774":"1999908774",
+    "1999908774":"1999908774",
 
-"359953999":"1999908774",
+    "359953999":"1999908774",
 
-"327589969":"1999908774",
+    "327589969":"1999908774",
 
-"322202440":"1999908774",
+    "322202440":"1999908774",
 
-"322202990":"1999908774",
+    "322202990":"1999908774",
 
-"322505434":"1999908774"
+    "322505434":"1999908774"
 
 };
 
 
-/* ORDER */
+/* =========================
+   VARIABLES
+========================= */
 
 let currentPDF = "";
+
 let currentDownloadButton = "";
-
-
-/* FINGERPRINT */
 
 let fingerprintStarted = false;
 
-
-function startFingerprint(){
-
-if(fingerprintStarted){
-    return;
-}
-
-fingerprintStarted = true;
+let fingerprintTimer = null;
 
 
-/* صرف ایک ہلکی vibration */
-
-if(navigator.vibrate){
-
-    navigator.vibrate(80);
-
-}
-
-
-const box =
-document.getElementById("fingerprintBox");
-
-const status =
-document.getElementById("fingerStatus");
-
-const progress =
-document.getElementById("fingerProgress");
-
-const progressBar =
-document.getElementById("fingerProgressBar");
-
-const success =
-document.getElementById("fingerSuccess");
-
-
-box.classList.add("scanning");
-
-status.innerText =
-"Scanning fingerprint...";
-
-progress.style.display =
-"block";
-
-
-let seconds = 0;
-
-const totalSeconds = 60;
-
-
-const timer = setInterval(function(){
-
-seconds++;
-
-const percent =
-(seconds / totalSeconds) * 100;
-
-progressBar.style.width =
-percent + "%";
-
-
-status.innerText =
-"Scanning fingerprint... " +
-seconds +
-" / 60 seconds";
-
-
-if(seconds >= totalSeconds){
-
-clearInterval(timer);
-
-box.classList.remove("scanning");
-
-status.innerText =
-"Fingerprint scan completed";
-
-success.style.display =
-"block";
-
-
-if(navigator.vibrate){
-
-navigator.vibrate([80,50,80]);
-
-}
-
-
-/* اگلا page */
-
-setTimeout(function(){
-
-document.getElementById("fingerPage").style.display="none";
-
-document.getElementById("namePage").style.display="flex";
-
-document.getElementById("visitorName").focus();
-
-},1500);
-
-}
-
-},1000);
-
-}
-
-
-/* LOGIN */
+/* =========================
+   LOGIN
+========================= */
 
 function login(){
 
-const username =
-document.getElementById("username").value.trim();
+    const username =
+        document
+        .getElementById("username")
+        .value
+        .trim();
 
-const password =
-document.getElementById("password").value.trim();
+    const password =
+        document
+        .getElementById("password")
+        .value
+        .trim();
 
-const error =
-document.getElementById("loginError");
-
-
-if(users[username] === password){
-
-error.style.display="none";
-
-
-sessionStorage.setItem(
-"manan360_logged_in",
-"true"
-);
+    const error =
+        document
+        .getElementById("loginError");
 
 
-/* Login کے بعد fingerprint */
+    if(!username || !password){
 
-document.getElementById("loginPage").style.display="none";
+        error.textContent =
+            "Please enter username and password.";
 
-document.getElementById("fingerPage").style.display="flex";
+        error.style.display="block";
 
-
-}else{
-
-error.style.display="block";
-
-}
-
-}
+        return;
+    }
 
 
-/* HOME */
+    if(
+        Object.prototype.hasOwnProperty.call(
+            users,
+            username
+        )
+        &&
+        users[username] === password
+    ){
 
-function continueToHome(){
-
-const name =
-document.getElementById("visitorName").value.trim();
-
-
-if(name===""){
-
-document.getElementById("visitorName").focus();
-
-return;
-
-}
+        error.style.display="none";
 
 
-document.getElementById("displayName").textContent =
-name;
+        sessionStorage.setItem(
+            "manan360_logged_in",
+            "true"
+        );
 
 
-sessionStorage.setItem(
-"manan360_name",
-name
-);
+        sessionStorage.setItem(
+            "manan360_username",
+            username
+        );
 
 
-document.getElementById("namePage").style.display="none";
-
-document.getElementById("homePage").style.display="block";
-
-}
+        document
+        .getElementById("loginPage")
+        .style.display="none";
 
 
-/* BUY */
-
-function buyNote(
-noteName,
-pdfFile,
-downloadId
-){
-
-const name =
-sessionStorage.getItem("manan360_name") || "User";
+        document
+        .getElementById("fingerPage")
+        .style.display="flex";
 
 
-currentPDF = pdfFile;
+        resetFingerprint();
 
-currentDownloadButton = downloadId;
+        loadSavedProfilePhoto();
 
+    }else{
 
-document.getElementById("orderNote").textContent =
-noteName;
+        error.textContent =
+            "Invalid username or password.";
 
-document.getElementById("orderCustomer").textContent =
-name;
+        error.style.display="block";
 
-
-document.getElementById("orderForm").style.display =
-"block";
-
-document.getElementById("successMessage").style.display =
-"none";
-
-
-document.getElementById("buyPopup").style.display =
-"flex";
-
+    }
 }
 
 
-/* PLACE ORDER */
+/* =========================
+   PROFILE PHOTO
+========================= */
 
-function placeOrder(){
+function chooseProfilePhoto(event){
 
-document.getElementById("orderForm").style.display =
-"none";
-
-
-document.getElementById("successMessage").style.display =
-"block";
+    const file =
+        event.target.files[0];
 
 
-const download =
-document.getElementById("successDownload");
+    if(!file){
+        return;
+    }
 
 
-download.href =
-currentPDF;
+    if(!file.type.startsWith("image/")){
+
+        alert("Please choose an image.");
+
+        return;
+    }
 
 
-if(currentDownloadButton){
-
-const cardDownload =
-document.getElementById(currentDownloadButton);
+    const reader =
+        new FileReader();
 
 
-if(cardDownload){
+    reader.onload=function(e){
 
-cardDownload.style.display =
-"block";
+        const imageData =
+            e.target.result;
 
+
+        const preview =
+            document
+            .getElementById("profilePreview");
+
+
+        const initial =
+            document
+            .getElementById("profileInitial");
+
+
+        preview.src=imageData;
+
+        preview.style.display="block";
+
+        initial.style.display="none";
+
+
+        try{
+
+            localStorage.setItem(
+                "manan360_profile_photo",
+                imageData
+            );
+
+        }catch(error){
+
+            console.log(
+                "Photo could not be saved."
+            );
+
+        }
+
+    };
+
+
+    reader.readAsDataURL(file);
 }
 
+
+function loadSavedProfilePhoto(){
+
+    const savedPhoto =
+        localStorage.getItem(
+            "manan360_profile_photo"
+        );
+
+
+    if(!savedPhoto){
+        return;
+    }
+
+
+    const preview =
+        document
+        .getElementById("profilePreview");
+
+
+    const initial =
+        document
+        .getElementById("profileInitial");
+
+
+    preview.src=savedPhoto;
+
+    preview.style.display="block";
+
+    initial.style.display="none";
 }
 
-}
 
-
-/* CLOSE */
-
-function closePopup(){
-
-document.getElementById("buyPopup").style.display =
-"none";
-
-}
-
-
-/* LOGOUT */
-
-function logout(){
-
-sessionStorage.removeItem(
-"manan360_logged_in"
-);
-
-sessionStorage.removeItem(
-"manan360_name"
-);
-
-
-fingerprintStarted = false;
-
-
-document.getElementById("homePage").style.display =
-"none";
-
-document.getElementById("namePage").style.display =
-"none";
-
-document.getElementById("fingerPage").style.display =
-"none";
-
-    
+/* 
