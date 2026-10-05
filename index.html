@@ -16,6 +16,7 @@ body{
     font-family:Arial,Helvetica,sans-serif;
     min-height:100vh;
     overflow-x:hidden;
+    color:#fff;
 }
 
 .background{
@@ -23,666 +24,315 @@ body{
     inset:0;
     z-index:-2;
     background:linear-gradient(
-        120deg,
-        #ff0066,#6a00ff,#007bff,#00d4ff,
-        #00ff88,#ffe600,#ff6600,#ff0066
+        -45deg,
+        #071952,
+        #088395,
+        #35A29F,
+        #F2CD5C,
+        #FF6B6B,
+        #6C5CE7
     );
     background-size:500% 500%;
-    animation:multicolor 15s ease infinite;
+    animation:bgMove 15s ease infinite;
 }
 
-@keyframes multicolor{
+@keyframes bgMove{
     0%{background-position:0% 50%}
-    25%{background-position:100% 50%}
-    50%{background-position:100% 100%}
-    75%{background-position:0% 100%}
+    50%{background-position:100% 50%}
     100%{background-position:0% 50%}
 }
 
-.background::after{
-    content:"";
-    position:absolute;
+.overlay{
+    position:fixed;
     inset:0;
-    background:rgba(0,0,0,.28);
-    backdrop-filter:blur(2px);
+    background:rgba(0,0,0,.18);
+    z-index:-1;
 }
 
 .page{
     min-height:100vh;
     display:flex;
-    justify-content:center;
     align-items:center;
+    justify-content:center;
     padding:20px;
 }
 
-.box{
+.card{
     width:100%;
-    max-width:390px;
-    background:rgba(255,255,255,.96);
-    border-radius:24px;
-    padding:30px 25px;
+    max-width:430px;
+    background:rgba(255,255,255,.14);
+    backdrop-filter:blur(15px);
+    -webkit-backdrop-filter:blur(15px);
+    border:1px solid rgba(255,255,255,.25);
+    border-radius:25px;
+    padding:28px 22px;
+    box-shadow:0 15px 45px rgba(0,0,0,.25);
     text-align:center;
-    box-shadow:0 20px 60px rgba(0,0,0,.35);
-}
-
-.logo{
-    width:72px;
-    height:72px;
-    margin:0 auto 12px;
-    border-radius:50%;
-    display:flex;
-    align-items:center;
-    justify-content:center;
-    color:white;
-    font-size:27px;
-    font-weight:bold;
-    background:linear-gradient(135deg,#ff0066,#6a00ff,#007bff);
 }
 
 h1{
-    color:#222;
-    font-size:27px;
-    margin-bottom:6px;
+    font-size:29px;
+    margin-bottom:8px;
+}
+
+h2{
+    font-size:23px;
+    margin-bottom:10px;
 }
 
 .subtitle{
-    color:#777;
     font-size:14px;
-    margin-bottom:25px;
+    opacity:.9;
+    margin-bottom:22px;
 }
 
-.input{
+input{
     width:100%;
-    height:50px;
-    border:2px solid #e5e5e5;
-    border-radius:13px;
-    padding:0 15px;
-    font-size:15px;
+    padding:15px;
+    border:none;
     outline:none;
-    margin-bottom:15px;
-}
-
-.input:focus{
-    border-color:#6a00ff;
-}
-
-.btn{
-    width:100%;
-    height:51px;
-    border:0;
     border-radius:13px;
-    color:white;
+    margin-bottom:12px;
+    font-size:16px;
+    text-align:center;
+}
+
+button{
+    width:100%;
+    border:none;
+    padding:14px;
+    border-radius:13px;
     font-size:16px;
     font-weight:bold;
     cursor:pointer;
-    background:linear-gradient(90deg,#ff0066,#6a00ff,#007bff);
+    color:#fff;
+    background:linear-gradient(135deg,#0066ff,#00a878);
+    box-shadow:0 6px 18px rgba(0,0,0,.2);
 }
 
-.error{
-    display:none;
-    color:#c00;
-    background:#ffe8e8;
-    padding:10px;
-    border-radius:10px;
-    margin-top:14px;
-    font-size:13px;
+button:active{
+    transform:scale(.98);
 }
 
-
-/* =========================
-   FINGERPRINT
-========================= */
-
-#fingerPage{
-    display:none;
-}
-
-.finger-box{
-    width:100%;
-    max-width:390px;
-    background:rgba(255,255,255,.97);
-    border-radius:24px;
-    padding:25px 22px;
-    text-align:center;
-    box-shadow:0 20px 60px rgba(0,0,0,.35);
-}
-
-.demo-label{
-    display:inline-block;
-    background:#fff3cd;
-    color:#856404;
-    padding:7px 12px;
-    border-radius:20px;
-    font-size:12px;
+.message{
+    min-height:22px;
+    margin-top:12px;
+    font-size:14px;
     font-weight:bold;
-    margin-bottom:15px;
 }
 
-.finger-title{
-    font-size:24px;
-    font-weight:bold;
-    color:#222;
-    margin-bottom:5px;
-}
-
-.finger-subtitle{
-    color:#777;
-    font-size:13px;
-    margin-bottom:18px;
-}
-
-
-/* PROFILE */
-
-.profile-photo{
-    width:95px;
-    height:95px;
+/* Fingerprint */
+.fingerprint-box{
+    margin:20px auto;
+    width:190px;
+    height:190px;
     border-radius:50%;
-    margin:0 auto 12px;
-    overflow:hidden;
-    border:4px solid #6a00ff;
-    background:linear-gradient(
-        135deg,
-        #ff0066,
-        #6a00ff,
-        #007bff
-    );
-    display:flex;
-    align-items:center;
-    justify-content:center;
-    color:white;
-    font-size:38px;
-    font-weight:bold;
-}
-
-.profile-photo img{
-    width:100%;
-    height:100%;
-    object-fit:cover;
-}
-
-.photo-button{
-    border:0;
-    background:#eeeeee;
-    color:#222;
-    padding:9px 14px;
-    border-radius:10px;
-    font-size:13px;
-    font-weight:bold;
-    cursor:pointer;
-    margin-bottom:15px;
-}
-
-.profile-info{
-    background:#f5f5f5;
-    border-radius:14px;
-    padding:12px;
-    text-align:left;
-    margin-bottom:18px;
-    font-size:13px;
-    line-height:1.8;
-}
-
-.profile-info strong{
-    color:#222;
-}
-
-
-/* FINGERPRINT AREA */
-
-.fingerprint-area{
-    width:180px;
-    height:180px;
-    margin:10px auto 15px;
-    border-radius:25px;
-    background:#111;
+    background:rgba(255,255,255,.15);
+    border:3px solid rgba(255,255,255,.65);
     display:flex;
     align-items:center;
     justify-content:center;
     position:relative;
     overflow:hidden;
     cursor:pointer;
-    box-shadow:0 10px 30px rgba(0,0,0,.3);
 }
 
-.fingerprint-area img{
+.fingerprint-box img{
     width:125px;
-    height:155px;
-    object-fit:cover;
+    height:125px;
+    object-fit:contain;
     border-radius:50%;
-    opacity:.9;
+    background:#fff;
 }
 
 .scan-line{
+    display:none;
     position:absolute;
     left:15px;
     right:15px;
     height:3px;
-    top:20px;
-    background:#00ff88;
-    box-shadow:0 0 15px #00ff88;
-    display:none;
+    background:#00ff9d;
+    box-shadow:0 0 15px #00ff9d;
+    animation:scan 1.3s linear infinite;
 }
 
 .scanning .scan-line{
     display:block;
-    animation:scan 1.4s linear infinite;
 }
 
 @keyframes scan{
     0%{top:20px}
-    50%{top:155px}
+    50%{top:165px}
     100%{top:20px}
-}
-
-.finger-status{
-    color:#555;
-    font-size:14px;
-    min-height:22px;
-    margin-bottom:10px;
 }
 
 .progress-wrap{
     width:100%;
-    height:9px;
-    background:#eeeeee;
-    border-radius:10px;
+    height:12px;
+    background:rgba(255,255,255,.25);
+    border-radius:20px;
     overflow:hidden;
-    margin-bottom:15px;
+    margin:15px 0 8px;
 }
 
-.progress-bar{
+.progress{
     width:0%;
     height:100%;
-    background:linear-gradient(
-        90deg,
-        #ff0066,
-        #6a00ff,
-        #007bff
-    );
+    background:#00ff9d;
     transition:width .2s linear;
 }
 
-.finger-button{
-    width:100%;
-    height:48px;
-    border:0;
-    border-radius:12px;
-    color:white;
-    background:linear-gradient(
-        90deg,
-        #ff0066,
-        #6a00ff,
-        #007bff
-    );
-    font-size:15px;
-    font-weight:bold;
-    cursor:pointer;
-}
-
-.finger-button:disabled{
-    opacity:.7;
-}
-
-.success-finger{
-    display:none;
-    background:#e8fff3;
-    color:#00864b;
-    padding:11px;
-    border-radius:10px;
+.timer{
     font-size:14px;
+    margin-bottom:14px;
+}
+
+.success{
+    color:#00ff9d;
     font-weight:bold;
-    margin-top:10px;
 }
 
-
-/* =========================
-   NAME
-========================= */
-
-#namePage{
-    display:none;
-}
-
-
-/* =========================
-   HOME
-========================= */
-
-#homePage{
-    display:none;
-    min-height:100vh;
-    padding:20px 15px 50px;
-}
-
-.container{
-    max-width:900px;
-    margin:auto;
-}
-
-.header{
-    background:rgba(255,255,255,.95);
-    border-radius:20px;
-    padding:17px 20px;
-    display:flex;
-    justify-content:space-between;
-    align-items:center;
-    gap:12px;
-    flex-wrap:wrap;
-    box-shadow:0 12px 35px rgba(0,0,0,.22);
-    margin-bottom:20px;
-}
-
-.site-title{
-    font-size:21px;
-    font-weight:bold;
-    color:#222;
-}
-
-.site-subtitle{
-    color:#777;
-    font-size:12px;
-    margin-top:4px;
-}
-
-.header-right{
+/* Name page */
+.name-icon{
+    width:80px;
+    height:80px;
+    margin:0 auto 15px;
+    border-radius:50%;
+    background:rgba(255,255,255,.2);
     display:flex;
     align-items:center;
-    gap:8px;
-    flex-wrap:wrap;
+    justify-content:center;
+    font-size:40px;
 }
 
-.demo-balance{
-    background:linear-gradient(
-        90deg,
-        #00a86b,
-        #00c853
-    );
-    color:white;
-    padding:10px 14px;
-    border-radius:10px;
-    font-size:14px;
-    font-weight:bold;
+/* Home */
+.home-card{
+    max-width:650px;
 }
 
-.logout{
-    border:0;
-    background:#222;
-    color:white;
-    padding:10px 15px;
-    border-radius:10px;
-    cursor:pointer;
-    font-weight:bold;
+.balance{
+    margin:15px 0;
+    padding:18px;
+    border-radius:18px;
+    background:rgba(0,0,0,.2);
 }
 
-.welcome{
-    background:rgba(255,255,255,.95);
-    border-radius:22px;
-    padding:30px 20px;
-    text-align:center;
-    box-shadow:0 12px 35px rgba(0,0,0,.20);
-    margin-bottom:20px;
+.balance small{
+    display:block;
+    opacity:.8;
+    margin-bottom:5px;
 }
 
-.welcome h2{
+.balance strong{
     font-size:30px;
-    color:#222;
-    margin-bottom:12px;
 }
 
-.user-name{
-    background:linear-gradient(
-        90deg,
-        #ff0066,
-        #6a00ff,
-        #007bff
-    );
-    -webkit-background-clip:text;
-    color:transparent;
-}
-
-.intro{
-    color:#555;
-    font-size:16px;
-    line-height:1.7;
-}
-
-.cards{
+.note-grid{
     display:grid;
-    grid-template-columns:repeat(2,1fr);
-    gap:18px;
+    grid-template-columns:1fr 1fr;
+    gap:15px;
+    margin-top:20px;
 }
 
-.card{
-    background:rgba(255,255,255,.95);
-    border-radius:20px;
-    padding:25px 18px;
-    text-align:center;
-    box-shadow:0 10px 30px rgba(0,0,0,.18);
+.note{
+    background:rgba(255,255,255,.14);
+    border:1px solid rgba(255,255,255,.25);
+    border-radius:18px;
+    padding:18px 12px;
 }
 
-.icon{
-    font-size:34px;
+.note h3{
+    font-size:17px;
     margin-bottom:10px;
 }
 
-.card h3{
-    color:#222;
-    margin-bottom:7px;
-}
-
-.card p{
-    color:#777;
+.note p{
     font-size:13px;
+    opacity:.9;
     margin-bottom:12px;
 }
 
-.price{
-    font-size:20px;
-    font-weight:bold;
-    color:#111;
-    margin:8px 0 13px;
-}
-
-.buy-btn{
-    display:block;
-    width:100%;
-    border:0;
-    color:white;
-    background:linear-gradient(
-        90deg,
-        #ff0066,
-        #6a00ff,
-        #007bff
-    );
-    padding:12px 15px;
-    border-radius:11px;
-    font-weight:bold;
-    font-size:15px;
-    cursor:pointer;
-    margin-bottom:9px;
-}
-
-.open{
-    display:block;
-    color:#333;
-    text-decoration:none;
-    background:#eeeeee;
-    padding:10px 18px;
-    border-radius:10px;
-    font-weight:bold;
+.note button{
     font-size:14px;
-}
-
-.download-pdf{
-    display:none;
-    margin-top:10px;
-    width:100%;
     padding:11px;
-    border-radius:10px;
-    background:#1565c0;
-    color:white;
-    text-decoration:none;
-    font-weight:bold;
-    text-align:center;
 }
 
-.support{
-    display:block;
-    width:100%;
-    max-width:320px;
-    margin:22px auto 0;
-    padding:13px 18px;
-    text-align:center;
-    text-decoration:none;
-    background:#25D366;
-    color:white;
-    font-size:16px;
-    font-weight:bold;
-    border-radius:12px;
+.logout{
+    margin-top:18px;
+    background:rgba(255,255,255,.2);
 }
 
+.hidden{
+    display:none !important;
+}
 
-/* =========================
-   POPUP
-========================= */
-
+/* Order popup */
 .popup{
-    display:none;
     position:fixed;
     inset:0;
     background:rgba(0,0,0,.65);
+    display:none;
     align-items:center;
     justify-content:center;
     padding:20px;
-    z-index:9999;
+    z-index:20;
 }
 
 .popup-box{
     width:100%;
-    max-width:370px;
-    background:white;
+    max-width:380px;
+    background:#fff;
+    color:#222;
     border-radius:22px;
-    padding:26px;
+    padding:25px;
     text-align:center;
-    box-shadow:0 20px 50px rgba(0,0,0,.4);
-    position:relative;
 }
 
-.close-popup{
-    position:absolute;
-    top:10px;
-    right:12px;
-    width:32px;
-    height:32px;
-    border:0;
-    border-radius:50%;
-    background:#eeeeee;
-    color:#222;
-    font-size:20px;
-    font-weight:bold;
-    cursor:pointer;
+.popup-box h2{
+    color:#111;
 }
 
-.popup-box h3{
-    font-size:23px;
-    margin-bottom:18px;
-    color:#222;
+.popup-box p{
+    margin:10px 0 18px;
 }
 
-.order-info{
-    background:#f5f5f5;
-    border-radius:14px;
-    padding:15px;
-    text-align:left;
-    margin-bottom:16px;
-    line-height:1.8;
-    font-size:14px;
-    color:#444;
+.popup-buttons{
+    display:flex;
+    gap:10px;
 }
 
-.demo-note{
-    background:#fff4d6;
-    color:#8a5a00;
-    padding:10px;
-    border-radius:10px;
-    font-size:13px;
-    margin-bottom:16px;
+.popup-buttons button{
+    color:#fff;
 }
 
-.place-order{
-    width:100%;
-    border:0;
-    padding:13px;
-    border-radius:11px;
-    background:linear-gradient(
-        90deg,
-        #00a86b,
-        #00c853
-    );
-    color:white;
-    font-size:16px;
-    font-weight:bold;
-    cursor:pointer;
+.cancel{
+    background:#777 !important;
 }
 
-.success-message{
-    display:none;
+.order-success{
+    font-size:45px;
+    margin-bottom:10px;
 }
 
-.success-message h3{
-    color:#00a86b;
-    margin-bottom:12px;
-}
-
-.success-message p{
-    color:#555;
-    line-height:1.7;
-    font-size:15px;
-}
-
-.ceo{
-    margin-top:15px;
-    font-weight:bold;
-    color:#222 !important;
-}
-
-.success-download{
+.download{
     display:block;
-    width:100%;
-    margin-top:18px;
-    padding:13px;
-    border-radius:11px;
-    background:#1565c0;
+    text-decoration:none;
+    background:#087cff;
     color:white;
-    text-decoration:none;
+    padding:13px;
+    border-radius:12px;
+    margin-top:12px;
     font-weight:bold;
 }
 
-.track-order{
-    display:block;
-    width:100%;
-    margin-top:10px;
-    padding:12px;
-    border-radius:11px;
-    background:#eeeeee;
-    color:#222;
-    text-decoration:none;
-    font-weight:bold;
-}
-
-
-@media(max-width:600px){
-
-    .cards{
+@media(max-width:500px){
+    .note-grid{
         grid-template-columns:1fr;
     }
 
-    .header-right{
-        width:100%;
-        justify-content:space-between;
+    .card{
+        padding:24px 18px;
     }
-
 }
 </style>
 </head>
@@ -690,747 +340,769 @@ h1{
 <body>
 
 <div class="background"></div>
+<div class="overlay"></div>
 
-
-<!-- =========================
-     LOGIN
-========================= -->
-
+<!-- ================= LOGIN ================= -->
 <section id="loginPage" class="page">
+    <div class="card">
 
-<div class="box">
+        <h1>Manan360.pk</h1>
+        <div class="subtitle">Student Portal</div>
 
-<div class="logo">M</div>
+        <h2>Login</h2>
+        <p class="subtitle">Enter your registered username and password</p>
 
-<h1>Manan360.pk</h1>
+        <input
+            type="text"
+            id="username"
+            placeholder="Username"
+            autocomplete="username"
+        >
 
-<div class="subtitle">
-Student Login Portal
-</div>
+        <input
+            type="password"
+            id="password"
+            placeholder="Password"
+            autocomplete="current-password"
+        >
 
-<input
-class="input"
-type="text"
-id="username"
-placeholder="Username"
-autocomplete="username"
->
+        <button type="button" onclick="loginUser()">
+            Login
+        </button>
 
-<input
-class="input"
-type="password"
-id="password"
-placeholder="Password"
-autocomplete="current-password"
->
+        <div id="loginMessage" class="message"></div>
 
-<button
-class="btn"
-onclick="login()"
->
-Login
-</button>
-
-<div
-class="error"
-id="loginError"
->
-Invalid username or password.
-</div>
-
-</div>
+    </div>
 </section>
 
 
-<!-- =========================
-     FINGERPRINT
-========================= -->
+<!-- ================= FINGERPRINT ================= -->
+<section id="fingerPage" class="page hidden">
+    <div class="card">
 
-<section id="fingerPage" class="page">
+        <h1>Employee Verification</h1>
 
-<div class="finger-box">
+        <p class="subtitle">
+            Fingerprint Demo Verification
+        </p>
 
-<div class="demo-label">
-DEMO / EMPLOYEE VERIFICATION
-</div>
+        <div class="fingerprint-box" id="fingerprintBox"
+             onclick="startFingerprint()">
 
-<div class="finger-title">
-Fingerprint Scan
-</div>
+            <img
+                src="fingerprint.jpg"
+                alt="Fingerprint"
+                onerror="this.style.display='none';document.getElementById('fingerIcon').style.display='block';"
+            >
 
-<div class="finger-subtitle">
-Choose profile photo and start demo scan
-</div>
+            <div
+                id="fingerIcon"
+                style="display:none;font-size:85px;"
+            >
+                ☝
+            </div>
 
+            <div class="scan-line"></div>
+        </div>
 
-<!-- PROFILE PHOTO -->
+        <p id="fingerText">
+            Tap fingerprint to start verification
+        </p>
 
-<div
-class="profile-photo"
-id="profilePhotoBox"
->
+        <div class="progress-wrap">
+            <div id="progress" class="progress"></div>
+        </div>
 
-<span id="profileInitial">
-M
-</span>
+        <div id="timer" class="timer">
+            60 seconds
+        </div>
 
-<img
-id="profilePreview"
-src=""
-alt="Profile"
-style="display:none;"
->
+        <div id="fingerMessage" class="message"></div>
 
-</div>
-
-
-<input
-type="file"
-id="profilePicker"
-accept="image/*"
-style="display:none;"
-onchange="chooseProfilePhoto(event)"
->
-
-
-<button
-type="button"
-class="photo-button"
-onclick="document.getElementById('profilePicker').click()"
->
-📷 Choose Profile Photo
-</button>
-
-
-<!-- PROFILE DETAILS -->
-
-<div class="profile-info">
-
-<div>
-<strong>Name:</strong>
-Abdul Manan
-</div>
-
-<div>
-<strong>Father Name:</strong>
-Irfan Anjum
-</div>
-
-<div>
-<strong>CNIC:</strong>
-***********
-</div>
-
-<div>
-<strong>DOB:</strong>
-**/**/****
-</div>
-
-</div>
-
-
-<!-- FINGERPRINT -->
-
-<div
-class="fingerprint-area"
-id="fingerprintArea"
-onclick="startFingerprint()"
->
-
-<img
-src="fingerprint.jpg"
-alt="Fingerprint Demo"
->
-
-<div class="scan-line"></div>
-
-</div>
-
-
-<div
-class="finger-status"
-id="fingerStatus"
->
-Ready for demo scan
-</div>
-
-
-<div class="progress-wrap">
-
-<div
-class="progress-bar"
-id="fingerProgress"
-></div>
-
-</div>
-
-
-<button
-class="finger-button"
-onclick="startFingerprint()"
-id="fingerButton"
->
-Start Fingerprint Scan
-</button>
-
-
-<div
-class="success-finger"
-id="fingerSuccess"
->
-✓ Demo scan completed successfully
-</div>
-
-</div>
+    </div>
 </section>
 
 
-<!-- =========================
-     NAME
-========================= -->
+<!-- ================= NAME ================= -->
+<section id="namePage" class="page hidden">
+    <div class="card">
 
-<section id="namePage" class="page">
+        <div class="name-icon">👤</div>
 
-<div class="box">
+        <h1>Welcome</h1>
 
-<div class="logo">M</div>
+        <p class="subtitle">
+            Verification completed successfully.
+        </p>
 
-<div
-style="
-font-size:25px;
-font-weight:bold;
-margin-bottom:10px;
-"
->
-What is your name?
-</div>
+        <input
+            type="text"
+            id="visitorName"
+            placeholder="What is your name?"
+            maxlength="40"
+        >
 
-<div class="subtitle">
-Please enter your name to continue
-</div>
+        <button type="button" onclick="saveName()">
+            Continue
+        </button>
 
-<input
-class="input"
-type="text"
-id="visitorName"
-placeholder="Enter your name"
-maxlength="40"
->
+        <div id="nameMessage" class="message"></div>
 
-<button
-class="btn"
-onclick="continueToHome()"
->
-Continue
-</button>
-
-</div>
+    </div>
 </section>
 
 
-<!-- =========================
-     HOME
-========================= -->
+<!-- ================= HOME ================= -->
+<section id="homePage" class="page hidden">
+    <div class="card home-card">
 
-<section id="homePage">
+        <h1 id="helloName">
+            Hello
+        </h1>
 
-<div class="container">
+        <p class="subtitle">
+            My name is Abdur Manan. Welcome to Manan360.pk.
+        </p>
 
-<header class="header">
+        <div class="balance">
+            <small>Demo Balance</small>
+            <strong id="balanceText">Rs. 20,000</strong>
+        </div>
 
-<div>
+        <div class="note-grid">
 
-<div class="site-title">
-Manan360.pk
-</div>
+            <!-- CLASS 9 -->
+            <div class="note">
+                <h3>Class 9th Urdu</h3>
+                <p>Urdu Test Paper</p>
 
-<div class="site-subtitle">
-Notes & Test Papers
-</div>
+                <button type="button"
+                        onclick="openOrder('Class 9th Urdu Test Paper','Class-9th-Urdu-Test-Paper.pdf')">
+                    Buy Note - Rs.100
+                </button>
+            </div>
 
-</div>
+            <!-- CLASS 10 -->
+            <div class="note">
+                <h3>Class 10th Urdu</h3>
+                <p>Urdu Test Paper</p>
 
+                <button type="button"
+                        onclick="openOrder('Class 10th Urdu Test Paper','Class-10th-Urdu-Test-Paper.pdf')">
+                    Buy Note - Rs.100
+                </button>
+            </div>
 
-<div class="header-right">
+        </div>
 
-<div class="demo-balance">
-💰 Demo Balance: Rs. 10,000
-</div>
+        <button
+            type="button"
+            class="logout"
+            onclick="logoutUser()"
+        >
+            Sign Out
+        </button>
 
-<button
-class="logout"
-onclick="logout()"
->
-Sign Out
-</button>
-
-</div>
-
-</header>
-
-
-<div class="welcome">
-
-<h2>
-Hello,
-<span
-class="user-name"
-id="displayName"
->
-User
-</span>
-</h2>
-
-<div class="intro">
-
-My name is <strong>Abdur Manan</strong>.<br>
-
-Welcome to Manan360.pk.
-
-</div>
-
-</div>
-
-
-<div class="cards">
-
-
-<!-- CLASS 9 -->
-
-<div class="card">
-
-<div class="icon">
-📚
-</div>
-
-<h3>
-Class 9th
-</h3>
-
-<p>
-Urdu Test Paper
-</p>
-
-<div class="price">
-Rs. 100
-</div>
-
-<button
-class="buy-btn"
-onclick="buyNote(
-'Class 9th Urdu Test Paper',
-'Class-9th-Urdu-Test-Paper.pdf',
-'download9'
-)"
->
-🛒 Buy Note
-</button>
-
-<a
-href="Class-9th-Urdu-Test-Paper.pdf"
-class="open"
-target="_blank"
->
-📄 Open Note
-</a>
-
-<a
-id="download9"
-href="Class-9th-Urdu-Test-Paper.pdf"
-class="download-pdf"
-download
->
-📥 Download PDF
-</a>
-
-</div>
-
-
-<!-- CLASS 10 -->
-
-<div class="card">
-
-<div class="icon">
-📖
-</div>
-
-<h3>
-Class 10th
-</h3>
-
-<p>
-Urdu Test Paper
-</p>
-
-<div class="price">
-Rs. 100
-</div>
-
-<button
-class="buy-btn"
-onclick="buyNote(
-'Class 10th Urdu Test Paper',
-'Class-10th-Urdu-Test-Paper.pdf',
-'download10'
-)"
->
-🛒 Buy Note
-</button>
-
-<a
-href="Class-10th-Urdu-Test-Paper.pdf"
-class="open"
-target="_blank"
->
-📄 Open Note
-</a>
-
-<a
-id="download10"
-href="Class-10th-Urdu-Test-Paper.pdf"
-class="download-pdf"
-download
->
-📥 Download PDF
-</a>
-
-</div>
-
-</div>
-
-
-<a
-href="https://wa.me/923447232654?text=Assalam-o-Alaikum%20Manan360%20Support%20Team"
-class="support"
-target="_blank"
->
-💬 Support Team
-</a>
-
-</div>
+    </div>
 </section>
 
 
-<!-- =========================
-     ORDER POPUP
-========================= -->
+<!-- ================= ORDER POPUP ================= -->
+<div id="orderPopup" class="popup">
 
-<div
-class="popup"
-id="buyPopup"
->
+    <div class="popup-box">
 
-<div class="popup-box">
+        <div id="orderConfirm">
 
-<button
-class="close-popup"
-onclick="closePopup()"
->
-×
-</button>
+            <h2>Place Order</h2>
 
+            <p id="orderText"></p>
 
-<div id="orderForm">
+            <p>
+                Price: <b>Rs.100</b>
+            </p>
 
-<h3>
-🛒 Note Order
-</h3>
+            <p>
+                Balance: <b id="popupBalance">Rs.20,000</b>
+            </p>
 
-<div class="order-info">
+            <div class="popup-buttons">
 
-<div>
-<strong>Notes:</strong>
-<span id="orderNote"></span>
-</div>
+                <button
+                    type="button"
+                    class="cancel"
+                    onclick="closeOrder()"
+                >
+                    Cancel
+                </button>
 
-<div>
-<strong>Customer:</strong>
-<span id="orderCustomer"></span>
-</div>
+                <button
+                    type="button"
+                    onclick="placeOrder()"
+                >
+                    Place Order
+                </button>
 
-<div>
-<strong>Price:</strong>
-Rs. 100
-</div>
+            </div>
 
-</div>
-
-<div class="demo-note">
-This is a Demo Order.
-</div>
-
-<button
-class="place-order"
-onclick="placeOrder()"
->
-Place Order
-</button>
-
-</div>
+        </div>
 
 
-<div
-id="successMessage"
-class="success-message"
->
+        <div id="orderSuccess" class="hidden">
 
-<h3>
-✅ Thank You for your Order!
-</h3>
+            <div class="order-success">
+                ✓
+            </div>
 
-<p>
-Your order has been placed successfully.
-</p>
+            <h2>Transaction Successful</h2>
 
-<p class="ceo">
-Personally,<br>
-CEO Abdul Manan
-</p>
+            <p>
+                Thank you for order personally
+                <b>CEO Abdul Manan</b>
+            </p>
 
-<a
-id="successDownload"
-href="#"
-class="success-download"
-target="_blank"
-download
->
-📥 Download PDF
-</a>
+            <a
+                id="downloadLink"
+                class="download"
+                href="#"
+                target="_blank"
+                download
+            >
+                Download PDF
+            </a>
 
-<a
-href="#"
-class="track-order"
-onclick="closePopup()"
->
-📦 Track Order
-</a>
+            <button
+                type="button"
+                style="margin-top:10px;background:#777;"
+                onclick="closeOrder()"
+            >
+                Close
+            </button>
 
-</div>
+        </div>
 
-</div>
+    </div>
+
 </div>
 
 
 <script>
 
-/* =========================
+/* =========================================================
    USERS
-========================= */
+========================================================= */
 
 const users = {
-
     "1999908774":"1999908774",
-
     "359953999":"1999908774",
-
     "327589969":"1999908774",
-
     "322202440":"1999908774",
-
     "322202990":"1999908774",
-
     "322505434":"1999908774"
-
 };
 
 
-/* =========================
-   VARIABLES
-========================= */
+/* =========================================================
+   GLOBAL VARIABLES
+========================================================= */
 
-let currentPDF = "";
+let scanRunning = false;
+let scanInterval = null;
 
-let currentDownloadButton = "";
-
-let fingerprintStarted = false;
-
-let fingerprintTimer = null;
+let selectedNote = "";
+let selectedPDF = "";
 
 
-/* =========================
+/* =========================================================
+   PAGE FUNCTION
+========================================================= */
+
+function showPage(pageId){
+
+    const pages = [
+        "loginPage",
+        "fingerPage",
+        "namePage",
+        "homePage"
+    ];
+
+    pages.forEach(function(id){
+
+        const page = document.getElementById(id);
+
+        if(page){
+            page.classList.add("hidden");
+        }
+
+    });
+
+    const selected = document.getElementById(pageId);
+
+    if(selected){
+        selected.classList.remove("hidden");
+    }
+}
+
+
+/* =========================================================
    LOGIN
-========================= */
+========================================================= */
 
-function login(){
+function loginUser(){
 
     const username =
-        document
-        .getElementById("username")
-        .value
-        .trim();
+        document.getElementById("username").value.trim();
 
     const password =
-        document
-        .getElementById("password")
-        .value
-        .trim();
+        document.getElementById("password").value;
 
-    const error =
-        document
-        .getElementById("loginError");
-
+    const message =
+        document.getElementById("loginMessage");
 
     if(!username || !password){
 
-        error.textContent =
+        message.textContent =
             "Please enter username and password.";
 
-        error.style.display="block";
+        message.style.color = "#ffdddd";
 
         return;
     }
 
 
     if(
-        Object.prototype.hasOwnProperty.call(
-            users,
-            username
-        )
+        Object.prototype.hasOwnProperty.call(users, username)
         &&
         users[username] === password
     ){
-
-        error.style.display="none";
-
 
         sessionStorage.setItem(
             "manan360_logged_in",
             "true"
         );
 
-
         sessionStorage.setItem(
             "manan360_username",
             username
         );
 
+        message.textContent = "";
 
-        document
-        .getElementById("loginPage")
-        .style.display="none";
-
-
-        document
-        .getElementById("fingerPage")
-        .style.display="flex";
-
+        showPage("fingerPage");
 
         resetFingerprint();
 
-        loadSavedProfilePhoto();
-
     }else{
 
-        error.textContent =
+        message.textContent =
             "Invalid username or password.";
 
-        error.style.display="block";
-
+        message.style.color = "#ffdddd";
     }
 }
 
 
-/* =========================
-   PROFILE PHOTO
-========================= */
+/* =========================================================
+   FINGERPRINT DEMO
+========================================================= */
 
-function chooseProfilePhoto(event){
+function resetFingerprint(){
 
-    const file =
-        event.target.files[0];
+    clearInterval(scanInterval);
+
+    scanRunning = false;
+
+    const box =
+        document.getElementById("fingerprintBox");
+
+    const progress =
+        document.getElementById("progress");
+
+    const timer =
+        document.getElementById("timer");
+
+    const text =
+        document.getElementById("fingerText");
+
+    const message =
+        document.getElementById("fingerMessage");
+
+    if(box){
+        box.classList.remove("scanning");
+    }
+
+    if(progress){
+        progress.style.width = "0%";
+    }
+
+    if(timer){
+        timer.textContent = "60 seconds";
+    }
+
+    if(text){
+        text.textContent =
+            "Tap fingerprint to start verification";
+    }
+
+    if(message){
+        message.textContent = "";
+        message.className = "message";
+    }
+}
 
 
-    if(!file){
+function startFingerprint(){
+
+    if(scanRunning){
         return;
     }
 
+    scanRunning = true;
 
-    if(!file.type.startsWith("image/")){
+    const box =
+        document.getElementById("fingerprintBox");
 
-        alert("Please choose an image.");
+    const progress =
+        document.getElementById("progress");
 
-        return;
+    const timer =
+        document.getElementById("timer");
+
+    const text =
+        document.getElementById("fingerText");
+
+    const message =
+        document.getElementById("fingerMessage");
+
+
+    if(navigator.vibrate){
+        navigator.vibrate(80);
     }
 
 
-    const reader =
-        new FileReader();
+    box.classList.add("scanning");
+
+    text.textContent =
+        "Scanning fingerprint...";
+
+    message.textContent =
+        "Please wait...";
 
 
-    reader.onload=function(e){
+    let seconds = 0;
 
-        const imageData =
-            e.target.result;
-
-
-        const preview =
-            document
-            .getElementById("profilePreview");
+    const totalSeconds = 60;
 
 
-        const initial =
-            document
-            .getElementById("profileInitial");
+    scanInterval = setInterval(function(){
 
+        seconds++;
 
-        preview.src=imageData;
-
-        preview.style.display="block";
-
-        initial.style.display="none";
-
-
-        try{
-
-            localStorage.setItem(
-                "manan360_profile_photo",
-                imageData
+        const percent =
+            Math.min(
+                100,
+                (seconds / totalSeconds) * 100
             );
 
-        }catch(error){
+        progress.style.width =
+            percent + "%";
 
-            console.log(
-                "Photo could not be saved."
+
+        const remaining =
+            totalSeconds - seconds;
+
+        timer.textContent =
+            remaining + " seconds";
+
+
+        if(seconds >= totalSeconds){
+
+            clearInterval(scanInterval);
+
+            scanRunning = false;
+
+            box.classList.remove("scanning");
+
+            progress.style.width = "100%";
+
+            timer.textContent =
+                "Verification Complete";
+
+            text.textContent =
+                "Fingerprint verified successfully.";
+
+            message.textContent =
+                "✓ Verification Successful";
+
+            message.className =
+                "message success";
+
+
+            if(navigator.vibrate){
+                navigator.vibrate([80,50,80]);
+            }
+
+
+            sessionStorage.setItem(
+                "manan360_fingerprint_verified",
+                "true"
             );
+
+
+            setTimeout(function(){
+
+                showPage("namePage");
+
+                document.getElementById(
+                    "visitorName"
+                ).focus();
+
+            },1200);
 
         }
 
-    };
-
-
-    reader.readAsDataURL(file);
+    },1000);
 }
 
 
-function loadSavedProfilePhoto(){
+/* =========================================================
+   NAME
+========================================================= */
 
-    const savedPhoto =
-        localStorage.getItem(
-            "manan360_profile_photo"
-        );
+function saveName(){
+
+    const name =
+        document.getElementById("visitorName")
+        .value.trim();
+
+    const message =
+        document.getElementById("nameMessage");
 
 
-    if(!savedPhoto){
+    if(!name){
+
+        message.textContent =
+            "Please enter your name.";
+
+        message.style.color =
+            "#ffdddd";
+
         return;
     }
 
 
-    const preview =
-        document
-        .getElementById("profilePreview");
+    sessionStorage.setItem(
+        "manan360_visitor_name",
+        name
+    );
 
 
-    const initial =
-        document
-        .getElementById("profileInitial");
+    document.getElementById(
+        "helloName"
+    ).textContent =
+        "Hello, " + name;
 
 
-    preview.src=savedPhoto;
+    showPage("homePage");
 
-    preview.style.display="block";
-
-    initial.style.display="none";
+    loadBalance();
 }
 
 
-/* 
+/* =========================================================
+   BALANCE
+========================================================= */
+
+function getBalance(){
+
+    const saved =
+        localStorage.getItem(
+            "manan360_demo_balance"
+        );
+
+    if(saved === null){
+
+        localStorage.setItem(
+            "manan360_demo_balance",
+            "20000"
+        );
+
+        return 20000;
+    }
+
+    const value =
+        parseInt(saved,10);
+
+    if(isNaN(value)){
+        return 20000;
+    }
+
+    return value;
+}
+
+
+function setBalance(value){
+
+    localStorage.setItem(
+        "manan360_demo_balance",
+        String(value)
+    );
+
+    loadBalance();
+}
+
+
+function loadBalance(){
+
+    const balance =
+        getBalance();
+
+    document.getElementById(
+        "balanceText"
+    ).textContent =
+        "Rs. " + balance.toLocaleString();
+
+    document.getElementById(
+        "popupBalance"
+    ).textContent =
+        "Rs. " + balance.toLocaleString();
+}
+
+
+/* =========================================================
+   ORDER
+========================================================= */
+
+function openOrder(noteName,pdfFile){
+
+    selectedNote = noteName;
+    selectedPDF = pdfFile;
+
+    const balance =
+        getBalance();
+
+
+    document.getElementById(
+        "orderText"
+    ).textContent =
+        noteName;
+
+
+    document.getElementById(
+        "popupBalance"
+    ).textContent =
+        "Rs. " + balance.toLocaleString();
+
+
+    document.getElementById(
+        "orderConfirm"
+    ).classList.remove("hidden");
+
+
+    document.getElementById(
+        "orderSuccess"
+    ).classList.add("hidden");
+
+
+    document.getElementById(
+        "orderPopup"
+    ).style.display =
+        "flex";
+}
+
+
+function closeOrder(){
+
+    document.getElementById(
+        "orderPopup"
+    ).style.display =
+        "none";
+}
+
+
+function placeOrder(){
+
+    let balance =
+        getBalance();
+
+
+    if(balance < 100){
+
+        alert(
+            "Insufficient demo balance."
+        );
+
+        return;
+    }
+
+
+    balance -= 100;
+
+    setBalance(balance);
+
+
+    document.getElementById(
+        "orderConfirm"
+    ).classList.add("hidden");
+
+
+    document.getElementById(
+        "orderSuccess"
+    ).classList.remove("hidden");
+
+
+    const download =
+        document.getElementById(
+            "downloadLink"
+        );
+
+    download.href =
+        selectedPDF;
+
+    download.textContent =
+        "Download PDF";
+
+
+    document.getElementById(
+        "popupBalance"
+    ).textContent =
+        "Rs. " + balance.toLocaleString();
+}
+
+
+/* =========================================================
+   LOGOUT
+========================================================= */
+
+function logoutUser(){
+
+    clearInterval(scanInterval);
+
+    sessionStorage.removeItem(
+        "manan360_logged_in"
+    );
+
+    sessionStorage.removeItem(
+        "manan360_username"
+    );
+
+    sessionStorage.removeItem(
+        "manan360_fingerprint_verified"
+    );
+
+    sessionStorage.removeItem(
+        "manan360_visitor_name"
+    );
+
+
+    document.getElementById(
+        "username"
+    ).value = "";
+
+    document.getElementById(
+        "password"
+    ).value = "";
+
+    document.getElementById(
+        "visitorName"
+    ).value = 
