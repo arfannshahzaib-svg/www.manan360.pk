@@ -1,1129 +1,827 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Manan360.pk - Student Portal</title>
-
-<style>
-*{
-    box-sizing:border-box;
-    margin:0;
-    padding:0;
-}
-
-body{
-    font-family:Arial,Helvetica,sans-serif;
-    min-height:100vh;
-    color:white;
-    overflow-x:hidden;
-}
-
-.background{
-    position:fixed;
-    inset:0;
-    z-index:-2;
-    background:linear-gradient(
-        135deg,
-        #ff7e5f,
-        #feb47b,
-        #86a8e7,
-        #7f7fd5,
-        #43cea2
-    );
-    background-size:400% 400%;
-    animation:bg 12s ease infinite;
-}
-
-@keyframes bg{
-    0%{background-position:0% 50%}
-    50%{background-position:100% 50%}
-    100%{background-position:0% 50%}
-}
-
-.page{
-    min-height:100vh;
-    display:flex;
-    justify-content:center;
-    align-items:center;
-    padding:20px;
-}
-
-.card{
-    width:100%;
-    max-width:430px;
-    padding:30px 22px;
-    border-radius:28px;
-    background:rgba(255,255,255,.18);
-    border:1px solid rgba(255,255,255,.35);
-    backdrop-filter:blur(15px);
-    -webkit-backdrop-filter:blur(15px);
-    box-shadow:0 15px 45px rgba(0,0,0,.25);
-    text-align:center;
-}
-
-h1{
-    font-size:30px;
-    margin-bottom:8px;
-}
-
-h2{
-    font-size:24px;
-    margin:15px 0 10px;
-}
-
-.subtitle{
-    font-size:15px;
-    opacity:.9;
-    margin-bottom:20px;
-}
-
-input{
-    width:100%;
-    padding:16px;
-    margin-bottom:13px;
-    border:0;
-    outline:0;
-    border-radius:14px;
-    font-size:17px;
-    text-align:center;
-    background:white;
-    color:#222;
-}
-
-button{
-    width:100%;
-    padding:15px;
-    border:0;
-    border-radius:14px;
-    background:linear-gradient(135deg,#087cff,#00b894);
-    color:white;
-    font-size:17px;
-    font-weight:bold;
-    cursor:pointer;
-}
-
-button:active{
-    transform:scale(.98);
-}
-
-.message{
-    min-height:22px;
-    margin-top:12px;
-    font-size:14px;
-    font-weight:bold;
-}
-
-.hidden{
-    display:none !important;
-}
-
-/* Fingerprint */
-
-.fingerprint{
-    width:190px;
-    height:190px;
-    margin:25px auto 18px;
-    border-radius:50%;
-    background:rgba(255,255,255,.18);
-    border:3px solid rgba(255,255,255,.7);
-    display:flex;
-    justify-content:center;
-    align-items:center;
-    position:relative;
-    overflow:hidden;
-    cursor:pointer;
-}
-
-.fingerprint img{
-    width:125px;
-    height:125px;
-    object-fit:contain;
-    border-radius:50%;
-    background:white;
-}
-
-.fingerprint-icon{
-    font-size:95px;
-}
-
-.scan-line{
-    display:none;
-    position:absolute;
-    left:15px;
-    right:15px;
-    height:3px;
-    background:#00ff9d;
-    box-shadow:0 0 15px #00ff9d;
-}
-
-.scanning .scan-line{
-    display:block;
-    animation:scan 1.2s linear infinite;
-}
-
-@keyframes scan{
-    0%{top:15px}
-    50%{top:172px}
-    100%{top:15px}
-}
-
-.progress-box{
-    width:100%;
-    height:12px;
-    border-radius:20px;
-    background:rgba(255,255,255,.25);
-    overflow:hidden;
-    margin-top:18px;
-}
-
-.progress{
-    width:0%;
-    height:100%;
-    background:#00ff9d;
-}
-
-.success{
-    color:#00ff9d;
-}
-
-/* Home */
-
-.balance{
-    margin:20px 0;
-    padding:18px;
-    border-radius:18px;
-    background:rgba(0,0,0,.18);
-}
-
-.balance small{
-    display:block;
-    margin-bottom:6px;
-}
-
-.balance strong{
-    font-size:30px;
-}
-
-.notes{
-    display:grid;
-    grid-template-columns:1fr 1fr;
-    gap:14px;
-}
-
-.note{
-    padding:17px 12px;
-    border-radius:18px;
-    background:rgba(255,255,255,.14);
-    border:1px solid rgba(255,255,255,.25);
-}
-
-.note h3{
-    font-size:17px;
-    margin-bottom:8px;
-}
-
-.note p{
-    font-size:13px;
-    margin-bottom:12px;
-}
-
-.note button{
-    font-size:13px;
-    padding:11px 5px;
-}
-
-.logout{
-    margin-top:18px;
-    background:rgba(0,0,0,.25);
-}
-
-/* Popup */
-
-.popup{
-    position:fixed;
-    inset:0;
-    display:none;
-    align-items:center;
-    justify-content:center;
-    padding:20px;
-    background:rgba(0,0,0,.65);
-    z-index:100;
-}
-
-.popup-box{
-    width:100%;
-    max-width:380px;
-    background:white;
-    color:#222;
-    border-radius:22px;
-    padding:25px;
-    text-align:center;
-}
-
-.popup-box h2{
-    color:#111;
-}
-
-.popup-buttons{
-    display:flex;
-    gap:10px;
-    margin-top:18px;
-}
-
-.cancel{
-    background:#777;
-}
-
-.download{
-    display:block;
-    margin-top:12px;
-    padding:13px;
-    border-radius:12px;
-    background:#087cff;
-    color:white;
-    text-decoration:none;
-    font-weight:bold;
-}
-
-.check{
-    font-size:55px;
-    color:#00a878;
-}
-
-@media(max-width:500px){
-    .notes{
-        grid-template-columns:1fr;
-    }
-}
-</style>
-</head>
-
-<body>
-
-<div class="background"></div>
-
-
-<!-- ================= LOGIN ================= -->
-
-<div id="loginPage" class="page">
-
-    <div class="card">
-
-        <h1>Manan360.pk</h1>
-
-        <p class="subtitle">
-            Student Portal
-        </p>
-
-        <h2>Login</h2>
-
-        <p class="subtitle">
-            Enter your registered username and password
-        </p>
-
-        <input
-            id="username"
-            type="text"
-            placeholder="Username"
-            autocomplete="username"
-        >
-
-        <input
-            id="password"
-            type="password"
-            placeholder="Password"
-            autocomplete="current-password"
-        >
-
-        <button type="button" id="loginButton">
-            Login
-        </button>
-
-        <div id="loginMessage" class="message"></div>
-
-    </div>
-
-</div>
-
-
-<!-- ================= FINGERPRINT ================= -->
-
-<div id="fingerPage" class="page hidden">
-
-    <div class="card">
-
-        <h1>Fingerprint Verification</h1>
-
-        <p class="subtitle">
-            Demo / Employee Verification
-        </p>
-
-        <div
-            id="fingerprint"
-            class="fingerprint"
-        >
-
-            <img
-                id="fingerImage"
-                src="fingerprint.jpg"
-                alt="Fingerprint"
-                onerror="showFingerprintIcon()"
-            >
-
-            <div
-                id="fingerprintIcon"
-                class="fingerprint-icon hidden"
-            >
-                ☝
-            </div>
-
-            <div class="scan-line"></div>
-
-        </div>
-
-        <p id="fingerText">
-            Tap fingerprint to start verification
-        </p>
-
-        <div class="progress-box">
-            <div
-                id="progress"
-                class="progress"
-            ></div>
-        </div>
-
-        <p id="timer" style="margin-top:10px;">
-            60 seconds
-        </p>
-
-        <div id="fingerMessage" class="message"></div>
-
-    </div>
-
-</div>
-
-
-<!-- ================= NAME ================= -->
-
-<div id="namePage" class="page hidden">
-
-    <div class="card">
-
-        <div style="font-size:65px;">
-            👤
-        </div>
-
-        <h1>Welcome</h1>
-
-        <p class="subtitle">
-            Verification completed successfully.
-        </p>
-
-        <input
-            id="visitorName"
-            type="text"
-            placeholder="What is your name?"
-            maxlength="40"
-        >
-
-        <button type="button" id="continueButton">
-            Continue
-        </button>
-
-        <div id="nameMessage" class="message"></div>
-
-    </div>
-
-</div>
-
-
-<!-- ================= HOME ================= -->
-
-<div id="homePage" class="page hidden">
-
-    <div class="card" style="max-width:650px;">
-
-        <h1 id="helloName">
-            Hello
-        </h1>
-
-        <p class="subtitle">
-            My name is Abdur Manan.
-            Welcome to Manan360.pk.
-        </p>
-
-        <div class="balance">
-
-            <small>
-                Demo Balance
-            </small>
-
-            <strong id="balance">
-                Rs. 20,000
-            </strong>
-
-        </div>
-
-
-        <div class="notes">
-
-            <div class="note">
-
-                <h3>
-                    Class 9th Urdu
-                </h3>
-
-                <p>
-                    Urdu Test Paper
-                </p>
-
-                <button
-                    type="button"
-                    onclick="openOrder(
-                        'Class 9th Urdu Test Paper',
-                        'Class-9th-Urdu-Test-Paper.pdf'
-                    )"
-                >
-                    Buy Note - Rs.100
-                </button>
-
-            </div>
-
-
-            <div class="note">
-
-                <h3>
-                    Class 10th Urdu
-                </h3>
-
-                <p>
-                    Urdu Test Paper
-                </p>
-
-                <button
-                    type="button"
-                    onclick="openOrder(
-                        'Class 10th Urdu Test Paper',
-                        'Class-10th-Urdu-Test-Paper.pdf'
-                    )"
-                >
-                    Buy Note - Rs.100
-                </button>
-
-            </div>
-
-        </div>
-
-
-        <button
-            type="button"
-            class="logout"
-            onclick="logout()"
-        >
-            Sign Out
-        </button>
-
-    </div>
-
-</div>
-
-
-<!-- ================= ORDER POPUP ================= -->
-
-<div id="orderPopup" class="popup">
-
-    <div class="popup-box">
-
-        <div id="orderConfirm">
-
-            <h2>Place Order</h2>
-
-            <p id="orderName"></p>
-
-            <p style="margin-top:10px;">
-                Price: <b>Rs.100</b>
-            </p>
-
-            <p style="margin-top:8px;">
-                Balance:
-                <b id="popupBalance">
-                    Rs.20,000
-                </b>
-            </p>
-
-            <div class="popup-buttons">
-
-                <button
-                    type="button"
-                    class="cancel"
-                    onclick="closeOrder()"
-                >
-                    Cancel
-                </button>
-
-                <button
-                    type="button"
-                    onclick="placeOrder()"
-                >
-                    Place Order
-                </button>
-
-            </div>
-
-        </div>
-
-
-        <div id="orderSuccess" class="hidden">
-
-            <div class="check">
-                ✓
-            </div>
-
-            <h2>
-                Transaction Successful
-            </h2>
-
-            <p style="margin-top:10px;">
-                Thank you for order personally
-                <b>CEO Abdul Manan</b>
-            </p>
-
-            <a
-                id="downloadPDF"
-                class="download"
-                href="#"
-                download
-            >
-                Download PDF
-            </a>
-
-            <button
-                type="button"
-                style="margin-top:10px;background:#777;"
-                onclick="closeOrder()"
-            >
-                Close
-            </button>
-
-        </div>
-
-    </div>
-
-</div>
-
-
-<script>
-
-/* =========================================================
-   USERS
-========================================================= */
-
-const users = {
-    "1999908774": "1999908774",
-    "359953999": "1999908774",
-    "327589969": "1999908774",
-    "322202440": "1999908774",
-    "322202990": "1999908774",
-    "322505434": "1999908774"
-};
-
-
-/* =========================================================
-   PAGE SWITCH
-========================================================= */
-
-function showPage(id){
-
-    document
-        .getElementById("loginPage")
-        .classList.add("hidden");
-
-    document
-        .getElementById("fingerPage")
-        .classList.add("hidden");
-
-    document
-        .getElementById("namePage")
-        .classList.add("hidden");
-
-    document
-        .getElementById("homePage")
-        .classList.add("hidden");
-
-    document
-        .getElementById(id)
-        .classList.remove("hidden");
-}
-
-
-/* =========================================================
-   LOGIN
-========================================================= */
-
-document
-    .getElementById("loginButton")
-    .addEventListener("click", function(){
-
-        const username =
-            document
-            .getElementById("username")
-            .value
-            .trim();
-
-        const password =
-            document
-            .getElementById("password")
-            .value
-            .trim();
-
-        const message =
-            document
-            .getElementById("loginMessage");
-
-
-        if(username === "" || password === ""){
-
-            message.textContent =
-                "Please enter username and password.";
-
-            message.style.color =
-                "#ffdddd";
-
-            return;
-        }
-
-
-        if(
-            users[username] !== undefined &&
-            users[username] === password
-        ){
-
-            sessionStorage.setItem(
-                "manan360_login",
-                "yes"
-            );
-
-            sessionStorage.setItem(
-                "manan360_username",
-                username
-            );
-
-            message.textContent = "";
-
-            showPage("fingerPage");
-
-            resetFingerprint();
-
-        }
-        else{
-
-            message.textContent =
-                "Invalid username or password.";
-
-            message.style.color =
-                "#ffdddd";
-
-        }
-
-    });
-
-
-/* =========================================================
-   ENTER KEY LOGIN
-========================================================= */
-
-document
-    .getElementById("password")
-    .addEventListener("keydown", function(event){
-
-        if(event.key === "Enter"){
-            document
-                .getElementById("loginButton")
-                .click();
-        }
-
-    });
-
-
-/* =========================================================
-   FINGERPRINT IMAGE FALLBACK
-========================================================= */
-
-function showFingerprintIcon(){
-
-    document
-        .getElementById("fingerImage")
-        .style.display = "none";
-
-    document
-        .getElementById("fingerprintIcon")
-        .classList.remove("hidden");
-}
-
-
-/* =========================================================
-   FINGERPRINT
-========================================================= */
-
-let fingerprintRunning = false;
-let fingerprintTimer = null;
-
-function resetFingerprint(){
-
-    fingerprintRunning = false;
-
-    if(fingerprintTimer){
-        clearInterval(fingerprintTimer);
-    }
-
-    document
-        .getElementById("fingerprint")
-        .classList.remove("scanning");
-
-    document
-        .getElementById("progress")
-        .style.width = "0%";
-
-    document
-        .getElementById("timer")
-        .textContent = "60 seconds";
-
-    document
-        .getElementById("fingerText")
-        .textContent =
-        "Tap fingerprint to start verification";
-
-    document
-        .getElementById("fingerMessage")
-        .textContent = "";
-}
-
-
-document
-    .getElementById("fingerprint")
-    .addEventListener("click", startFingerprint);
-
-
-function startFingerprint(){
-
-    if(fingerprintRunning){
-        return;
-    }
-
-    fingerprintRunning = true;
-
-
-    if(navigator.vibrate){
-        navigator.vibrate(80);
-    }
-
-
-    const box =
-        document.getElementById("fingerprint");
-
-    const progress =
-        document.getElementById("progress");
-
-    const timer =
-        document.getElementById("timer");
-
-    const text =
-        document.getElementById("fingerText");
-
-    const message =
-        document.getElementById("fingerMessage");
-
-
-    box.classList.add("scanning");
-
-    text.textContent =
-        "Scanning fingerprint...";
-
-    message.textContent =
-        "Please wait...";
-
-
-    let seconds = 0;
-
-
-    fingerprintTimer =
-        setInterval(function(){
-
-            seconds++;
-
-
-            const percent =
-                (seconds / 60) * 100;
-
-            progress.style.width =
-                percent + "%";
-
-
-            timer.textContent =
-                (60 - seconds) +
-                " seconds";
-
-
-            if(seconds >= 60){
-
-                clearInterval(
-                    fingerprintTimer
-                );
-
-                fingerprintRunning = false;
-
-                box.classList.remove(
-                    "scanning"
-                );
-
-                progress.style.width =
-                    "100%";
-
-                timer.textContent =
-                    "Verification Complete";
-
-                text.textContent =
-                    "Fingerprint verified successfully.";
-
-                message.textContent =
-                    "✓ Verification Successful";
-
-                message.className =
-                    "message success";
-
-
-                sessionStorage.setItem(
-                    "manan360_fingerprint",
-                    "yes"
-                );
-
-
-                if(navigator.vibrate){
-                    navigator.vibrate(
-                        [80,50,80]
-                    );
-                }
-
-
-                setTimeout(function(){
-
-                    showPage("namePage");
-
-                    document
-                        .getElementById(
-                            "visitorName"
-                        )
-                        .focus();
-
-                },1000);
-
-            }
-
-        },1000);
-}
-
-
-/* =========================================================
-   NAME
-========================================================= */
-
-document
-    .getElementById("continueButton")
-    .addEventListener("click", saveName);
-
-
-document
-    .getElementById("visitorName")
-    .addEventListener("keydown", function(event){
-
-        if(event.key === "Enter"){
-            saveName();
-        }
-
-    });
-
-
-function saveName(){
-
-    const name =
-        document
-        .getElementById("visitorName")
-        .value
-        .trim();
-
-    const message =
-        document
-        .getElementById("nameMessage");
-
-
-    if(name === ""){
-
-        message.textContent =
-            "Please enter your name.";
-
-        message.style.color =
-            "#ffdddd";
-
-        return;
-    }
-
-
-    sessionStorage.setItem(
-        "manan360_name",
-        name
-    );
-
-
-    document
-        .getElementById("helloName")
-        .textContent =
-        "Hello, " + name;
-
-
-    showPage("homePage");
-
-    updateBalance();
-}
-
-
-/* =========================================================
-   BALANCE
-========================================================= */
-
-function getBalance(){
-
-    let value =
-        localStorage.getItem(
-            "manan360_balance"
-        );
-
-
-    if(value === null){
-
-        value = "20000";
-
-        localStorage.setItem(
-            "manan360_balance",
-            value
-        );
-    }
-
-
-    const number =
-        parseInt(value,10);
-
-
-    if(isNaN(number)){
-        return 20000;
-    }
-
-
-    return number;
-}
-
-
-function updateBalance(){
-
-    const amount =
-        getBalance();
-
-
-    document
-        .getElementById("balance")
-        .textContent =
-        "Rs. " +
-        amount.toLocaleString();
-
-
-    document
-        .getElementById("popupBalance")
-        .textContent =
-        "Rs. " +
-        amount.toLocaleString();
-}
-
-
-/* =========================================================
-   ORDER
-========================================================= */
-
-let selectedPDF = "";
-
-
-function openOrder(name,pdf){
-
-    selectedPDF = pdf;
-
-
-    document
-        .getElementById("orderName")
-        .textContent = name;
-
-
-    updateBalance();
-
-
-    document
-        .getElementById("orderConfirm")
-        .classList.remove("hidden");
-
-
-    document
-        .getElementById("orderSuccess")
-        .classList.add("hidden");
-
-
-    document
-        .getElementById("orderPopup")
-        .style.display =
-        "flex";
-}
-
-
-function closeOrder(){
-
-    document
-        .getElementById("orderPopup")
-        .style.display =
-        "none";
-}
-
-
-function placeOrder(){
-
-    let balance =
-        getBalance();
-
-
-    if(balance < 100){
-
-        alert(
-            "Insufficient demo balance."
-        );
-
-        return;
-    }
-
-
-    balance =
-        balance - 100;
-
-
-    localStorage.setItem(
-        "manan360_balance",
-        String(balance)
-    );
-
-
-    updateBalance();
-
-
-    document
-        .getElementById("orderConfirm")
-        .classList.add("hidden");
-
-
-    document
-        .getElementById("orderSuccess")
-        .classList.remove(
+<!DOCTYPE html>  <html lang="en">  
+<head>  
+<meta charset="UTF-8">  
+<meta name="viewport" content="width=device-width, initial-scale=1.0">  
+<title>Manan360.pk - Student Portal</title>  <style>  
+*{  
+    box-sizing:border-box;  
+    margin:0;  
+    padding:0;  
+}  
+  
+body{  
+    font-family:Arial,Helvetica,sans-serif;  
+    min-height:100vh;  
+    overflow-x:hidden;  
+}  
+  
+.background{  
+    position:fixed;  
+    inset:0;  
+    z-index:-2;  
+    background:linear-gradient(  
+        120deg,  
+        #ff0066,#6a00ff,#007bff,#00d4ff,  
+        #00ff88,#ffe600,#ff6600,#ff0066  
+    );  
+    background-size:500% 500%;  
+    animation:multicolor 15s ease infinite;  
+}  
+  
+@keyframes multicolor{  
+    0%{background-position:0% 50%}  
+    25%{background-position:100% 50%}  
+    50%{background-position:100% 100%}  
+    75%{background-position:0% 100%}  
+    100%{background-position:0% 50%}  
+}  
+  
+.background::after{  
+    content:"";  
+    position:absolute;  
+    inset:0;  
+    background:rgba(0,0,0,.28);  
+    backdrop-filter:blur(2px);  
+}  
+  
+.page{  
+    min-height:100vh;  
+    display:flex;  
+    justify-content:center;  
+    align-items:center;  
+    padding:20px;  
+}  
+  
+.box{  
+    width:100%;  
+    max-width:390px;  
+    background:rgba(255,255,255,.96);  
+    border-radius:24px;  
+    padding:30px 25px;  
+    text-align:center;  
+    box-shadow:0 20px 60px rgba(0,0,0,.35);  
+}  
+  
+.logo{  
+    width:72px;  
+    height:72px;  
+    margin:0 auto 12px;  
+    border-radius:50%;  
+    display:flex;  
+    align-items:center;  
+    justify-content:center;  
+    color:white;  
+    font-size:27px;  
+    font-weight:bold;  
+    background:linear-gradient(135deg,#ff0066,#6a00ff,#007bff);  
+}  
+  
+h1{  
+    color:#222;  
+    font-size:27px;  
+    margin-bottom:6px;  
+}  
+  
+.subtitle{  
+    color:#777;  
+    font-size:14px;  
+    margin-bottom:25px;  
+}  
+  
+.input{  
+    width:100%;  
+    height:50px;  
+    border:2px solid #e5e5e5;  
+    border-radius:13px;  
+    padding:0 15px;  
+    font-size:15px;  
+    outline:none;  
+    margin-bottom:15px;  
+}  
+  
+.input:focus{  
+    border-color:#6a00ff;  
+}  
+  
+.btn{  
+    width:100%;  
+    height:51px;  
+    border:0;  
+    border-radius:13px;  
+    color:white;  
+    font-size:16px;  
+    font-weight:bold;  
+    cursor:pointer;  
+    background:linear-gradient(90deg,#ff0066,#6a00ff,#007bff);  
+}  
+  
+.error{  
+    display:none;  
+    color:#c00;  
+    background:#ffe8e8;  
+    padding:10px;  
+    border-radius:10px;  
+    margin-top:14px;  
+    font-size:13px;  
+}  
+  
+#namePage{  
+    display:none;  
+}  
+  
+#homePage{  
+    display:none;  
+    min-height:100vh;  
+    padding:20px 15px 50px;  
+}  
+  
+.container{  
+    max-width:900px;  
+    margin:auto;  
+}  
+  
+.header{  
+    background:rgba(255,255,255,.95);  
+    border-radius:20px;  
+    padding:17px 20px;  
+    display:flex;  
+    justify-content:space-between;  
+    align-items:center;  
+    gap:12px;  
+    flex-wrap:wrap;  
+    box-shadow:0 12px 35px rgba(0,0,0,.22);  
+    margin-bottom:20px;  
+}  
+  
+.site-title{  
+    font-size:21px;  
+    font-weight:bold;  
+    color:#222;  
+}  
+  
+.site-subtitle{  
+    color:#777;  
+    font-size:12px;  
+    margin-top:4px;  
+}  
+  
+.header-right{  
+    display:flex;  
+    align-items:center;  
+    gap:8px;  
+    flex-wrap:wrap;  
+}  
+  
+.demo-balance{  
+    background:linear-gradient(90deg,#00a86b,#00c853);  
+    color:white;  
+    padding:10px 14px;  
+    border-radius:10px;  
+    font-size:14px;  
+    font-weight:bold;  
+}  
+  
+.logout{  
+    border:0;  
+    background:#222;  
+    color:white;  
+    padding:10px 15px;  
+    border-radius:10px;  
+    cursor:pointer;  
+    font-weight:bold;  
+}  
+  
+.welcome{  
+    background:rgba(255,255,255,.95);  
+    border-radius:22px;  
+    padding:30px 20px;  
+    text-align:center;  
+    box-shadow:0 12px 35px rgba(0,0,0,.20);  
+    margin-bottom:20px;  
+}  
+  
+.welcome h2{  
+    font-size:30px;  
+    color:#222;  
+    margin-bottom:12px;  
+}  
+  
+.user-name{  
+    background:linear-gradient(90deg,#ff0066,#6a00ff,#007bff);  
+    -webkit-background-clip:text;  
+    color:transparent;  
+}  
+  
+.intro{  
+    color:#555;  
+    font-size:16px;  
+    line-height:1.7;  
+}  
+  
+.cards{  
+    display:grid;  
+    grid-template-columns:repeat(2,1fr);  
+    gap:18px;  
+}  
+  
+.card{  
+    background:rgba(255,255,255,.95);  
+    border-radius:20px;  
+    padding:25px 18px;  
+    text-align:center;  
+    box-shadow:0 10px 30px rgba(0,0,0,.18);  
+}  
+  
+.icon{  
+    font-size:34px;  
+    margin-bottom:10px;  
+}  
+  
+.card h3{  
+    color:#222;  
+    margin-bottom:7px;  
+}  
+  
+.card p{  
+    color:#777;  
+    font-size:13px;  
+    margin-bottom:12px;  
+}  
+  
+.price{  
+    font-size:20px;  
+    font-weight:bold;  
+    color:#111;  
+    margin:8px 0 13px;  
+}  
+  
+.buy-btn{  
+    display:block;  
+    width:100%;  
+    border:0;  
+    color:white;  
+    background:linear-gradient(90deg,#ff0066,#6a00ff,#007bff);  
+    padding:12px 15px;  
+    border-radius:11px;  
+    font-weight:bold;  
+    font-size:15px;  
+    cursor:pointer;  
+    margin-bottom:9px;  
+}  
+  
+.open{  
+    display:block;  
+    color:#333;  
+    text-decoration:none;  
+    background:#eeeeee;  
+    padding:10px 18px;  
+    border-radius:10px;  
+    font-weight:bold;  
+    font-size:14px;  
+}  
+  
+.download-pdf{  
+    display:none;  
+    margin-top:10px;  
+    width:100%;  
+    padding:11px;  
+    border-radius:10px;  
+    background:#1565c0;  
+    color:white;  
+    text-decoration:none;  
+    font-weight:bold;  
+    text-align:center;  
+}  
+  
+.support{  
+    display:block;  
+    width:100%;  
+    max-width:320px;  
+    margin:22px auto 0;  
+    padding:13px 18px;  
+    text-align:center;  
+    text-decoration:none;  
+    background:#25D366;  
+    color:white;  
+    font-size:16px;  
+    font-weight:bold;  
+    border-radius:12px;  
+}  
+  
+/* POPUP */  
+  
+.popup{  
+    display:none;  
+    position:fixed;  
+    inset:0;  
+    background:rgba(0,0,0,.65);  
+    align-items:center;  
+    justify-content:center;  
+    padding:20px;  
+    z-index:9999;  
+}  
+  
+.popup-box{  
+    width:100%;  
+    max-width:370px;  
+    background:white;  
+    border-radius:22px;  
+    padding:26px;  
+    text-align:center;  
+    box-shadow:0 20px 50px rgba(0,0,0,.4);  
+    position:relative;  
+}  
+  
+.close-popup{  
+    position:absolute;  
+    top:10px;  
+    right:12px;  
+    width:32px;  
+    height:32px;  
+    border:0;  
+    border-radius:50%;  
+    background:#eeeeee;  
+    color:#222;  
+    font-size:20px;  
+    font-weight:bold;  
+    cursor:pointer;  
+}  
+  
+.popup-box h3{  
+    font-size:23px;  
+    margin-bottom:18px;  
+    color:#222;  
+}  
+  
+.order-info{  
+    background:#f5f5f5;  
+    border-radius:14px;  
+    padding:15px;  
+    text-align:left;  
+    margin-bottom:16px;  
+    line-height:1.8;  
+    font-size:14px;  
+    color:#444;  
+}  
+  
+.demo-note{  
+    background:#fff4d6;  
+    color:#8a5a00;  
+    padding:10px;  
+    border-radius:10px;  
+    font-size:13px;  
+    margin-bottom:16px;  
+}  
+  
+.place-order{  
+    width:100%;  
+    border:0;  
+    padding:13px;  
+    border-radius:11px;  
+    background:linear-gradient(90deg,#00a86b,#00c853);  
+    color:white;  
+    font-size:16px;  
+    font-weight:bold;  
+    cursor:pointer;  
+}  
+  
+.success-message{  
+    display:none;  
+}  
+  
+.success-message h3{  
+    color:#00a86b;  
+    margin-bottom:12px;  
+}  
+  
+.success-message p{  
+    color:#555;  
+    line-height:1.7;  
+    font-size:15px;  
+}  
+  
+.ceo{  
+    margin-top:15px;  
+    font-weight:bold;  
+    color:#222 !important;  
+}  
+  
+.success-download{  
+    display:block;  
+    width:100%;  
+    margin-top:18px;  
+    padding:13px;  
+    border-radius:11px;  
+    background:#1565c0;  
+    color:white;  
+    text-decoration:none;  
+    font-weight:bold;  
+}  
+  
+.track-order{  
+    display:block;  
+    width:100%;  
+    margin-top:10px;  
+    padding:12px;  
+    border-radius:11px;  
+    background:#eeeeee;  
+    color:#222;  
+    text-decoration:none;  
+    font-weight:bold;  
+}  
+  
+@media(max-width:600px){  
+    .cards{  
+        grid-template-columns:1fr;  
+    }  
+  
+    .header-right{  
+        width:100%;  
+        justify-content:space-between;  
+    }  
+}  
+</style>  </head>  <body>  <div class="background"></div>  <!-- LOGIN -->  <section id="loginPage" class="page">  
+<div class="box">  <div class="logo">M</div>  <h1>Manan360.pk</h1>  <div class="subtitle">Student Login Portal</div>  <input class="input" type="text" id="username" placeholder="Username">  <input class="input" type="password" id="password" placeholder="Password">  <button class="btn" onclick="login()">Login</button>
+
+<div class="error" id="loginError">  
+Invalid username or password.  
+</div>  </div>  
+</section>  <!-- NAME -->  <section id="namePage" class="page">  <div class="box">  <div class="logo">M</div>  <div style="font-size:25px;font-weight:bold;margin-bottom:10px;">  
+What is your name?  
+</div>  <div class="subtitle">  
+Please enter your name to continue  
+</div>  <input
+class="input"
+type="text"
+id="visitorName"
+placeholder="Enter your name"
+maxlength="40"
+
+> 
+
+<button class="btn" onclick="continueToHome()">  
+Continue  
+</button>  </div>  
+</section>  <!-- HOME -->  <section id="homePage">  <div class="container">  <header class="header">  <div>  
+<div class="site-title">Manan360.pk</div>  
+<div class="site-subtitle">Notes & Test Papers</div>  
+</div>  <div class="header-right">  <div class="demo-balance">  
+💰 Demo Balance: Rs. 10,000  
+</div>  <button class="logout" onclick="logout()">  
+Sign Out  
+</button>  </div>  
+</header>  <div class="welcome">  <h2>  
+Hello,  
+<span class="user-name" id="displayName">User</span>  
+</h2>  <div class="intro">  
+My name is <strong>Abdur Manan</strong>.<br>  
+Welcome to Manan360.pk.  
+</div>  </div>  <div class="cards">  <!-- CLASS 9 -->  <div class="card">  <div class="icon">📚</div>  <h3>Class 9th</h3>  <p>Urdu Test Paper</p>  <div class="price">Rs. 100</div>  <button
+class="buy-btn"
+onclick="buyNote('Class 9th Urdu Test Paper','Class-9th-Urdu-Test-Paper.pdf','download9')"
+
+> 
+
+🛒 Buy Note
+</button>
+
+<a
+href="Class-9th-Urdu-Test-Paper.pdf"
+class="open"
+target="_blank"
+
+> 
+
+📄 Open Note
+</a>
+
+<a
+id="download9"
+href="Class-9th-Urdu-Test-Paper.pdf"
+class="download-pdf"
+download
+
+> 
+
+📥 Download PDF
+</a>
+
+</div>  <!-- CLASS 10 -->  <div class="card">  <div class="icon">📖</div>  <h3>Class 10th</h3>  <p>Urdu Test Paper</p>  <div class="price">Rs. 100</div>  <button
+class="buy-btn"
+onclick="buyNote('Class 10th Urdu Test Paper','Class-10th-Urdu-Test-Paper.pdf','download10')"
+
+> 
+
+🛒 Buy Note
+</button>
+
+<a
+href="Class-10th-Urdu-Test-Paper.pdf"
+class="open"
+target="_blank"
+
+> 
+
+📄 Open Note
+</a>
+
+<a
+id="download10"
+href="Class-10th-Urdu-Test-Paper.pdf"
+class="download-pdf"
+download
+
+> 
+
+📥 Download PDF
+</a>
+
+</div>  </div>  <a
+href="https://wa.me/923447232654?text=Assalam-o-Alaikum%20Manan360%20Support%20Team"
+class="support"
+target="_blank"
+
+> 
+
+💬 Support Team
+</a>
+
+</div>  
+</section>  <!-- ORDER POPUP -->  <div class="popup" id="buyPopup">  <div class="popup-box">  <button class="close-popup" onclick="closePopup()">×</button>
+
+<!-- ORDER FORM -->  <div id="orderForm">  <h3>🛒 Note Order</h3>  <div class="order-info">  <div>  
+<strong>Notes:</strong>  
+<span id="orderNote"></span>  
+</div>  <div>  
+<strong>Customer:</strong>  
+<span id="orderCustomer"></span>  
+</div>  <div>  
+<strong>Price:</strong>  
+Rs. 100  
+</div>  </div>  <div class="demo-note">  
+This is a Demo Order.  
+</div>  <button class="place-order" onclick="placeOrder()">  
+Place Order  
+</button>  </div>  <!-- SUCCESS -->  <div id="successMessage" class="success-message">  <h3>✅ Thank You for your Order!</h3>  <p>  
+Your order has been placed successfully.  
+</p>  <p class="ceo">  
+Personally,<br>  
+CEO Abdul Manan  
+</p>  <a
+id="successDownload"
+href="#"
+class="success-download"
+target="_blank"
+download
+
+> 
+
+📥 Download PDF
+</a>
+
+<a
+href="#"
+class="track-order"
+onclick="closePopup()"
+
+> 
+
+📦 Track Order
+</a>
+
+</div>  </div>  
+</div>  <script>  
+  
+/* USERS */  
+  
+const users = {  
+"1999908774":"1999908774",  
+"359953999":"1999908774",  
+"327589969":"1999908774",  
+"322202440":"1999908774",  
+"322202990":"1999908774",  
+"322505434":"1999908774"  
+};  
+  
+  
+/* CURRENT ORDER */  
+  
+let currentPDF = "";  
+let currentDownloadButton = "";  
+  
+  
+/* LOGIN */  
+  
+function login(){  
+  
+const username =  
+document.getElementById("username").value.trim();  
+  
+const password =  
+document.getElementById("password").value.trim();  
+  
+const error =  
+document.getElementById("loginError");  
+  
+if(users[username] === password){  
+  
+error.style.display="none";  
+  
+sessionStorage.setItem(  
+"manan360_logged_in",  
+"true"  
+);  
+  
+document.getElementById("loginPage").style.display="none";  
+document.getElementById("namePage").style.display="flex";  
+  
+document.getElementById("visitorName").focus();  
+  
+}else{  
+  
+error.style.display="block";  
+  
+}  
+  
+}  
+  
+  
+/* HOME */  
+  
+function continueToHome(){  
+  
+const name =  
+document.getElementById("visitorName").value.trim();  
+  
+if(name===""){  
+  
+document.getElementById("visitorName").focus();  
+  
+return;  
+  
+}  
+  
+document.getElementById("displayName").textContent=name;  
+  
+sessionStorage.setItem(  
+"manan360_name",  
+name  
+);  
+  
+document.getElementById("namePage").style.display="none";  
+document.getElementById("homePage").style.display="block";  
+  
+}  
+  
+  
+/* BUY */  
+  
+function buyNote(noteName,pdfFile,downloadId){  
+  
+const name =  
+sessionStorage.getItem("manan360_name") || "User";  
+  
+currentPDF = pdfFile;  
+currentDownloadButton = downloadId;  
+  
+document.getElementById("orderNote").textContent =  
+noteName;  
+  
+document.getElementById("orderCustomer").textContent =  
+name;  
+  
+document.getElementById("orderForm").style.display="block";  
+  
+document.getElementById("successMessage").style.display="none";  
+  
+document.getElementById("buyPopup").style.display="flex";  
+  
+}  
+  
+  
+/* PLACE ORDER */  
+  
+function placeOrder(){  
+  
+/* Hide order form */  
+  
+document.getElementById("orderForm").style.display="none";  
+  
+/* Show success */  
+  
+document.getElementById("successMessage").style.display="block";  
+  
+/* Put correct PDF */  
+  
+const download =  
+document.getElementById("successDownload");  
+  
+download.href = currentPDF;  
+  
+  
+/* Show download button below card */  
+  
+if(currentDownloadButton){  
+  
+const cardDownload =  
+document.getElementById(currentDownloadButton);  
+  
+if(cardDownload){  
+  
+cardDownload.style.display="block";  
+  
+}  
+  
+}  
+  
+}  
+  
+  
+/* CLOSE */  
+  
+function closePopup(){  
+  
+document.getElementById("buyPopup").style.display="none";  
+  
+}  
+  
+  
+/* LOGOUT */  
+  
+function logout(){  
+  
+sessionStorage.removeItem("manan360_logged_in");  
+sessionStorage.removeItem("manan360_name");  
+  
+document.getElementById("homePage").style.display="none";  
+document.getElementById("namePage").style.display="none";  
+document.getElementById("loginPage").style.display="flex";  
+  
+document.getElementById("username").value="";  
+document.getElementById("password").value="";  
+document.getElementById("visitorName").value="";  
+  
+}  
+  
+  
+/* PAGE LOAD */  
+  
+window.onload=function(){  
+  
+const loggedIn =  
+sessionStorage.getItem("manan360_logged_in");  
+  
+const savedName =  
+sessionStorage.getItem("manan360_name");  
+  
+if(loggedIn==="true"){  
+  
+if(savedName){  
+  
+document.getElementById("displayName").textContent=savedName;  
+  
+document.getElementById("loginPage").style.display="none";  
+document.getElementById("namePage").style.display="none";  
+document.getElementById("homePage").style.display="block";  
+  
+}else{  
+  
+document.getElementById("loginPage").style.display="none";  
+document.getElementById("namePage").style.display="flex";  
+  
+}  
+  
+}  
+  
+};  
+  
+  
+/* ENTER KEY */  
+  
+document.addEventListener("keydown",function(event){  
+  
+if(event.key==="Enter"){  
+  
+if(  
+document.activeElement.id==="username" ||  
+document.activeElement.id==="password"  
+){  
+  
+login();  
+  
+}  
+  
+else if(  
+document.activeElement.id==="visitorName"  
+){  
+  
+continueToHome();  
+  
+}  
+  
+}  
+  
+});  
+  
+</script>  </body>  
+</html>  
