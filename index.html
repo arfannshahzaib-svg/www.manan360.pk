@@ -2,130 +2,117 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
 <title>Manan360.pk</title>
 
 <style>
 *{box-sizing:border-box;margin:0;padding:0}
 
 body{
-  font-family:Arial,sans-serif;
-  min-height:100vh;
-  background:linear-gradient(135deg,#061a40,#007bff,#00b894);
+font-family:Arial,sans-serif;
+min-height:100vh;
+background:linear-gradient(135deg,#061a40,#007bff,#00b894);
 }
 
 .page{
-  min-height:100vh;
-  display:none;
-  align-items:center;
-  justify-content:center;
-  padding:20px;
+display:none;
+min-height:100vh;
+align-items:center;
+justify-content:center;
+padding:20px;
 }
 
 .box{
-  width:100%;
-  max-width:430px;
-  background:#fff;
-  padding:28px 22px;
-  border-radius:22px;
-  text-align:center;
-  box-shadow:0 15px 40px rgba(0,0,0,.25);
+width:100%;
+max-width:430px;
+background:#fff;
+border-radius:22px;
+padding:28px 22px;
+text-align:center;
+box-shadow:0 15px 40px rgba(0,0,0,.25);
 }
 
 h1,h2{
-  color:#064b91;
-  margin-bottom:12px;
+color:#064b91;
+margin-bottom:12px;
 }
 
 p{
-  color:#555;
-  margin-bottom:20px;
+color:#555;
+margin-bottom:20px;
 }
 
 input{
-  width:100%;
-  padding:15px;
-  font-size:16px;
-  border:1px solid #ccc;
-  border-radius:12px;
-  margin-bottom:12px;
+width:100%;
+padding:15px;
+font-size:16px;
+border:1px solid #ccc;
+border-radius:12px;
+margin-bottom:12px;
 }
 
 button{
-  width:100%;
-  padding:14px;
-  border:0;
-  border-radius:12px;
-  font-size:16px;
-  font-weight:bold;
-  color:white;
-  background:#087bea;
-  margin-top:8px;
-  cursor:pointer;
+width:100%;
+padding:14px;
+border:0;
+border-radius:12px;
+font-size:16px;
+font-weight:bold;
+color:white;
+background:#087bea;
+margin-top:9px;
+cursor:pointer;
 }
 
-.cancel{
-  background:#777;
-}
-
-.signout{
-  background:#444;
-  margin-top:18px;
-}
+.green{background:#00a86b}
+.gray{background:#777}
+.dark{background:#444}
 
 .book{
-  padding:18px;
-  border:1px solid #ddd;
-  border-radius:15px;
-  margin:12px 0;
-  background:#f5faff;
+border:1px solid #ddd;
+border-radius:15px;
+padding:18px;
+margin:12px 0;
+background:#f5faff;
 }
 
 .book h3{
-  color:#07549b;
-  margin-bottom:7px;
+color:#07549b;
+margin-bottom:7px;
 }
 
 .error{
-  margin-top:15px;
-  padding:13px;
-  border-radius:10px;
-  background:#ffe8e8;
-  color:#c62828;
-  font-weight:bold;
-}
-
-.success{
-  padding:20px;
-  border-radius:15px;
-  background:#e9fff2;
-  color:#087443;
+margin-top:15px;
+padding:13px;
+border-radius:10px;
+background:#ffe8e8;
+color:#c62828;
+font-weight:bold;
 }
 
 .tick{
-  font-size:90px;
-  color:#08a65a;
-  font-weight:bold;
-  line-height:1;
-  margin-bottom:15px;
+font-size:90px;
+font-weight:bold;
+color:#08a65a;
+line-height:1;
 }
 
-.message{
-  font-size:18px;
-  font-weight:bold;
-  line-height:1.7;
-}
-
-.home{
-  background:#00a86b;
-  margin-top:22px;
+.success{
+margin-top:15px;
+padding:20px;
+border-radius:15px;
+background:#e9fff2;
+color:#087443;
+font-size:18px;
+font-weight:bold;
+line-height:1.7;
 }
 </style>
 </head>
 
 <body>
 
-<!-- LOGIN -->
+<!-- LOGIN PAGE -->
 <div class="page" id="loginPage">
 <div class="box">
 
@@ -143,7 +130,7 @@ button{
 </div>
 
 
-<!-- NAME -->
+<!-- NAME PAGE -->
 <div class="page" id="namePage">
 <div class="box">
 
@@ -158,35 +145,60 @@ button{
 </div>
 
 
-<!-- BOOKS -->
+<!-- HOME PAGE -->
+<div class="page" id="homePage">
+<div class="box">
+
+<h1 id="helloName">Welcome</h1>
+
+<p>Welcome to Manan360.pk</p>
+
+<button onclick="openBooks()">Books & Notes</button>
+
+<button class="green" onclick="openTokenPage()">
+Token Number
+</button>
+
+<button class="dark" onclick="signOut()">
+Sign Out
+</button>
+
+</div>
+</div>
+
+
+<!-- BOOKS PAGE -->
 <div class="page" id="booksPage">
 <div class="box">
 
-<h2 id="welcomeText">Books</h2>
+<h2>Books & Notes</h2>
 
 <div class="book">
 <h3>Class 9th Notes</h3>
 <p>Study Notes</p>
-<button onclick="openToken()">Open Book</button>
+<button onclick="openTokenPage()">Open Notes</button>
 </div>
 
 <div class="book">
 <h3>Class 10th Notes</h3>
 <p>Study Notes</p>
-<button onclick="openToken()">Open Book</button>
+<button onclick="openTokenPage()">Open Notes</button>
 </div>
 
-<button class="signout" onclick="signOut()">Sign Out</button>
+<button class="gray" onclick="goHome()">
+Home
+</button>
 
 </div>
 </div>
 
 
-<!-- TOKEN -->
+<!-- SEPARATE TOKEN PAGE -->
 <div class="page" id="tokenPage">
 <div class="box">
 
 <h2>Token Number</h2>
+
 <p>Enter your token number</p>
 
 <input
@@ -196,32 +208,34 @@ inputmode="numeric"
 maxlength="10"
 placeholder="Enter Token Number">
 
-<button onclick="verifyToken()">Verify Token</button>
+<button onclick="verifyToken()">
+Verify Token
+</button>
 
-<button class="cancel" onclick="cancelToken()">Cancel</button>
+<button class="gray" onclick="cancelToken()">
+Cancel
+</button>
 
 <div id="tokenMessage"></div>
 
-<button class="signout" onclick="signOut()">Sign Out</button>
-
 </div>
 </div>
 
 
-<!-- SUCCESS -->
+<!-- SUCCESS PAGE -->
 <div class="page" id="successPage">
 <div class="box">
 
 <div class="tick">✓</div>
 
 <div class="success">
-<div class="message">
 آپ کی درخواست سبمٹ ہو چکی ہے۔<br>
 براہ کرم انتظار کریں۔
 </div>
-</div>
 
-<button class="home" onclick="goHome()">Home</button>
+<button class="green" onclick="goHome()">
+Home
+</button>
 
 </div>
 </div>
@@ -229,141 +243,140 @@ placeholder="Enter Token Number">
 
 <script>
 
-/* LOGIN */
+/* LOGIN DETAILS */
 const USERNAME = "admin1234";
 const PASSWORD = "admin";
 
 
-/* 500 UNIQUE TOKENS */
+/* 500 VALID TOKENS */
 const validTokens = new Set();
 
 /* مخصوص token */
 validTokens.add("7842306159");
 
 /* باقی 499 tokens */
-for(let i=6001; i<=6499; i++){
-    validTokens.add("784230" + i);
+for(let i=6001;i<=6499;i++){
+validTokens.add("784230"+i);
 }
 
 
-/* PAGE */
+/* PAGE SYSTEM */
 function showPage(id){
 
-    document.querySelectorAll(".page").forEach(function(page){
-        page.style.display="none";
-    });
+document.querySelectorAll(".page").forEach(function(page){
+page.style.display="none";
+});
 
-    document.getElementById(id).style.display="flex";
+document.getElementById(id).style.display="flex";
 }
 
 
 /* LOGIN */
 function login(){
 
-    const username =
-        document.getElementById("username").value.trim();
+let u=document.getElementById("username").value.trim();
+let p=document.getElementById("password").value;
 
-    const password =
-        document.getElementById("password").value;
+if(u===USERNAME && p===PASSWORD){
 
-    if(username === USERNAME && password === PASSWORD){
+document.getElementById("loginError").innerHTML="";
+showPage("namePage");
 
-        document.getElementById("loginError").innerHTML="";
-        showPage("namePage");
+}else{
 
-    }else{
+document.getElementById("loginError").innerHTML=
+'<div class="error">Invalid username or password.</div>';
 
-        document.getElementById("loginError").innerHTML=
-        '<div class="error">Invalid username or password.</div>';
-
-    }
+}
 }
 
 
 /* NAME */
 function saveName(){
 
-    const name =
-        document.getElementById("visitorName").value.trim();
+let name=document.getElementById("visitorName").value.trim();
 
-    if(name===""){
-        alert("Please enter your name.");
-        return;
-    }
+if(name===""){
+alert("Please enter your name.");
+return;
+}
 
-    document.getElementById("welcomeText").innerText=
-        "Hello, " + name;
+document.getElementById("helloName").innerText=
+"Hello, "+name;
 
-    showPage("booksPage");
+showPage("homePage");
 }
 
 
-/* BOOK */
-function openToken(){
-
-    document.getElementById("token").value="";
-    document.getElementById("tokenMessage").innerHTML="";
-
-    showPage("tokenPage");
+/* HOME → BOOKS */
+function openBooks(){
+showPage("booksPage");
 }
 
 
-/* TOKEN */
+/* HOME/BOOKS → SEPARATE TOKEN PAGE */
+function openTokenPage(){
+
+document.getElementById("token").value="";
+document.getElementById("tokenMessage").innerHTML="";
+
+showPage("tokenPage");
+}
+
+
+/* TOKEN VERIFY */
 function verifyToken(){
 
-    const token =
-        document.getElementById("token").value.trim();
+let token=document.getElementById("token").value.trim();
 
-    const message =
-        document.getElementById("tokenMessage");
+let message=document.getElementById("tokenMessage");
 
-    if(token===""){
+if(token===""){
 
-        message.innerHTML=
-        '<div class="error">Please enter your token number.</div>';
+message.innerHTML=
+'<div class="error">Please enter a token number.</div>';
 
-        return;
-    }
+return;
+}
 
-    if(validTokens.has(token)){
+if(validTokens.has(token)){
 
-        showPage("successPage");
+showPage("successPage");
 
-    }else{
+}else{
 
-        message.innerHTML=
-        '<div class="error">Invalid Token Number</div>';
+message.innerHTML=
+'<div class="error">Invalid Token Number</div>';
 
-    }
+}
 }
 
 
-/* CANCEL */
+/* CANCEL → HOME */
 function cancelToken(){
 
-    document.getElementById("token").value="";
-    document.getElementById("tokenMessage").innerHTML="";
+document.getElementById("token").value="";
+document.getElementById("tokenMessage").innerHTML="";
 
-    showPage("booksPage");
+showPage("homePage");
 }
 
 
 /* HOME */
 function goHome(){
-
-    showPage("booksPage");
+showPage("homePage");
 }
 
 
 /* SIGN OUT */
 function signOut(){
 
-    document.getElementById("username").value="";
-    document.getElementById("password").value="";
-    document.getElementById("visitorName").value="";
-    document.getElementById("token").value="";
+document.getElementById("username").value="";
+document.getElementById("password").value="";
+document.getElementById("visitorName").value="";
+document.getElementById("token").value="";
 
-    showPage("loginPage");
+showPage("loginPage");
 }
 
 
