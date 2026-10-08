@@ -72,6 +72,10 @@ background:#263238;
 background:#00a884;
 }
 
+.download-btn{
+background:linear-gradient(90deg,#1565c0,#42a5f5);
+}
+
 .error{
 color:#ffd6d6;
 margin-top:10px;
@@ -253,16 +257,12 @@ opacity:.9;
 <div class="finger"></div>
 
 <div id="fingerInfo">
-Please wait 15 seconds...
+Please wait 5 seconds...
 <br>
 Checking your details...
 </div>
 
-<div id="fingerTimer" class="timer">15</div>
-
-<button id="verifyFingerBtn" onclick="verifyFinger()">
-Verify Finger
-</button>
+<div id="fingerTimer" class="timer">5</div>
 
 <div id="fingerStatus" class="success"></div>
 
@@ -348,23 +348,47 @@ Sign Out
 
 <h2>📚 Books & Notes</h2>
 
+<!-- CLASS 9 -->
 <div class="card">
 <h3>Class 9th</h3>
 <p>Urdu Test Paper</p>
 
-<button onclick="openPDF('Class-9th-Urdu-Test-Paper.pdf')">
-Open Note
+<button onclick="viewPDF('Class-9th-Urdu-Test-Paper.pdf')">
+👁️ View Note
 </button>
+
+<a
+href="Class-9th-Urdu-Test-Paper.pdf"
+download
+style="text-decoration:none;display:block;">
+<button class="download-btn">
+⬇️ Download Note
+</button>
+</a>
+
 </div>
 
+
+<!-- CLASS 10 -->
 <div class="card">
 <h3>Class 10th</h3>
 <p>Urdu Test Paper</p>
 
-<button onclick="openPDF('Class-10th-Urdu-Test-Paper.pdf')">
-Open Note
+<button onclick="viewPDF('Class-10th-Urdu-Test-Paper.pdf')">
+👁️ View Note
 </button>
+
+<a
+href="Class-10th-Urdu-Test-Paper.pdf"
+download
+style="text-decoration:none;display:block;">
+<button class="download-btn">
+⬇️ Download Note
+</button>
+</a>
+
 </div>
+
 
 <button onclick="openToken()">🎫 Verify Token</button>
 
@@ -421,7 +445,7 @@ const users={
 };
 
 
-/* ================= 500 DEMO TOKENS ================= */
+/* ================= DEMO TOKENS ================= */
 
 const tokens=[
 "7842306001","7842306002","7842306003","7842306004","7842306005",
@@ -558,7 +582,7 @@ hideAll();
 
 document.getElementById("fingerPage").classList.remove("hidden");
 
-resetFinger();
+startFinger();
 
 }else{
 
@@ -569,32 +593,20 @@ document.getElementById("loginError").textContent=
 }
 
 
-/* ================= FINGER ================= */
+/* ================= FINGERPRINT ================= */
 
-function resetFinger(){
+function startFinger(){
 
-document.getElementById("fingerInfo").innerHTML=
-"Please wait 15 seconds..."+
-"<br>Checking your details...";
-
-document.getElementById("fingerTimer").textContent="15";
-
-document.getElementById("fingerStatus").textContent="";
-
-document.getElementById("verifyFingerBtn").disabled=false;
-
-}
-
-function verifyFinger(){
-
-const button=document.getElementById("verifyFingerBtn");
 const status=document.getElementById("fingerStatus");
 const timer=document.getElementById("fingerTimer");
 const info=document.getElementById("fingerInfo");
 
-button.disabled=true;
+status.textContent="";
+info.innerHTML=
+"Please wait 5 seconds..."+
+"<br>Checking your details...";
 
-let seconds=15;
+let seconds=5;
 
 timer.textContent=seconds;
 
@@ -612,7 +624,8 @@ timer.textContent="✓";
 
 status.textContent="✓ Finger Verified Successfully";
 
-info.innerHTML="Checking your details completed.";
+info.innerHTML=
+"Checking your details completed.";
 
 setTimeout(function(){
 
@@ -666,7 +679,8 @@ return;
 
 }
 
-document.getElementById("welcomeName").textContent="Hello, "+name;
+document.getElementById("welcomeName").textContent=
+"Hello, "+name;
 
 hideAll();
 
@@ -686,18 +700,14 @@ document.getElementById("booksPage").classList.remove("hidden");
 }
 
 
-/* ================= PDF OPEN ================= */
+/* ================= VIEW PDF ================= */
 
-function openPDF(fileName){
+function viewPDF(fileName){
 
-/*
-GitHub Pages پر index.html کے اسی folder میں
-PDF موجود ہونے کی صورت میں یہ اسے کھولے گا۔
-*/
+const pdfURL=
+new URL(fileName,window.location.href).href;
 
-const pdfURL = new URL(fileName, window.location.href).href;
-
-window.location.href = pdfURL;
+window.open(pdfURL,"_blank");
 
 }
 
@@ -705,11 +715,6 @@ window.location.href = pdfURL;
 /* ================= HOME ================= */
 
 function goHome(){
-
-/*
-Browser history میں موجود token/books page کو replace
-کیا جاتا ہے تاکہ Back کرنے پر وہ page دوبارہ نہ آئے۔
-*/
 
 history.replaceState(null,"",window.location.href);
 
@@ -753,10 +758,14 @@ goHome();
 
 function verifyToken(){
 
-const token=document.getElementById("tokenInput").value.trim();
+const token=
+document.getElementById("tokenInput").value.trim();
 
-const message=document.getElementById("tokenMessage");
-const buttons=document.getElementById("tokenButtons");
+const message=
+document.getElementById("tokenMessage");
+
+const buttons=
+document.getElementById("tokenButtons");
 
 if(!token){
 
@@ -873,3 +882,8 @@ document.getElementById("loginError").textContent="";
 
 </body>
 </html>
+
+بس دو اہم باتیں:
+
+1. دونوں PDF فائلوں کے نام بالکل یہی رہنے چاہئیں: "Class-9th-Urdu-Test-Paper.pdf" اور "Class-10th-Urdu-Test-Paper.pdf"
+2. Fingerprint میں اب Verify Finger بٹن نہیں ہے؛ Login کے فوراً بعد 5 سیکنڈ کی scanning خود چلے گی اور مکمل ہوتے ہی Details کھل جائیں گی۔
