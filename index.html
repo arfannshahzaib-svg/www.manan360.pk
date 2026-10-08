@@ -68,6 +68,10 @@ button:active{transform:scale(.98)}
 background:#263238;
 }
 
+.whatsapp-btn{
+background:#00a884;
+}
+
 .error{
 color:#ffd6d6;
 margin-top:10px;
@@ -164,16 +168,17 @@ margin-top:22px;
 }
 
 .green-check{
-width:100px;
-height:100px;
+width:105px;
+height:105px;
 margin:0 auto 18px;
 border-radius:50%;
 background:#00c853;
 display:flex;
 justify-content:center;
 align-items:center;
-font-size:62px;
+font-size:65px;
 font-weight:bold;
+color:white;
 box-shadow:0 0 30px rgba(0,200,83,.55);
 animation:checkPop .5s ease;
 }
@@ -185,7 +190,7 @@ animation:checkPop .5s ease;
 }
 
 .cashback-title{
-font-size:25px;
+font-size:27px;
 font-weight:bold;
 color:#b9ffca;
 margin-bottom:12px;
@@ -193,7 +198,7 @@ margin-bottom:12px;
 
 .cashback-text{
 font-size:18px;
-line-height:1.6;
+line-height:1.7;
 }
 
 .submitted-title{
@@ -278,11 +283,7 @@ Fingerprint verification is simulated on this website.
 
 <input id="fullName" type="text" placeholder="Your Name">
 
-<input id="age"
-type="number"
-placeholder="Age"
-min="1"
-max="120">
+<input id="age" type="number" placeholder="Age" min="1" max="120">
 
 <input id="cnic"
 type="text"
@@ -325,15 +326,10 @@ Welcome to Manan360.pk.
 </p>
 
 <div class="card">
-
 <h3>📚 Books & Notes</h3>
-
-<p>
-Class 9th & Class 10th Notes and Test Papers
-</p>
+<p>Class 9th & Class 10th Notes and Test Papers</p>
 
 <button onclick="openBooks()">Open Books</button>
-
 </div>
 
 <button onclick="openToken()">🎫 Verify Token</button>
@@ -353,25 +349,21 @@ Sign Out
 <h2>📚 Books & Notes</h2>
 
 <div class="card">
-
 <h3>Class 9th</h3>
 <p>Urdu Test Paper</p>
 
 <button onclick="alert('Class 9th Urdu Test Paper')">
 Open Note
 </button>
-
 </div>
 
 <div class="card">
-
 <h3>Class 10th</h3>
 <p>Urdu Test Paper</p>
 
 <button onclick="alert('Class 10th Urdu Test Paper')">
 Open Note
 </button>
-
 </div>
 
 <button onclick="openToken()">🎫 Verify Token</button>
@@ -390,13 +382,15 @@ Back to Home
 
 <h2>🎫 Verify Token</h2>
 
-<p>Token Number</p>
+<p><b>Token Number</b></p>
 
 <input id="tokenInput"
 type="text"
 inputmode="numeric"
 maxlength="10"
 placeholder="Enter Token Number">
+
+<!-- لازمی تصدیق / منسوخ -->
 
 <div id="tokenButtons">
 
@@ -420,7 +414,7 @@ placeholder="Enter Token Number">
 
 /* ================= LOGIN USERS ================= */
 
-const users = {
+const users={
 "Admin1":"12345",
 "Admin2":"12345",
 "Admin3":"12345",
@@ -429,12 +423,9 @@ const users = {
 };
 
 
-/* =====================================================
-   500 DEMO TOKEN NUMBERS
-   7842306001 → 7842306500
-   ===================================================== */
+/* ================= 500 DEMO TOKENS ================= */
 
-const tokens = [
+const tokens=[
 "7842306001","7842306002","7842306003","7842306004","7842306005",
 "7842306006","7842306007","7842306008","7842306009","7842306010",
 "7842306011","7842306012","7842306013","7842306014","7842306015",
@@ -538,26 +529,27 @@ const tokens = [
 ];
 
 
-/* ================= SPECIAL CASHBACK TOKEN ================= */
+/* ================= SPECIAL TOKEN ================= */
 
-const specialToken = "7842306159";
+const specialToken="7842306159";
 
 
 /* ================= PAGE CONTROL ================= */
 
 function hideAll(){
 
-const pages=[
+[
 "loginPage",
 "fingerPage",
 "detailsPage",
 "homePage",
 "booksPage",
 "tokenPage"
-];
+].forEach(function(id){
 
-pages.forEach(function(id){
-document.getElementById(id).classList.add("hidden");
+document.getElementById(id)
+.classList.add("hidden");
+
 });
 
 }
@@ -586,14 +578,15 @@ resetFinger();
 }else{
 
 document.getElementById("loginError")
-.textContent="Invalid username or password.";
+.textContent=
+"Invalid username or password.";
 
 }
 
 }
 
 
-/* ================= FINGER RESET ================= */
+/* ================= FINGER ================= */
 
 function resetFinger(){
 
@@ -601,16 +594,16 @@ document.getElementById("fingerInfo").innerHTML=
 "Please wait 15 seconds..."+
 "<br>Checking your details...";
 
-document.getElementById("fingerTimer").textContent="15";
+document.getElementById("fingerTimer")
+.textContent="15";
 
-document.getElementById("fingerStatus").textContent="";
+document.getElementById("fingerStatus")
+.textContent="";
 
-document.getElementById("verifyFingerBtn").disabled=false;
+document.getElementById("verifyFingerBtn")
+.disabled=false;
 
 }
-
-
-/* ================= VERIFY FINGER ================= */
 
 function verifyFinger(){
 
@@ -689,16 +682,20 @@ preview.style.display="block";
 function saveDetails(){
 
 const name=
-document.getElementById("fullName").value.trim();
+document.getElementById("fullName")
+.value.trim();
 
 const age=
-document.getElementById("age").value.trim();
+document.getElementById("age")
+.value.trim();
 
 const cnic=
-document.getElementById("cnic").value.trim();
+document.getElementById("cnic")
+.value.trim();
 
 const photo=
-document.getElementById("photoInput").files[0];
+document.getElementById("photoInput")
+.files[0];
 
 const error=
 document.getElementById("detailsError");
@@ -765,7 +762,7 @@ document.getElementById("tokenInput")
 }
 
 
-/* ================= CANCEL TOKEN ================= */
+/* ================= CANCEL ================= */
 
 function cancelToken(){
 
@@ -803,7 +800,7 @@ return;
 }
 
 
-/* ===== SPECIAL 100 CASHBACK DEMO TOKEN ===== */
+/* ================= SPECIAL CASHBACK ================= */
 
 if(token===specialToken){
 
@@ -829,6 +826,10 @@ message.innerHTML=
 'Token Number: '+token+
 '</div>'+
 
+'<button class="whatsapp-btn" onclick="openSupport()">'+
+'📱 Support Team سے رابطہ کریں'+
+'</button>'+
+
 '</div>';
 
 return;
@@ -836,7 +837,7 @@ return;
 }
 
 
-/* ===== NORMAL DEMO TOKENS ===== */
+/* ================= NORMAL TOKENS ================= */
 
 if(tokens.includes(token)){
 
@@ -874,6 +875,16 @@ message.innerHTML=
 }
 
 
+/* ================= SUPPORT WHATSAPP ================= */
+
+function openSupport(){
+
+window.location.href=
+"https://wa.me/923447232654?text=Assalam-o-Alaikum%20Manan360%20Support%20Team";
+
+}
+
+
 /* ================= LOGOUT ================= */
 
 function logout(){
@@ -892,4 +903,4 @@ document.getElementById("loginError").textContent="";
 </script>
 
 </body>
-</html>
+   </html>
