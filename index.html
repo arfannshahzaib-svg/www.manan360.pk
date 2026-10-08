@@ -352,7 +352,7 @@ Sign Out
 <h3>Class 9th</h3>
 <p>Urdu Test Paper</p>
 
-<button onclick="alert('Class 9th Urdu Test Paper')">
+<button onclick="openPDF('Class-9th-Urdu-Test-Paper.pdf')">
 Open Note
 </button>
 </div>
@@ -361,7 +361,7 @@ Open Note
 <h3>Class 10th</h3>
 <p>Urdu Test Paper</p>
 
-<button onclick="alert('Class 10th Urdu Test Paper')">
+<button onclick="openPDF('Class-10th-Urdu-Test-Paper.pdf')">
 Open Note
 </button>
 </div>
@@ -389,8 +389,6 @@ type="text"
 inputmode="numeric"
 maxlength="10"
 placeholder="Enter Token Number">
-
-<!-- لازمی تصدیق / منسوخ -->
 
 <div id="tokenButtons">
 
@@ -528,16 +526,12 @@ const tokens=[
 "7842306496","7842306497","7842306498","7842306499","7842306500"
 ];
 
-
-/* ================= SPECIAL TOKEN ================= */
-
 const specialToken="7842306159";
 
 
 /* ================= PAGE CONTROL ================= */
 
 function hideAll(){
-
 [
 "loginPage",
 "fingerPage",
@@ -546,12 +540,8 @@ function hideAll(){
 "booksPage",
 "tokenPage"
 ].forEach(function(id){
-
-document.getElementById(id)
-.classList.add("hidden");
-
+document.getElementById(id).classList.add("hidden");
 });
-
 }
 
 
@@ -559,30 +549,23 @@ document.getElementById(id)
 
 function login(){
 
-const username=
-document.getElementById("username").value.trim();
+const username=document.getElementById("username").value.trim();
+const password=document.getElementById("password").value;
 
-const password=
-document.getElementById("password").value;
-
-if(users[username] &&
-users[username]===password){
+if(users[username] && users[username]===password){
 
 hideAll();
 
-document.getElementById("fingerPage")
-.classList.remove("hidden");
+document.getElementById("fingerPage").classList.remove("hidden");
 
 resetFinger();
 
 }else{
 
-document.getElementById("loginError")
-.textContent=
+document.getElementById("loginError").textContent=
 "Invalid username or password.";
 
 }
-
 }
 
 
@@ -594,30 +577,20 @@ document.getElementById("fingerInfo").innerHTML=
 "Please wait 15 seconds..."+
 "<br>Checking your details...";
 
-document.getElementById("fingerTimer")
-.textContent="15";
+document.getElementById("fingerTimer").textContent="15";
 
-document.getElementById("fingerStatus")
-.textContent="";
+document.getElementById("fingerStatus").textContent="";
 
-document.getElementById("verifyFingerBtn")
-.disabled=false;
+document.getElementById("verifyFingerBtn").disabled=false;
 
 }
 
 function verifyFinger(){
 
-const button=
-document.getElementById("verifyFingerBtn");
-
-const status=
-document.getElementById("fingerStatus");
-
-const timer=
-document.getElementById("fingerTimer");
-
-const info=
-document.getElementById("fingerInfo");
+const button=document.getElementById("verifyFingerBtn");
+const status=document.getElementById("fingerStatus");
+const timer=document.getElementById("fingerTimer");
+const info=document.getElementById("fingerInfo");
 
 button.disabled=true;
 
@@ -637,18 +610,15 @@ clearInterval(interval);
 
 timer.textContent="✓";
 
-status.textContent=
-"✓ Finger Verified Successfully";
+status.textContent="✓ Finger Verified Successfully";
 
-info.innerHTML=
-"Checking your details completed.";
+info.innerHTML="Checking your details completed.";
 
 setTimeout(function(){
 
 hideAll();
 
-document.getElementById("detailsPage")
-.classList.remove("hidden");
+document.getElementById("detailsPage").classList.remove("hidden");
 
 },1000);
 
@@ -667,8 +637,7 @@ const file=event.target.files[0];
 
 if(!file)return;
 
-const preview=
-document.getElementById("photoPreview");
+const preview=document.getElementById("photoPreview");
 
 preview.src=URL.createObjectURL(file);
 
@@ -681,24 +650,12 @@ preview.style.display="block";
 
 function saveDetails(){
 
-const name=
-document.getElementById("fullName")
-.value.trim();
+const name=document.getElementById("fullName").value.trim();
+const age=document.getElementById("age").value.trim();
+const cnic=document.getElementById("cnic").value.trim();
+const photo=document.getElementById("photoInput").files[0];
 
-const age=
-document.getElementById("age")
-.value.trim();
-
-const cnic=
-document.getElementById("cnic")
-.value.trim();
-
-const photo=
-document.getElementById("photoInput")
-.files[0];
-
-const error=
-document.getElementById("detailsError");
+const error=document.getElementById("detailsError");
 
 if(!name || !age || !cnic || !photo){
 
@@ -709,13 +666,11 @@ return;
 
 }
 
-document.getElementById("welcomeName")
-.textContent="Hello, "+name;
+document.getElementById("welcomeName").textContent="Hello, "+name;
 
 hideAll();
 
-document.getElementById("homePage")
-.classList.remove("hidden");
+document.getElementById("homePage").classList.remove("hidden");
 
 }
 
@@ -726,17 +681,41 @@ function openBooks(){
 
 hideAll();
 
-document.getElementById("booksPage")
-.classList.remove("hidden");
+document.getElementById("booksPage").classList.remove("hidden");
 
 }
 
+
+/* ================= PDF OPEN ================= */
+
+function openPDF(fileName){
+
+/*
+GitHub Pages پر index.html کے اسی folder میں
+PDF موجود ہونے کی صورت میں یہ اسے کھولے گا۔
+*/
+
+const pdfURL = new URL(fileName, window.location.href).href;
+
+window.location.href = pdfURL;
+
+}
+
+
+/* ================= HOME ================= */
+
 function goHome(){
+
+/*
+Browser history میں موجود token/books page کو replace
+کیا جاتا ہے تاکہ Back کرنے پر وہ page دوبارہ نہ آئے۔
+*/
+
+history.replaceState(null,"",window.location.href);
 
 hideAll();
 
-document.getElementById("homePage")
-.classList.remove("hidden");
+document.getElementById("homePage").classList.remove("hidden");
 
 }
 
@@ -747,17 +726,13 @@ function openToken(){
 
 hideAll();
 
-document.getElementById("tokenPage")
-.classList.remove("hidden");
+document.getElementById("tokenPage").classList.remove("hidden");
 
-document.getElementById("tokenMessage")
-.innerHTML="";
+document.getElementById("tokenMessage").innerHTML="";
 
-document.getElementById("tokenButtons")
-.style.display="block";
+document.getElementById("tokenButtons").style.display="block";
 
-document.getElementById("tokenInput")
-.value="";
+document.getElementById("tokenInput").value="";
 
 }
 
@@ -767,7 +742,6 @@ document.getElementById("tokenInput")
 function cancelToken(){
 
 document.getElementById("tokenInput").value="";
-
 document.getElementById("tokenMessage").innerHTML="";
 
 goHome();
@@ -779,16 +753,10 @@ goHome();
 
 function verifyToken(){
 
-const token=
-document.getElementById("tokenInput")
-.value.trim();
+const token=document.getElementById("tokenInput").value.trim();
 
-const message=
-document.getElementById("tokenMessage");
-
-const buttons=
-document.getElementById("tokenButtons");
-
+const message=document.getElementById("tokenMessage");
+const buttons=document.getElementById("tokenButtons");
 
 if(!token){
 
@@ -812,9 +780,7 @@ message.innerHTML=
 
 '<div class="green-check">✓</div>'+
 
-'<div class="cashback-title">'+
-'مبارک ہو!'+
-'</div>'+
+'<div class="cashback-title">مبارک ہو!</div>'+
 
 '<div class="cashback-text">'+
 'آپ 100 Cashback کے Eligible ہو چکے ہیں۔'+
@@ -861,6 +827,10 @@ message.innerHTML=
 'Token Number: '+token+
 '</div>'+
 
+'<button onclick="goHome()" class="cancel-btn">'+
+'Home'+
+'</button>'+
+
 '</div>';
 
 }else{
@@ -891,8 +861,7 @@ function logout(){
 
 hideAll();
 
-document.getElementById("loginPage")
-.classList.remove("hidden");
+document.getElementById("loginPage").classList.remove("hidden");
 
 document.getElementById("username").value="";
 document.getElementById("password").value="";
@@ -903,4 +872,4 @@ document.getElementById("loginError").textContent="";
 </script>
 
 </body>
-   </html>
+</html>
