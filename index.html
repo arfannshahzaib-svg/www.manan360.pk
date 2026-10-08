@@ -1,827 +1,119 @@
-<!DOCTYPE html>  <html lang="en">  
-<head>  
-<meta charset="UTF-8">  
-<meta name="viewport" content="width=device-width, initial-scale=1.0">  
-<title>Manan360.pk - Student Portal</title>  <style>  
-*{  
-    box-sizing:border-box;  
-    margin:0;  
-    padding:0;  
-}  
-  
-body{  
-    font-family:Arial,Helvetica,sans-serif;  
-    min-height:100vh;  
-    overflow-x:hidden;  
-}  
-  
-.background{  
-    position:fixed;  
-    inset:0;  
-    z-index:-2;  
-    background:linear-gradient(  
-        120deg,  
-        #ff0066,#6a00ff,#007bff,#00d4ff,  
-        #00ff88,#ffe600,#ff6600,#ff0066  
-    );  
-    background-size:500% 500%;  
-    animation:multicolor 15s ease infinite;  
-}  
-  
-@keyframes multicolor{  
-    0%{background-position:0% 50%}  
-    25%{background-position:100% 50%}  
-    50%{background-position:100% 100%}  
-    75%{background-position:0% 100%}  
-    100%{background-position:0% 50%}  
-}  
-  
-.background::after{  
-    content:"";  
-    position:absolute;  
-    inset:0;  
-    background:rgba(0,0,0,.28);  
-    backdrop-filter:blur(2px);  
-}  
-  
-.page{  
-    min-height:100vh;  
-    display:flex;  
-    justify-content:center;  
-    align-items:center;  
-    padding:20px;  
-}  
-  
-.box{  
-    width:100%;  
-    max-width:390px;  
-    background:rgba(255,255,255,.96);  
-    border-radius:24px;  
-    padding:30px 25px;  
-    text-align:center;  
-    box-shadow:0 20px 60px rgba(0,0,0,.35);  
-}  
-  
-.logo{  
-    width:72px;  
-    height:72px;  
-    margin:0 auto 12px;  
-    border-radius:50%;  
-    display:flex;  
-    align-items:center;  
-    justify-content:center;  
-    color:white;  
-    font-size:27px;  
-    font-weight:bold;  
-    background:linear-gradient(135deg,#ff0066,#6a00ff,#007bff);  
-}  
-  
-h1{  
-    color:#222;  
-    font-size:27px;  
-    margin-bottom:6px;  
-}  
-  
-.subtitle{  
-    color:#777;  
-    font-size:14px;  
-    margin-bottom:25px;  
-}  
-  
-.input{  
-    width:100%;  
-    height:50px;  
-    border:2px solid #e5e5e5;  
-    border-radius:13px;  
-    padding:0 15px;  
-    font-size:15px;  
-    outline:none;  
-    margin-bottom:15px;  
-}  
-  
-.input:focus{  
-    border-color:#6a00ff;  
-}  
-  
-.btn{  
-    width:100%;  
-    height:51px;  
-    border:0;  
-    border-radius:13px;  
-    color:white;  
-    font-size:16px;  
-    font-weight:bold;  
-    cursor:pointer;  
-    background:linear-gradient(90deg,#ff0066,#6a00ff,#007bff);  
-}  
-  
-.error{  
-    display:none;  
-    color:#c00;  
-    background:#ffe8e8;  
-    padding:10px;  
-    border-radius:10px;  
-    margin-top:14px;  
-    font-size:13px;  
-}  
-  
-#namePage{  
-    display:none;  
-}  
-  
-#homePage{  
-    display:none;  
-    min-height:100vh;  
-    padding:20px 15px 50px;  
-}  
-  
-.container{  
-    max-width:900px;  
-    margin:auto;  
-}  
-  
-.header{  
-    background:rgba(255,255,255,.95);  
-    border-radius:20px;  
-    padding:17px 20px;  
-    display:flex;  
-    justify-content:space-between;  
-    align-items:center;  
-    gap:12px;  
-    flex-wrap:wrap;  
-    box-shadow:0 12px 35px rgba(0,0,0,.22);  
-    margin-bottom:20px;  
-}  
-  
-.site-title{  
-    font-size:21px;  
-    font-weight:bold;  
-    color:#222;  
-}  
-  
-.site-subtitle{  
-    color:#777;  
-    font-size:12px;  
-    margin-top:4px;  
-}  
-  
-.header-right{  
-    display:flex;  
-    align-items:center;  
-    gap:8px;  
-    flex-wrap:wrap;  
-}  
-  
-.demo-balance{  
-    background:linear-gradient(90deg,#00a86b,#00c853);  
-    color:white;  
-    padding:10px 14px;  
-    border-radius:10px;  
-    font-size:14px;  
-    font-weight:bold;  
-}  
-  
-.logout{  
-    border:0;  
-    background:#222;  
-    color:white;  
-    padding:10px 15px;  
-    border-radius:10px;  
-    cursor:pointer;  
-    font-weight:bold;  
-}  
-  
-.welcome{  
-    background:rgba(255,255,255,.95);  
-    border-radius:22px;  
-    padding:30px 20px;  
-    text-align:center;  
-    box-shadow:0 12px 35px rgba(0,0,0,.20);  
-    margin-bottom:20px;  
-}  
-  
-.welcome h2{  
-    font-size:30px;  
-    color:#222;  
-    margin-bottom:12px;  
-}  
-  
-.user-name{  
-    background:linear-gradient(90deg,#ff0066,#6a00ff,#007bff);  
-    -webkit-background-clip:text;  
-    color:transparent;  
-}  
-  
-.intro{  
-    color:#555;  
-    font-size:16px;  
-    line-height:1.7;  
-}  
-  
-.cards{  
-    display:grid;  
-    grid-template-columns:repeat(2,1fr);  
-    gap:18px;  
-}  
-  
-.card{  
-    background:rgba(255,255,255,.95);  
-    border-radius:20px;  
-    padding:25px 18px;  
-    text-align:center;  
-    box-shadow:0 10px 30px rgba(0,0,0,.18);  
-}  
-  
-.icon{  
-    font-size:34px;  
-    margin-bottom:10px;  
-}  
-  
-.card h3{  
-    color:#222;  
-    margin-bottom:7px;  
-}  
-  
-.card p{  
-    color:#777;  
-    font-size:13px;  
-    margin-bottom:12px;  
-}  
-  
-.price{  
-    font-size:20px;  
-    font-weight:bold;  
-    color:#111;  
-    margin:8px 0 13px;  
-}  
-  
-.buy-btn{  
-    display:block;  
-    width:100%;  
-    border:0;  
-    color:white;  
-    background:linear-gradient(90deg,#ff0066,#6a00ff,#007bff);  
-    padding:12px 15px;  
-    border-radius:11px;  
-    font-weight:bold;  
-    font-size:15px;  
-    cursor:pointer;  
-    margin-bottom:9px;  
-}  
-  
-.open{  
-    display:block;  
-    color:#333;  
-    text-decoration:none;  
-    background:#eeeeee;  
-    padding:10px 18px;  
-    border-radius:10px;  
-    font-weight:bold;  
-    font-size:14px;  
-}  
-  
-.download-pdf{  
-    display:none;  
-    margin-top:10px;  
-    width:100%;  
-    padding:11px;  
-    border-radius:10px;  
-    background:#1565c0;  
-    color:white;  
-    text-decoration:none;  
-    font-weight:bold;  
-    text-align:center;  
-}  
-  
-.support{  
-    display:block;  
-    width:100%;  
-    max-width:320px;  
-    margin:22px auto 0;  
-    padding:13px 18px;  
-    text-align:center;  
-    text-decoration:none;  
-    background:#25D366;  
-    color:white;  
-    font-size:16px;  
-    font-weight:bold;  
-    border-radius:12px;  
-}  
-  
-/* POPUP */  
-  
-.popup{  
-    display:none;  
-    position:fixed;  
-    inset:0;  
-    background:rgba(0,0,0,.65);  
-    align-items:center;  
-    justify-content:center;  
-    padding:20px;  
-    z-index:9999;  
-}  
-  
-.popup-box{  
-    width:100%;  
-    max-width:370px;  
-    background:white;  
-    border-radius:22px;  
-    padding:26px;  
-    text-align:center;  
-    box-shadow:0 20px 50px rgba(0,0,0,.4);  
-    position:relative;  
-}  
-  
-.close-popup{  
-    position:absolute;  
-    top:10px;  
-    right:12px;  
-    width:32px;  
-    height:32px;  
-    border:0;  
-    border-radius:50%;  
-    background:#eeeeee;  
-    color:#222;  
-    font-size:20px;  
-    font-weight:bold;  
-    cursor:pointer;  
-}  
-  
-.popup-box h3{  
-    font-size:23px;  
-    margin-bottom:18px;  
-    color:#222;  
-}  
-  
-.order-info{  
-    background:#f5f5f5;  
-    border-radius:14px;  
-    padding:15px;  
-    text-align:left;  
-    margin-bottom:16px;  
-    line-height:1.8;  
-    font-size:14px;  
-    color:#444;  
-}  
-  
-.demo-note{  
-    background:#fff4d6;  
-    color:#8a5a00;  
-    padding:10px;  
-    border-radius:10px;  
-    font-size:13px;  
-    margin-bottom:16px;  
-}  
-  
-.place-order{  
-    width:100%;  
-    border:0;  
-    padding:13px;  
-    border-radius:11px;  
-    background:linear-gradient(90deg,#00a86b,#00c853);  
-    color:white;  
-    font-size:16px;  
-    font-weight:bold;  
-    cursor:pointer;  
-}  
-  
-.success-message{  
-    display:none;  
-}  
-  
-.success-message h3{  
-    color:#00a86b;  
-    margin-bottom:12px;  
-}  
-  
-.success-message p{  
-    color:#555;  
-    line-height:1.7;  
-    font-size:15px;  
-}  
-  
-.ceo{  
-    margin-top:15px;  
-    font-weight:bold;  
-    color:#222 !important;  
-}  
-  
-.success-download{  
-    display:block;  
-    width:100%;  
-    margin-top:18px;  
-    padding:13px;  
-    border-radius:11px;  
-    background:#1565c0;  
-    color:white;  
-    text-decoration:none;  
-    font-weight:bold;  
-}  
-  
-.track-order{  
-    display:block;  
-    width:100%;  
-    margin-top:10px;  
-    padding:12px;  
-    border-radius:11px;  
-    background:#eeeeee;  
-    color:#222;  
-    text-decoration:none;  
-    font-weight:bold;  
-}  
-  
-@media(max-width:600px){  
-    .cards{  
-        grid-template-columns:1fr;  
-    }  
-  
-    .header-right{  
-        width:100%;  
-        justify-content:space-between;  
-    }  
-}  
-</style>  </head>  <body>  <div class="background"></div>  <!-- LOGIN -->  <section id="loginPage" class="page">  
-<div class="box">  <div class="logo">M</div>  <h1>Manan360.pk</h1>  <div class="subtitle">Student Login Portal</div>  <input class="input" type="text" id="username" placeholder="Username">  <input class="input" type="password" id="password" placeholder="Password">  <button class="btn" onclick="login()">Login</button>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Manan360.pk</title>
 
-<div class="error" id="loginError">  
-Invalid username or password.  
-</div>  </div>  
-</section>  <!-- NAME -->  <section id="namePage" class="page">  <div class="box">  <div class="logo">M</div>  <div style="font-size:25px;font-weight:bold;margin-bottom:10px;">  
-What is your name?  
-</div>  <div class="subtitle">  
-Please enter your name to continue  
-</div>  <input
-class="input"
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+body{
+    font-family:Arial,sans-serif;
+    min-height:100vh;
+    background:linear-gradient(135deg,#061a40,#0077b6,#00b4d8);
+    color:#222;
+}
+.page{
+    min-height:100vh;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    padding:20px;
+}
+.box{
+    width:100%;
+    max-width:390px;
+    background:white;
+    border-radius:24px;
+    padding:30px 25px;
+    text-align:center;
+    box-shadow:0 15px 50px #0005;
+}
+.logo{
+    width:70px;height:70px;
+    margin:auto auto 15px;
+    border-radius:50%;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    background:linear-gradient(135deg,#0077b6,#00b4d8);
+    color:white;
+    font-size:28px;
+    font-weight:bold;
+}
+h1{font-size:27px;margin-bottom:7px}
+.sub{color:#777;margin-bottom:25px;font-size:14px}
+input{
+    width:100%;
+    height:50px;
+    margin-bottom:15px;
+    padding:0 15px;
+    border:2px solid #ddd;
+    border-radius:12px;
+    font-size:15px;
+}
+.btn{
+    display:block;
+    width:100%;
+    padding:14px;
+    border:0;
+    border-radius:12px;
+    background:linear-gradient(90deg,#0077b6,#00b4d8);
+    color:white;
+    font-weight:bold;
+    text-decoration:none;
+    cursor:pointer;
+}
+.info{
+    margin-top:15px;
+    padding:12px;
+    border-radius:10px;
+    background:#eef8ff;
+    color:#145;
+    font-size:13px;
+    line-height:1.6;
+}
+</style>
+</head>
+
+<body>
+
+<section class="page">
+<div class="box">
+
+<div class="logo">M</div>
+
+<h1>Manan360.pk</h1>
+
+<div class="sub">Student Login Portal</div>
+
+<!-- HTML-ONLY DEMO LOGIN -->
+<form action="name.html" method="get">
+
+<input
 type="text"
-id="visitorName"
-placeholder="Enter your name"
-maxlength="40"
+name="username"
+placeholder="Username"
+required>
 
-> 
+<input
+type="password"
+name="password"
+placeholder="Password"
+required>
 
-<button class="btn" onclick="continueToHome()">  
-Continue  
-</button>  </div>  
-</section>  <!-- HOME -->  <section id="homePage">  <div class="container">  <header class="header">  <div>  
-<div class="site-title">Manan360.pk</div>  
-<div class="site-subtitle">Notes & Test Papers</div>  
-</div>  <div class="header-right">  <div class="demo-balance">  
-💰 Demo Balance: Rs. 10,000  
-</div>  <button class="logout" onclick="logout()">  
-Sign Out  
-</button>  </div>  
-</header>  <div class="welcome">  <h2>  
-Hello,  
-<span class="user-name" id="displayName">User</span>  
-</h2>  <div class="intro">  
-My name is <strong>Abdur Manan</strong>.<br>  
-Welcome to Manan360.pk.  
-</div>  </div>  <div class="cards">  <!-- CLASS 9 -->  <div class="card">  <div class="icon">📚</div>  <h3>Class 9th</h3>  <p>Urdu Test Paper</p>  <div class="price">Rs. 100</div>  <button
-class="buy-btn"
-onclick="buyNote('Class 9th Urdu Test Paper','Class-9th-Urdu-Test-Paper.pdf','download9')"
-
-> 
-
-🛒 Buy Note
+<button class="btn" type="submit">
+Login
 </button>
 
-<a
-href="Class-9th-Urdu-Test-Paper.pdf"
-class="open"
-target="_blank"
+</form>
 
-> 
+<div class="info">
+Enter your registered username and password to continue.
+</div>
 
-📄 Open Note
-</a>
+</div>
+</section>
 
-<a
-id="download9"
-href="Class-9th-Urdu-Test-Paper.pdf"
-class="download-pdf"
-download
-
-> 
-
-📥 Download PDF
-</a>
-
-</div>  <!-- CLASS 10 -->  <div class="card">  <div class="icon">📖</div>  <h3>Class 10th</h3>  <p>Urdu Test Paper</p>  <div class="price">Rs. 100</div>  <button
-class="buy-btn"
-onclick="buyNote('Class 10th Urdu Test Paper','Class-10th-Urdu-Test-Paper.pdf','download10')"
-
-> 
-
-🛒 Buy Note
-</button>
-
-<a
-href="Class-10th-Urdu-Test-Paper.pdf"
-class="open"
-target="_blank"
-
-> 
-
-📄 Open Note
-</a>
-
-<a
-id="download10"
-href="Class-10th-Urdu-Test-Paper.pdf"
-class="download-pdf"
-download
-
-> 
-
-📥 Download PDF
-</a>
-
-</div>  </div>  <a
-href="https://wa.me/923447232654?text=Assalam-o-Alaikum%20Manan360%20Support%20Team"
-class="support"
-target="_blank"
-
-> 
-
-💬 Support Team
-</a>
-
-</div>  
-</section>  <!-- ORDER POPUP -->  <div class="popup" id="buyPopup">  <div class="popup-box">  <button class="close-popup" onclick="closePopup()">×</button>
-
-<!-- ORDER FORM -->  <div id="orderForm">  <h3>🛒 Note Order</h3>  <div class="order-info">  <div>  
-<strong>Notes:</strong>  
-<span id="orderNote"></span>  
-</div>  <div>  
-<strong>Customer:</strong>  
-<span id="orderCustomer"></span>  
-</div>  <div>  
-<strong>Price:</strong>  
-Rs. 100  
-</div>  </div>  <div class="demo-note">  
-This is a Demo Order.  
-</div>  <button class="place-order" onclick="placeOrder()">  
-Place Order  
-</button>  </div>  <!-- SUCCESS -->  <div id="successMessage" class="success-message">  <h3>✅ Thank You for your Order!</h3>  <p>  
-Your order has been placed successfully.  
-</p>  <p class="ceo">  
-Personally,<br>  
-CEO Abdul Manan  
-</p>  <a
-id="successDownload"
-href="#"
-class="success-download"
-target="_blank"
-download
-
-> 
-
-📥 Download PDF
-</a>
-
-<a
-href="#"
-class="track-order"
-onclick="closePopup()"
-
-> 
-
-📦 Track Order
-</a>
-
-</div>  </div>  
-</div>  <script>  
-  
-/* USERS */  
-  
-const users = {  
-"1999908774":"1999908774",  
-"359953999":"1999908774",  
-"327589969":"1999908774",  
-"322202440":"1999908774",  
-"322202990":"1999908774",  
-"322505434":"1999908774"  
-};  
-  
-  
-/* CURRENT ORDER */  
-  
-let currentPDF = "";  
-let currentDownloadButton = "";  
-  
-  
-/* LOGIN */  
-  
-function login(){  
-  
-const username =  
-document.getElementById("username").value.trim();  
-  
-const password =  
-document.getElementById("password").value.trim();  
-  
-const error =  
-document.getElementById("loginError");  
-  
-if(users[username] === password){  
-  
-error.style.display="none";  
-  
-sessionStorage.setItem(  
-"manan360_logged_in",  
-"true"  
-);  
-  
-document.getElementById("loginPage").style.display="none";  
-document.getElementById("namePage").style.display="flex";  
-  
-document.getElementById("visitorName").focus();  
-  
-}else{  
-  
-error.style.display="block";  
-  
-}  
-  
-}  
-  
-  
-/* HOME */  
-  
-function continueToHome(){  
-  
-const name =  
-document.getElementById("visitorName").value.trim();  
-  
-if(name===""){  
-  
-document.getElementById("visitorName").focus();  
-  
-return;  
-  
-}  
-  
-document.getElementById("displayName").textContent=name;  
-  
-sessionStorage.setItem(  
-"manan360_name",  
-name  
-);  
-  
-document.getElementById("namePage").style.display="none";  
-document.getElementById("homePage").style.display="block";  
-  
-}  
-  
-  
-/* BUY */  
-  
-function buyNote(noteName,pdfFile,downloadId){  
-  
-const name =  
-sessionStorage.getItem("manan360_name") || "User";  
-  
-currentPDF = pdfFile;  
-currentDownloadButton = downloadId;  
-  
-document.getElementById("orderNote").textContent =  
-noteName;  
-  
-document.getElementById("orderCustomer").textContent =  
-name;  
-  
-document.getElementById("orderForm").style.display="block";  
-  
-document.getElementById("successMessage").style.display="none";  
-  
-document.getElementById("buyPopup").style.display="flex";  
-  
-}  
-  
-  
-/* PLACE ORDER */  
-  
-function placeOrder(){  
-  
-/* Hide order form */  
-  
-document.getElementById("orderForm").style.display="none";  
-  
-/* Show success */  
-  
-document.getElementById("successMessage").style.display="block";  
-  
-/* Put correct PDF */  
-  
-const download =  
-document.getElementById("successDownload");  
-  
-download.href = currentPDF;  
-  
-  
-/* Show download button below card */  
-  
-if(currentDownloadButton){  
-  
-const cardDownload =  
-document.getElementById(currentDownloadButton);  
-  
-if(cardDownload){  
-  
-cardDownload.style.display="block";  
-  
-}  
-  
-}  
-  
-}  
-  
-  
-/* CLOSE */  
-  
-function closePopup(){  
-  
-document.getElementById("buyPopup").style.display="none";  
-  
-}  
-  
-  
-/* LOGOUT */  
-  
-function logout(){  
-  
-sessionStorage.removeItem("manan360_logged_in");  
-sessionStorage.removeItem("manan360_name");  
-  
-document.getElementById("homePage").style.display="none";  
-document.getElementById("namePage").style.display="none";  
-document.getElementById("loginPage").style.display="flex";  
-  
-document.getElementById("username").value="";  
-document.getElementById("password").value="";  
-document.getElementById("visitorName").value="";  
-  
-}  
-  
-  
-/* PAGE LOAD */  
-  
-window.onload=function(){  
-  
-const loggedIn =  
-sessionStorage.getItem("manan360_logged_in");  
-  
-const savedName =  
-sessionStorage.getItem("manan360_name");  
-  
-if(loggedIn==="true"){  
-  
-if(savedName){  
-  
-document.getElementById("displayName").textContent=savedName;  
-  
-document.getElementById("loginPage").style.display="none";  
-document.getElementById("namePage").style.display="none";  
-document.getElementById("homePage").style.display="block";  
-  
-}else{  
-  
-document.getElementById("loginPage").style.display="none";  
-document.getElementById("namePage").style.display="flex";  
-  
-}  
-  
-}  
-  
-};  
-  
-  
-/* ENTER KEY */  
-  
-document.addEventListener("keydown",function(event){  
-  
-if(event.key==="Enter"){  
-  
-if(  
-document.activeElement.id==="username" ||  
-document.activeElement.id==="password"  
-){  
-  
-login();  
-  
-}  
-  
-else if(  
-document.activeElement.id==="visitorName"  
-){  
-  
-continueToHome();  
-  
-}  
-  
-}  
-  
-});  
-  
-</script>  </body>  
-</html>  
+</body>
+</html>
