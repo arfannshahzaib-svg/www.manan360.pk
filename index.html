@@ -3,16 +3,30 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1.0">
+
 <title>Manan360.pk</title>
 
 <style>
-*{box-sizing:border-box;margin:0;padding:0}
+*{
+    box-sizing:border-box;
+    margin:0;
+    padding:0;
+}
+
 body{
     font-family:Arial,sans-serif;
     min-height:100vh;
-    background:linear-gradient(135deg,#061a40,#0077b6,#00b4d8);
+    background:
+    linear-gradient(
+        135deg,
+        #061a40,
+        #0077b6,
+        #00b4d8,
+        #48cae4
+    );
     color:#222;
 }
+
 .page{
     min-height:100vh;
     display:flex;
@@ -20,29 +34,55 @@ body{
     align-items:center;
     padding:20px;
 }
+
 .box{
     width:100%;
     max-width:390px;
-    background:white;
+    background:#fff;
     border-radius:24px;
     padding:30px 25px;
     text-align:center;
-    box-shadow:0 15px 50px #0005;
+    box-shadow:0 15px 50px rgba(0,0,0,.32);
+    animation:boxIn .7s ease;
 }
+
+@keyframes boxIn{
+    from{
+        opacity:0;
+        transform:translateY(-45px);
+    }
+    to{
+        opacity:1;
+        transform:translateY(0);
+    }
+}
+
 .logo{
-    width:70px;height:70px;
-    margin:auto auto 15px;
+    width:70px;
+    height:70px;
+    margin:0 auto 15px;
     border-radius:50%;
     display:flex;
     align-items:center;
     justify-content:center;
     background:linear-gradient(135deg,#0077b6,#00b4d8);
-    color:white;
+    color:#fff;
     font-size:28px;
     font-weight:bold;
+    box-shadow:0 8px 20px rgba(0,119,182,.35);
 }
-h1{font-size:27px;margin-bottom:7px}
-.sub{color:#777;margin-bottom:25px;font-size:14px}
+
+h1{
+    font-size:27px;
+    margin-bottom:7px;
+}
+
+.sub{
+    color:#777;
+    margin-bottom:25px;
+    font-size:14px;
+}
+
 input{
     width:100%;
     height:50px;
@@ -51,7 +91,15 @@ input{
     border:2px solid #ddd;
     border-radius:12px;
     font-size:15px;
+    outline:none;
+    transition:.2s;
 }
+
+input:focus{
+    border-color:#00a8d6;
+    box-shadow:0 0 0 3px rgba(0,180,216,.12);
+}
+
 .btn{
     display:block;
     width:100%;
@@ -59,11 +107,17 @@ input{
     border:0;
     border-radius:12px;
     background:linear-gradient(90deg,#0077b6,#00b4d8);
-    color:white;
+    color:#fff;
     font-weight:bold;
-    text-decoration:none;
+    font-size:15px;
     cursor:pointer;
+    text-decoration:none;
 }
+
+.btn:active{
+    transform:scale(.98);
+}
+
 .info{
     margin-top:15px;
     padding:12px;
@@ -73,46 +127,63 @@ input{
     font-size:13px;
     line-height:1.6;
 }
+
+.footer{
+    margin-top:18px;
+    font-size:12px;
+    color:#888;
+}
 </style>
 </head>
 
 <body>
 
 <section class="page">
+
 <div class="box">
 
-<div class="logo">M</div>
+    <div class="logo">M</div>
 
-<h1>Manan360.pk</h1>
+    <h1>Manan360.pk</h1>
 
-<div class="sub">Student Login Portal</div>
+    <div class="sub">
+        Student Login Portal
+    </div>
 
-<!-- HTML-ONLY DEMO LOGIN -->
-<form action="name.html" method="get">
+    <form action="name.html" method="get">
 
-<input
-type="text"
-name="username"
-placeholder="Username"
-required>
+        <input
+            type="text"
+            name="username"
+            placeholder="Username"
+            autocomplete="username"
+            required
+        >
 
-<input
-type="password"
-name="password"
-placeholder="Password"
-required>
+        <input
+            type="password"
+            name="password"
+            placeholder="Password"
+            autocomplete="current-password"
+            required
+        >
 
-<button class="btn" type="submit">
-Login
-</button>
+        <button class="btn" type="submit">
+            Login
+        </button>
 
-</form>
+    </form>
 
-<div class="info">
-Enter your registered username and password to continue.
+    <div class="info">
+        Enter your registered username and password to continue.
+    </div>
+
+    <div class="footer">
+        © Manan360.pk
+    </div>
+
 </div>
 
-</div>
 </section>
 
 </body>
