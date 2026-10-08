@@ -2,189 +2,354 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width,initial-scale=1.0">
-
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Manan360.pk</title>
 
 <style>
 *{
-    box-sizing:border-box;
-    margin:0;
-    padding:0;
+  box-sizing:border-box;
+  margin:0;
+  padding:0;
 }
 
 body{
-    font-family:Arial,sans-serif;
-    min-height:100vh;
-    background:
-    linear-gradient(
-        135deg,
-        #061a40,
-        #0077b6,
-        #00b4d8,
-        #48cae4
-    );
-    color:#222;
+  font-family:Arial,Helvetica,sans-serif;
+  min-height:100vh;
+  background:linear-gradient(135deg,#061a40,#0072ff,#00c853);
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  padding:20px;
 }
 
-.page{
-    min-height:100vh;
-    display:flex;
-    justify-content:center;
-    align-items:center;
-    padding:20px;
-}
-
-.box{
-    width:100%;
-    max-width:390px;
-    background:#fff;
-    border-radius:24px;
-    padding:30px 25px;
-    text-align:center;
-    box-shadow:0 15px 50px rgba(0,0,0,.32);
-    animation:boxIn .7s ease;
-}
-
-@keyframes boxIn{
-    from{
-        opacity:0;
-        transform:translateY(-45px);
-    }
-    to{
-        opacity:1;
-        transform:translateY(0);
-    }
+.card{
+  width:100%;
+  max-width:430px;
+  background:white;
+  border-radius:25px;
+  padding:28px 22px;
+  box-shadow:0 15px 40px rgba(0,0,0,.25);
+  text-align:center;
 }
 
 .logo{
-    width:70px;
-    height:70px;
-    margin:0 auto 15px;
-    border-radius:50%;
-    display:flex;
-    align-items:center;
-    justify-content:center;
-    background:linear-gradient(135deg,#0077b6,#00b4d8);
-    color:#fff;
-    font-size:28px;
-    font-weight:bold;
-    box-shadow:0 8px 20px rgba(0,119,182,.35);
+  width:90px;
+  height:90px;
+  object-fit:contain;
+  border-radius:20px;
+  margin-bottom:10px;
 }
 
 h1{
-    font-size:27px;
-    margin-bottom:7px;
+  color:#073b8f;
+  margin-bottom:5px;
 }
 
-.sub{
-    color:#777;
-    margin-bottom:25px;
-    font-size:14px;
+.subtitle{
+  color:#666;
+  margin-bottom:22px;
 }
 
-input{
-    width:100%;
-    height:50px;
-    margin-bottom:15px;
-    padding:0 15px;
-    border:2px solid #ddd;
-    border-radius:12px;
-    font-size:15px;
-    outline:none;
-    transition:.2s;
+input,select{
+  width:100%;
+  padding:14px;
+  margin:7px 0;
+  border:1px solid #ddd;
+  border-radius:12px;
+  font-size:16px;
+  outline:none;
 }
 
-input:focus{
-    border-color:#00a8d6;
-    box-shadow:0 0 0 3px rgba(0,180,216,.12);
+button{
+  width:100%;
+  padding:14px;
+  margin-top:10px;
+  border:0;
+  border-radius:12px;
+  color:white;
+  font-size:16px;
+  font-weight:bold;
+  cursor:pointer;
+  background:linear-gradient(90deg,#0066ff,#00aaff);
 }
 
-.btn{
-    display:block;
-    width:100%;
-    padding:14px;
-    border:0;
-    border-radius:12px;
-    background:linear-gradient(90deg,#0077b6,#00b4d8);
-    color:#fff;
-    font-weight:bold;
-    font-size:15px;
-    cursor:pointer;
-    text-decoration:none;
+button:hover{
+  opacity:.9;
 }
 
-.btn:active{
-    transform:scale(.98);
+.hidden{
+  display:none;
 }
 
-.info{
-    margin-top:15px;
-    padding:12px;
-    border-radius:10px;
-    background:#eef8ff;
-    color:#145;
-    font-size:13px;
-    line-height:1.6;
+.success{
+  margin-top:15px;
+  padding:14px;
+  background:#e8fff0;
+  color:#08752b;
+  border-radius:12px;
+  font-weight:bold;
 }
 
-.footer{
-    margin-top:18px;
-    font-size:12px;
-    color:#888;
+.error{
+  margin-top:15px;
+  padding:14px;
+  background:#ffecec;
+  color:#c40000;
+  border-radius:12px;
+  font-weight:bold;
+}
+
+.balance{
+  margin:15px 0;
+  padding:15px;
+  background:#f0f7ff;
+  border-radius:15px;
+  color:#0758b8;
+  font-size:20px;
+  font-weight:bold;
+}
+
+.tokenInfo{
+  margin-top:12px;
+  font-size:13px;
+  color:#777;
 }
 </style>
 </head>
 
 <body>
 
-<section class="page">
+<!-- LOGIN -->
+<div class="card" id="loginPage">
 
-<div class="box">
+  <img src="logo.png" class="logo" alt="Manan360.pk Logo">
 
-    <div class="logo">M</div>
+  <h1>Manan360.pk</h1>
+  <div class="subtitle">Student Login Portal</div>
 
-    <h1>Manan360.pk</h1>
+  <input type="text" id="username" placeholder="Username">
+  <input type="password" id="password" placeholder="Password">
 
-    <div class="sub">
-        Student Login Portal
-    </div>
+  <button onclick="login()">Login</button>
 
-    <form action="name.html" method="get">
+  <div id="loginMessage"></div>
+</div>
 
-        <input
-            type="text"
-            name="username"
-            placeholder="Username"
-            autocomplete="username"
-            required
-        >
 
-        <input
-            type="password"
-            name="password"
-            placeholder="Password"
-            autocomplete="current-password"
-            required
-        >
+<!-- TOKEN / CASHBACK PAGE -->
+<div class="card hidden" id="tokenPage">
 
-        <button class="btn" type="submit">
-            Login
-        </button>
+  <img src="logo.png" class="logo" alt="Manan360.pk Logo">
 
-    </form>
+  <h1>Manan360.pk</h1>
+  <div class="subtitle">Token Verification</div>
 
-    <div class="info">
-        Enter your registered username and password to continue.
-    </div>
+  <div class="balance">
+    Cashback: Rs.100
+  </div>
 
-    <div class="footer">
-        © Manan360.pk
-    </div>
+  <input
+    type="text"
+    id="tokenInput"
+    maxlength="10"
+    inputmode="numeric"
+    placeholder="Enter 10 Digit Token Number"
+  >
+
+  <button onclick="verifyToken()">Verify Token</button>
+
+  <div id="tokenMessage"></div>
+
+  <div class="tokenInfo">
+    500 unique demo tokens are available.
+  </div>
 
 </div>
 
-</section>
+
+<script>
+
+/* =====================================================
+   MANAN360.PK
+   500 UNIQUE TOKEN SYSTEM
+   SPECIAL TOKEN = 7842306159
+   ===================================================== */
+
+
+/* SPECIAL TOKEN */
+const SPECIAL_TOKEN = "7842306159";
+
+
+/*
+   Fixed seed generator.
+   Is se har baar wahi 500 tokens generate honge.
+   Random refresh par list change nahi hogi.
+*/
+let seed = 3602026;
+
+function seededRandom(){
+  seed = (seed * 9301 + 49297) % 233280;
+  return seed / 233280;
+}
+
+
+/* TOKEN LIST */
+const tokens = new Set();
+
+
+/* Special token ko sab se pehle add karein */
+tokens.add(SPECIAL_TOKEN);
+
+
+/* Baqi 499 unique tokens */
+while(tokens.size < 500){
+
+  let number = Math.floor(
+    1000000000 + seededRandom() * 9000000000
+  ).toString();
+
+  tokens.add(number);
+}
+
+
+/* Convert Set to Array */
+const TOKEN_LIST = Array.from(tokens);
+
+
+/* =====================================================
+   LOGIN
+   Apne existing username/password yahan rakh sakte hain.
+   ===================================================== */
+
+const USERS = {
+  "admin": "1234",
+  "manan": "1234",
+  "student": "1234"
+};
+
+
+function login(){
+
+  const username =
+    document.getElementById("username").value.trim();
+
+  const password =
+    document.getElementById("password").value;
+
+  const message =
+    document.getElementById("loginMessage");
+
+
+  if(USERS[username] && USERS[username] === password){
+
+    document.getElementById("loginPage")
+      .classList.add("hidden");
+
+    document.getElementById("tokenPage")
+      .classList.remove("hidden");
+
+  }else{
+
+    message.innerHTML =
+      '<div class="error">Invalid username or password.</div>';
+
+  }
+}
+
+
+/* =====================================================
+   TOKEN VERIFICATION
+   ===================================================== */
+
+function verifyToken(){
+
+  const token =
+    document.getElementById("tokenInput")
+      .value.trim();
+
+  const message =
+    document.getElementById("tokenMessage");
+
+
+  /* Basic check */
+  if(!/^\d{10}$/.test(token)){
+
+    message.innerHTML =
+      '<div class="error">Please enter a valid 10 digit token.</div>';
+
+    return;
+  }
+
+
+  /* Token available? */
+  if(!TOKEN_LIST.includes(token)){
+
+    message.innerHTML =
+      '<div class="error">Invalid Token Number.</div>';
+
+    return;
+  }
+
+
+  /*
+     Special token:
+     7842306159
+  */
+  if(token === SPECIAL_TOKEN){
+
+    const alreadyUsed =
+      localStorage.getItem(
+        "manan360_special_token_used"
+      );
+
+
+    if(alreadyUsed === "yes"){
+
+      message.innerHTML =
+        '<div class="error">This token has already been used.</div>';
+
+      return;
+    }
+
+
+    localStorage.setItem(
+      "manan360_special_token_used",
+      "yes"
+    );
+
+
+    message.innerHTML =
+      '<div class="success">' +
+      '✓ Token Verified Successfully<br>' +
+      'Cashback Application Successful<br>' +
+      'Cashback: Rs.100' +
+      '</div>';
+
+    return;
+  }
+
+
+  /*
+     Other 499 tokens:
+     Valid token message
+  */
+  message.innerHTML =
+    '<div class="success">' +
+    '✓ Token Verified Successfully' +
+    '</div>';
+}
+
+
+/* =====================================================
+   OPTIONAL:
+   Browser console mein 500 tokens dekhne ke liye
+   ===================================================== */
+
+console.log("MANAN360.PK - 500 TOKENS");
+console.log(TOKEN_LIST);
+console.log("SPECIAL TOKEN:", SPECIAL_TOKEN);
+
+</script>
 
 </body>
 </html>
