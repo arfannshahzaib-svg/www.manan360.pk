@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1.0">
-<title>Token Application</title>
+<title>Manan360.pk</title>
 
 <style>
 *{
@@ -13,174 +13,347 @@
 }
 
 body{
-  min-height:100vh;
   font-family:Arial,sans-serif;
+  min-height:100vh;
+  background:linear-gradient(135deg,#061a40,#007bff,#00b894);
+  color:#222;
+}
+
+.page{
+  min-height:100vh;
   display:flex;
   justify-content:center;
   align-items:center;
-  background:linear-gradient(135deg,#061a40,#007bff,#00b894);
   padding:20px;
 }
 
 .box{
   width:100%;
-  max-width:420px;
-  background:white;
+  max-width:430px;
+  background:#fff;
+  padding:28px 22px;
   border-radius:22px;
-  padding:30px 22px;
-  text-align:center;
   box-shadow:0 15px 40px rgba(0,0,0,.25);
+  text-align:center;
 }
 
 h1{
-  color:#063b78;
+  color:#064b91;
   margin-bottom:10px;
 }
 
+h2{
+  color:#064b91;
+  margin-bottom:18px;
+}
+
 p{
+  margin-bottom:20px;
   color:#555;
-  margin-bottom:22px;
 }
 
 input{
   width:100%;
-  padding:15px;
+  padding:14px;
   border:1px solid #ccc;
   border-radius:12px;
-  font-size:17px;
-  outline:none;
   margin-bottom:14px;
+  font-size:16px;
 }
 
 button{
   width:100%;
-  padding:15px;
+  padding:14px;
   border:0;
   border-radius:12px;
   background:linear-gradient(90deg,#007bff,#00a86b);
   color:white;
-  font-size:17px;
+  font-size:16px;
   font-weight:bold;
+  margin-top:8px;
   cursor:pointer;
 }
 
-button:active{
-  transform:scale(.98);
+button:hover{
+  opacity:.9;
 }
 
-#result{
-  display:none;
-  margin-top:20px;
+.book{
+  border:1px solid #ddd;
+  border-radius:15px;
   padding:18px;
-  border-radius:14px;
+  margin:12px 0;
+  background:#f7fbff;
+}
+
+.book h3{
+  color:#07549b;
+  margin-bottom:8px;
+}
+
+.book button{
+  margin-top:5px;
+}
+
+#namePage,
+#booksPage,
+#tokenPage,
+#statusPage{
+  display:none;
+}
+
+.status{
   background:#e9fff3;
   color:#087443;
+  padding:20px;
+  border-radius:15px;
+  line-height:1.7;
   font-weight:bold;
-  line-height:1.6;
 }
 
 .error{
-  background:#ffecec !important;
-  color:#c62828 !important;
+  background:#ffecec;
+  color:#c62828;
+  padding:15px;
+  border-radius:12px;
+  margin-top:15px;
+}
+
+.small{
+  margin-top:15px;
+  font-size:13px;
+  color:#777;
+}
+
+.signout{
+  background:#555;
+  margin-top:18px;
 }
 </style>
 </head>
 
 <body>
 
-<div class="box">
+<!-- LOGIN -->
+<div class="page" id="loginPage">
+  <div class="box">
+    <h1>Manan360.pk</h1>
+    <p>Login to continue</p>
 
-  <h1>Token Application</h1>
+    <input id="username" type="text" placeholder="Username">
+    <input id="password" type="password" placeholder="Password">
 
-  <p>Enter your token number</p>
+    <button onclick="login()">Login</button>
 
-  <input
-    type="text"
-    id="token"
-    inputmode="numeric"
-    maxlength="10"
-    placeholder="Enter Token Number"
-  >
-
-  <button onclick="submitToken()">Submit</button>
-
-  <div id="result"></div>
-
+    <div id="loginError"></div>
+  </div>
 </div>
+
+
+<!-- NAME -->
+<div class="page" id="namePage">
+  <div class="box">
+    <h2>Welcome</h2>
+    <p>What is your name?</p>
+
+    <input id="visitorName" type="text" placeholder="Enter your name">
+
+    <button onclick="saveName()">Continue</button>
+  </div>
+</div>
+
+
+<!-- BOOKS -->
+<div class="page" id="booksPage">
+  <div class="box">
+    <h2 id="welcomeText">Books</h2>
+
+    <div class="book">
+      <h3>Class 9th Notes</h3>
+      <p>Study notes and test material</p>
+      <button onclick="openToken()">Open Book</button>
+    </div>
+
+    <div class="book">
+      <h3>Class 10th Notes</h3>
+      <p>Study notes and test material</p>
+      <button onclick="openToken()">Open Book</button>
+    </div>
+
+    <button class="signout" onclick="signOut()">Sign Out</button>
+  </div>
+</div>
+
+
+<!-- TOKEN -->
+<div class="page" id="tokenPage">
+  <div class="box">
+    <h2>Token Number</h2>
+    <p>Enter your token number</p>
+
+    <input
+      id="token"
+      type="text"
+      inputmode="numeric"
+      maxlength="10"
+      placeholder="Enter Token Number">
+
+    <button onclick="submitToken()">Submit</button>
+
+    <div id="tokenError"></div>
+
+    <button class="signout" onclick="signOut()">Sign Out</button>
+  </div>
+</div>
+
+
+<!-- STATUS -->
+<div class="page" id="statusPage">
+  <div class="box">
+    <h2>Application Status</h2>
+
+    <div class="status">
+      Application Submitted, please wait.<br><br>
+      Status: Answered
+    </div>
+
+    <button class="signout" onclick="signOut()">Sign Out</button>
+  </div>
+</div>
+
 
 <script>
 
-/* 500 unique test tokens */
-const tokens = [
+/* Demo login accounts */
+const accounts = {
+  "admin": "1234",
+  "manan": "1234",
+  "user": "1234"
+};
 
-"7842306159",
 
-"7842306001","7842306002","7842306003","7842306004","7842306005",
-"7842306006","7842306007","7842306008","7842306009","7842306010",
-"7842306011","7842306012","7842306013","7842306014","7842306015",
-"7842306016","7842306017","7842306018","7842306019","7842306020",
-"7842306021","7842306022","7842306023","7842306024","7842306025",
-"7842306026","7842306027","7842306028","7842306029","7842306030",
-"7842306031","7842306032","7842306033","7842306034","7842306035",
-"7842306036","7842306037","7842306038","7842306039","7842306040",
-"7842306041","7842306042","7842306043","7842306044","7842306045",
-"7842306046","7842306047","7842306048","7842306049","7842306050",
+/* 500 test tokens */
+const tokens = new Set();
 
-"7842306051","7842306052","7842306053","7842306054","7842306055",
-"7842306056","7842306057","7842306058","7842306059","7842306060",
-"7842306061","7842306062","7842306063","7842306064","7842306065",
-"7842306066","7842306067","7842306068","7842306069","7842306070",
-"7842306071","7842306072","7842306073","7842306074","7842306075",
-"7842306076","7842306077","7842306078","7842306079","7842306080",
-"7842306081","7842306082","7842306083","7842306084","7842306085",
-"7842306086","7842306087","7842306088","7842306089","7842306090",
-"7842306091","7842306092","7842306093","7842306094","7842306095",
-"7842306096","7842306097","7842306098","7842306099","7842306100"
+/* آپ کا مخصوص token */
+tokens.add("7842306159");
 
-];
-
-/* باقی tokens خود generate ہوں گے تاکہ کل 500 ہوں */
-for(let i=6101;i<=6599;i++){
-  tokens.push("784230" + String(i).padStart(4,"0"));
+/* باقی unique tokens */
+for(let i=6001; i<=6499; i++){
+  tokens.add("784230" + i);
 }
 
-/* 500 unique tokens */
-const validTokens = new Set(tokens.slice(0,500));
 
-function submitToken(){
+/* Page control */
+function showPage(id){
 
-  const input = document.getElementById("token");
-  const result = document.getElementById("result");
+  document.getElementById("loginPage").style.display="none";
+  document.getElementById("namePage").style.display="none";
+  document.getElementById("booksPage").style.display="none";
+  document.getElementById("tokenPage").style.display="none";
+  document.getElementById("statusPage").style.display="none";
 
-  const token = input.value.trim();
+  document.getElementById(id).style.display="flex";
+}
 
-  result.classList.remove("error");
 
-  if(token === ""){
-    result.style.display = "block";
-    result.classList.add("error");
-    result.innerHTML = "Please enter your token number.";
-    return;
-  }
+/* Login */
+function login(){
 
-  if(validTokens.has(token)){
+  const username =
+    document.getElementById("username").value.trim();
 
-    result.style.display = "block";
+  const password =
+    document.getElementById("password").value;
 
-    result.innerHTML =
-      "Application Submitted, please wait.<br><br>" +
-      "Status: Answered";
+  if(accounts[username] &&
+     accounts[username] === password){
+
+    document.getElementById("loginError").innerHTML="";
+
+    showPage("namePage");
 
   }else{
 
-    result.style.display = "block";
-    result.classList.add("error");
-
-    result.innerHTML =
-      "Invalid Token.<br>Please check your token number.";
+    document.getElementById("loginError").innerHTML=
+      '<div class="error">Invalid username or password.</div>';
 
   }
 }
+
+
+/* Name */
+function saveName(){
+
+  const name =
+    document.getElementById("visitorName").value.trim();
+
+  if(name===""){
+    alert("Please enter your name.");
+    return;
+  }
+
+  localStorage.setItem("manan_name",name);
+
+  document.getElementById("welcomeText").innerText=
+    "Hello, " + name;
+
+  showPage("booksPage");
+}
+
+
+/* Books → Token */
+function openToken(){
+  showPage("tokenPage");
+}
+
+
+/* Token submit */
+function submitToken(){
+
+  const token =
+    document.getElementById("token").value.trim();
+
+  const error =
+    document.getElementById("tokenError");
+
+  error.innerHTML="";
+
+  if(token===""){
+    error.innerHTML=
+      '<div class="error">Please enter your token number.</div>';
+    return;
+  }
+
+  if(tokens.has(token)){
+
+    showPage("statusPage");
+
+  }else{
+
+    error.innerHTML=
+      '<div class="error">Invalid Token.</div>';
+
+  }
+}
+
+
+/* Sign Out */
+function signOut(){
+
+  localStorage.removeItem("manan_name");
+
+  document.getElementById("username").value="";
+  document.getElementById("password").value="";
+  document.getElementById("visitorName").value="";
+  document.getElementById("token").value="";
+
+  showPage("loginPage");
+}
+
+
+/* Start */
+showPage("loginPage");
 
 </script>
 
