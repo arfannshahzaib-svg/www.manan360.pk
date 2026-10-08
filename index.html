@@ -9,30 +9,30 @@
 *{box-sizing:border-box;margin:0;padding:0}
 
 body{
-    font-family:Arial,sans-serif;
-    min-height:100vh;
-    background:linear-gradient(135deg,#061a40,#0077b6,#00a878);
-    color:white;
+font-family:Arial,sans-serif;
+min-height:100vh;
+background:linear-gradient(135deg,#061a40,#0077b6,#00a878);
+color:white;
 }
 
 .page{
-    min-height:100vh;
-    display:flex;
-    justify-content:center;
-    align-items:center;
-    padding:20px;
+min-height:100vh;
+display:flex;
+justify-content:center;
+align-items:center;
+padding:20px;
 }
 
 .box{
-    width:100%;
-    max-width:430px;
-    background:rgba(255,255,255,.12);
-    backdrop-filter:blur(12px);
-    border:1px solid rgba(255,255,255,.25);
-    border-radius:24px;
-    padding:28px 22px;
-    text-align:center;
-    box-shadow:0 15px 40px rgba(0,0,0,.25);
+width:100%;
+max-width:430px;
+background:rgba(255,255,255,.12);
+backdrop-filter:blur(12px);
+border:1px solid rgba(255,255,255,.25);
+border-radius:24px;
+padding:28px 22px;
+text-align:center;
+box-shadow:0 15px 40px rgba(0,0,0,.25);
 }
 
 h1{font-size:29px;margin-bottom:8px}
@@ -40,146 +40,194 @@ h2{font-size:23px;margin-bottom:14px}
 p{line-height:1.5;margin-bottom:16px}
 
 input{
-    width:100%;
-    padding:14px;
-    margin:7px 0;
-    border:0;
-    border-radius:12px;
-    outline:none;
-    font-size:16px;
+width:100%;
+padding:14px;
+margin:7px 0;
+border:0;
+border-radius:12px;
+outline:none;
+font-size:16px;
 }
 
 button{
-    width:100%;
-    padding:14px;
-    margin-top:12px;
-    border:0;
-    border-radius:12px;
-    background:linear-gradient(90deg,#007bff,#00c853);
-    color:white;
-    font-size:16px;
-    font-weight:bold;
-    cursor:pointer;
+width:100%;
+padding:14px;
+margin-top:12px;
+border:0;
+border-radius:12px;
+background:linear-gradient(90deg,#007bff,#00c853);
+color:white;
+font-size:16px;
+font-weight:bold;
+cursor:pointer;
 }
 
 button:active{transform:scale(.98)}
 
-.small{
-    font-size:13px;
-    opacity:.8;
-    margin-top:12px;
+.cancel-btn{
+background:#263238;
 }
 
 .error{
-    color:#ffd6d6;
-    margin-top:10px;
+color:#ffd6d6;
+margin-top:10px;
 }
 
 .success{
-    color:#b9ffca;
-    font-weight:bold;
-    margin-top:10px;
+color:#b9ffca;
+font-weight:bold;
+margin-top:10px;
 }
 
 .hidden{display:none}
 
 .finger{
-    width:125px;
-    height:155px;
-    margin:22px auto;
-    border:5px solid white;
-    border-radius:55% 55% 45% 45%;
-    position:relative;
-    animation:pulse 1.5s infinite;
+width:125px;
+height:155px;
+margin:22px auto;
+border:5px solid white;
+border-radius:55% 55% 45% 45%;
+position:relative;
+animation:pulse 1.5s infinite;
 }
 
 .finger:before{
-    content:"";
-    position:absolute;
-    width:70px;
-    height:105px;
-    border:4px solid white;
-    border-radius:50%;
-    left:50%;
-    top:20px;
-    transform:translateX(-50%);
+content:"";
+position:absolute;
+width:70px;
+height:105px;
+border:4px solid white;
+border-radius:50%;
+left:50%;
+top:20px;
+transform:translateX(-50%);
 }
 
 .finger:after{
-    content:"";
-    position:absolute;
-    width:38px;
-    height:65px;
-    border:4px solid white;
-    border-radius:50%;
-    left:50%;
-    top:40px;
-    transform:translateX(-50%);
+content:"";
+position:absolute;
+width:38px;
+height:65px;
+border:4px solid white;
+border-radius:50%;
+left:50%;
+top:40px;
+transform:translateX(-50%);
 }
 
 @keyframes pulse{
-    50%{transform:scale(1.05);opacity:.7}
+50%{transform:scale(1.05);opacity:.7}
 }
 
 .photo-area{
-    margin:12px 0;
-    padding:12px;
-    border:2px dashed rgba(255,255,255,.7);
-    border-radius:14px;
+margin:12px 0;
+padding:12px;
+border:2px dashed rgba(255,255,255,.7);
+border-radius:14px;
 }
 
 .photo-preview{
-    display:none;
-    width:130px;
-    height:130px;
-    object-fit:cover;
-    border-radius:50%;
-    border:4px solid white;
-    margin:10px auto;
+display:none;
+width:130px;
+height:130px;
+object-fit:cover;
+border-radius:50%;
+border:4px solid white;
+margin:10px auto;
 }
 
 .card{
-    background:rgba(255,255,255,.14);
-    padding:18px;
-    border-radius:18px;
-    margin:12px 0;
+background:rgba(255,255,255,.14);
+padding:18px;
+border-radius:18px;
+margin:12px 0;
 }
 
 .card h3{margin-bottom:7px}
 
 .timer{
-    font-size:24px;
-    font-weight:bold;
-    margin:12px 0;
+font-size:24px;
+font-weight:bold;
+margin:12px 0;
 }
 
 .big-message{
-    font-size:21px;
-    font-weight:bold;
-    line-height:1.7;
-    margin-top:15px;
+font-size:21px;
+font-weight:bold;
+line-height:1.7;
+margin-top:15px;
+}
+
+.token-success{
+text-align:center;
+margin-top:22px;
+}
+
+.green-check{
+width:100px;
+height:100px;
+margin:0 auto 18px;
+border-radius:50%;
+background:#00c853;
+display:flex;
+justify-content:center;
+align-items:center;
+font-size:62px;
+font-weight:bold;
+box-shadow:0 0 30px rgba(0,200,83,.55);
+animation:checkPop .5s ease;
+}
+
+@keyframes checkPop{
+0%{transform:scale(.3);opacity:0}
+70%{transform:scale(1.1)}
+100%{transform:scale(1);opacity:1}
+}
+
+.cashback-title{
+font-size:25px;
+font-weight:bold;
+color:#b9ffca;
+margin-bottom:12px;
+}
+
+.cashback-text{
+font-size:18px;
+line-height:1.6;
+}
+
+.submitted-title{
+font-size:24px;
+font-weight:bold;
+color:#b9ffca;
+margin-bottom:10px;
+}
+
+.wait-text{
+font-size:17px;
+line-height:1.5;
+}
+
+.token-number{
+font-size:16px;
+font-weight:bold;
+margin-top:15px;
+opacity:.9;
 }
 </style>
 </head>
 
 <body>
 
-
 <!-- LOGIN -->
-
 <section id="loginPage" class="page">
 <div class="box">
 
 <h1>Manan360.pk</h1>
 <p>Notes & Test Papers</p>
 
-<input id="username"
-       type="text"
-       placeholder="Username">
-
-<input id="password"
-       type="password"
-       placeholder="Password">
+<input id="username" type="text" placeholder="Username">
+<input id="password" type="password" placeholder="Password">
 
 <button onclick="login()">Login</button>
 
@@ -190,31 +238,25 @@ button:active{transform:scale(.98)}
 
 
 <!-- FINGERPRINT -->
-
 <section id="fingerPage" class="page hidden">
 <div class="box">
 
 <h2>Fingerprint Verification</h2>
 
-<p>
-Please place your finger on the scanner.
-</p>
+<p>Please place your finger on the scanner.</p>
 
 <div class="finger"></div>
 
-<div id="fingerInfo" class="checking">
-    Please wait 15 seconds...
-    <br>
-    Checking your details...
+<div id="fingerInfo">
+Please wait 15 seconds...
+<br>
+Checking your details...
 </div>
 
-<div id="fingerTimer" class="timer">
-    15
-</div>
+<div id="fingerTimer" class="timer">15</div>
 
-<button id="verifyFingerBtn"
-        onclick="verifyFinger()">
-    Verify Finger
+<button id="verifyFingerBtn" onclick="verifyFinger()">
+Verify Finger
 </button>
 
 <div id="fingerStatus" class="success"></div>
@@ -228,47 +270,40 @@ Fingerprint verification is simulated on this website.
 
 
 <!-- DETAILS -->
-
 <section id="detailsPage" class="page hidden">
 <div class="box">
 
 <h2>Personal Details</h2>
-
 <p>Enter your information.</p>
 
-<input id="fullName"
-       type="text"
-       placeholder="Your Name">
+<input id="fullName" type="text" placeholder="Your Name">
 
 <input id="age"
-       type="number"
-       placeholder="Age"
-       min="1"
-       max="120">
+type="number"
+placeholder="Age"
+min="1"
+max="120">
 
 <input id="cnic"
-       type="text"
-       placeholder="CNIC (XXXXX-XXXXXXX-X)"
-       maxlength="15">
+type="text"
+placeholder="CNIC (XXXXX-XXXXXXX-X)"
+maxlength="15">
 
 <div class="photo-area">
 
 <b>Front Photo</b>
 
-<img id="photoPreview"
-     class="photo-preview">
+<img id="photoPreview" class="photo-preview">
 
 <input id="photoInput"
-       type="file"
-       accept="image/*"
-       capture="user"
-       onchange="showPhoto(event)">
+type="file"
+accept="image/*"
+capture="user"
+onchange="showPhoto(event)">
 
 </div>
 
-<button onclick="saveDetails()">
-Continue
-</button>
+<button onclick="saveDetails()">Continue</button>
 
 <div id="detailsError" class="error"></div>
 
@@ -277,7 +312,6 @@ Continue
 
 
 <!-- HOME -->
-
 <section id="homePage" class="page hidden">
 <div class="box">
 
@@ -298,18 +332,13 @@ Welcome to Manan360.pk.
 Class 9th & Class 10th Notes and Test Papers
 </p>
 
-<button onclick="openBooks()">
-Open Books
-</button>
+<button onclick="openBooks()">Open Books</button>
 
 </div>
 
-<button onclick="openToken()">
-🎫 Verify Token
-</button>
+<button onclick="openToken()">🎫 Verify Token</button>
 
-<button onclick="logout()"
-style="background:#263238">
+<button onclick="logout()" class="cancel-btn">
 Sign Out
 </button>
 
@@ -318,7 +347,6 @@ Sign Out
 
 
 <!-- BOOKS -->
-
 <section id="booksPage" class="page hidden">
 <div class="box">
 
@@ -346,12 +374,9 @@ Open Note
 
 </div>
 
-<button onclick="openToken()">
-🎫 Verify Token
-</button>
+<button onclick="openToken()">🎫 Verify Token</button>
 
-<button onclick="goHome()"
-style="background:#263238">
+<button onclick="goHome()" class="cancel-btn">
 Back to Home
 </button>
 
@@ -360,32 +385,32 @@ Back to Home
 
 
 <!-- TOKEN -->
-
 <section id="tokenPage" class="page hidden">
 <div class="box">
 
 <h2>🎫 Verify Token</h2>
 
-<p>
-Enter your token number below.
-</p>
+<p>Token Number</p>
 
 <input id="tokenInput"
-       type="text"
-       inputmode="numeric"
-       maxlength="10"
-       placeholder="Enter Token Number">
+type="text"
+inputmode="numeric"
+maxlength="10"
+placeholder="Enter Token Number">
+
+<div id="tokenButtons">
 
 <button onclick="verifyToken()">
-Verify Token
+تصدیق کریں
 </button>
+
+<button onclick="cancelToken()" class="cancel-btn">
+منسوخ کریں
+</button>
+
+</div>
 
 <div id="tokenMessage"></div>
-
-<button onclick="openBooks()"
-style="background:#263238">
-Back to Books
-</button>
 
 </div>
 </section>
@@ -396,62 +421,145 @@ Back to Books
 /* ================= LOGIN USERS ================= */
 
 const users = {
-    "Admin1":"12345",
-    "Admin2":"12345",
-    "Admin3":"12345",
-    "Admin4":"12345",
-    "Admin5":"12345"
+"Admin1":"12345",
+"Admin2":"12345",
+"Admin3":"12345",
+"Admin4":"12345",
+"Admin5":"12345"
 };
 
 
-/* ================= 500 TOKENS ================= */
+/* =====================================================
+   500 DEMO TOKEN NUMBERS
+   7842306001 → 7842306500
+   ===================================================== */
 
-/*
-   Total = 500
+const tokens = [
+"7842306001","7842306002","7842306003","7842306004","7842306005",
+"7842306006","7842306007","7842306008","7842306009","7842306010",
+"7842306011","7842306012","7842306013","7842306014","7842306015",
+"7842306016","7842306017","7842306018","7842306019","7842306020",
+"7842306021","7842306022","7842306023","7842306024","7842306025",
+"7842306026","7842306027","7842306028","7842306029","7842306030",
+"7842306031","7842306032","7842306033","7842306034","7842306035",
+"7842306036","7842306037","7842306038","7842306039","7842306040",
+"7842306041","7842306042","7842306043","7842306044","7842306045",
+"7842306046","7842306047","7842306048","7842306049","7842306050",
+"7842306051","7842306052","7842306053","7842306054","7842306055",
+"7842306056","7842306057","7842306058","7842306059","7842306060",
+"7842306061","7842306062","7842306063","7842306064","7842306065",
+"7842306066","7842306067","7842306068","7842306069","7842306070",
+"7842306071","7842306072","7842306073","7842306074","7842306075",
+"7842306076","7842306077","7842306078","7842306079","7842306080",
+"7842306081","7842306082","7842306083","7842306084","7842306085",
+"7842306086","7842306087","7842306088","7842306089","7842306090",
+"7842306091","7842306092","7842306093","7842306094","7842306095",
+"7842306096","7842306097","7842306098","7842306099","7842306100",
+"7842306101","7842306102","7842306103","7842306104","7842306105",
+"7842306106","7842306107","7842306108","7842306109","7842306110",
+"7842306111","7842306112","7842306113","7842306114","7842306115",
+"7842306116","7842306117","7842306118","7842306119","7842306120",
+"7842306121","7842306122","7842306123","7842306124","7842306125",
+"7842306126","7842306127","7842306128","7842306129","7842306130",
+"7842306131","7842306132","7842306133","7842306134","7842306135",
+"7842306136","7842306137","7842306138","7842306139","7842306140",
+"7842306141","7842306142","7842306143","7842306144","7842306145",
+"7842306146","7842306147","7842306148","7842306149","7842306150",
+"7842306151","7842306152","7842306153","7842306154","7842306155",
+"7842306156","7842306157","7842306158","7842306159","7842306160",
+"7842306161","7842306162","7842306163","7842306164","7842306165",
+"7842306166","7842306167","7842306168","7842306169","7842306170",
+"7842306171","7842306172","7842306173","7842306174","7842306175",
+"7842306176","7842306177","7842306178","7842306179","7842306180",
+"7842306181","7842306182","7842306183","7842306184","7842306185",
+"7842306186","7842306187","7842306188","7842306189","7842306190",
+"7842306191","7842306192","7842306193","7842306194","7842306195",
+"7842306196","7842306197","7842306198","7842306199","7842306200",
+"7842306201","7842306202","7842306203","7842306204","7842306205",
+"7842306206","7842306207","7842306208","7842306209","7842306210",
+"7842306211","7842306212","7842306213","7842306214","7842306215",
+"7842306216","7842306217","7842306218","7842306219","7842306220",
+"7842306221","7842306222","7842306223","7842306224","7842306225",
+"7842306226","7842306227","7842306228","7842306229","7842306230",
+"7842306231","7842306232","7842306233","7842306234","7842306235",
+"7842306236","7842306237","7842306238","7842306239","7842306240",
+"7842306241","7842306242","7842306243","7842306244","7842306245",
+"7842306246","7842306247","7842306248","7842306249","7842306250",
+"7842306251","7842306252","7842306253","7842306254","7842306255",
+"7842306256","7842306257","7842306258","7842306259","7842306260",
+"7842306261","7842306262","7842306263","7842306264","7842306265",
+"7842306266","7842306267","7842306268","7842306269","7842306270",
+"7842306271","7842306272","7842306273","7842306274","7842306275",
+"7842306276","7842306277","7842306278","7842306279","7842306280",
+"7842306281","7842306282","7842306283","7842306284","7842306285",
+"7842306286","7842306287","7842306288","7842306289","7842306290",
+"7842306291","7842306292","7842306293","7842306294","7842306295",
+"7842306296","7842306297","7842306298","7842306299","7842306300",
+"7842306301","7842306302","7842306303","7842306304","7842306305",
+"7842306306","7842306307","7842306308","7842306309","7842306310",
+"7842306311","7842306312","7842306313","7842306314","7842306315",
+"7842306316","7842306317","7842306318","7842306319","7842306320",
+"7842306321","7842306322","7842306323","7842306324","7842306325",
+"7842306326","7842306327","7842306328","7842306329","7842306330",
+"7842306331","7842306332","7842306333","7842306334","7842306335",
+"7842306336","7842306337","7842306338","7842306339","7842306340",
+"7842306341","7842306342","7842306343","7842306344","7842306345",
+"7842306346","7842306347","7842306348","7842306349","7842306350",
+"7842306351","7842306352","7842306353","7842306354","7842306355",
+"7842306356","7842306357","7842306358","7842306359","7842306360",
+"7842306361","7842306362","7842306363","7842306364","7842306365",
+"7842306366","7842306367","7842306368","7842306369","7842306370",
+"7842306371","7842306372","7842306373","7842306374","7842306375",
+"7842306376","7842306377","7842306378","7842306379","7842306380",
+"7842306381","7842306382","7842306383","7842306384","7842306385",
+"7842306386","7842306387","7842306388","7842306389","7842306390",
+"7842306391","7842306392","7842306393","7842306394","7842306395",
+"7842306396","7842306397","7842306398","7842306399","7842306400",
+"7842306401","7842306402","7842306403","7842306404","7842306405",
+"7842306406","7842306407","7842306408","7842306409","7842306410",
+"7842306411","7842306412","7842306413","7842306414","7842306415",
+"7842306416","7842306417","7842306418","7842306419","7842306420",
+"7842306421","7842306422","7842306423","7842306424","7842306425",
+"7842306426","7842306427","7842306428","7842306429","7842306430",
+"7842306431","7842306432","7842306433","7842306434","7842306435",
+"7842306436","7842306437","7842306438","7842306439","7842306440",
+"7842306441","7842306442","7842306443","7842306444","7842306445",
+"7842306446","7842306447","7842306448","7842306449","7842306450",
+"7842306451","7842306452","7842306453","7842306454","7842306455",
+"7842306456","7842306457","7842306458","7842306459","7842306460",
+"7842306461","7842306462","7842306463","7842306464","7842306465",
+"7842306466","7842306467","7842306468","7842306469","7842306470",
+"7842306471","7842306472","7842306473","7842306474","7842306475",
+"7842306476","7842306477","7842306478","7842306479","7842306480",
+"7842306481","7842306482","7842306483","7842306484","7842306485",
+"7842306486","7842306487","7842306488","7842306489","7842306490",
+"7842306491","7842306492","7842306493","7842306494","7842306495",
+"7842306496","7842306497","7842306498","7842306499","7842306500"
+];
 
-   Normal tokens:
-   7842306001 → 7842306499
 
-   Special token:
-   7842306159
-
-   6159 is counted as the Special Token,
-   so it is removed from the normal list.
-*/
+/* ================= SPECIAL CASHBACK TOKEN ================= */
 
 const specialToken = "7842306159";
-
-const tokens = [];
-
-for(let i = 1; i <= 499; i++){
-
-    const token =
-        "7842306" + String(i).padStart(3,"0");
-
-    if(token !== specialToken){
-        tokens.push(token);
-    }
-}
 
 
 /* ================= PAGE CONTROL ================= */
 
 function hideAll(){
 
-    const pages = [
-        "loginPage",
-        "fingerPage",
-        "detailsPage",
-        "homePage",
-        "booksPage",
-        "tokenPage"
-    ];
+const pages=[
+"loginPage",
+"fingerPage",
+"detailsPage",
+"homePage",
+"booksPage",
+"tokenPage"
+];
 
-    pages.forEach(function(id){
-        document
-        .getElementById(id)
-        .classList.add("hidden");
-    });
+pages.forEach(function(id){
+document.getElementById(id).classList.add("hidden");
+});
+
 }
 
 
@@ -459,35 +567,29 @@ function hideAll(){
 
 function login(){
 
-    const username =
-        document
-        .getElementById("username")
-        .value.trim();
+const username=
+document.getElementById("username").value.trim();
 
-    const password =
-        document
-        .getElementById("password")
-        .value;
+const password=
+document.getElementById("password").value;
 
-    if(users[username] &&
-       users[username] === password){
+if(users[username] &&
+users[username]===password){
 
-        hideAll();
+hideAll();
 
-        document
-        .getElementById("fingerPage")
-        .classList.remove("hidden");
+document.getElementById("fingerPage")
+.classList.remove("hidden");
 
-        resetFinger();
+resetFinger();
 
-    }else{
+}else{
 
-        document
-        .getElementById("loginError")
-        .textContent =
-        "Invalid username or password.";
+document.getElementById("loginError")
+.textContent="Invalid username or password.";
 
-    }
+}
+
 }
 
 
@@ -495,24 +597,15 @@ function login(){
 
 function resetFinger(){
 
-    document
-    .getElementById("fingerInfo")
-    .innerHTML =
-    "Please wait 15 seconds..."+
-    "<br>"+
-    "Checking your details...";
+document.getElementById("fingerInfo").innerHTML=
+"Please wait 15 seconds..."+
+"<br>Checking your details...";
 
-    document
-    .getElementById("fingerTimer")
-    .textContent = "15";
+document.getElementById("fingerTimer").textContent="15";
 
-    document
-    .getElementById("fingerStatus")
-    .textContent = "";
+document.getElementById("fingerStatus").textContent="";
 
-    document
-    .getElementById("verifyFingerBtn")
-    .disabled = false;
+document.getElementById("verifyFingerBtn").disabled=false;
 
 }
 
@@ -521,64 +614,55 @@ function resetFinger(){
 
 function verifyFinger(){
 
-    const button =
-        document
-        .getElementById("verifyFingerBtn");
+const button=
+document.getElementById("verifyFingerBtn");
 
-    const status =
-        document
-        .getElementById("fingerStatus");
+const status=
+document.getElementById("fingerStatus");
 
-    const timer =
-        document
-        .getElementById("fingerTimer");
+const timer=
+document.getElementById("fingerTimer");
 
-    const info =
-        document
-        .getElementById("fingerInfo");
+const info=
+document.getElementById("fingerInfo");
 
-    button.disabled = true;
+button.disabled=true;
 
-    info.innerHTML =
-        "Please wait 15 seconds..."+
-        "<br>"+
-        "Checking your details...";
+let seconds=15;
 
-    let seconds = 15;
+timer.textContent=seconds;
 
-    timer.textContent = seconds;
+const interval=setInterval(function(){
 
-    const interval =
-        setInterval(function(){
+seconds--;
 
-            seconds--;
+timer.textContent=seconds;
 
-            timer.textContent = seconds;
+if(seconds<=0){
 
-            if(seconds <= 0){
+clearInterval(interval);
 
-                clearInterval(interval);
+timer.textContent="✓";
 
-                timer.textContent = "✓";
+status.textContent=
+"✓ Finger Verified Successfully";
 
-                status.textContent =
-                "✓ Finger Verified Successfully";
+info.innerHTML=
+"Checking your details completed.";
 
-                info.innerHTML =
-                "Checking your details completed.";
+setTimeout(function(){
 
-                setTimeout(function(){
+hideAll();
 
-                    hideAll();
+document.getElementById("detailsPage")
+.classList.remove("hidden");
 
-                    document
-                    .getElementById("detailsPage")
-                    .classList.remove("hidden");
+},1000);
 
-                },1000);
-            }
+}
 
-        },1000);
+},1000);
+
 }
 
 
@@ -586,19 +670,17 @@ function verifyFinger(){
 
 function showPhoto(event){
 
-    const file =
-        event.target.files[0];
+const file=event.target.files[0];
 
-    if(!file)return;
+if(!file)return;
 
-    const preview =
-        document
-        .getElementById("photoPreview");
+const preview=
+document.getElementById("photoPreview");
 
-    preview.src =
-        URL.createObjectURL(file);
+preview.src=URL.createObjectURL(file);
 
-    preview.style.display = "block";
+preview.style.display="block";
+
 }
 
 
@@ -606,48 +688,38 @@ function showPhoto(event){
 
 function saveDetails(){
 
-    const name =
-        document
-        .getElementById("fullName")
-        .value.trim();
+const name=
+document.getElementById("fullName").value.trim();
 
-    const age =
-        document
-        .getElementById("age")
-        .value.trim();
+const age=
+document.getElementById("age").value.trim();
 
-    const cnic =
-        document
-        .getElementById("cnic")
-        .value.trim();
+const cnic=
+document.getElementById("cnic").value.trim();
 
-    const photo =
-        document
-        .getElementById("photoInput")
-        .files[0];
+const photo=
+document.getElementById("photoInput").files[0];
 
-    const error =
-        document
-        .getElementById("detailsError");
+const error=
+document.getElementById("detailsError");
 
-    if(!name || !age || !cnic || !photo){
+if(!name || !age || !cnic || !photo){
 
-        error.textContent =
-        "Please complete all fields and select your front photo.";
+error.textContent=
+"Please complete all fields and select your front photo.";
 
-        return;
-    }
+return;
 
-    document
-    .getElementById("welcomeName")
-    .textContent =
-    "Hello, " + name;
+}
 
-    hideAll();
+document.getElementById("welcomeName")
+.textContent="Hello, "+name;
 
-    document
-    .getElementById("homePage")
-    .classList.remove("hidden");
+hideAll();
+
+document.getElementById("homePage")
+.classList.remove("hidden");
+
 }
 
 
@@ -655,21 +727,20 @@ function saveDetails(){
 
 function openBooks(){
 
-    hideAll();
+hideAll();
 
-    document
-    .getElementById("booksPage")
-    .classList.remove("hidden");
+document.getElementById("booksPage")
+.classList.remove("hidden");
+
 }
-
 
 function goHome(){
 
-    hideAll();
+hideAll();
 
-    document
-    .getElementById("homePage")
-    .classList.remove("hidden");
+document.getElementById("homePage")
+.classList.remove("hidden");
+
 }
 
 
@@ -677,85 +748,129 @@ function goHome(){
 
 function openToken(){
 
-    hideAll();
+hideAll();
 
-    document
-    .getElementById("tokenPage")
-    .classList.remove("hidden");
+document.getElementById("tokenPage")
+.classList.remove("hidden");
 
-    document
-    .getElementById("tokenMessage")
-    .innerHTML = "";
+document.getElementById("tokenMessage")
+.innerHTML="";
 
-    document
-    .getElementById("tokenInput")
-    .value = "";
+document.getElementById("tokenButtons")
+.style.display="block";
+
+document.getElementById("tokenInput")
+.value="";
+
 }
 
 
-/* ================= TOKEN VERIFY ================= */
+/* ================= CANCEL TOKEN ================= */
+
+function cancelToken(){
+
+document.getElementById("tokenInput").value="";
+
+document.getElementById("tokenMessage").innerHTML="";
+
+goHome();
+
+}
+
+
+/* ================= VERIFY TOKEN ================= */
 
 function verifyToken(){
 
-    const token =
-        document
-        .getElementById("tokenInput")
-        .value.trim();
+const token=
+document.getElementById("tokenInput")
+.value.trim();
 
-    const message =
-        document
-        .getElementById("tokenMessage");
+const message=
+document.getElementById("tokenMessage");
 
-
-    if(!token){
-
-        message.innerHTML =
-        '<div class="error">'+
-        'Please enter a token number.'+
-        '</div>';
-
-        return;
-    }
+const buttons=
+document.getElementById("tokenButtons");
 
 
-    /* SPECIAL TOKEN */
+if(!token){
 
-    if(token === specialToken){
+message.innerHTML=
+'<div class="error">Please enter a token number.</div>';
 
-        message.innerHTML =
-        '<div class="success big-message">'+
-        '✓ Special Token Verified'+
-        '<br><br>'+
-        'Congratulations!'+
-        '<br>'+
-        'Please contact Manan360 Support Team.'+
-        '</div>';
+return;
 
-        return;
-    }
+}
 
 
-    /* NORMAL TOKENS */
+/* ===== SPECIAL 100 CASHBACK DEMO TOKEN ===== */
 
-    if(tokens.includes(token)){
+if(token===specialToken){
 
-        message.innerHTML =
-        '<div class="success big-message">'+
-        '✓ Token Verified Successfully'+
-        '<br><br>'+
-        'Application Submitted'+
-        '<br>'+
-        'Please Wait'+
-        '</div>';
+buttons.style.display="none";
 
-    }else{
+message.innerHTML=
 
-        message.innerHTML =
-        '<div class="error big-message">'+
-        'Invalid Token Number'+
-        '</div>';
+'<div class="token-success">'+
 
-    }
+'<div class="green-check">✓</div>'+
+
+'<div class="cashback-title">'+
+'مبارک ہو!'+
+'</div>'+
+
+'<div class="cashback-text">'+
+'آپ 100 Cashback کے Eligible ہو چکے ہیں۔'+
+'<br><br>'+
+'براہ کرم Support Team سے رابطہ کریں۔'+
+'</div>'+
+
+'<div class="token-number">'+
+'Token Number: '+token+
+'</div>'+
+
+'</div>';
+
+return;
+
+}
+
+
+/* ===== NORMAL DEMO TOKENS ===== */
+
+if(tokens.includes(token)){
+
+buttons.style.display="none";
+
+message.innerHTML=
+
+'<div class="token-success">'+
+
+'<div class="green-check">✓</div>'+
+
+'<div class="submitted-title">'+
+'Application has been submitted.'+
+'</div>'+
+
+'<div class="wait-text">'+
+'Please wait response.'+
+'</div>'+
+
+'<div class="token-number">'+
+'Token Number: '+token+
+'</div>'+
+
+'</div>';
+
+}else{
+
+message.innerHTML=
+'<div class="error big-message">'+
+'Invalid Token Number'+
+'</div>';
+
+}
+
 }
 
 
@@ -763,23 +878,15 @@ function verifyToken(){
 
 function logout(){
 
-    hideAll();
+hideAll();
 
-    document
-    .getElementById("loginPage")
-    .classList.remove("hidden");
+document.getElementById("loginPage")
+.classList.remove("hidden");
 
-    document
-    .getElementById("username")
-    .value = "";
+document.getElementById("username").value="";
+document.getElementById("password").value="";
+document.getElementById("loginError").textContent="";
 
-    document
-    .getElementById("password")
-    .value = "";
-
-    document
-    .getElementById("loginError")
-    .textContent = "";
 }
 
 </script>
