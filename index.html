@@ -6,11 +6,7 @@
 <title>Manan360.pk</title>
 
 <style>
-*{
-    box-sizing:border-box;
-    margin:0;
-    padding:0;
-}
+*{box-sizing:border-box;margin:0;padding:0}
 
 body{
     font-family:Arial,sans-serif;
@@ -39,20 +35,9 @@ body{
     box-shadow:0 15px 40px rgba(0,0,0,.25);
 }
 
-h1{
-    font-size:29px;
-    margin-bottom:8px;
-}
-
-h2{
-    font-size:23px;
-    margin-bottom:14px;
-}
-
-p{
-    line-height:1.5;
-    margin-bottom:16px;
-}
+h1{font-size:29px;margin-bottom:8px}
+h2{font-size:23px;margin-bottom:14px}
+p{line-height:1.5;margin-bottom:16px}
 
 input{
     width:100%;
@@ -74,11 +59,10 @@ button{
     color:white;
     font-size:16px;
     font-weight:bold;
+    cursor:pointer;
 }
 
-button:active{
-    transform:scale(.98);
-}
+button:active{transform:scale(.98)}
 
 .small{
     font-size:13px;
@@ -87,9 +71,8 @@ button:active{
 }
 
 .error{
-    min-height:20px;
     color:#ffd6d6;
-    margin-top:8px;
+    margin-top:10px;
 }
 
 .success{
@@ -98,12 +81,7 @@ button:active{
     margin-top:10px;
 }
 
-.hidden{
-    display:none;
-}
-
-
-/* ================= FINGERPRINT ================= */
+.hidden{display:none}
 
 .finger{
     width:125px;
@@ -111,8 +89,8 @@ button:active{
     margin:22px auto;
     border:5px solid white;
     border-radius:55% 55% 45% 45%;
-    animation:pulse 1.5s infinite;
     position:relative;
+    animation:pulse 1.5s infinite;
 }
 
 .finger:before{
@@ -140,14 +118,8 @@ button:active{
 }
 
 @keyframes pulse{
-    50%{
-        transform:scale(1.05);
-        opacity:.7;
-    }
+    50%{transform:scale(1.05);opacity:.7}
 }
-
-
-/* ================= PHOTO ================= */
 
 .photo-area{
     margin:12px 0;
@@ -161,14 +133,10 @@ button:active{
     width:130px;
     height:130px;
     object-fit:cover;
-    object-position:center;
     border-radius:50%;
     border:4px solid white;
     margin:10px auto;
 }
-
-
-/* ================= CARDS ================= */
 
 .card{
     background:rgba(255,255,255,.14);
@@ -177,139 +145,124 @@ button:active{
     margin:12px 0;
 }
 
-.card h3{
-    margin-bottom:7px;
+.card h3{margin-bottom:7px}
+
+.timer{
+    font-size:24px;
+    font-weight:bold;
+    margin:12px 0;
 }
 
-.class-title{
+.big-message{
     font-size:21px;
     font-weight:bold;
-    margin-bottom:6px;
+    line-height:1.7;
+    margin-top:15px;
 }
-
-.class-subtitle{
-    font-size:16px;
-    opacity:.9;
-    margin-bottom:10px;
-}
-
-.open-note{
-    display:block;
-    width:100%;
-    padding:14px;
-    margin-top:12px;
-    border-radius:12px;
-    background:linear-gradient(90deg,#007bff,#00c853);
-    color:white;
-    text-decoration:none;
-    font-size:16px;
-    font-weight:bold;
-}
-
-.divider{
-    height:1px;
-    background:rgba(255,255,255,.25);
-    margin:20px 0;
-}
-
 </style>
 </head>
 
 <body>
 
 
-<!-- ================= LOGIN ================= -->
+<!-- LOGIN -->
 
 <section id="loginPage" class="page">
-
 <div class="box">
 
 <h1>Manan360.pk</h1>
-
 <p>Notes & Test Papers</p>
 
-<input
-id="username"
-type="text"
-placeholder="Username">
+<input id="username"
+       type="text"
+       placeholder="Username">
 
-<input
-id="password"
-type="password"
-placeholder="Password">
+<input id="password"
+       type="password"
+       placeholder="Password">
 
-<button onclick="login()">
-Login
-</button>
+<button onclick="login()">Login</button>
 
 <div id="loginError" class="error"></div>
 
 </div>
-
 </section>
 
 
-<!-- ================= FINGERPRINT ================= -->
+<!-- FINGERPRINT -->
 
 <section id="fingerPage" class="page hidden">
-
 <div class="box">
 
 <h2>Fingerprint Verification</h2>
 
+<p>
+Please place your finger on the scanner.
+</p>
+
 <div class="finger"></div>
 
-<!-- 15 SECOND SILENT SCANNING -->
-
+<div id="fingerInfo" class="checking">
+    Please wait 15 seconds...
+    <br>
+    Checking your details...
 </div>
 
+<div id="fingerTimer" class="timer">
+    15
+</div>
+
+<button id="verifyFingerBtn"
+        onclick="verifyFinger()">
+    Verify Finger
+</button>
+
+<div id="fingerStatus" class="success"></div>
+
+<p class="small">
+Fingerprint verification is simulated on this website.
+</p>
+
+</div>
 </section>
 
 
-<!-- ================= PERSONAL DETAILS ================= -->
+<!-- DETAILS -->
 
 <section id="detailsPage" class="page hidden">
-
 <div class="box">
 
 <h2>Personal Details</h2>
 
-<p>
-Enter your information for this demo.
-</p>
+<p>Enter your information.</p>
 
-<input
-id="fullName"
-type="text"
-placeholder="Your Name">
+<input id="fullName"
+       type="text"
+       placeholder="Your Name">
 
-<input
-id="age"
-type="number"
-placeholder="Age"
-min="1"
-max="120">
+<input id="age"
+       type="number"
+       placeholder="Age"
+       min="1"
+       max="120">
 
-<input
-id="cnic"
-type="text"
-placeholder="Demo CNIC (XXXXX-XXXXXXX-X)"
-maxlength="15">
+<input id="cnic"
+       type="text"
+       placeholder="CNIC (XXXXX-XXXXXXX-X)"
+       maxlength="15">
 
 <div class="photo-area">
 
 <b>Front Photo</b>
 
-<img
-id="photoPreview"
-class="photo-preview">
+<img id="photoPreview"
+     class="photo-preview">
 
-<input
-id="photoInput"
-type="file"
-accept="image/*"
-capture="user"
-onchange="showPhoto(event)">
+<input id="photoInput"
+       type="file"
+       accept="image/*"
+       capture="user"
+       onchange="showPhoto(event)">
 
 </div>
 
@@ -319,26 +272,18 @@ Continue
 
 <div id="detailsError" class="error"></div>
 
-<p class="small">
-Demo information is not sent to a server.
-</p>
-
 </div>
-
 </section>
 
 
-<!-- ================= HOME ================= -->
+<!-- HOME -->
 
 <section id="homePage" class="page hidden">
-
 <div class="box">
 
 <h1>Manan360.pk</h1>
 
-<h2 id="welcomeName">
-Hello!
-</h2>
+<h2 id="welcomeName">Hello!</h2>
 
 <p>
 My name is Abdur Manan.<br>
@@ -363,140 +308,60 @@ Open Books
 🎫 Verify Token
 </button>
 
-<button
-onclick="logout()"
+<button onclick="logout()"
 style="background:#263238">
-
 Sign Out
-
 </button>
 
 </div>
-
 </section>
 
 
-<!-- ================= BOOKS ================= -->
+<!-- BOOKS -->
 
 <section id="booksPage" class="page hidden">
-
 <div class="box">
 
 <h2>📚 Books & Notes</h2>
 
+<div class="card">
 
-<!-- ================= CLASS 10 FIRST ================= -->
+<h3>Class 9th</h3>
+<p>Urdu Test Paper</p>
+
+<button onclick="alert('Class 9th Urdu Test Paper')">
+Open Note
+</button>
+
+</div>
 
 <div class="card">
 
-<div class="class-title">
-Class 10th
-</div>
+<h3>Class 10th</h3>
+<p>Urdu Test Paper</p>
 
-<div class="class-subtitle">
-Urdu Test Paper
-</div>
-
-<a
-class="open-note"
-href="Class-10th-Urdu-Test-Paper.pdf"
-target="_blank">
-
+<button onclick="alert('Class 10th Urdu Test Paper')">
 Open Note
-
-</a>
-
-</div>
-
-
-<!-- ================= FUTURE CLASS 10 BOOKS ================= -->
-
-<!--
-
-نئی Class 10 کتابیں اسی جگہ شامل کریں۔
-
-Example:
-
-<div class="card">
-
-<div class="class-title">
-Class 10th
-</div>
-
-<div class="class-subtitle">
-English Test Paper
-</div>
-
-<a
-class="open-note"
-href="Class-10th-English-Test-Paper.pdf"
-target="_blank">
-
-Open Note
-
-</a>
+</button>
 
 </div>
-
--->
-
-
-<div class="divider"></div>
-
-
-<!-- ================= CLASS 9 ALL BOOKS ================= -->
-
-<div class="card">
-
-<div class="class-title">
-Class 9th — All Books
-</div>
-
-<div class="class-subtitle">
-Urdu Test Paper
-</div>
-
-<a
-class="open-note"
-href="Class-9th-Urdu-Test-Paper.pdf"
-target="_blank">
-
-Open Note
-
-</a>
-
-</div>
-
-
-<!-- ================= FUTURE CLASS 9 BOOKS ================= -->
-
-<!--
-
-نئی Class 9 کتابیں اسی جگہ شامل کریں۔
-
--->
 
 <button onclick="openToken()">
 🎫 Verify Token
 </button>
 
-<button
-onclick="goHome()"
+<button onclick="goHome()"
 style="background:#263238">
-
 Back to Home
-
 </button>
 
 </div>
-
 </section>
 
 
-<!-- ================= VERIFY TOKEN ================= -->
+<!-- TOKEN -->
 
 <section id="tokenPage" class="page hidden">
-
 <div class="box">
 
 <h2>🎫 Verify Token</h2>
@@ -505,12 +370,11 @@ Back to Home
 Enter your token number below.
 </p>
 
-<input
-id="tokenInput"
-type="text"
-inputmode="numeric"
-maxlength="10"
-placeholder="Enter Token Number">
+<input id="tokenInput"
+       type="text"
+       inputmode="numeric"
+       maxlength="10"
+       placeholder="Enter Token Number">
 
 <button onclick="verifyToken()">
 Verify Token
@@ -518,81 +382,203 @@ Verify Token
 
 <div id="tokenMessage"></div>
 
-<button
-onclick="openBooks()"
+<button onclick="openBooks()"
 style="background:#263238">
-
 Back to Books
-
 </button>
 
 </div>
-
 </section>
 
 
 <script>
 
-
-/* ================= LOGIN ================= */
+/* ================= LOGIN USERS ================= */
 
 const users = {
-
     "Admin1":"12345",
     "Admin2":"12345",
     "Admin3":"12345",
     "Admin4":"12345",
     "Admin5":"12345"
-
 };
 
+
+/* ================= 500 TOKENS ================= */
+
+/*
+   Total = 500
+
+   Normal tokens:
+   7842306001 → 7842306499
+
+   Special token:
+   7842306159
+
+   6159 is counted as the Special Token,
+   so it is removed from the normal list.
+*/
+
+const specialToken = "7842306159";
+
+const tokens = [];
+
+for(let i = 1; i <= 499; i++){
+
+    const token =
+        "7842306" + String(i).padStart(3,"0");
+
+    if(token !== specialToken){
+        tokens.push(token);
+    }
+}
+
+
+/* ================= PAGE CONTROL ================= */
+
+function hideAll(){
+
+    const pages = [
+        "loginPage",
+        "fingerPage",
+        "detailsPage",
+        "homePage",
+        "booksPage",
+        "tokenPage"
+    ];
+
+    pages.forEach(function(id){
+        document
+        .getElementById(id)
+        .classList.add("hidden");
+    });
+}
+
+
+/* ================= LOGIN ================= */
 
 function login(){
 
     const username =
-        document.getElementById("username")
+        document
+        .getElementById("username")
         .value.trim();
 
     const password =
-        document.getElementById("password")
+        document
+        .getElementById("password")
         .value;
 
-    if(
-        users[username] &&
-        users[username] === password
-    ){
+    if(users[username] &&
+       users[username] === password){
 
         hideAll();
 
-        document.getElementById("fingerPage")
+        document
+        .getElementById("fingerPage")
         .classList.remove("hidden");
 
-        /*
-        Fingerprint scanning:
-        15 seconds only
-        No text
-        No button
-        */
+        resetFinger();
 
-        setTimeout(function(){
+    }else{
 
-            hideAll();
-
-            document.getElementById("detailsPage")
-            .classList.remove("hidden");
-
-        },15000);
-
-    }
-
-    else{
-
-        document.getElementById("loginError")
+        document
+        .getElementById("loginError")
         .textContent =
         "Invalid username or password.";
 
     }
+}
 
+
+/* ================= FINGER RESET ================= */
+
+function resetFinger(){
+
+    document
+    .getElementById("fingerInfo")
+    .innerHTML =
+    "Please wait 15 seconds..."+
+    "<br>"+
+    "Checking your details...";
+
+    document
+    .getElementById("fingerTimer")
+    .textContent = "15";
+
+    document
+    .getElementById("fingerStatus")
+    .textContent = "";
+
+    document
+    .getElementById("verifyFingerBtn")
+    .disabled = false;
+
+}
+
+
+/* ================= VERIFY FINGER ================= */
+
+function verifyFinger(){
+
+    const button =
+        document
+        .getElementById("verifyFingerBtn");
+
+    const status =
+        document
+        .getElementById("fingerStatus");
+
+    const timer =
+        document
+        .getElementById("fingerTimer");
+
+    const info =
+        document
+        .getElementById("fingerInfo");
+
+    button.disabled = true;
+
+    info.innerHTML =
+        "Please wait 15 seconds..."+
+        "<br>"+
+        "Checking your details...";
+
+    let seconds = 15;
+
+    timer.textContent = seconds;
+
+    const interval =
+        setInterval(function(){
+
+            seconds--;
+
+            timer.textContent = seconds;
+
+            if(seconds <= 0){
+
+                clearInterval(interval);
+
+                timer.textContent = "✓";
+
+                status.textContent =
+                "✓ Finger Verified Successfully";
+
+                info.innerHTML =
+                "Checking your details completed.";
+
+                setTimeout(function(){
+
+                    hideAll();
+
+                    document
+                    .getElementById("detailsPage")
+                    .classList.remove("hidden");
+
+                },1000);
+            }
+
+        },1000);
 }
 
 
@@ -606,14 +592,13 @@ function showPhoto(event){
     if(!file)return;
 
     const preview =
-        document.getElementById("photoPreview");
+        document
+        .getElementById("photoPreview");
 
     preview.src =
         URL.createObjectURL(file);
 
-    preview.style.display =
-        "block";
-
+    preview.style.display = "block";
 }
 
 
@@ -622,51 +607,47 @@ function showPhoto(event){
 function saveDetails(){
 
     const name =
-        document.getElementById("fullName")
+        document
+        .getElementById("fullName")
         .value.trim();
 
     const age =
-        document.getElementById("age")
+        document
+        .getElementById("age")
         .value.trim();
 
     const cnic =
-        document.getElementById("cnic")
+        document
+        .getElementById("cnic")
         .value.trim();
 
     const photo =
-        document.getElementById("photoInput")
+        document
+        .getElementById("photoInput")
         .files[0];
 
     const error =
-        document.getElementById("detailsError");
+        document
+        .getElementById("detailsError");
 
-
-    if(
-        !name ||
-        !age ||
-        !cnic ||
-        !photo
-    ){
+    if(!name || !age || !cnic || !photo){
 
         error.textContent =
         "Please complete all fields and select your front photo.";
 
         return;
-
     }
 
-
-    document.getElementById("welcomeName")
+    document
+    .getElementById("welcomeName")
     .textContent =
     "Hello, " + name;
 
-    error.textContent = "";
-
     hideAll();
 
-    document.getElementById("homePage")
+    document
+    .getElementById("homePage")
     .classList.remove("hidden");
-
 }
 
 
@@ -676,9 +657,9 @@ function openBooks(){
 
     hideAll();
 
-    document.getElementById("booksPage")
+    document
+    .getElementById("booksPage")
     .classList.remove("hidden");
-
 }
 
 
@@ -686,82 +667,95 @@ function goHome(){
 
     hideAll();
 
-    document.getElementById("homePage")
+    document
+    .getElementById("homePage")
     .classList.remove("hidden");
-
 }
 
 
-/* ================= TOKEN ================= */
+/* ================= TOKEN PAGE ================= */
 
 function openToken(){
 
     hideAll();
 
-    document.getElementById("tokenPage")
+    document
+    .getElementById("tokenPage")
     .classList.remove("hidden");
 
-    document.getElementById("tokenMessage")
+    document
+    .getElementById("tokenMessage")
     .innerHTML = "";
 
+    document
+    .getElementById("tokenInput")
+    .value = "";
 }
 
 
-const demoTokens = [
-
-    "7842306159",
-    "1023456789",
-    "2034567890",
-    "3045678901",
-    "4056789012"
-
-];
-
+/* ================= TOKEN VERIFY ================= */
 
 function verifyToken(){
 
     const token =
-        document.getElementById("tokenInput")
+        document
+        .getElementById("tokenInput")
         .value.trim();
 
     const message =
-        document.getElementById("tokenMessage");
+        document
+        .getElementById("tokenMessage");
 
 
     if(!token){
 
         message.innerHTML =
-        '<div class="error">' +
-        'Please enter a token number.' +
+        '<div class="error">'+
+        'Please enter a token number.'+
         '</div>';
 
         return;
-
     }
 
 
-    if(demoTokens.includes(token)){
+    /* SPECIAL TOKEN */
+
+    if(token === specialToken){
 
         message.innerHTML =
-        '<div class="success">' +
-        '✓ Token Verified Successfully' +
-        '</div>' +
+        '<div class="success big-message">'+
+        '✓ Special Token Verified'+
+        '<br><br>'+
+        'Congratulations!'+
+        '<br>'+
+        'Please contact Manan360 Support Team.'+
+        '</div>';
 
-        '<p class="success">' +
-        'Application Submitted, please wait.' +
-        '</p>';
-
+        return;
     }
 
-    else{
+
+    /* NORMAL TOKENS */
+
+    if(tokens.includes(token)){
 
         message.innerHTML =
-        '<div class="error">' +
-        'Invalid Demo Token.' +
+        '<div class="success big-message">'+
+        '✓ Token Verified Successfully'+
+        '<br><br>'+
+        'Application Submitted'+
+        '<br>'+
+        'Please Wait'+
+        '</div>';
+
+    }else{
+
+        message.innerHTML =
+        '<div class="error big-message">'+
+        'Invalid Token Number'+
         '</div>';
 
     }
-
 }
 
 
@@ -771,44 +765,21 @@ function logout(){
 
     hideAll();
 
-    document.getElementById("loginPage")
+    document
+    .getElementById("loginPage")
     .classList.remove("hidden");
 
-    document.getElementById("username")
+    document
+    .getElementById("username")
     .value = "";
 
-    document.getElementById("password")
+    document
+    .getElementById("password")
     .value = "";
 
-    document.getElementById("loginError")
+    document
+    .getElementById("loginError")
     .textContent = "";
-
-}
-
-
-/* ================= HIDE ALL ================= */
-
-function hideAll(){
-
-    const pages = [
-
-        "loginPage",
-        "fingerPage",
-        "detailsPage",
-        "homePage",
-        "booksPage",
-        "tokenPage"
-
-    ];
-
-
-    pages.forEach(function(id){
-
-        document.getElementById(id)
-        .classList.add("hidden");
-
-    });
-
 }
 
 </script>
