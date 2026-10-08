@@ -26,21 +26,14 @@ padding:20px;
 width:100%;
 max-width:430px;
 background:#fff;
-border-radius:22px;
 padding:28px 22px;
+border-radius:22px;
 text-align:center;
 box-shadow:0 15px 40px rgba(0,0,0,.25);
 }
 
-h1,h2{
-color:#064b91;
-margin-bottom:12px;
-}
-
-p{
-color:#555;
-margin-bottom:20px;
-}
+h1,h2{color:#064b91;margin-bottom:12px}
+p{color:#555;margin-bottom:20px}
 
 input{
 width:100%;
@@ -78,7 +71,7 @@ background:#f5faff;
 
 .book h3{
 color:#07549b;
-margin-bottom:7px;
+margin-bottom:8px;
 }
 
 .error{
@@ -112,10 +105,9 @@ line-height:1.7;
 
 <body>
 
-<!-- LOGIN PAGE -->
+<!-- LOGIN -->
 <div class="page" id="loginPage">
 <div class="box">
-
 <h1>Manan360.pk</h1>
 <p>Login to continue</p>
 
@@ -125,32 +117,28 @@ line-height:1.7;
 <button onclick="login()">Login</button>
 
 <div id="loginError"></div>
-
 </div>
 </div>
 
 
-<!-- NAME PAGE -->
+<!-- NAME -->
 <div class="page" id="namePage">
 <div class="box">
-
 <h2>Welcome</h2>
 <p>What is your name?</p>
 
 <input id="visitorName" type="text" placeholder="Enter your name">
 
 <button onclick="saveName()">Continue</button>
-
 </div>
 </div>
 
 
-<!-- HOME PAGE -->
+<!-- HOME -->
 <div class="page" id="homePage">
 <div class="box">
 
 <h1 id="helloName">Welcome</h1>
-
 <p>Welcome to Manan360.pk</p>
 
 <button onclick="openBooks()">Books & Notes</button>
@@ -159,31 +147,37 @@ line-height:1.7;
 Token Number
 </button>
 
-<button class="dark" onclick="signOut()">
-Sign Out
-</button>
+<button class="dark" onclick="signOut()">Sign Out</button>
 
 </div>
 </div>
 
 
-<!-- BOOKS PAGE -->
+<!-- BOOKS & NOTES -->
 <div class="page" id="booksPage">
 <div class="box">
 
 <h2>Books & Notes</h2>
 
 <div class="book">
-<h3>Class 9th Notes</h3>
-<p>Study Notes</p>
-<button onclick="openTokenPage()">Open Notes</button>
+<h3>Class 9th Urdu</h3>
+<p>Urdu Test Paper</p>
+
+<button onclick="downloadPDF('Class-9th-Urdu-Test-Paper.pdf')">
+Download PDF
+</button>
 </div>
 
+
 <div class="book">
-<h3>Class 10th Notes</h3>
-<p>Study Notes</p>
-<button onclick="openTokenPage()">Open Notes</button>
+<h3>Class 10th Urdu</h3>
+<p>Urdu Test Paper</p>
+
+<button onclick="downloadPDF('Class-10th-Urdu-Test-Paper.pdf')">
+Download PDF
+</button>
 </div>
+
 
 <button class="gray" onclick="goHome()">
 Home
@@ -198,7 +192,6 @@ Home
 <div class="box">
 
 <h2>Token Number</h2>
-
 <p>Enter your token number</p>
 
 <input
@@ -222,7 +215,7 @@ Cancel
 </div>
 
 
-<!-- SUCCESS PAGE -->
+<!-- SUCCESS -->
 <div class="page" id="successPage">
 <div class="box">
 
@@ -243,24 +236,22 @@ Home
 
 <script>
 
-/* LOGIN DETAILS */
-const USERNAME = "admin1234";
-const PASSWORD = "admin";
+/* LOGIN */
+const USERNAME="admin1234";
+const PASSWORD="admin";
 
 
-/* 500 VALID TOKENS */
-const validTokens = new Set();
+/* 500 TOKENS */
+const validTokens=new Set();
 
-/* مخصوص token */
 validTokens.add("7842306159");
 
-/* باقی 499 tokens */
 for(let i=6001;i<=6499;i++){
 validTokens.add("784230"+i);
 }
 
 
-/* PAGE SYSTEM */
+/* PAGE CONTROL */
 function showPage(id){
 
 document.querySelectorAll(".page").forEach(function(page){
@@ -274,8 +265,8 @@ document.getElementById(id).style.display="flex";
 /* LOGIN */
 function login(){
 
-let u=document.getElementById("username").value.trim();
-let p=document.getElementById("password").value;
+const u=document.getElementById("username").value.trim();
+const p=document.getElementById("password").value;
 
 if(u===USERNAME && p===PASSWORD){
 
@@ -294,7 +285,7 @@ document.getElementById("loginError").innerHTML=
 /* NAME */
 function saveName(){
 
-let name=document.getElementById("visitorName").value.trim();
+const name=document.getElementById("visitorName").value.trim();
 
 if(name===""){
 alert("Please enter your name.");
@@ -314,7 +305,24 @@ showPage("booksPage");
 }
 
 
-/* HOME/BOOKS → SEPARATE TOKEN PAGE */
+/* PDF DOWNLOAD
+   Token verification is NOT connected here.
+*/
+function downloadPDF(file){
+
+const link=document.createElement("a");
+
+link.href=file;
+link.download=file;
+
+document.body.appendChild(link);
+link.click();
+link.remove();
+
+}
+
+
+/* HOME → TOKEN */
 function openTokenPage(){
 
 document.getElementById("token").value="";
@@ -327,9 +335,9 @@ showPage("tokenPage");
 /* TOKEN VERIFY */
 function verifyToken(){
 
-let token=document.getElementById("token").value.trim();
+const token=document.getElementById("token").value.trim();
 
-let message=document.getElementById("tokenMessage");
+const message=document.getElementById("tokenMessage");
 
 if(token===""){
 
@@ -352,7 +360,7 @@ message.innerHTML=
 }
 
 
-/* CANCEL → HOME */
+/* CANCEL */
 function cancelToken(){
 
 document.getElementById("token").value="";
