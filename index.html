@@ -2,257 +2,529 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width,initial-scale=1.0">
-<title>Manan360.pk</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Manan360.pk - Student Portal</title>
 
 <style>
 *{
- box-sizing:border-box;
- margin:0;
- padding:0;
+    box-sizing:border-box;
+    margin:0;
+    padding:0;
 }
 
 body{
- font-family:Arial,sans-serif;
- min-height:100vh;
- background:linear-gradient(135deg,#061a40,#0072ff,#00c853);
- padding:20px;
+    font-family:Arial,Helvetica,sans-serif;
+    min-height:100vh;
+    overflow-x:hidden;
 }
 
-.container{
- max-width:480px;
- margin:auto;
+/* MULTICOLOR BACKGROUND */
+.bg{
+    position:fixed;
+    inset:0;
+    z-index:-1;
+    background:linear-gradient(
+        135deg,
+        #ff0080,
+        #7928ca,
+        #0072ff,
+        #00c6ff,
+        #00d26a,
+        #ffd200,
+        #ff4b1f,
+        #ff0080
+    );
+    background-size:500% 500%;
+    animation:bgMove 12s ease infinite;
 }
 
-.card{
- background:#fff;
- border-radius:25px;
- padding:22px;
- margin-bottom:18px;
- box-shadow:0 15px 40px rgba(0,0,0,.25);
- text-align:center;
+@keyframes bgMove{
+    0%{background-position:0% 50%}
+    25%{background-position:50% 100%}
+    50%{background-position:100% 50%}
+    75%{background-position:50% 0%}
+    100%{background-position:0% 50%}
+}
+
+/* CENTER */
+.screen{
+    min-height:100vh;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    padding:18px;
+}
+
+/* LOGIN */
+.login{
+    width:100%;
+    max-width:380px;
+    background:rgba(255,255,255,.96);
+    padding:30px 24px;
+    border-radius:24px;
+    box-shadow:0 18px 50px rgba(0,0,0,.30);
+    text-align:center;
 }
 
 .logo{
- width:90px;
- height:90px;
- object-fit:contain;
- border-radius:20px;
+    font-size:30px;
+    font-weight:900;
+    color:#123;
 }
 
-h1{
- color:#073b8f;
- margin:8px 0 4px;
-}
-
-.subtitle{
- color:#666;
- margin-bottom:18px;
+.sub{
+    color:#666;
+    margin:7px 0 25px;
 }
 
 input{
- width:100%;
- padding:14px;
- margin:6px 0;
- border:1px solid #ddd;
- border-radius:12px;
- font-size:16px;
- outline:none;
+    width:100%;
+    padding:14px;
+    border:1px solid #ddd;
+    border-radius:13px;
+    outline:none;
+    font-size:16px;
+    margin-bottom:13px;
+}
+
+input:focus{
+    border-color:#0072ff;
 }
 
 button{
- width:100%;
- padding:14px;
- margin-top:9px;
- border:0;
- border-radius:12px;
- color:white;
- font-size:16px;
- font-weight:bold;
- background:linear-gradient(90deg,#0066ff,#00b7ff);
+    border:0;
+    border-radius:13px;
+    padding:14px 18px;
+    background:linear-gradient(135deg,#0072ff,#00c6ff);
+    color:white;
+    font-size:16px;
+    font-weight:bold;
+    cursor:pointer;
 }
 
-.home{
- display:none;
-}
-
-.welcome{
- background:linear-gradient(135deg,#0066ff,#00c853);
- color:white;
- padding:18px;
- border-radius:17px;
- margin-bottom:15px;
-}
-
-.welcome h2{
- margin-bottom:5px;
-}
-
-.token-title{
- color:#073b8f;
- font-size:22px;
- font-weight:bold;
- margin-bottom:5px;
-}
-
-.token-sub{
- color:#777;
- margin-bottom:15px;
-}
-
-.msg{
- margin-top:12px;
- padding:12px;
- border-radius:10px;
- font-weight:bold;
+.full{
+    width:100%;
 }
 
 .error{
- background:#ffe7e7;
- color:#c00000;
+    display:none;
+    color:#d00000;
+    font-size:14px;
+    margin-top:12px;
+}
+
+/* NAME */
+.nameBox{
+    display:none;
+    width:100%;
+    max-width:400px;
+    background:white;
+    padding:30px 24px;
+    border-radius:24px;
+    text-align:center;
+    box-shadow:0 18px 50px rgba(0,0,0,.30);
+}
+
+.title{
+    font-size:27px;
+    font-weight:900;
+    color:#123;
+    margin-bottom:10px;
+}
+
+.text{
+    color:#666;
+    margin-bottom:22px;
+}
+
+/* MAIN */
+.main{
+    display:none;
+    width:100%;
+    max-width:1050px;
+    padding:10px;
+}
+
+.header{
+    background:rgba(255,255,255,.96);
+    border-radius:18px;
+    padding:15px 18px;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    margin-bottom:18px;
+}
+
+.headerTitle{
+    font-size:25px;
+    font-weight:900;
+    color:#123;
+}
+
+.signout{
+    width:auto;
+    padding:9px 15px;
+    background:linear-gradient(135deg,#ff416c,#ff4b2b);
+    font-size:13px;
+}
+
+/* TWO COLUMNS */
+.columns{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:18px;
+}
+
+.card{
+    background:rgba(255,255,255,.96);
+    border-radius:22px;
+    padding:22px;
+    box-shadow:0 12px 35px rgba(0,0,0,.25);
+}
+
+.cardTitle{
+    font-size:23px;
+    font-weight:900;
+    color:#123;
+    margin-bottom:18px;
+}
+
+/* BOOKS */
+.books{
+    display:grid;
+    gap:12px;
+}
+
+.book{
+    border-radius:16px;
+    padding:17px;
+    background:linear-gradient(135deg,#0072ff,#00c6ff);
+    color:white;
+}
+
+.book:nth-child(2){
+    background:linear-gradient(135deg,#7928ca,#ff0080);
+}
+
+.book:nth-child(3){
+    background:linear-gradient(135deg,#00a86b,#00d26a);
+}
+
+.book:nth-child(4){
+    background:linear-gradient(135deg,#ff8a00,#ff4b1f);
+}
+
+.bookName{
+    font-size:18px;
+    font-weight:bold;
+    margin-bottom:5px;
+}
+
+.bookInfo{
+    font-size:13px;
+    opacity:.9;
+    margin-bottom:12px;
+}
+
+.openBtn{
+    display:inline-block;
+    text-decoration:none;
+    background:white;
+    color:#0072ff;
+    padding:9px 13px;
+    border-radius:10px;
+    font-size:13px;
+    font-weight:bold;
+}
+
+/* TOKEN */
+.tokenCard{
+    text-align:center;
+}
+
+.tokenTitle{
+    font-size:27px;
+    font-weight:900;
+    color:#0072ff;
+    margin:22px 0 10px;
+}
+
+.tokenQuestion{
+    color:#555;
+    margin-bottom:18px;
 }
 
 .success{
- background:#e5ffed;
- color:#08752b;
+    display:none;
+    margin-top:15px;
+    padding:12px;
+    border-radius:12px;
+    background:#dff8e8;
+    color:#08752d;
+    font-weight:bold;
 }
 
-.balance{
- margin-top:15px;
- padding:14px;
- border-radius:14px;
- background:#eef6ff;
- color:#0758b8;
- font-size:20px;
- font-weight:bold;
+.wrong{
+    display:none;
+    color:#d00000;
+    margin-top:12px;
+    font-size:14px;
 }
 
-.logout{
- background:#555;
- margin-top:18px;
- font-size:14px;
- padding:10px;
-}
+/* MOBILE */
+@media(max-width:700px){
+    .columns{
+        grid-template-columns:1fr;
+    }
 
-.small{
- color:#888;
- font-size:12px;
- margin-top:12px;
+    .header{
+        flex-direction:column;
+        gap:10px;
+        text-align:center;
+    }
+
+    .signout{
+        width:auto;
+    }
 }
 </style>
 </head>
 
 <body>
 
-<div class="container">
+<div class="bg"></div>
+
+<div class="screen">
 
 <!-- ================= LOGIN ================= -->
 
-<div class="card" id="loginPage">
+<div class="login" id="loginBox">
 
-<img src="logo.png" class="logo">
+    <div class="logo">Manan360.pk</div>
 
-<h1>Manan360.pk</h1>
-<div class="subtitle">Notes & Test Papers</div>
+    <div class="sub">
+        Notes & Test Papers
+    </div>
 
-<input
- id="username"
- type="text"
- placeholder="Username">
+    <input
+        type="text"
+        id="username"
+        placeholder="Username"
+        autocomplete="username"
+    >
 
-<input
- id="password"
- type="password"
- placeholder="Password">
+    <input
+        type="password"
+        id="password"
+        placeholder="Password"
+        autocomplete="current-password"
+    >
 
-<button onclick="login()">
-Login
-</button>
+    <button class="full" onclick="login()">
+        Login
+    </button>
 
-<div id="loginMessage"></div>
-
-</div>
-
-
-<!-- ================= HOME ================= -->
-
-<div class="home" id="homePage">
-
-<div class="card">
-
-<img src="logo.png" class="logo">
-
-<h1>Manan360.pk</h1>
-
-<div class="welcome">
-<h2 id="welcomeName">Welcome</h2>
-<div>Welcome to Manan360.pk</div>
-</div>
+    <div class="error" id="loginError">
+        Invalid username or password.
+    </div>
 
 </div>
 
 
-<!-- ================= TOKEN + HOME MERGED ================= -->
+<!-- ================= NAME ================= -->
 
-<div class="card">
+<div class="nameBox" id="nameBox">
 
-<div class="token-title">
-Verified Token
-</div>
+    <div class="title">
+        What is your name?
+    </div>
 
-<div class="token-sub">
-Enter your 10 digit token number
-</div>
+    <div class="text">
+        Enter your name to continue.
+    </div>
 
-<input
- id="tokenInput"
- type="text"
- inputmode="numeric"
- maxlength="10"
- placeholder="Enter Token Number">
+    <input
+        type="text"
+        id="visitorName"
+        placeholder="Enter your name"
+    >
 
-<button onclick="verifyToken()">
-Verify Token
-</button>
-
-<div id="tokenMessage"></div>
-
-<div class="balance">
-Cashback: Rs.100
-</div>
-
-<div class="small">
-Special cashback token: 7842306159
-</div>
+    <button class="full" onclick="continueHome()">
+        Continue
+    </button>
 
 </div>
 
 
-<!-- ================= HOME CONTENT ================= -->
+<!-- ================= MAIN HOME ================= -->
 
-<div class="card">
+<div class="main" id="mainPage">
 
-<h2 style="color:#073b8f;margin-bottom:12px;">
-Student Portal
-</h2>
+    <div class="header">
 
-<button onclick="alert('Class 9 Notes coming soon')">
-Class 9th Notes
-</button>
+        <div class="headerTitle">
+            Manan360.pk
+        </div>
 
-<button onclick="alert('Class 10 Notes coming soon')">
-Class 10th Notes
-</button>
+        <button
+            class="signout"
+            onclick="logout()">
+            Sign Out
+        </button>
 
-<button onclick="alert('Test Papers coming soon')">
-Test Papers
-</button>
+    </div>
 
-<button class="logout" onclick="logout()">
-Sign Out
-</button>
 
-</div>
+    <div class="columns">
+
+
+        <!-- ========== HOME / ALL BOOKS ========== -->
+
+        <div class="card">
+
+            <div class="cardTitle">
+                Home — All Books
+            </div>
+
+            <div class="books">
+
+
+                <!-- CLASS 9 URDU -->
+
+                <div class="book">
+
+                    <div class="bookName">
+                        Class 9th Urdu
+                    </div>
+
+                    <div class="bookInfo">
+                        Urdu Notes & Test Paper
+                    </div>
+
+                    <a
+                        class="openBtn"
+                        href="Class-9th-Urdu-Test-Paper.pdf"
+                        target="_blank">
+                        Open Note
+                    </a>
+
+                </div>
+
+
+                <!-- CLASS 10 URDU -->
+
+                <div class="book">
+
+                    <div class="bookName">
+                        Class 10th Urdu
+                    </div>
+
+                    <div class="bookInfo">
+                        Urdu Notes & Test Paper
+                    </div>
+
+                    <a
+                        class="openBtn"
+                        href="Class-10th-Urdu-Test-Paper.pdf"
+                        target="_blank">
+                        Open Note
+                    </a>
+
+                </div>
+
+
+                <!-- PHYSICS -->
+
+                <div class="book">
+
+                    <div class="bookName">
+                        Physics Notes
+                    </div>
+
+                    <div class="bookInfo">
+                        Study Notes
+                    </div>
+
+                    <a
+                        class="openBtn"
+                        href="physics.pdf"
+                        target="_blank">
+                        Open Note
+                    </a>
+
+                </div>
+
+
+                <!-- MATH -->
+
+                <div class="book">
+
+                    <div class="bookName">
+                        Mathematics
+                    </div>
+
+                    <div class="bookInfo">
+                        Math Notes
+                    </div>
+
+                    <a
+                        class="openBtn"
+                        href="math.pdf"
+                        target="_blank">
+                        Open Note
+                    </a>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- ========== VERIFY TOKEN ========== -->
+
+        <div class="card tokenCard">
+
+            <div class="cardTitle">
+                Verify Code
+            </div>
+
+            <div class="tokenTitle">
+                Token Number
+            </div>
+
+            <div class="tokenQuestion">
+                Enter your token number below
+            </div>
+
+            <input
+                type="text"
+                id="tokenNumber"
+                placeholder="Token Number"
+                inputmode="numeric"
+            >
+
+            <button
+                class="full"
+                onclick="verifyToken()">
+                Verify Token
+            </button>
+
+            <div
+                class="success"
+                id="success">
+                ✓ Token Verified Successfully
+            </div>
+
+            <div
+                class="wrong"
+                id="wrong">
+                Invalid Token Number.
+            </div>
+
+        </div>
+
+    </div>
 
 </div>
 
@@ -262,176 +534,153 @@ Sign Out
 <script>
 
 /* =========================
-   LOGIN USERS
-========================= */
-
-const PASSWORD = "Abdul Manan0088";
-
-const USERS = [
-"Karor Lal Esson",
-"Fathehpur",
-"Layyah",
-"Chowk Azam",
-"Chowk Munda"
-];
-
-
-/* =========================
-   500 UNIQUE TOKENS
-========================= */
-
-const SPECIAL_TOKEN = "7842306159";
-
-const TOKENS = new Set();
-
-TOKENS.add(SPECIAL_TOKEN);
-
-let number = 1000000000;
-
-while(TOKENS.size < 500){
-
- let token = String(number);
-
- if(token !== SPECIAL_TOKEN){
-   TOKENS.add(token);
- }
-
- number++;
-}
-
-const TOKEN_LIST = [...TOKENS];
-
-
-/* =========================
    LOGIN
-========================= */
+   ========================= */
+
+const USERNAME = "Manan360";
+const PASSWORD = "1098765492";
+
 
 function login(){
 
- const username =
- document.getElementById("username").value.trim();
+    const username =
+        document.getElementById("username")
+        .value.trim();
 
- const password =
- document.getElementById("password").value;
+    const password =
+        document.getElementById("password")
+        .value;
 
- const message =
- document.getElementById("loginMessage");
+    if(
+        username === USERNAME &&
+        password === PASSWORD
+    ){
 
- const userFound = USERS.some(
-   user =>
-   user.toLowerCase() === username.toLowerCase()
- );
+        document.getElementById("loginBox")
+        .style.display = "none";
 
- if(userFound && password === PASSWORD){
+        document.getElementById("nameBox")
+        .style.display = "block";
 
-   document.getElementById("loginPage")
-   .style.display="none";
+        document.getElementById("loginError")
+        .style.display = "none";
 
-   document.getElementById("homePage")
-   .style.display="block";
+    }else{
 
-   document.getElementById("welcomeName")
-   .innerText="Hello, "+username;
+        document.getElementById("loginError")
+        .style.display = "block";
 
- }else{
-
-   message.innerHTML=
-   '<div class="msg error">Username یا Password غلط ہے۔</div>';
-
- }
-
+    }
 }
 
 
 /* =========================
-   TOKEN VERIFY
-========================= */
+   NAME
+   ========================= */
+
+function continueHome(){
+
+    const name =
+        document.getElementById("visitorName")
+        .value.trim();
+
+    if(name === ""){
+
+        alert("Please enter your name.");
+
+        return;
+    }
+
+    localStorage.setItem(
+        "mananVisitorName",
+        name
+    );
+
+    document.getElementById("nameBox")
+    .style.display = "none";
+
+    document.getElementById("mainPage")
+    .style.display = "block";
+}
+
+
+/* =========================
+   TOKEN NUMBERS
+   ========================= */
+
+/*
+   آپ کا مخصوص token:
+   7842306159
+
+   باقی token numbers بعد میں
+   اسی list میں شامل کیے جا سکتے ہیں۔
+*/
+
+const validTokens = [
+    "7842306159"
+];
+
 
 function verifyToken(){
 
- const token =
- document.getElementById("tokenInput").value.trim();
+    const token =
+        document.getElementById("tokenNumber")
+        .value.trim();
 
- const message =
- document.getElementById("tokenMessage");
+    const success =
+        document.getElementById("success");
 
+    const wrong =
+        document.getElementById("wrong");
 
- if(!/^\d{10}$/.test(token)){
+    success.style.display = "none";
+    wrong.style.display = "none";
 
-   message.innerHTML=
-   '<div class="msg error">براہِ کرم 10 ہندسوں کا Token لکھیں۔</div>';
+    if(validTokens.includes(token)){
 
-   return;
- }
+        success.style.display = "block";
 
+    }else{
 
- if(!TOKENS.includes(token)){
+        wrong.style.display = "block";
 
-   message.innerHTML=
-   '<div class="msg error">Invalid Token Number</div>';
-
-   return;
- }
-
-
- /* SPECIAL TOKEN */
-
- if(token === SPECIAL_TOKEN){
-
-   if(
-   localStorage.getItem("manan_special_used")
-   === "yes"
-   ){
-
-     message.innerHTML=
-     '<div class="msg error">یہ Token پہلے استعمال ہو چکا ہے۔</div>';
-
-     return;
-   }
-
-   localStorage.setItem(
-   "manan_special_used",
-   "yes"
-   );
-
-   message.innerHTML=
-   '<div class="msg success">' +
-   '✓ Token Verified Successfully<br>' +
-   'Rs.100 Cashback Successful' +
-   '</div>';
-
-   return;
- }
-
-
- /* OTHER 499 TOKENS */
-
- message.innerHTML=
- '<div class="msg success">' +
- '✓ Token Verified Successfully' +
- '</div>';
-
+    }
 }
 
 
 /* =========================
-   LOGOUT
-========================= */
+   SIGN OUT
+   ========================= */
 
 function logout(){
 
- document.getElementById("homePage")
- .style.display="none";
+    localStorage.removeItem(
+        "mananVisitorName"
+    );
 
- document.getElementById("loginPage")
- .style.display="block";
+    document.getElementById("mainPage")
+    .style.display = "none";
 
- document.getElementById("username").value="";
- document.getElementById("password").value="";
- document.getElementById("tokenInput").value="";
- document.getElementById("tokenMessage").innerHTML="";
- document.getElementById("loginMessage").innerHTML="";
+    document.getElementById("loginBox")
+    .style.display = "block";
 
+    document.getElementById("username")
+    .value = "";
+
+    document.getElementById("password")
+    .value = "";
+
+    document.getElementById("visitorName")
+    .value = "";
+
+    document.getElementById("tokenNumber")
+    .value = "";
+
+    document.getElementById("success")
+    .style.display = "none";
+
+    document.getElementById("wrong")
+    .style.display = "none";
 }
 
 </script>
