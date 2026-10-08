@@ -3,168 +3,153 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1.0">
-
 <title>Manan360.pk</title>
 
 <style>
-
-*{
-box-sizing:border-box;
-margin:0;
-padding:0;
-}
+*{box-sizing:border-box;margin:0;padding:0}
 
 body{
-font-family:Arial,sans-serif;
-min-height:100vh;
-background:linear-gradient(135deg,#061a40,#007bff,#00b894);
+    font-family:Arial,sans-serif;
+    min-height:100vh;
+    background:linear-gradient(135deg,#061a40,#0077b6,#00a878);
+    color:white;
 }
 
 .page{
-display:none;
-min-height:100vh;
-align-items:center;
-justify-content:center;
-padding:20px;
+    min-height:100vh;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    padding:20px;
 }
 
 .box{
-width:100%;
-max-width:430px;
-background:#fff;
-padding:28px 22px;
-border-radius:22px;
-text-align:center;
-box-shadow:0 15px 40px rgba(0,0,0,.25);
+    width:100%;
+    max-width:430px;
+    background:rgba(255,255,255,.12);
+    backdrop-filter:blur(12px);
+    border:1px solid rgba(255,255,255,.25);
+    border-radius:24px;
+    padding:28px 22px;
+    text-align:center;
+    box-shadow:0 15px 40px rgba(0,0,0,.25);
 }
 
-h1,h2{
-color:#064b91;
-margin-bottom:12px;
-}
-
-p{
-color:#555;
-margin-bottom:20px;
-}
+h1{font-size:29px;margin-bottom:8px}
+h2{font-size:23px;margin-bottom:14px}
+p{line-height:1.5;margin-bottom:16px}
 
 input{
-width:100%;
-padding:15px;
-font-size:16px;
-border:1px solid #ccc;
-border-radius:12px;
-margin-bottom:12px;
-outline:none;
-}
-
-input:focus{
-border-color:#087bea;
+    width:100%;
+    padding:14px;
+    margin:7px 0;
+    border:0;
+    border-radius:12px;
+    outline:none;
+    font-size:16px;
 }
 
 button{
-width:100%;
-padding:14px;
-border:0;
-border-radius:12px;
-font-size:16px;
-font-weight:bold;
-color:white;
-background:#087bea;
-margin-top:9px;
-cursor:pointer;
+    width:100%;
+    padding:14px;
+    margin-top:12px;
+    border:0;
+    border-radius:12px;
+    background:linear-gradient(90deg,#007bff,#00c853);
+    color:white;
+    font-size:16px;
+    font-weight:bold;
 }
 
-.green{
-background:#00a86b;
-}
+button:active{transform:scale(.98)}
 
-.gray{
-background:#777;
-}
-
-.dark{
-background:#444;
-}
-
-.whiteBtn{
-background:white;
-color:#333;
-border:2px solid #bbb;
-}
-
-.book{
-border:1px solid #ddd;
-border-radius:15px;
-padding:18px;
-margin:12px 0;
-background:#f5faff;
-}
-
-.book h3{
-color:#07549b;
-margin-bottom:8px;
+.small{
+    font-size:13px;
+    opacity:.8;
+    margin-top:12px;
 }
 
 .error{
-margin-top:15px;
-padding:13px;
-border-radius:10px;
-background:#ffe8e8;
-color:#c62828;
-font-weight:bold;
-}
-
-.verifiedBox{
-margin-top:15px;
-padding:18px;
-border-radius:15px;
-background:#f5faff;
-border:1px solid #c9e1ff;
-}
-
-.verifiedNumber{
-font-size:22px;
-font-weight:bold;
-color:#064b91;
-margin:10px 0;
-word-break:break-all;
-}
-
-.tick{
-font-size:90px;
-font-weight:bold;
-color:#08a65a;
-line-height:1;
+    min-height:20px;
+    color:#ffd6d6;
+    margin-top:8px;
 }
 
 .success{
-margin-top:15px;
-padding:20px;
-border-radius:15px;
-background:#e9fff2;
-color:#087443;
-font-size:18px;
-font-weight:bold;
-line-height:1.7;
+    color:#b9ffca;
+    font-weight:bold;
+    margin-top:10px;
 }
 
-.cashback{
-margin-top:15px;
-padding:18px;
-border-radius:15px;
-background:#fff8df;
-color:#8a6200;
-font-size:18px;
-font-weight:bold;
-line-height:1.7;
-border:1px solid #f0d77a;
+.hidden{display:none}
+
+/* Fingerprint */
+.finger{
+    width:125px;
+    height:155px;
+    margin:22px auto;
+    border:5px solid white;
+    border-radius:55% 55% 45% 45%;
+    animation:pulse 1.5s infinite;
+    position:relative;
 }
 
-.support{
-background:#087bea;
+.finger:before{
+    content:"";
+    position:absolute;
+    width:70px;
+    height:105px;
+    border:4px solid white;
+    border-radius:50%;
+    left:50%;
+    top:20px;
+    transform:translateX(-50%);
 }
 
+.finger:after{
+    content:"";
+    position:absolute;
+    width:38px;
+    height:65px;
+    border:4px solid white;
+    border-radius:50%;
+    left:50%;
+    top:40px;
+    transform:translateX(-50%);
+}
+
+@keyframes pulse{
+    50%{transform:scale(1.05);opacity:.7}
+}
+
+/* Photo */
+.photo-area{
+    margin:12px 0;
+    padding:12px;
+    border:2px dashed rgba(255,255,255,.7);
+    border-radius:14px;
+}
+
+.photo-preview{
+    display:none;
+    width:130px;
+    height:130px;
+    object-fit:cover;
+    object-position:center;
+    border-radius:50%;
+    border:4px solid white;
+    margin:10px auto;
+}
+
+/* Cards */
+.card{
+    background:rgba(255,255,255,.14);
+    padding:18px;
+    border-radius:18px;
+    margin:12px 0;
+}
+
+.card h3{margin-bottom:7px}
 </style>
 </head>
 
@@ -173,660 +158,449 @@ background:#087bea;
 
 <!-- ================= LOGIN ================= -->
 
-<div class="page" id="loginPage">
-
+<section id="loginPage" class="page">
 <div class="box">
 
 <h1>Manan360.pk</h1>
+<p>Notes & Test Papers</p>
 
-<p>Login to continue</p>
+<input id="username" type="text" placeholder="Username">
+<input id="password" type="password" placeholder="Password">
 
-<input
-id="username"
-type="text"
-placeholder="Username"
-autocomplete="username">
+<button onclick="login()">Login</button>
 
-<input
-id="password"
-type="password"
-placeholder="Password"
-autocomplete="current-password">
-
-<button onclick="login()">
-Login
-</button>
-
-<div id="loginError"></div>
+<div id="loginError" class="error"></div>
 
 </div>
+</section>
 
-</div>
 
+<!-- ================= FINGERPRINT ================= -->
 
-<!-- ================= NAME ================= -->
-
-<div class="page" id="namePage">
-
+<section id="fingerPage" class="page hidden">
 <div class="box">
 
-<h2>Welcome</h2>
+<h2>Fingerprint Verification</h2>
 
-<p>What is your name?</p>
+<p>Please place your finger on the demo scanner.</p>
 
-<input
-id="visitorName"
-type="text"
-placeholder="Enter your name">
+<div class="finger"></div>
 
-<button onclick="saveName()">
+<button onclick="verifyFinger()">
+Verify Fingerprint
+</button>
+
+<div id="fingerStatus" class="success"></div>
+
+<p class="small">
+Demo only — no real fingerprint is collected or stored.
+</p>
+
+</div>
+</section>
+
+
+<!-- ================= PERSONAL DETAILS ================= -->
+
+<section id="detailsPage" class="page hidden">
+<div class="box">
+
+<h2>Personal Details</h2>
+
+<p>Enter your information for this demo.</p>
+
+<input id="fullName"
+       type="text"
+       placeholder="Your Name">
+
+<input id="age"
+       type="number"
+       placeholder="Age"
+       min="1"
+       max="120">
+
+<input id="cnic"
+       type="text"
+       placeholder="Demo CNIC (XXXXX-XXXXXXX-X)"
+       maxlength="15">
+
+<div class="photo-area">
+
+<b>Front Photo</b>
+
+<img id="photoPreview"
+     class="photo-preview">
+
+<input id="photoInput"
+       type="file"
+       accept="image/*"
+       capture="user"
+       onchange="showPhoto(event)">
+
+</div>
+
+<button onclick="saveDetails()">
 Continue
 </button>
 
-</div>
+<div id="detailsError" class="error"></div>
+
+<p class="small">
+Demo information is not sent to a server.
+</p>
 
 </div>
+</section>
 
 
 <!-- ================= HOME ================= -->
 
-<div class="page" id="homePage">
-
+<section id="homePage" class="page hidden">
 <div class="box">
 
-<h1 id="helloName">
-Welcome
-</h1>
+<h1>Manan360.pk</h1>
+
+<h2 id="welcomeName">Hello!</h2>
 
 <p>
-Welcome to Manan360.pk
+My name is Abdur Manan.<br>
+Welcome to Manan360.pk.
 </p>
 
+<div class="card">
+<h3>📚 Books & Notes</h3>
+<p>Class 9th & Class 10th Notes and Test Papers</p>
+
 <button onclick="openBooks()">
-Books & Notes
+Open Books
+</button>
+</div>
+
+<button onclick="openToken()">
+🎫 Verify Token
 </button>
 
-<button
-class="green"
-onclick="openTokenPage()">
-Token Number
-</button>
-
-<button
-class="dark"
-onclick="signOut()">
+<button onclick="logout()"
+style="background:#263238">
 Sign Out
 </button>
 
 </div>
+</section>
 
-</div>
 
+<!-- ================= BOOKS ================= -->
 
-<!-- ================= BOOKS & NOTES ================= -->
-
-<div class="page" id="booksPage">
-
+<section id="booksPage" class="page hidden">
 <div class="box">
 
-<h2>Books & Notes</h2>
+<h2>📚 Books & Notes</h2>
 
-<div class="book">
+<div class="card">
 
-<h3>Class 9th Urdu</h3>
+<h3>Class 9th</h3>
+<p>Urdu Test Paper</p>
 
-<p>
-Urdu Test Paper
-</p>
-
-<button
-onclick="downloadPDF('Class-9th-Urdu-Test-Paper.pdf')">
-Download PDF
+<button onclick="alert('Demo: Class 9th Urdu PDF')">
+Open Note
 </button>
 
 </div>
 
+<div class="card">
 
-<div class="book">
+<h3>Class 10th</h3>
+<p>Urdu Test Paper</p>
 
-<h3>Class 10th Urdu</h3>
-
-<p>
-Urdu Test Paper
-</p>
-
-<button
-onclick="downloadPDF('Class-10th-Urdu-Test-Paper.pdf')">
-Download PDF
+<button onclick="alert('Demo: Class 10th Urdu PDF')">
+Open Note
 </button>
 
 </div>
 
+<button onclick="openToken()">
+🎫 Verify Token
+</button>
 
-<button
-class="gray"
-onclick="goHome()">
-Home
+<button onclick="goHome()"
+style="background:#263238">
+Back to Home
 </button>
 
 </div>
+</section>
 
-</div>
 
+<!-- ================= VERIFY TOKEN ================= -->
 
-<!-- ================= TOKEN PAGE ================= -->
-
-<div class="page" id="tokenPage">
-
+<section id="tokenPage" class="page hidden">
 <div class="box">
 
-<h2>Token Number</h2>
+<h2>🎫 Verify Token</h2>
 
 <p>
-Enter your token number
+Enter your token number below.
 </p>
 
-<input
-id="token"
-type="text"
-inputmode="numeric"
-maxlength="10"
-placeholder="Enter Token Number">
+<input id="tokenInput"
+       type="text"
+       inputmode="numeric"
+       maxlength="10"
+       placeholder="Enter Token Number">
 
 <button onclick="verifyToken()">
 Verify Token
 </button>
 
-<button
-class="gray"
-onclick="cancelToken()">
-Cancel
-</button>
-
 <div id="tokenMessage"></div>
 
-</div>
-
-</div>
-
-
-<!-- ================= VERIFIED TOKEN ================= -->
-
-<div class="page" id="confirmPage">
-
-<div class="box">
-
-<h2>Verified Token</h2>
-
-<p>
-Your token has been verified.
-</p>
-
-<div class="verifiedBox">
-
-<div>
-Verified Token Number
-</div>
-
-<div
-class="verifiedNumber"
-id="verifiedTokenNumber">
-</div>
-
-<button onclick="confirmToken()">
-تصدیق کریں
-</button>
-
-<button
-class="whiteBtn"
-onclick="cancelConfirmation()">
-منسوخ کریں
+<button onclick="openBooks()"
+style="background:#263238">
+Back to Books
 </button>
 
 </div>
-
-</div>
-
-</div>
-
-
-<!-- ================= SUCCESS ================= -->
-
-<div class="page" id="successPage">
-
-<div class="box">
-
-<div class="tick">
-✓
-</div>
-
-<div class="success">
-
-آپ کی درخواست سبمٹ ہو چکی ہے۔<br>
-
-براہ کرم انتظار کریں۔
-
-</div>
-
-<div id="cashbackMessage"></div>
-
-<button
-class="support"
-onclick="contactSupport()">
-Support Team سے رابطہ کریں
-</button>
-
-<button
-class="gray"
-onclick="goHome()">
-Home
-</button>
-
-</div>
-
-</div>
+</section>
 
 
 <script>
 
+/* ================= LOGIN ================= */
 
-/* ==================================================
-   LOGIN
-   5 USERNAMES
-   ONE PASSWORD
-================================================== */
-
-const VALID_USERNAMES = [
-
-"Admin 1",
-"Admin 2",
-"Admin 3",
-"Admin 4",
-"Admin"
-
-];
-
-const PASSWORD = "1234";
-
-
-/* ==================================================
-   SPECIAL CASHBACK TOKEN
-================================================== */
-
-const SPECIAL_CASHBACK_TOKEN = "7842306159";
-
-
-/* ==================================================
-   499 VALID TOKENS
-   7842306001 - 7842306499
-================================================== */
-
-const validTokens = new Set();
-
-for(let i = 6001; i <= 6499; i++){
-
-validTokens.add("784230" + i);
-
-}
-
-
-/* ==================================================
-   CURRENT VERIFIED TOKEN
-================================================== */
-
-let verifiedToken = "";
-
-
-/* ==================================================
-   PAGE CONTROL
-================================================== */
-
-function showPage(id){
-
-document
-.querySelectorAll(".page")
-.forEach(function(page){
-
-page.style.display = "none";
-
-});
-
-document
-.getElementById(id)
-.style.display = "flex";
-
-}
-
-
-/* ==================================================
-   LOGIN
-================================================== */
+const users = {
+    "Admin1":"12345",
+    "Admin2":"12345",
+    "Admin3":"12345",
+    "Admin4":"12345",
+    "Admin5":"12345"
+};
 
 function login(){
 
-const username =
-document
-.getElementById("username")
-.value
-.trim();
+    const username =
+        document.getElementById("username").value.trim();
 
-const password =
-document
-.getElementById("password")
-.value;
+    const password =
+        document.getElementById("password").value;
 
-if(
-VALID_USERNAMES.includes(username)
-&&
-password === PASSWORD
-){
+    if(users[username] &&
+       users[username] === password){
 
-document
-.getElementById("loginError")
-.innerHTML = "";
+        hideAll();
 
-showPage("namePage");
+        document.getElementById("fingerPage")
+            .classList.remove("hidden");
 
-}else{
+    }else{
 
-document
-.getElementById("loginError")
-.innerHTML =
-'<div class="error">Invalid username or password.</div>';
+        document.getElementById("loginError")
+            .textContent =
+            "Invalid username or password.";
 
-}
-
+    }
 }
 
 
-/* ==================================================
-   NAME
-================================================== */
+/* ================= FINGERPRINT ================= */
 
-function saveName(){
+function verifyFinger(){
 
-const name =
-document
-.getElementById("visitorName")
-.value
-.trim();
+    const status =
+        document.getElementById("fingerStatus");
 
-if(name === ""){
+    status.textContent="Scanning...";
 
-alert("Please enter your name.");
+    setTimeout(function(){
 
-return;
+        status.textContent =
+            "✓ Fingerprint Demo Verified";
 
-}
+        setTimeout(function(){
 
-document
-.getElementById("helloName")
-.innerText =
-"Hello, " + name;
+            hideAll();
 
-showPage("homePage");
+            document.getElementById("detailsPage")
+                .classList.remove("hidden");
 
+        },800);
+
+    },1500);
 }
 
 
-/* ==================================================
-   BOOKS
-================================================== */
+/* ================= PHOTO ================= */
+
+function showPhoto(event){
+
+    const file = event.target.files[0];
+
+    if(!file)return;
+
+    const preview =
+        document.getElementById("photoPreview");
+
+    preview.src =
+        URL.createObjectURL(file);
+
+    preview.style.display="block";
+}
+
+
+/* ================= DETAILS ================= */
+
+function saveDetails(){
+
+    const name =
+        document.getElementById("fullName")
+        .value.trim();
+
+    const age =
+        document.getElementById("age")
+        .value.trim();
+
+    const cnic =
+        document.getElementById("cnic")
+        .value.trim();
+
+    const photo =
+        document.getElementById("photoInput")
+        .files[0];
+
+    const error =
+        document.getElementById("detailsError");
+
+    if(!name || !age || !cnic || !photo){
+
+        error.textContent =
+        "Please complete all fields and select your front photo.";
+
+        return;
+    }
+
+    document.getElementById("welcomeName")
+        .textContent =
+        "Hello, " + name;
+
+    hideAll();
+
+    document.getElementById("homePage")
+        .classList.remove("hidden");
+}
+
+
+/* ================= HOME ================= */
 
 function openBooks(){
 
-showPage("booksPage");
+    hideAll();
 
+    document.getElementById("booksPage")
+        .classList.remove("hidden");
 }
-
-
-/* ==================================================
-   PDF DOWNLOAD
-================================================== */
-
-function downloadPDF(file){
-
-const link =
-document.createElement("a");
-
-link.href = file;
-
-link.download = file;
-
-document
-.body
-.appendChild(link);
-
-link.click();
-
-link.remove();
-
-}
-
-
-/* ==================================================
-   TOKEN PAGE
-================================================== */
-
-function openTokenPage(){
-
-document
-.getElementById("token")
-.value = "";
-
-document
-.getElementById("tokenMessage")
-.innerHTML = "";
-
-verifiedToken = "";
-
-showPage("tokenPage");
-
-}
-
-
-/* ==================================================
-   VERIFY TOKEN
-================================================== */
-
-function verifyToken(){
-
-const token =
-document
-.getElementById("token")
-.value
-.trim();
-
-const message =
-document
-.getElementById("tokenMessage");
-
-
-if(token === ""){
-
-message.innerHTML =
-'<div class="error">Please enter a token number.</div>';
-
-return;
-
-}
-
-
-if(validTokens.has(token)){
-
-verifiedToken = token;
-
-document
-.getElementById("verifiedTokenNumber")
-.innerText = token;
-
-showPage("confirmPage");
-
-}else{
-
-message.innerHTML =
-'<div class="error">Invalid Token Number</div>';
-
-}
-
-}
-
-
-/* ==================================================
-   CONFIRM TOKEN
-================================================== */
-
-function confirmToken(){
-
-const cashback =
-document
-.getElementById("cashbackMessage");
-
-
-/*
-   صرف خاص ٹوکن پر
-   100 روپے Cashback message
-*/
-
-if(verifiedToken === SPECIAL_CASHBACK_TOKEN){
-
-cashback.innerHTML = `
-
-<div class="cashback">
-
-مبارک ہو! 🎉<br>
-
-آپ 100 روپے Cashback کے لیے
-Eligible ہو چکے ہیں۔
-
-</div>
-
-`;
-
-}else{
-
-cashback.innerHTML = "";
-
-}
-
-
-showPage("successPage");
-
-}
-
-
-/* ==================================================
-   CANCEL CONFIRMATION
-================================================== */
-
-function cancelConfirmation(){
-
-verifiedToken = "";
-
-document
-.getElementById("token")
-.value = "";
-
-document
-.getElementById("tokenMessage")
-.innerHTML = "";
-
-showPage("tokenPage");
-
-}
-
-
-/* ==================================================
-   CANCEL TOKEN
-================================================== */
-
-function cancelToken(){
-
-document
-.getElementById("token")
-.value = "";
-
-document
-.getElementById("tokenMessage")
-.innerHTML = "";
-
-showPage("homePage");
-
-}
-
-
-/* ==================================================
-   HOME
-================================================== */
 
 function goHome(){
 
-showPage("homePage");
+    hideAll();
+
+    document.getElementById("homePage")
+        .classList.remove("hidden");
+}
+
+
+/* ================= TOKEN ================= */
+
+function openToken(){
+
+    hideAll();
+
+    document.getElementById("tokenPage")
+        .classList.remove("hidden");
+
+    document.getElementById("tokenMessage")
+        .innerHTML="";
+}
+
+
+/*
+   DEMO TOKEN
+   7842306159 is included as the special demo token.
+*/
+
+const demoTokens = [
+    "7842306159",
+    "1023456789",
+    "2034567890",
+    "3045678901",
+    "4056789012"
+];
+
+function verifyToken(){
+
+    const token =
+        document.getElementById("tokenInput")
+        .value.trim();
+
+    const message =
+        document.getElementById("tokenMessage");
+
+    if(!token){
+
+        message.innerHTML =
+        '<div class="error">Please enter a token number.</div>';
+
+        return;
+    }
+
+    if(demoTokens.includes(token)){
+
+        message.innerHTML =
+        '<div class="success">✓ Token Verified Successfully</div>' +
+        '<p class="success">Application Submitted, please wait.</p>';
+
+    }else{
+
+        message.innerHTML =
+        '<div class="error">Invalid Demo Token.</div>';
+
+    }
+}
+
+
+/* ================= LOGOUT ================= */
+
+function logout(){
+
+    hideAll();
+
+    document.getElementById("loginPage")
+        .classList.remove("hidden");
+
+    document.getElementById("username").value="";
+    document.getElementById("password").value="";
 
 }
 
 
-/* ==================================================
-   SUPPORT TEAM
-================================================== */
+/* ================= HIDE ALL ================= */
 
-function contactSupport(){
+function hideAll(){
 
-const message =
-"Assalam-o-Alaikum Manan360 Support Team";
+    const pages = [
+        "loginPage",
+        "fingerPage",
+        "detailsPage",
+        "homePage",
+        "booksPage",
+        "tokenPage"
+    ];
 
-window.open(
-"https://wa.me/?text=" +
-encodeURIComponent(message),
-"_blank"
-);
+    pages.forEach(function(id){
 
+        document.getElementById(id)
+            .classList.add("hidden");
+
+    });
 }
-
-
-/* ==================================================
-   SIGN OUT
-================================================== */
-
-function signOut(){
-
-document
-.getElementById("username")
-.value = "";
-
-document
-.getElementById("password")
-.value = "";
-
-document
-.getElementById("visitorName")
-.value = "";
-
-document
-.getElementById("token")
-.value = "";
-
-document
-.getElementById("tokenMessage")
-.innerHTML = "";
-
-document
-.getElementById("cashbackMessage")
-.innerHTML = "";
-
-verifiedToken = "";
-
-showPage("loginPage");
-
-}
-
-
-/* ==================================================
-   START
-================================================== */
-
-showPage("loginPage");
-
 
 </script>
 
