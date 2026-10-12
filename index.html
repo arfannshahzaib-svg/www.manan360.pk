@@ -2,888 +2,527 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<meta name="viewport" content="width=device-width,initial-scale=1">
 <title>Manan360.pk</title>
-
 <style>
 *{box-sizing:border-box;margin:0;padding:0}
-
-body{
-font-family:Arial,sans-serif;
-min-height:100vh;
-background:linear-gradient(135deg,#061a40,#0077b6,#00a878);
-color:white;
-}
-
-.page{
-min-height:100vh;
-display:flex;
-justify-content:center;
-align-items:center;
-padding:20px;
-}
-
-.box{
-width:100%;
-max-width:430px;
-background:rgba(255,255,255,.12);
-backdrop-filter:blur(12px);
-border:1px solid rgba(255,255,255,.25);
-border-radius:24px;
-padding:28px 22px;
-text-align:center;
-box-shadow:0 15px 40px rgba(0,0,0,.25);
-}
-
-h1{font-size:29px;margin-bottom:8px}
-h2{font-size:23px;margin-bottom:14px}
-p{line-height:1.5;margin-bottom:16px}
-
-input{
-width:100%;
-padding:14px;
-margin:7px 0;
-border:0;
-border-radius:12px;
-outline:none;
-font-size:16px;
-}
-
-button{
-width:100%;
-padding:14px;
-margin-top:12px;
-border:0;
-border-radius:12px;
-background:linear-gradient(90deg,#007bff,#00c853);
-color:white;
-font-size:16px;
-font-weight:bold;
-cursor:pointer;
-}
-
-button:active{transform:scale(.98)}
-
-.cancel-btn{
-background:#263238;
-}
-
-.whatsapp-btn{
-background:#00a884;
-}
-
-.download-btn{
-background:linear-gradient(90deg,#1565c0,#42a5f5);
-}
-
-.error{
-color:#ffd6d6;
-margin-top:10px;
-}
-
-.success{
-color:#b9ffca;
-font-weight:bold;
-margin-top:10px;
-}
-
-.hidden{display:none}
-
-.finger{
-width:125px;
-height:155px;
-margin:22px auto;
-border:5px solid white;
-border-radius:55% 55% 45% 45%;
-position:relative;
-animation:pulse 1.5s infinite;
-}
-
-.finger:before{
-content:"";
-position:absolute;
-width:70px;
-height:105px;
-border:4px solid white;
-border-radius:50%;
-left:50%;
-top:20px;
-transform:translateX(-50%);
-}
-
-.finger:after{
-content:"";
-position:absolute;
-width:38px;
-height:65px;
-border:4px solid white;
-border-radius:50%;
-left:50%;
-top:40px;
-transform:translateX(-50%);
-}
-
-@keyframes pulse{
-50%{transform:scale(1.05);opacity:.7}
-}
-
-.photo-area{
-margin:12px 0;
-padding:12px;
-border:2px dashed rgba(255,255,255,.7);
-border-radius:14px;
-}
-
-.photo-preview{
-display:none;
-width:130px;
-height:130px;
-object-fit:cover;
-border-radius:50%;
-border:4px solid white;
-margin:10px auto;
-}
-
-.card{
-background:rgba(255,255,255,.14);
-padding:18px;
-border-radius:18px;
-margin:12px 0;
-}
-
-.card h3{margin-bottom:7px}
-
-.timer{
-font-size:24px;
-font-weight:bold;
-margin:12px 0;
-}
-
-.big-message{
-font-size:21px;
-font-weight:bold;
-line-height:1.7;
-margin-top:15px;
-}
-
-.token-success{
-text-align:center;
-margin-top:22px;
-}
-
-.green-check{
-width:105px;
-height:105px;
-margin:0 auto 18px;
-border-radius:50%;
-background:#00c853;
-display:flex;
-justify-content:center;
-align-items:center;
-font-size:65px;
-font-weight:bold;
-color:white;
-box-shadow:0 0 30px rgba(0,200,83,.55);
-animation:checkPop .5s ease;
-}
-
-@keyframes checkPop{
-0%{transform:scale(.3);opacity:0}
-70%{transform:scale(1.1)}
-100%{transform:scale(1);opacity:1}
-}
-
-.cashback-title{
-font-size:27px;
-font-weight:bold;
-color:#b9ffca;
-margin-bottom:12px;
-}
-
-.cashback-text{
-font-size:18px;
-line-height:1.7;
-}
-
-.submitted-title{
-font-size:24px;
-font-weight:bold;
-color:#b9ffca;
-margin-bottom:10px;
-}
-
-.wait-text{
-font-size:17px;
-line-height:1.5;
-}
-
-.token-number{
-font-size:16px;
-font-weight:bold;
-margin-top:15px;
-opacity:.9;
-}
+body{font-family:Arial,sans-serif;min-height:100vh;padding:12px;color:white;background:linear-gradient(135deg,#061a40,#0077b6,#00a878)}
+.container{max-width:900px;margin:auto}
+header{text-align:center;padding:22px 5px}
+header h1{font-size:30px}
+header p{margin-top:8px}
+.card{background:#061a40ed;border:1px solid #ffffff30;border-radius:16px;padding:18px;margin:14px 0;box-shadow:0 8px 25px #00152d40}
+h2{margin-bottom:14px}
+h3{margin:14px 0 9px}
+input,select,button{width:100%;padding:12px;margin:7px 0;border:0;border-radius:9px;font-size:15px}
+input,select{background:white;color:#14243a}
+button{cursor:pointer;font-weight:bold}
+button:disabled{opacity:.5}
+.blue{background:#1685ef;color:white}
+.green{background:#13a66a;color:white}
+.dark{background:#263c58;color:white}
+.red{background:#c93848;color:white}
+.hidden{display:none!important}
+.grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
+.stat,.book,.notice{background:#ffffff12;border:1px solid #ffffff25;border-radius:10px;padding:13px;margin:9px 0;overflow-wrap:anywhere}
+.stat strong{display:block;font-size:25px;margin-top:7px}
+.small{font-size:13px;line-height:1.7;color:#dcecff}
+.subject{background:#0877b9;padding:12px;border-radius:9px;margin:15px 0}
+.timer{font-size:29px;font-weight:bold;text-align:center;margin:14px;color:#ffe66d}
+.question-text{font-size:19px;line-height:1.6;margin:15px 0}
+.option{display:flex;align-items:center;gap:10px;padding:12px;margin:8px 0;border:1px solid #ffffff35;border-radius:10px;line-height:1.5}
+.option input{width:19px;height:19px;margin:0;flex-shrink:0}
+.progress{height:9px;background:#ffffff30;border-radius:20px;overflow:hidden}
+#progressBar{height:100%;width:0;background:#35e69a}
+.tablewrap{overflow-x:auto}
+table{width:100%;border-collapse:collapse;min-width:560px;margin:10px 0}
+th,td{padding:10px;text-align:left;border-bottom:1px solid #ffffff25;font-size:13px}
+th{background:#0877b9}
+.badge{padding:5px 8px;border-radius:7px;background:#ffffff20;display:inline-block}
+.good{color:#76ffc0}
+.bad{color:#ffd0d0}
+footer{text-align:center;padding:18px;font-size:13px}
+a{color:#8ed0ff}
+@media(max-width:480px){.grid{grid-template-columns:1fr}.card{padding:14px}header h1{font-size:26px}}
 </style>
 </head>
-
 <body>
+<div class="container">
 
-<!-- LOGIN -->
-<section id="loginPage" class="page">
-<div class="box">
-
+<header>
 <h1>Manan360.pk</h1>
-<p>Notes & Test Papers</p>
+<p>Books, Notes & Quality Questions</p>
+</header>
 
-<input id="username" type="text" placeholder="Username">
+<section id="loginPage" class="card">
+<h2>Login</h2>
+<select id="role">
+<option value="user">General User</option>
+<option value="admin">Admin</option>
+</select>
+<input id="username" placeholder="Username">
 <input id="password" type="password" placeholder="Password">
-
-<button onclick="login()">Login</button>
-
-<div id="loginError" class="error"></div>
-
-</div>
+<button class="blue" onclick="login()">Login</button>
+<div id="loginMessage" class="notice hidden"></div>
 </section>
 
-
-<!-- FINGERPRINT -->
-<section id="fingerPage" class="page hidden">
-<div class="box">
-
-<h2>Fingerprint Verification</h2>
-
-<p>Please place your finger on the scanner.</p>
-
-<div class="finger"></div>
-
-<div id="fingerInfo">
-Please wait 5 seconds...
-<br>
-Checking your details...
-</div>
-
-<div id="fingerTimer" class="timer">5</div>
-
-<div id="fingerStatus" class="success"></div>
-
+<section id="homePage" class="hidden">
+<div class="card">
+<h2 id="welcome">Welcome!</h2>
+<div class="notice">
+<strong>ABDUL MANAN (CEO & FOUNDER)</strong>
 <p class="small">
-Fingerprint verification is simulated on this website.
+Assalamualaikum! My name is Abdul Manan. I am a Class 10th student.
+My dream is to develop my first website. Personally, thanks to ChatGPT
+for helping me with my website project.
 </p>
-
+</div>
+<button class="blue" onclick="showPage('booksPage')">Books & Notes</button>
+<button class="green" onclick="startQuiz()">Start 20 Questions Quiz</button>
+<div class="notice">
+<strong>Cashback Rules</strong>
+<p class="small">20 questions, 10 seconds per question. At least 18 correct answers are required to qualify to request Rs.100 cashback.</p>
+</div>
+<button class="dark" onclick="logout()">Sign Out</button>
 </div>
 </section>
 
-
-<!-- DETAILS -->
-<section id="detailsPage" class="page hidden">
-<div class="box">
-
-<h2>Personal Details</h2>
-<p>Enter your information.</p>
-
-<input id="fullName" type="text" placeholder="Your Name">
-
-<input id="age" type="number" placeholder="Age" min="1" max="120">
-
-<input id="cnic"
-type="text"
-placeholder="CNIC (XXXXX-XXXXXXX-X)"
-maxlength="15">
-
-<div class="photo-area">
-
-<b>Front Photo</b>
-
-<img id="photoPreview" class="photo-preview">
-
-<input id="photoInput"
-type="file"
-accept="image/*"
-capture="user"
-onchange="showPhoto(event)">
-
-</div>
-
-<button onclick="saveDetails()">Continue</button>
-
-<div id="detailsError" class="error"></div>
-
-</div>
-</section>
-
-
-<!-- HOME -->
-<section id="homePage" class="page hidden">
-<div class="box">
-
-<h1>Manan360.pk</h1>
-
-<h2 id="welcomeName">Hello!</h2>
-
-<p>
-My name is Abdur Manan.<br>
-Welcome to Manan360.pk.
-</p>
-
+<section id="booksPage" class="hidden">
 <div class="card">
-<h3>📚 Books & Notes</h3>
-<p>Class 9th & Class 10th Notes and Test Papers</p>
-
-<button onclick="openBooks()">Open Books</button>
+<h2>Books & Notes</h2>
+<div class="book">
+<h3>Class 9th Urdu Test Paper</h3>
+<a href="Class-9th-Urdu-Test-Paper.pdf" target="_blank">View / Open PDF</a>
+<button class="green" onclick="downloadPDF('Class-9th-Urdu-Test-Paper.pdf')">Download PDF</button>
 </div>
-
-<button onclick="openToken()">🎫 Verify Token</button>
-
-<button onclick="logout()" class="cancel-btn">
-Sign Out
-</button>
-
+<div class="book">
+<h3>Class 10th Urdu Test Paper</h3>
+<a href="Class-10th-Urdu-Test-Paper.pdf" target="_blank">View / Open PDF</a>
+<button class="green" onclick="downloadPDF('Class-10th-Urdu-Test-Paper.pdf')">Download PDF</button>
+</div>
+<button class="dark" onclick="showPage('homePage')">Back to Home</button>
 </div>
 </section>
 
-
-<!-- BOOKS -->
-<section id="booksPage" class="page hidden">
-<div class="box">
-
-<h2>📚 Books & Notes</h2>
-
-<!-- CLASS 9 -->
+<section id="quizPage" class="hidden">
 <div class="card">
-<h3>Class 9th</h3>
-<p>Urdu Test Paper</p>
-
-<button onclick="viewPDF('Class-9th-Urdu-Test-Paper.pdf')">
-👁️ View Note
-</button>
-
-<a
-href="Class-9th-Urdu-Test-Paper.pdf"
-download
-style="text-decoration:none;display:block;">
-<button class="download-btn">
-⬇️ Download Note
-</button>
-</a>
-
+<h2>Quality Questions & Answers</h2>
+<div class="progress"><div id="progressBar"></div></div>
+<p id="questionNumber" class="small"></p>
+<div id="timer" class="timer">10</div>
+<div id="subject" class="subject"></div>
+<div id="questionText" class="question-text"></div>
+<div id="options"></div>
+<button id="nextButton" class="blue" onclick="submitAnswer()" disabled>Submit Answer</button>
+<p class="small">Answer each question within 10 seconds. The next question opens automatically when time runs out.</p>
 </div>
+</section>
 
-
-<!-- CLASS 10 -->
+<section id="resultPage" class="hidden">
 <div class="card">
-<h3>Class 10th</h3>
-<p>Urdu Test Paper</p>
-
-<button onclick="viewPDF('Class-10th-Urdu-Test-Paper.pdf')">
-👁️ View Note
-</button>
-
-<a
-href="Class-10th-Urdu-Test-Paper.pdf"
-download
-style="text-decoration:none;display:block;">
-<button class="download-btn">
-⬇️ Download Note
-</button>
-</a>
-
-</div>
-
-
-<button onclick="openToken()">🎫 Verify Token</button>
-
-<button onclick="goHome()" class="cancel-btn">
-Back to Home
-</button>
-
+<h2>Quiz Result</h2>
+<div id="resultMessage" class="notice"></div>
+<button id="cashbackButton" class="green hidden" onclick="requestCashback()">Request Rs.100 Cashback</button>
+<div id="cashbackMessage" class="notice hidden"></div>
+<button class="blue" onclick="showPage('homePage')">Home</button>
 </div>
 </section>
 
+<section id="adminPage" class="hidden">
+<div class="card">
+<h2>Admin Dashboard</h2>
+<p class="small">Only one admin account is configured. Sample users below are fictional demo records, not verified registrations.</p>
 
-<!-- TOKEN -->
-<section id="tokenPage" class="page hidden">
-<div class="box">
-
-<h2>🎫 Verify Token</h2>
-
-<p><b>Token Number</b></p>
-
-<input id="tokenInput"
-type="text"
-inputmode="numeric"
-maxlength="10"
-placeholder="Enter Token Number">
-
-<div id="tokenButtons">
-
-<button onclick="verifyToken()">
-تصدیق کریں
-</button>
-
-<button onclick="cancelToken()" class="cancel-btn">
-منسوخ کریں
-</button>
-
+<div class="grid">
+<div class="stat">Recorded Visits<strong id="visits">0</strong></div>
+<div class="stat">Quiz Attempts<strong id="attempts">0</strong></div>
+<div class="stat">Eligible Quiz Results<strong id="eligible">0</strong></div>
+<div class="stat">Correct Answers<strong id="correct">0</strong></div>
+<div class="stat">Cashback Requests<strong id="requests">0</strong></div>
+<div class="stat">Pending Requests<strong id="pending">0</strong></div>
 </div>
 
-<div id="tokenMessage"></div>
+<h3>20 User Demo List</h3>
+<div class="notice">
+<strong>Eligible users count</strong>
+<p class="small">Change this number from 0 to 20 to change the sample roster's displayed status. This does not change real quiz results or approve payments.</p>
+<input id="eligibleCount" type="number" min="0" max="20" value="5">
+<button class="blue" onclick="updateDemoEligibility()">Update Eligible Count</button>
+<p id="demoMessage" class="small">Initial demo count: 5 eligible users.</p>
+</div>
 
+<div class="tablewrap">
+<table>
+<thead>
+<tr><th>#</th><th>User Name</th><th>Demo Points</th><th>Demo Status</th></tr>
+</thead>
+<tbody id="demoUsers"></tbody>
+</table>
+</div>
+
+<h3>Real Quiz Results in This Browser</h3>
+<div id="resultList"></div>
+
+<h3>Cashback Requests in This Browser</h3>
+<div id="requestList"></div>
+
+<h3>Quiz Answer Key</h3>
+<div id="answerReview"></div>
+
+<button class="blue" onclick="showPage('homePage')">Home</button>
+<button class="red" onclick="logout()">Sign Out</button>
 </div>
 </section>
 
+<footer>Manan360.pk | Student Learning Portal</footer>
+</div>
 
 <script>
+/*
+DEMO ONLY:
+Client-side passwords and answer keys are visible in this source.
+Browser records are not shared between different devices.
+Sample users and demo eligibility are fictional.
+*/
 
-/* ================= LOGIN USERS ================= */
+const ADMIN_USERNAME="Admin1";
+const ADMIN_PASSWORD="12345";
+const USERNAME="Student";
+const USER_PASSWORD="user123";
 
-const users={
-"Admin1":"12345",
-"Admin2":"12345",
-"Admin3":"12345",
-"Admin4":"12345",
-"Admin5":"12345"
+const KEYS={
+ visits:"m360_visits_v7",
+ attempts:"m360_attempts_v7",
+ requests:"m360_requests_v7",
+ eligibleCount:"m360_demo_eligible_v7"
 };
 
-
-/* ================= DEMO TOKENS ================= */
-
-const tokens=[
-"7842306001","7842306002","7842306003","7842306004","7842306005",
-"7842306006","7842306007","7842306008","7842306009","7842306010",
-"7842306011","7842306012","7842306013","7842306014","7842306015",
-"7842306016","7842306017","7842306018","7842306019","7842306020",
-"7842306021","7842306022","7842306023","7842306024","7842306025",
-"7842306026","7842306027","7842306028","7842306029","7842306030",
-"7842306031","7842306032","7842306033","7842306034","7842306035",
-"7842306036","7842306037","7842306038","7842306039","7842306040",
-"7842306041","7842306042","7842306043","7842306044","7842306045",
-"7842306046","7842306047","7842306048","7842306049","7842306050",
-"7842306051","7842306052","7842306053","7842306054","7842306055",
-"7842306056","7842306057","7842306058","7842306059","7842306060",
-"7842306061","7842306062","7842306063","7842306064","7842306065",
-"7842306066","7842306067","7842306068","7842306069","7842306070",
-"7842306071","7842306072","7842306073","7842306074","7842306075",
-"7842306076","7842306077","7842306078","7842306079","7842306080",
-"7842306081","7842306082","7842306083","7842306084","7842306085",
-"7842306086","7842306087","7842306088","7842306089","7842306090",
-"7842306091","7842306092","7842306093","7842306094","7842306095",
-"7842306096","7842306097","7842306098","7842306099","7842306100",
-"7842306101","7842306102","7842306103","7842306104","7842306105",
-"7842306106","7842306107","7842306108","7842306109","7842306110",
-"7842306111","7842306112","7842306113","7842306114","7842306115",
-"7842306116","7842306117","7842306118","7842306119","7842306120",
-"7842306121","7842306122","7842306123","7842306124","7842306125",
-"7842306126","7842306127","7842306128","7842306129","7842306130",
-"7842306131","7842306132","7842306133","7842306134","7842306135",
-"7842306136","7842306137","7842306138","7842306139","7842306140",
-"7842306141","7842306142","7842306143","7842306144","7842306145",
-"7842306146","7842306147","7842306148","7842306149","7842306150",
-"7842306151","7842306152","7842306153","7842306154","7842306155",
-"7842306156","7842306157","7842306158","7842306159","7842306160",
-"7842306161","7842306162","7842306163","7842306164","7842306165",
-"7842306166","7842306167","7842306168","7842306169","7842306170",
-"7842306171","7842306172","7842306173","7842306174","7842306175",
-"7842306176","7842306177","7842306178","7842306179","7842306180",
-"7842306181","7842306182","7842306183","7842306184","7842306185",
-"7842306186","7842306187","7842306188","7842306189","7842306190",
-"7842306191","7842306192","7842306193","7842306194","7842306195",
-"7842306196","7842306197","7842306198","7842306199","7842306200",
-"7842306201","7842306202","7842306203","7842306204","7842306205",
-"7842306206","7842306207","7842306208","7842306209","7842306210",
-"7842306211","7842306212","7842306213","7842306214","7842306215",
-"7842306216","7842306217","7842306218","7842306219","7842306220",
-"7842306221","7842306222","7842306223","7842306224","7842306225",
-"7842306226","7842306227","7842306228","7842306229","7842306230",
-"7842306231","7842306232","7842306233","7842306234","7842306235",
-"7842306236","7842306237","7842306238","7842306239","7842306240",
-"7842306241","7842306242","7842306243","7842306244","7842306245",
-"7842306246","7842306247","7842306248","7842306249","7842306250",
-"7842306251","7842306252","7842306253","7842306254","7842306255",
-"7842306256","7842306257","7842306258","7842306259","7842306260",
-"7842306261","7842306262","7842306263","7842306264","7842306265",
-"7842306266","7842306267","7842306268","7842306269","7842306270",
-"7842306271","7842306272","7842306273","7842306274","7842306275",
-"7842306276","7842306277","7842306278","7842306279","7842306280",
-"7842306281","7842306282","7842306283","7842306284","7842306285",
-"7842306286","7842306287","7842306288","7842306289","7842306290",
-"7842306291","7842306292","7842306293","7842306294","7842306295",
-"7842306296","7842306297","7842306298","7842306299","7842306300",
-"7842306301","7842306302","7842306303","7842306304","7842306305",
-"7842306306","7842306307","7842306308","7842306309","7842306310",
-"7842306311","7842306312","7842306313","7842306314","7842306315",
-"7842306316","7842306317","7842306318","7842306319","7842306320",
-"7842306321","7842306322","7842306323","7842306324","7842306325",
-"7842306326","7842306327","7842306328","7842306329","7842306330",
-"7842306331","7842306332","7842306333","7842306334","7842306335",
-"7842306336","7842306337","7842306338","7842306339","7842306340",
-"7842306341","7842306342","7842306343","7842306344","7842306345",
-"7842306346","7842306347","7842306348","7842306349","7842306350",
-"7842306351","7842306352","7842306353","7842306354","7842306355",
-"7842306356","7842306357","7842306358","7842306359","7842306360",
-"7842306361","7842306362","7842306363","7842306364","7842306365",
-"7842306366","7842306367","7842306368","7842306369","7842306370",
-"7842306371","7842306372","7842306373","7842306374","7842306375",
-"7842306376","7842306377","7842306378","7842306379","7842306380",
-"7842306381","7842306382","7842306383","7842306384","7842306385",
-"7842306386","7842306387","7842306388","7842306389","7842306390",
-"7842306391","7842306392","7842306393","7842306394","7842306395",
-"7842306396","7842306397","7842306398","7842306399","7842306400",
-"7842306401","7842306402","7842306403","7842306404","7842306405",
-"7842306406","7842306407","7842306408","7842306409","7842306410",
-"7842306411","7842306412","7842306413","7842306414","7842306415",
-"7842306416","7842306417","7842306418","7842306419","7842306420",
-"7842306421","7842306422","7842306423","7842306424","7842306425",
-"7842306426","7842306427","7842306428","7842306429","7842306430",
-"7842306431","7842306432","7842306433","7842306434","7842306435",
-"7842306436","7842306437","7842306438","7842306439","7842306440",
-"7842306441","7842306442","7842306443","7842306444","7842306445",
-"7842306446","7842306447","7842306448","7842306449","7842306450",
-"7842306451","7842306452","7842306453","7842306454","7842306455",
-"7842306456","7842306457","7842306458","7842306459","7842306460",
-"7842306461","7842306462","7842306463","7842306464","7842306465",
-"7842306466","7842306467","7842306468","7842306469","7842306470",
-"7842306471","7842306472","7842306473","7842306474","7842306475",
-"7842306476","7842306477","7842306478","7842306479","7842306480",
-"7842306481","7842306482","7842306483","7842306484","7842306485",
-"7842306486","7842306487","7842306488","7842306489","7842306490",
-"7842306491","7842306492","7842306493","7842306494","7842306495",
-"7842306496","7842306497","7842306498","7842306499","7842306500"
+const demoUsers=[
+{name:"ABDUL MANAN (CEO & FOUNDER)",points:20},
+{name:"Ayesha Khan",points:20},
+{name:"Fatima Noor",points:20},
+{name:"Hira Ahmed",points:19},
+{name:"Maryam Ali",points:18},
+{name:"Muhammad Ahmed",points:17},
+{name:"Zainab Malik",points:16},
+{name:"Hamza Khan",points:15},
+{name:"Iqra Hassan",points:14},
+{name:"Usman Ali",points:13},
+{name:"Laiba Noor",points:12},
+{name:"Bilal Ahmed",points:11},
+{name:"Sana Malik",points:10},
+{name:"Abdullah Shah",points:9},
+{name:"Areeba Fatima",points:8},
+{name:"Hassan Raza",points:7},
+{name:"Minal Ahmed",points:6},
+{name:"Ahmad Raza",points:5},
+{name:"Dua Zahra",points:4},
+{name:"Saad Ali",points:3}
 ];
 
-const specialToken="7842306159";
+const questions=[
+{subject:"Math",q:"What is 12 + 8?",o:["18","20","22","24"],a:1},
+{subject:"Math",q:"What is 9 × 7?",o:["56","63","72","49"],a:1},
+{subject:"Math",q:"What is 100 ÷ 4?",o:["20","25","40","50"],a:1},
+{subject:"Math",q:"What is the square of 6?",o:["12","30","36","42"],a:2},
+{subject:"Math",q:"What is 15 − 9?",o:["5","6","7","8"],a:1},
 
+{subject:"English",q:"What is the plural of Child?",o:["Childs","Children","Childes","Childrens"],a:1},
+{subject:"English",q:"Choose the correct spelling.",o:["Beautifull","Beutiful","Beautiful","Butiful"],a:2},
+{subject:"English",q:"What is the opposite of Happy?",o:["Joyful","Sad","Kind","Brave"],a:1},
+{subject:"English",q:"Which word is a noun?",o:["Run","Quickly","School","Beautiful"],a:2},
+{subject:"English",q:"Choose the correct sentence.",o:["He go to school.","He goes to school.","He going school.","He gone school."],a:1},
 
-/* ================= PAGE CONTROL ================= */
+{subject:"History",q:"When did Pakistan become independent?",o:["1940","1947","1956","1965"],a:1},
+{subject:"History",q:"Who is known as the founder of Pakistan?",o:["Allama Iqbal","Quaid-e-Azam Muhammad Ali Jinnah","Liaquat Ali Khan","Sir Syed Ahmad Khan"],a:1},
+{subject:"History",q:"Who presented the Lahore Resolution in 1940?",o:["Liaquat Ali Khan","A. K. Fazlul Huq","Allama Iqbal","Fatima Jinnah"],a:1},
+{subject:"History",q:"Who was Pakistan's first Governor-General?",o:["Ayub Khan","Liaquat Ali Khan","Muhammad Ali Jinnah","Iskander Mirza"],a:2},
+{subject:"History",q:"In which year was the Lahore Resolution passed?",o:["1930","1935","1940","1947"],a:2},
 
-function hideAll(){
-[
-"loginPage",
-"fingerPage",
-"detailsPage",
-"homePage",
-"booksPage",
-"tokenPage"
-].forEach(function(id){
-document.getElementById(id).classList.add("hidden");
-});
+{subject:"Urdu",q:"اردو زبان کس رسم الخط میں لکھی جاتی ہے؟",o:["دیوناگری","نستعلیق","رومن","گورمکھی"],a:1},
+{subject:"Urdu",q:"لفظ خوشی کا متضاد کیا ہے؟",o:["مسرت","غم","محبت","آرام"],a:1},
+{subject:"Urdu",q:"لفظ کتاب کی جمع کیا ہے؟",o:["کتابیں","کتابی","کتابچہ","کتابیت"],a:0},
+{subject:"Urdu",q:"علامہ اقبال کو کس لقب سے یاد کیا جاتا ہے؟",o:["بابائے قوم","شاعرِ مشرق","قائدِ ملت","مردِ مجاہد"],a:1},
+{subject:"Urdu",q:"سوالیہ جملے کے آخر میں کون سی علامت آتی ہے؟",o:["۔","،","؟","؛"],a:2}
+];
+
+let currentUser="";
+let currentRole="";
+let questionIndex=0;
+let score=0;
+let seconds=10;
+let selected=null;
+let timer=null;
+let quizFinished=false;
+let quizId="";
+let cashbackRequested=false;
+
+function read(key,fallback){
+ try{
+  const value=localStorage.getItem(key);
+  return value===null?fallback:JSON.parse(value);
+ }catch(e){return fallback;}
 }
-
-
-/* ================= LOGIN ================= */
-
+function save(key,value){
+ localStorage.setItem(key,JSON.stringify(value));
+}
+function showPage(id){
+ clearInterval(timer);
+ ["loginPage","homePage","booksPage","quizPage","resultPage","adminPage"].forEach(p=>{
+  document.getElementById(p).classList.add("hidden");
+ });
+ document.getElementById(id).classList.remove("hidden");
+ window.scrollTo(0,0);
+}
 function login(){
+ const role=document.getElementById("role").value;
+ const username=document.getElementById("username").value.trim();
+ const password=document.getElementById("password").value;
+ const msg=document.getElementById("loginMessage");
+ msg.classList.add("hidden");
 
-const username=document.getElementById("username").value.trim();
-const password=document.getElementById("password").value;
+ if(!username||!password){
+  msg.textContent="Enter username and password.";
+  msg.classList.remove("hidden");
+  return;
+ }
 
-if(users[username] && users[username]===password){
+ if(role==="admin"&&username===ADMIN_USERNAME&&password===ADMIN_PASSWORD){
+  currentUser=username;
+  currentRole="admin";
+  renderAdmin();
+  showPage("adminPage");
+  return;
+ }
 
-hideAll();
+ if(role==="user"&&username===USERNAME&&password===USER_PASSWORD){
+  currentUser=username;
+  currentRole="user";
+  document.getElementById("welcome").textContent="Welcome, "+username+"!";
+  showPage("homePage");
+  return;
+ }
 
-document.getElementById("fingerPage").classList.remove("hidden");
-
-startFinger();
-
-}else{
-
-document.getElementById("loginError").textContent=
-"Invalid username or password.";
-
+ msg.textContent="Incorrect username or password.";
+ msg.classList.remove("hidden");
 }
-}
-
-
-/* ================= FINGERPRINT ================= */
-
-function startFinger(){
-
-const status=document.getElementById("fingerStatus");
-const timer=document.getElementById("fingerTimer");
-const info=document.getElementById("fingerInfo");
-
-status.textContent="";
-info.innerHTML=
-"Please wait 5 seconds..."+
-"<br>Checking your details...";
-
-let seconds=5;
-
-timer.textContent=seconds;
-
-const interval=setInterval(function(){
-
-seconds--;
-
-timer.textContent=seconds;
-
-if(seconds<=0){
-
-clearInterval(interval);
-
-timer.textContent="✓";
-
-status.textContent="✓ Finger Verified Successfully";
-
-info.innerHTML=
-"Checking your details completed.";
-
-setTimeout(function(){
-
-hideAll();
-
-document.getElementById("detailsPage").classList.remove("hidden");
-
-},1000);
-
-}
-
-},1000);
-
-}
-
-
-/* ================= PHOTO ================= */
-
-function showPhoto(event){
-
-const file=event.target.files[0];
-
-if(!file)return;
-
-const preview=document.getElementById("photoPreview");
-
-preview.src=URL.createObjectURL(file);
-
-preview.style.display="block";
-
-}
-
-
-/* ================= DETAILS ================= */
-
-function saveDetails(){
-
-const name=document.getElementById("fullName").value.trim();
-const age=document.getElementById("age").value.trim();
-const cnic=document.getElementById("cnic").value.trim();
-const photo=document.getElementById("photoInput").files[0];
-
-const error=document.getElementById("detailsError");
-
-if(!name || !age || !cnic || !photo){
-
-error.textContent=
-"Please complete all fields and select your front photo.";
-
-return;
-
-}
-
-document.getElementById("welcomeName").textContent=
-"Hello, "+name;
-
-hideAll();
-
-document.getElementById("homePage").classList.remove("hidden");
-
-}
-
-
-/* ================= BOOKS ================= */
-
-function openBooks(){
-
-hideAll();
-
-document.getElementById("booksPage").classList.remove("hidden");
-
-}
-
-
-/* ================= VIEW PDF ================= */
-
-function viewPDF(fileName){
-
-const pdfURL=
-new URL(fileName,window.location.href).href;
-
-window.open(pdfURL,"_blank");
-
-}
-
-
-/* ================= HOME ================= */
-
-function goHome(){
-
-history.replaceState(null,"",window.location.href);
-
-hideAll();
-
-document.getElementById("homePage").classList.remove("hidden");
-
-}
-
-
-/* ================= TOKEN PAGE ================= */
-
-function openToken(){
-
-hideAll();
-
-document.getElementById("tokenPage").classList.remove("hidden");
-
-document.getElementById("tokenMessage").innerHTML="";
-
-document.getElementById("tokenButtons").style.display="block";
-
-document.getElementById("tokenInput").value="";
-
-}
-
-
-/* ================= CANCEL ================= */
-
-function cancelToken(){
-
-document.getElementById("tokenInput").value="";
-document.getElementById("tokenMessage").innerHTML="";
-
-goHome();
-
-}
-
-
-/* ================= VERIFY TOKEN ================= */
-
-function verifyToken(){
-
-const token=
-document.getElementById("tokenInput").value.trim();
-
-const message=
-document.getElementById("tokenMessage");
-
-const buttons=
-document.getElementById("tokenButtons");
-
-if(!token){
-
-message.innerHTML=
-'<div class="error">Please enter a token number.</div>';
-
-return;
-
-}
-
-
-/* ================= SPECIAL CASHBACK ================= */
-
-if(token===specialToken){
-
-buttons.style.display="none";
-
-message.innerHTML=
-
-'<div class="token-success">'+
-
-'<div class="green-check">✓</div>'+
-
-'<div class="cashback-title">مبارک ہو!</div>'+
-
-'<div class="cashback-text">'+
-'آپ 100 Cashback کے Eligible ہو چکے ہیں۔'+
-'<br><br>'+
-'براہ کرم Support Team سے رابطہ کریں۔'+
-'</div>'+
-
-'<div class="token-number">'+
-'Token Number: '+token+
-'</div>'+
-
-'<button class="whatsapp-btn" onclick="openSupport()">'+
-'📱 Support Team سے رابطہ کریں'+
-'</button>'+
-
-'</div>';
-
-return;
-
-}
-
-
-/* ================= NORMAL TOKENS ================= */
-
-if(tokens.includes(token)){
-
-buttons.style.display="none";
-
-message.innerHTML=
-
-'<div class="token-success">'+
-
-'<div class="green-check">✓</div>'+
-
-'<div class="submitted-title">'+
-'Application has been submitted.'+
-'</div>'+
-
-'<div class="wait-text">'+
-'Please wait response.'+
-'</div>'+
-
-'<div class="token-number">'+
-'Token Number: '+token+
-'</div>'+
-
-'<button onclick="goHome()" class="cancel-btn">'+
-'Home'+
-'</button>'+
-
-'</div>';
-
-}else{
-
-message.innerHTML=
-'<div class="error big-message">'+
-'Invalid Token Number'+
-'</div>';
-
-}
-
-}
-
-
-/* ================= SUPPORT WHATSAPP ================= */
-
-function openSupport(){
-
-window.location.href=
-"https://wa.me/923447232654?text=Assalam-o-Alaikum%20Manan360%20Support%20Team";
-
-}
-
-
-/* ================= LOGOUT ================= */
-
 function logout(){
+ clearInterval(timer);
+ currentUser="";
+ currentRole="";
+ document.getElementById("username").value="";
+ document.getElementById("password").value="";
+ showPage("loginPage");
+}
+function downloadPDF(filename){
+ const a=document.createElement("a");
+ a.href=encodeURI(filename);
+ a.download=filename;
+ document.body.appendChild(a);
+ a.click();
+ a.remove();
+}
+function startQuiz(){
+ if(currentRole!=="user")return;
+ questionIndex=0;
+ score=0;
+ selected=null;
+ quizFinished=false;
+ cashbackRequested=false;
+ quizId="quiz_"+Date.now()+"_"+Math.random().toString(36).slice(2);
+ document.getElementById("cashbackMessage").classList.add("hidden");
+ document.getElementById("cashbackButton").classList.add("hidden");
+ showPage("quizPage");
+ showQuestion();
+}
+function showQuestion(){
+ clearInterval(timer);
+ if(questionIndex>=questions.length){
+  finishQuiz();
+  return;
+ }
 
-hideAll();
+ selected=null;
+ seconds=10;
+ const q=questions[questionIndex];
 
-document.getElementById("loginPage").classList.remove("hidden");
+ document.getElementById("questionNumber").textContent=
+  "Question "+(questionIndex+1)+" of 20";
+ document.getElementById("progressBar").style.width=
+  (questionIndex/20*100)+"%";
+ document.getElementById("timer").textContent=seconds;
+ document.getElementById("subject").textContent=q.subject;
+ document.getElementById("questionText").textContent=q.q;
+ document.getElementById("nextButton").disabled=true;
+ document.getElementById("nextButton").textContent=
+  questionIndex===19?"Finish Quiz":"Submit Answer";
 
-document.getElementById("username").value="";
-document.getElementById("password").value="";
-document.getElementById("loginError").textContent="";
+ const options=document.getElementById("options");
+ options.innerHTML="";
 
+ q.o.forEach((answer,i)=>{
+  const label=document.createElement("label");
+  label.className="option";
+  const radio=document.createElement("input");
+  radio.type="radio";
+  radio.name="answer";
+  radio.value=i;
+  radio.addEventListener("change",()=>{
+   selected=i;
+   document.getElementById("nextButton").disabled=false;
+  });
+  label.appendChild(radio);
+  label.appendChild(document.createTextNode(answer));
+  options.appendChild(label);
+ });
+
+ timer=setInterval(()=>{
+  seconds--;
+  document.getElementById("timer").textContent=seconds;
+  if(seconds<=0){
+   clearInterval(timer);
+   advanceQuestion();
+  }
+ },1000);
+}
+function submitAnswer(){
+ if(quizFinished||selected===null)return;
+ clearInterval(timer);
+ advanceQuestion();
+}
+function advanceQuestion(){
+ if(quizFinished)return;
+ if(selected!==null&&selected===questions[questionIndex].a)score++;
+ questionIndex++;
+ if(questionIndex>=questions.length)finishQuiz();
+ else showQuestion();
+}
+function finishQuiz(){
+ if(quizFinished)return;
+ quizFinished=true;
+ clearInterval(timer);
+
+ const eligible=score>=18;
+ const attempts=read(KEYS.attempts,[]);
+ attempts.push({
+  id:quizId,user:currentUser,score:score,total:20,
+  eligible:eligible,time:new Date().toLocaleString()
+ });
+ save(KEYS.attempts,attempts);
+
+ document.getElementById("progressBar").style.width="100%";
+ document.getElementById("resultMessage").textContent=eligible
+  ?"Congratulations! You scored "+score+"/20. You qualify to request Rs.100 cashback."
+  :"Your score is "+score+"/20. At least 18 correct answers are required.";
+
+ document.getElementById("cashbackButton").classList.toggle("hidden",!eligible);
+ renderAdmin();
+ showPage("resultPage");
+}
+function requestCashback(){
+ if(!quizFinished||score<18||cashbackRequested||currentRole!=="user")return;
+
+ const requests=read(KEYS.requests,[]);
+ if(requests.some(r=>r.attemptId===quizId)){
+  cashbackRequested=true;
+  document.getElementById("cashbackMessage").textContent="A request already exists for this quiz.";
+  document.getElementById("cashbackMessage").classList.remove("hidden");
+  document.getElementById("cashbackButton").disabled=true;
+  return;
+ }
+
+ requests.push({
+  attemptId:quizId,user:currentUser,score:score,amount:100,
+  status:"Pending admin review",time:new Date().toLocaleString()
+ });
+ save(KEYS.requests,requests);
+ cashbackRequested=true;
+ document.getElementById("cashbackMessage").textContent=
+  "Your Rs.100 request is recorded and pending review. This is not a payment confirmation.";
+ document.getElementById("cashbackMessage").classList.remove("hidden");
+ document.getElementById("cashbackButton").disabled=true;
+ renderAdmin();
+}
+function addLine(container,text){
+ const div=document.createElement("div");
+ div.className="notice";
+ div.textContent=text;
+ container.appendChild(div);
+}
+function updateDemoEligibility(){
+ let count=Number(document.getElementById("eligibleCount").value);
+ if(!Number.isFinite(count))count=5;
+ count=Math.max(0,Math.min(20,Math.floor(count)));
+ save(KEYS.eligibleCount,count);
+ document.getElementById("eligibleCount").value=count;
+ document.getElementById("demoMessage").textContent=
+  count+" of 20 fictional demo users marked Eligible. This does not change real quiz results.";
+ renderDemoUsers();
+}
+function renderDemoUsers(){
+ const tbody=document.getElementById("demoUsers");
+ tbody.innerHTML="";
+ const count=read(KEYS.eligibleCount,5);
+
+ demoUsers.forEach((user,i)=>{
+  const tr=document.createElement("tr");
+  const values=[
+   String(i+1),
+   user.name,
+   String(user.points),
+   i<count?"DEMO — Eligible":"DEMO — Not Eligible"
+  ];
+  values.forEach((value,j)=>{
+   const td=document.createElement("td");
+   td.textContent=value;
+   if(j===3)td.className=i<count?"good":"bad";
+   tr.appendChild(td);
+  });
+  tbody.appendChild(tr);
+ });
+}
+function renderAdmin(){
+ const attempts=read(KEYS.attempts,[]);
+ const requests=read(KEYS.requests,[]);
+
+ document.getElementById("visits").textContent=read(KEYS.visits,0);
+ document.getElementById("attempts").textContent=attempts.length;
+ document.getElementById("eligible").textContent=attempts.filter(x=>x.eligible).length;
+ document.getElementById("correct").textContent=attempts.reduce((sum,x)=>sum+x.score,0);
+ document.getElementById("requests").textContent=requests.length;
+ document.getElementById("pending").textContent=
+  requests.filter(x=>x.status==="Pending admin review").length;
+
+ document.getElementById("eligibleCount").value=read(KEYS.eligibleCount,5);
+ renderDemoUsers();
+
+ const resultList=document.getElementById("resultList");
+ resultList.innerHTML="";
+ if(!attempts.length)addLine(resultList,"No real quiz attempts recorded in this browser.");
+ attempts.slice().reverse().slice(0,100).forEach(x=>{
+  addLine(resultList,x.user+" | "+x.score+"/20 | "+
+   (x.eligible?"Eligible":"Not Eligible")+" | "+x.time);
+ });
+
+ const requestList=document.getElementById("requestList");
+ requestList.innerHTML="";
+ if(!requests.length)addLine(requestList,"No cashback requests recorded.");
+ requests.slice().reverse().forEach(x=>{
+  addLine(requestList,x.user+" | Rs."+x.amount+" | "+x.score+"/20 | "+x.status+" | "+x.time);
+ });
+
+ const answerReview=document.getElementById("answerReview");
+ answerReview.innerHTML="";
+ questions.forEach((q,i)=>{
+  addLine(answerReview,(i+1)+". ["+q.subject+"] "+q.q+" | Correct answer: "+q.o[q.a]);
+ });
 }
 
+/* Local browser-session counter, not global site analytics. */
+if(!sessionStorage.getItem("m360_visit_counted_v7")){
+ save(KEYS.visits,read(KEYS.visits,0)+1);
+ sessionStorage.setItem("m360_visit_counted_v7","yes");
+}
 </script>
-
 </body>
-</html>
-
-بس دو اہم باتیں:
-
-1. دونوں PDF فائلوں کے نام بالکل یہی رہنے چاہئیں: "Class-9th-Urdu-Test-Paper.pdf" اور "Class-10th-Urdu-Test-Paper.pdf"
-2. Fingerprint میں اب Verify Finger بٹن نہیں ہے؛ Login کے فوراً بعد 5 سیکنڈ کی scanning خود چلے گی اور مکمل ہوتے ہی Details کھل جائیں گی۔
+  </html>
