@@ -1,470 +1,408 @@
 
 <!DOCTYPE html>
-<html lang="ur" dir="rtl">
+<html lang="ur">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Manan360.pk</title>
 <style>
-*{box-sizing:border-box;margin:0;padding:0}
+*{box-sizing:border-box}
 body{
- font-family:Arial,sans-serif;min-height:100vh;padding:12px;
- color:#fff;background:linear-gradient(135deg,#061a40,#0077b6,#00a878)
+ margin:0;min-height:100vh;font-family:Arial,sans-serif;
+ color:#fff;background:linear-gradient(135deg,#061a40,#0077b6,#00a878);
+ padding:15px
 }
-.container{max-width:850px;margin:auto}
-header{text-align:center;padding:24px 5px}
-header h1{font-size:30px}
-header p{margin-top:10px;font-size:17px}
-.card{
- background:#061a40ed;border:1px solid #ffffff30;
- border-radius:17px;padding:18px;margin:14px 0;
- box-shadow:0 8px 25px #00152d40
+.wrap{max-width:850px;margin:auto}
+header,.panel{
+ background:rgba(255,255,255,.12);padding:20px;
+ border:1px solid #ffffff35;border-radius:18px;
+ margin-bottom:16px;box-shadow:0 8px 25px #0002
 }
-h2{margin-bottom:15px}
-h3{margin:14px 0 9px}
-input,select,button{
- width:100%;padding:13px;margin:7px 0;
+header{text-align:center}
+h1{margin:0 0 8px;font-size:29px}
+h2{margin-top:0}
+input,select,textarea{
+ display:block;width:100%;padding:13px;margin:10px 0;
  border:0;border-radius:9px;font-size:16px
 }
-input,select{background:#fff;color:#14243a}
-button{cursor:pointer;font-weight:bold}
-button:disabled{opacity:.5;cursor:not-allowed}
-.blue{background:#1685ef;color:white}
-.green{background:#087b66;color:white}
-.dark{background:#263c58;color:white}
-.red{background:#c93848;color:white}
+button,.btn{
+ display:inline-block;border:0;border-radius:9px;
+ padding:12px 16px;margin:5px 2px;
+ font-size:15px;font-weight:bold;cursor:pointer;
+ background:#00d084;color:#062b35;text-decoration:none
+}
+.blue{background:#168bff;color:white}
+.dark{background:#10243c;color:white}
+.red{background:#d93649;color:white}
+button:disabled{opacity:.5}
 .hidden{display:none!important}
-.notice,.book,.stat{
- background:#ffffff12;border:1px solid #ffffff25;
- border-radius:11px;padding:14px;margin:11px 0;
- line-height:1.8;overflow-wrap:anywhere
+.small{font-size:13px;line-height:1.7}
+.item{
+ padding:14px;background:#ffffff12;border:1px solid #ffffff30;
+ border-radius:12px;margin:10px 0;overflow-wrap:anywhere
 }
-.small{font-size:14px;line-height:1.9;color:#dcecff}
-.timer{text-align:center;font-size:30px;font-weight:bold;
- color:#ffe66d;margin:14px}
-.subject{background:#0877b9;padding:12px;border-radius:9px;margin:14px 0}
-.question-text{font-size:20px;line-height:1.9;margin:15px 0}
-.option{
- display:flex;align-items:center;gap:10px;padding:13px;
- margin:9px 0;border:1px solid #ffffff35;border-radius:10px;
- line-height:1.7;cursor:pointer
-}
-.option input{width:20px;height:20px;margin:0;flex-shrink:0}
-.progress{height:9px;background:#ffffff30;border-radius:20px;overflow:hidden}
-#progressBar{height:100%;width:0;background:#35e69a}
-.grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
-.stat strong{display:block;font-size:25px;margin-top:6px}
-.tablewrap{overflow-x:auto}
-table{width:100%;border-collapse:collapse;min-width:500px;margin:10px 0}
-th,td{padding:10px;text-align:right;border-bottom:1px solid #ffffff25;font-size:13px}
-th{background:#0877b9}
-footer{text-align:center;padding:18px;font-size:13px}
-a{color:#8ed0ff}
+.item img{max-width:100%;max-height:240px;border-radius:10px}
+.grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px}
+.grid button{width:100%;margin:0}
+label{display:block;margin-top:10px}
+hr{border:0;border-top:1px solid #ffffff40;margin:18px 0}
+a{color:#a9edff}
+#notice{white-space:pre-wrap}
 @media(max-width:480px){
  .grid{grid-template-columns:1fr}
- .card{padding:14px}
- header h1{font-size:26px}
+ h1{font-size:25px}
 }
 </style>
 </head>
 <body>
-<div class="container">
-
+<div class="wrap">
 <header>
 <h1>Manan360.pk</h1>
-<p>کتابیں، نوٹس اور معیاری سوالات</p>
+<p>Student Portal | Admin & CEO Dashboard</p>
 </header>
 
-<section id="loginPage" class="card">
-<h2>لاگ اِن</h2>
-<select id="role">
-<option value="user">طالب علم</option>
-<option value="admin">ایڈمن</option>
-</select>
-<input id="username" placeholder="یوزر نیم">
-<input id="password" type="password" placeholder="پاس ورڈ">
-<button class="blue" onclick="login()">لاگ اِن کریں</button>
-<div id="loginMessage" class="notice hidden"></div>
-<p class="small">طالب علم: Student / user123</p>
-<p class="small">ایڈمن: Admin1 / 12345</p>
+<section id="login" class="panel">
+<h2>Login</h2>
+<label>Username</label>
+<input id="username" placeholder="Enter username" autocomplete="username">
+<label>Password</label>
+<input id="password" type="password" placeholder="Enter password" autocomplete="current-password">
+<button class="blue" onclick="login()">Login</button>
+<p id="loginMsg" class="small"></p>
+<p class="small">Student: student / student123</p>
+<p class="small">Admin: admin / Admin360</p>
+<p class="small">CEO: ceo / CEO360</p>
+<p class="small">یہ ابتدائی لاگ اِن ہیں۔ حقیقی سکیورٹی کے لیے سرور پر تصدیق ضروری ہے۔</p>
 </section>
 
-<section id="homePage" class="hidden">
-<div class="card">
-<h2 id="welcome">خوش آمدید!</h2>
-<div class="notice">
-<strong>عبد المنان — CEO & Founder</strong>
-<p class="small">السلام علیکم! Manan360.pk پر خوش آمدید۔</p>
-</div>
-<button class="blue" onclick="showPage('booksPage')">کتابیں اور نوٹس</button>
-<button class="green" onclick="startQuiz()">20 سوالات کا کوئز شروع کریں</button>
-<div class="notice">
-<strong>کیش بیک کے قواعد</strong>
-<p class="small">20 سوالات حل کریں۔ کم از کم 18 درست جوابات پر 100 روپے کی درخواست کا فارم کھلے گا۔ درخواست کی جانچ میں 24 گھنٹے لگ سکتے ہیں۔ درخواست جمع ہونا ادائیگی کی ضمانت نہیں ہے۔</p>
-</div>
-<button class="dark" onclick="logout()">لاگ آؤٹ</button>
-</div>
-</section>
-
-<section id="booksPage" class="hidden">
-<div class="card">
-<h2>کتابیں اور نوٹس</h2>
-<div class="book">
-<h3>جماعت نہم — اردو ٹیسٹ پیپر</h3>
-<a href="Class-9th-Urdu-Test-Paper.pdf" target="_blank">پی ڈی ایف کھولیں</a>
-<button class="green" onclick="downloadPDF('Class-9th-Urdu-Test-Paper.pdf')">پی ڈی ایف ڈاؤن لوڈ کریں</button>
-</div>
-<div class="book">
-<h3>جماعت دہم — اردو ٹیسٹ پیپر</h3>
-<a href="Class-10th-Urdu-Test-Paper.pdf" target="_blank">پی ڈی ایف کھولیں</a>
-<button class="green" onclick="downloadPDF('Class-10th-Urdu-Test-Paper.pdf')">پی ڈی ایف ڈاؤن لوڈ کریں</button>
-</div>
-<button class="dark" onclick="showPage('homePage')">ہوم پیج</button>
-</div>
-</section>
-
-<section id="quizPage" class="hidden">
-<div class="card">
-<h2>معیاری سوالات و جوابات</h2>
-<div class="progress"><div id="progressBar"></div></div>
-<p id="questionNumber" class="small"></p>
-<div id="timer" class="timer">10</div>
-<div id="subject" class="subject"></div>
-<div id="questionText" class="question-text"></div>
-<div id="options"></div>
-<button id="nextButton" class="blue" onclick="submitAnswer()" disabled>جواب جمع کریں</button>
-<p class="small">ہر سوال کے لیے 10 سیکنڈ ہیں۔ وقت ختم ہونے پر اگلا سوال خود کھل جائے گا۔</p>
-</div>
-</section>
-
-<section id="resultPage" class="hidden">
-<div class="card">
-<h2>کوئز کا نتیجہ</h2>
-<div id="resultMessage" class="notice"></div>
-<button id="cashbackButton" class="green hidden" onclick="openRequestForm()">100 روپے کی درخواست دیں</button>
-<button class="blue" onclick="showPage('homePage')">ہوم پیج</button>
-</div>
-</section>
-
-<section id="requestPage" class="hidden">
-<div class="card">
-<h2>کیش بیک درخواست فارم</h2>
-<div class="notice">
-<strong>آپ کے کوئز کا ثبوت</strong>
-<p id="proofScore"></p>
-<p id="proofId" class="small"></p>
-<p class="small">صرف 18 یا اس سے زیادہ درست جوابات والے طالب علم درخواست دے سکتے ہیں۔</p>
-</div>
-
-<form id="requestForm">
-<label for="studentName">آپ کا پورا نام</label>
-<input id="studentName" required maxlength="100" placeholder="اپنا نام لکھیں">
-
-<label for="fatherName">والد کا نام</label>
-<input id="fatherName" required maxlength="100" placeholder="والد کا نام لکھیں">
-
-<label for="studentAge">عمر</label>
-<input id="studentAge" type="number" min="5" max="100" required placeholder="عمر لکھیں">
-
-<label for="studentClass">جماعت</label>
-<select id="studentClass" required>
-<option value="">اپنی جماعت منتخب کریں</option>
-<option>جماعت ششم</option>
-<option>جماعت ہفتم</option>
-<option>جماعت ہشتم</option>
-<option>جماعت نہم</option>
-<option>جماعت دہم</option>
-<option>دیگر</option>
-</select>
-
-<button id="requestSubmit" class="green" type="submit">درخواست جمع کریں</button>
-</form>
-
-<div id="requestReceipt" class="notice hidden"></div>
-<button class="blue" onclick="showPage('homePage')">ہوم پیج</button>
-</div>
-</section>
-
-<section id="adminPage" class="hidden">
-<div class="card">
-<h2>ایڈمن ڈیش بورڈ</h2>
-<p class="small">یہ ریکارڈ اسی براؤزر میں محفوظ درخواستوں اور کوئز کے نتائج پر مشتمل ہے۔</p>
+<section id="home" class="panel hidden">
+<h2 id="welcome">Welcome</h2>
 <div class="grid">
-<div class="stat">کوئز کی کوششیں<strong id="attempts">0</strong></div>
-<div class="stat">اہل نتائج<strong id="eligible">0</strong></div>
-<div class="stat">درست جوابات<strong id="correct">0</strong></div>
-<div class="stat">درخواستیں<strong id="requests">0</strong></div>
+<button onclick="show('books')">Books & Notes</button>
+<button onclick="show('quiz')">Questions & Answers</button>
+<button onclick="show('application')">Application Form</button>
+<button class="blue" onclick="show('myrequests')">My Applications</button>
 </div>
-
-<h3>درخواستیں اور طلبہ کا ثبوت</h3>
-<div id="requestList"></div>
-
-<h3>کوئز کے نتائج</h3>
-<div class="tablewrap">
-<table>
-<thead><tr><th>یوزر</th><th>درست جواب</th><th>نتیجہ</th><th>وقت</th></tr></thead>
-<tbody id="resultList"></tbody>
-</table>
-</div>
-<button class="blue" onclick="exportRequests()">درخواستوں کی فائل بنائیں</button>
-<button class="dark" onclick="showPage('homePage')">ہوم پیج</button>
-<button class="red" onclick="logout()">لاگ آؤٹ</button>
-</div>
+<hr>
+<button class="dark" onclick="logout()">Sign Out</button>
 </section>
 
-<footer>Manan360.pk | Student Learning Portal</footer>
+<section id="books" class="panel hidden">
+<h2>Books & Notes</h2>
+<div class="item">
+<h3>Class 9th Urdu Test Paper</h3>
+<p class="small">GitHub پر اپ لوڈ کی گئی PDF کھولیں یا ڈاؤن لوڈ کریں۔</p>
+<a class="btn blue" href="Class-9th-Urdu-Test-Paper.pdf" target="_blank">Open PDF</a>
+<a class="btn" href="Class-9th-Urdu-Test-Paper.pdf" download>Download</a>
+</div>
+<div class="item">
+<h3>Class 10th Urdu Test Paper</h3>
+<a class="btn blue" href="Class-10th-Urdu-Test-Paper.pdf" target="_blank">Open PDF</a>
+<a class="btn" href="Class-10th-Urdu-Test-Paper.pdf" download>Download</a>
+</div>
+<button class="dark" onclick="show('home')">Home</button>
+</section>
+
+<section id="quiz" class="panel hidden">
+<h2>Questions & Answers</h2>
+<p>20 سوالات حل کریں۔ 15 یا زیادہ درست جواب ہونے پر درخواست فارم کھلے گا۔</p>
+<div id="quizArea"></div>
+<button class="blue" onclick="submitQuiz()">Submit Answers</button>
+<p id="quizResult"></p>
+<button class="dark" onclick="show('home')">Home</button>
+</section>
+
+<section id="application" class="panel hidden">
+<h2>Application Form</h2>
+<p class="small">اپنی درست معلومات اور ثبوت کی تصویر شامل کریں۔</p>
+<form id="appForm">
+<label>نام</label>
+<input id="appName" required placeholder="اپنا پورا نام">
+<label>والد کا نام</label>
+<input id="father" required placeholder="والد کا نام">
+<label>عمر</label>
+<input id="age" type="number" min="1" max="120" required placeholder="عمر">
+<label>کلاس</label>
+<select id="className" required>
+<option value="">کلاس منتخب کریں</option>
+<option>Class 9</option><option>Class 10</option>
+<option>Other</option>
+</select>
+<label>درست جوابات کی تعداد</label>
+<input id="correct" type="number" readonly>
+<label>ثبوت / فارم کی تصویر</label>
+<input id="proof" type="file" accept="image/*" capture="environment" required>
+<button class="blue" type="submit">Save Application</button>
+</form>
+<p id="appMsg" class="small"></p>
+<button class="dark" onclick="show('home')">Home</button>
+</section>
+
+<section id="myrequests" class="panel hidden">
+<h2>My Applications</h2>
+<div id="myList"></div>
+<button class="dark" onclick="show('home')">Home</button>
+</section>
+
+<section id="admin" class="panel hidden">
+<h2>Admin Dashboard</h2>
+<p>درخواستیں دیکھیں، تصدیق کریں اور CEO کو بھیجیں۔</p>
+<div id="adminStats" class="item"></div>
+<div id="adminList"></div>
+<button class="dark" onclick="logout()">Sign Out</button>
+</section>
+
+<section id="ceo" class="panel hidden">
+<h2>CEO Dashboard</h2>
+<p>موصول شدہ درخواستیں دیکھیں اور ان کی حیثیت درج کریں۔</p>
+<div id="ceoList"></div>
+<button class="dark" onclick="logout()">Sign Out</button>
+</section>
+
+<section class="panel small">
+<strong>Manan360 Support Team</strong>
+<p>WhatsApp: 923447232654</p>
+<button class="blue" onclick="contactSupport()">Contact Support Team</button>
+<p id="notice"></p>
+</section>
 </div>
 
 <script>
-const ADMIN_USERNAME="Admin1";
-const ADMIN_PASSWORD="12345";
-const USERNAME="Student";
-const USER_PASSWORD="user123";
-
-const KEYS={
- attempts:"m360_attempts_v8",
- requests:"m360_requests_v8"
+const WA = "923447232654";
+const USERS = {
+ student:{password:"student123",role:"student"},
+ admin:{password:"Admin360",role:"admin"},
+ ceo:{password:"CEO360",role:"ceo"}
 };
 
-const questions=[
-{subject:"ریاضی",q:"12 جمع 8 کتنے ہوتے ہیں؟",o:["18","20","22","24"],a:1},
-{subject:"ریاضی",q:"9 ضرب 7 کتنے ہوتے ہیں؟",o:["56","63","72","49"],a:1},
-{subject:"ریاضی",q:"100 کو 4 پر تقسیم کریں۔",o:["20","25","40","50"],a:1},
-{subject:"ریاضی",q:"6 کا مربع کیا ہے؟",o:["12","30","36","42"],a:2},
-{subject:"ریاضی",q:"15 میں سے 9 نکالیں۔",o:["5","6","7","8"],a:1},
+let currentUser = null;
+let currentRole = null;
+let quizPassed = false;
+let lastScore = 0;
 
-{subject:"انگریزی",q:"Child کی جمع کیا ہے؟",o:["Childs","Children","Childes","Childrens"],a:1},
-{subject:"انگریزی",q:"درست ہجے منتخب کریں۔",o:["Beautifull","Beutiful","Beautiful","Butiful"],a:2},
-{subject:"انگریزی",q:"Happy کا متضاد کیا ہے؟",o:["Joyful","Sad","Kind","Brave"],a:1},
-{subject:"انگریزی",q:"اسم (Noun) کون سا لفظ ہے؟",o:["Run","Quickly","School","Beautiful"],a:2},
-{subject:"انگریزی",q:"درست جملہ منتخب کریں۔",o:["He go to school.","He goes to school.","He going school.","He gone school."],a:1},
-
-{subject:"مطالعہ پاکستان",q:"پاکستان کب آزاد ہوا؟",o:["1940ء","1947ء","1956ء","1965ء"],a:1},
-{subject:"مطالعہ پاکستان",q:"بانیٔ پاکستان کون ہیں؟",o:["علامہ اقبال","قائداعظم محمد علی جناح","لیاقت علی خان","سر سید احمد خان"],a:1},
-{subject:"مطالعہ پاکستان",q:"قراردادِ لاہور کس نے پیش کی؟",o:["لیاقت علی خان","اے کے فضل الحق","علامہ اقبال","فاطمہ جناح"],a:1},
-{subject:"مطالعہ پاکستان",q:"پاکستان کے پہلے گورنر جنرل کون تھے؟",o:["ایوب خان","لیاقت علی خان","محمد علی جناح","اسکندر مرزا"],a:2},
-{subject:"مطالعہ پاکستان",q:"قراردادِ لاہور کس سال منظور ہوئی؟",o:["1930ء","1935ء","1940ء","1947ء"],a:2},
-
-{subject:"اردو",q:"اردو کس رسم الخط میں لکھی جاتی ہے؟",o:["دیوناگری","نستعلیق","رومن","گورمکھی"],a:1},
-{subject:"اردو",q:"لفظ خوشی کا متضاد کیا ہے؟",o:["مسرت","غم","محبت","آرام"],a:1},
-{subject:"اردو",q:"لفظ کتاب کی جمع کیا ہے؟",o:["کتابیں","کتابی","کتابچہ","کتابیت"],a:0},
-{subject:"اردو",q:"علامہ اقبال کو کس لقب سے یاد کیا جاتا ہے؟",o:["بابائے قوم","شاعرِ مشرق","قائدِ ملت","مردِ مجاہد"],a:1},
-{subject:"اردو",q:"سوالیہ جملے کے آخر میں کون سی علامت آتی ہے؟",o:["۔","،","؟","؛"],a:2}
-];
-
-let currentUser="";
-let currentRole="";
-let questionIndex=0;
-let score=0;
-let seconds=10;
-let selected=null;
-let timer=null;
-let quizFinished=false;
-let quizId="";
-let requestSubmitted=false;
-
-function read(key,fallback){
- try{
-  const v=localStorage.getItem(key);
-  return v===null?fallback:JSON.parse(v);
- }catch(e){return fallback;}
+function getRequests(){
+ try{return JSON.parse(localStorage.getItem("m360_requests")||"[]")}
+ catch(e){return []}
 }
-function save(key,value){
- localStorage.setItem(key,JSON.stringify(value));
+function saveRequests(data){
+ localStorage.setItem("m360_requests",JSON.stringify(data));
 }
-function showPage(id){
- clearInterval(timer);
- ["loginPage","homePage","booksPage","quizPage","resultPage",
-  "requestPage","adminPage"].forEach(p=>
-   document.getElementById(p).classList.add("hidden"));
+function escapeHTML(s){
+ return String(s??"").replace(/[&<>"']/g,c=>({
+ "&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"
+ })[c]);
+}
+function show(id){
+ document.querySelectorAll(".wrap > section").forEach(s=>s.classList.add("hidden"));
  document.getElementById(id).classList.remove("hidden");
+ if(id==="admin")renderAdmin();
+ if(id==="ceo")renderCEO();
+ if(id==="myrequests")renderMine();
+ if(id==="quiz")renderQuiz();
  window.scrollTo(0,0);
 }
 function login(){
- const role=document.getElementById("role").value;
- const username=document.getElementById("username").value.trim();
- const password=document.getElementById("password").value;
- const msg=document.getElementById("loginMessage");
- msg.classList.add("hidden");
-
- if(!username||!password){
-  msg.textContent="یوزر نیم اور پاس ورڈ درج کریں۔";
-  msg.classList.remove("hidden");return;
+ const u=document.getElementById("username").value.trim().toLowerCase();
+ const p=document.getElementById("password").value;
+ if(!USERS[u]||USERS[u].password!==p){
+  document.getElementById("loginMsg").textContent="Username یا password درست نہیں۔";
+  return;
  }
- if(role==="admin"&&username===ADMIN_USERNAME&&password===ADMIN_PASSWORD){
-  currentUser=username;currentRole="admin";
-  renderAdmin();showPage("adminPage");return;
- }
- if(role==="user"&&username===USERNAME&&password===USER_PASSWORD){
-  currentUser=username;currentRole="user";
-  document.getElementById("welcome").textContent="خوش آمدید، "+username;
-  showPage("homePage");return;
- }
- msg.textContent="یوزر نیم یا پاس ورڈ درست نہیں۔";
- msg.classList.remove("hidden");
+ currentUser=u;currentRole=USERS[u].role;
+ document.getElementById("loginMsg").textContent="";
+ if(currentRole==="admin"){show("admin");return}
+ if(currentRole==="ceo"){show("ceo");return}
+ document.getElementById("welcome").textContent="Welcome to Manan360.pk";
+ show("home");
 }
 function logout(){
- clearInterval(timer);currentUser="";currentRole="";
+ currentUser=null;currentRole=null;
  document.getElementById("username").value="";
  document.getElementById("password").value="";
- showPage("loginPage");
+ show("login");
 }
-function downloadPDF(filename){
- const a=document.createElement("a");
- a.href=encodeURI(filename);a.download=filename;
- document.body.appendChild(a);a.click();a.remove();
+function contactSupport(){
+ const text="Assalam-o-Alaikum Manan360 Support Team. Mujhe madad chahiye.";
+ window.open("https://wa.me/"+WA+"?text="+encodeURIComponent(text),"_blank");
 }
-function startQuiz(){
- if(currentRole!=="user")return;
- questionIndex=0;score=0;selected=null;
- quizFinished=false;requestSubmitted=false;
- quizId="M360-"+Date.now().toString(36).toUpperCase();
- document.getElementById("cashbackButton").classList.add("hidden");
- showPage("quizPage");showQuestion();
-}
-function showQuestion(){
- clearInterval(timer);
- if(questionIndex>=questions.length){finishQuiz();return;}
- selected=null;seconds=10;
- const q=questions[questionIndex];
- document.getElementById("questionNumber").textContent=
- "سوال "+(questionIndex+1)+" از 20";
- document.getElementById("progressBar").style.width=
- (questionIndex/20*100)+"%";
- document.getElementById("timer").textContent=seconds;
- document.getElementById("subject").textContent=q.subject;
- document.getElementById("questionText").textContent=q.q;
- const btn=document.getElementById("nextButton");
- btn.disabled=true;
- btn.textContent=questionIndex===19?"کوئز مکمل کریں":"جواب جمع کریں";
- const options=document.getElementById("options");
- options.innerHTML="";
- q.o.forEach((answer,i)=>{
-  const label=document.createElement("label");
-  label.className="option";
-  const radio=document.createElement("input");
-  radio.type="radio";radio.name="answer";radio.value=i;
-  radio.addEventListener("change",()=>{
-   selected=i;btn.disabled=false;
-  });
-  label.appendChild(radio);
-  label.appendChild(document.createTextNode(answer));
-  options.appendChild(label);
- });
- timer=setInterval(()=>{
-  seconds--;
-  document.getElementById("timer").textContent=seconds;
-  if(seconds<=0){clearInterval(timer);advanceQuestion();}
- },1000);
-}
-function submitAnswer(){
- if(quizFinished||selected===null)return;
- clearInterval(timer);advanceQuestion();
-}
-function advanceQuestion(){
- if(quizFinished)return;
- if(selected!==null&&selected===questions[questionIndex].a)score++;
- questionIndex++;
- if(questionIndex>=questions.length)finishQuiz();
- else showQuestion();
-}
-function finishQuiz(){
- if(quizFinished)return;
- quizFinished=true;clearInterval(timer);
- const eligible=score>=18;
- const attempts=read(KEYS.attempts,[]);
- attempts.push({
-  id:quizId,user:currentUser,score:score,total:20,
-  eligible:eligible,time:new Date().toLocaleString()
- });
- save(KEYS.attempts,attempts);
- document.getElementById("progressBar").style.width="100%";
- document.getElementById("resultMessage").textContent=eligible?
- "مبارک ہو! آپ کے "+score+"/20 جواب درست ہیں۔ آپ 100 روپے کی درخواست دینے کے اہل ہیں۔":
- "آپ کے "+score+"/20 جواب درست ہیں۔ درخواست کے لیے کم از کم 18 درست جوابات ضروری ہیں۔";
- document.getElementById("cashbackButton").classList.toggle("hidden",!eligible);
- renderAdmin();showPage("resultPage");
-}
-function openRequestForm(){
- if(!quizFinished||score<18||currentRole!=="user"||requestSubmitted)return;
- document.getElementById("proofScore").textContent=
- "درست جوابات: "+score+"/20 | درخواست کی رقم: 100 روپے";
- document.getElementById("proofId").textContent="کوئز ثبوت نمبر: "+quizId;
- document.getElementById("requestReceipt").classList.add("hidden");
- document.getElementById("requestSubmit").disabled=false;
- showPage("requestPage");
-}
-document.getElementById("requestForm").addEventListener("submit",function(e){
- e.preventDefault();
- if(!quizFinished||score<18||currentRole!=="user"||requestSubmitted)return;
 
- const requests=read(KEYS.requests,[]);
- if(requests.some(r=>r.quizId===quizId)){
-  alert("اس کوئز کی درخواست پہلے جمع ہو چکی ہے۔");return;
+/* Quiz: 5 Math, 5 English, 5 History, 5 Urdu */
+const questions=[
+ {c:"Math",q:"5 + 7 = ?",o:["10","12","14","15"],a:1},
+ {c:"Math",q:"9 × 3 = ?",o:["18","21","27","30"],a:2},
+ {c:"Math",q:"Square of 6?",o:["12","30","36","42"],a:2},
+ {c:"Math",q:"20 ÷ 4 = ?",o:["4","5","6","8"],a:1},
+ {c:"Math",q:"Half of 50?",o:["20","25","30","35"],a:1},
+ {c:"English",q:"Opposite of Hot?",o:["Warm","Cold","Heat","Dry"],a:1},
+ {c:"English",q:"Plural of Child?",o:["Childs","Children","Childes","Childrens"],a:1},
+ {c:"English",q:"Past tense of Go?",o:["Goed","Gone","Went","Going"],a:2},
+ {c:"English",q:"Which is a noun?",o:["Quickly","Beautiful","School","Run"],a:2},
+ {c:"English",q:"Correct spelling?",o:["Becuse","Because","Beacause","Becaus"],a:1},
+ {c:"History",q:"Pakistan became independent in?",o:["1940","1947","1956","1965"],a:1},
+ {c:"History",q:"Founder of Pakistan?",o:["Allama Iqbal","Quaid-e-Azam","Liaquat Ali Khan","Sir Syed"],a:1},
+ {c:"History",q:"Lahore Resolution year?",o:["1930","1940","1947","1950"],a:1},
+ {c:"History",q:"First capital of Pakistan?",o:["Lahore","Karachi","Islamabad","Quetta"],a:1},
+ {c:"History",q:"Pakistan's national language?",o:["Punjabi","English","Urdu","Sindhi"],a:2},
+ {c:"Urdu",q:"'دن' کی ضد کیا ہے؟",o:["صبح","رات","شام","وقت"],a:1},
+ {c:"Urdu",q:"'خوشی' کا متضاد؟",o:["مسرت","غم","ہنسی","آرام"],a:1},
+ {c:"Urdu",q:"پاکستان کا قومی شاعر کون ہے؟",o:["غالب","اقبال","فیض","میر"],a:1},
+ {c:"Urdu",q:"'کتاب' کی جمع کیا ہے؟",o:["کتابیں","کتابوں","مکتب","کاتب"],a:0},
+ {c:"Urdu",q:"جملے کے آخر میں عموماً کیا لگتا ہے؟",o:["سوالیہ نشان","فل اسٹاپ","کاما","واوین"],a:1}
+];
+function renderQuiz(){
+ const area=document.getElementById("quizArea");
+ if(area.dataset.ready==="1")return;
+ area.dataset.ready="1";
+ area.innerHTML=questions.map((q,i)=>`
+ <div class="item">
+ <strong>${i+1}. ${escapeHTML(q.q)}</strong>
+ <p class="small">${escapeHTML(q.c)}</p>
+ ${q.o.map((v,j)=>`
+ <label><input style="display:inline;width:auto;margin:8px"
+ type="radio" name="q${i}" value="${j}"> ${escapeHTML(v)}</label>
+ `).join("")}
+ </div>`).join("");
+}
+function submitQuiz(){
+ let score=0;
+ questions.forEach((q,i)=>{
+ const v=document.querySelector('input[name="q'+i+'"]:checked');
+ if(v&&Number(v.value)===q.a)score++;
+ });
+ lastScore=score;
+ document.getElementById("quizResult").textContent=
+ "آپ کے درست جوابات: "+score+" / 20";
+ if(score>=15){
+  quizPassed=true;
+  document.getElementById("correct").value=score;
+  document.getElementById("appMsg").textContent=
+  "آپ اہل ہیں۔ فارم پُر کریں اور ثبوت جمع کروائیں۔";
+  show("application");
+ }else{
+  alert("کم از کم 15 درست جوابات درکار ہیں۔");
  }
- const request={
-  id:"REQ-"+Date.now().toString(36).toUpperCase(),
-  quizId:quizId,user:currentUser,
-  name:document.getElementById("studentName").value.trim(),
-  father:document.getElementById("fatherName").value.trim(),
-  age:document.getElementById("studentAge").value,
-  studentClass:document.getElementById("studentClass").value,
-  score:score,total:20,amount:100,
-  status:"زیرِ جانچ",time:new Date().toLocaleString()
+}
+document.getElementById("appForm").addEventListener("submit",async function(e){
+ e.preventDefault();
+ if(!quizPassed||lastScore<15){
+  alert("پہلے کوئز میں کم از کم 15 درست جوابات حاصل کریں۔");return;
+ }
+ const file=document.getElementById("proof").files[0];
+ if(!file){alert("براہ کرم تصویر منتخب کریں۔");return}
+ if(file.size>1500000){
+  alert("براہ کرم 1.5 MB سے چھوٹی تصویر منتخب کریں۔");return;
+ }
+ const reader=new FileReader();
+ reader.onload=()=>{
+  const requests=getRequests();
+  const req={
+   id:Date.now(),
+   username:currentUser,
+   name:document.getElementById("appName").value.trim(),
+   father:document.getElementById("father").value.trim(),
+   age:document.getElementById("age").value,
+   className:document.getElementById("className").value,
+   correct:lastScore,
+   image:reader.result,
+   status:"Pending",
+   date:new Date().toLocaleString()
+  };
+  requests.push(req);saveRequests(requests);
+  document.getElementById("appMsg").textContent=
+   "درخواست اس براؤزر میں محفوظ ہو گئی۔ اب WhatsApp پر بھیجیں۔";
+  renderMine();
+  shareRequest(req);
  };
- if(!request.name||!request.father||!request.age||!request.studentClass)return;
- requests.push(request);save(KEYS.requests,requests);
- requestSubmitted=true;
- document.getElementById("requestSubmit").disabled=true;
- const receipt=document.getElementById("requestReceipt");
- receipt.textContent=
- "درخواست جمع ہو گئی ہے۔ درخواست نمبر: "+request.id+
- "۔ آپ کے درست جوابات "+score+"/20 ہیں۔ Support Team کی جانچ کے لیے 24 گھنٹے انتظار کریں۔ یہ ادائیگی کی تصدیق نہیں ہے۔ درخواست اسی براؤزر میں محفوظ ہے؛ Support Team کو خودکار طور پر نہیں بھیجی گئی۔";
- receipt.classList.remove("hidden");
- renderAdmin();
+ reader.readAsDataURL(file);
 });
-function addLine(container,text){
- const div=document.createElement("div");
- div.className="notice";div.textContent=text;container.appendChild(div);
+async function shareRequest(r){
+ const text="Manan360.pk Application\n"+
+ "ID: "+r.id+"\nName: "+r.name+"\nFather: "+r.father+
+ "\nAge: "+r.age+"\nClass: "+r.className+
+ "\nCorrect Answers: "+r.correct+"/20\nStatus: "+r.status+
+ "\nPlease review this application.";
+ try{
+  const res=await fetch(r.image);
+  const blob=await res.blob();
+  const f=new File([blob],"Manan360-proof.jpg",{type:blob.type||"image/jpeg"});
+  if(navigator.canShare&&navigator.canShare({files:[f]})){
+   await navigator.share({title:"Manan360 Application",text,files:[f]});
+   return;
+  }
+ }catch(e){}
+ window.open("https://wa.me/"+WA+"?text="+encodeURIComponent(text+
+ "\nPlease attach the saved proof image manually."),"_blank");
+ alert("اگر تصویر خودکار شامل نہ ہو تو WhatsApp میں تصویر خود منسلک کریں۔");
+}
+function renderMine(){
+ const list=document.getElementById("myList");
+ const mine=getRequests().filter(r=>r.username===currentUser);
+ list.innerHTML=mine.length?mine.map(r=>`
+ <div class="item"><b>Application #${r.id}</b>
+ <p>Name: ${escapeHTML(r.name)}</p>
+ <p>Status: ${escapeHTML(r.status)}</p>
+ <button class="blue" onclick="shareById(${r.id})">Send via WhatsApp</button>
+ </div>`).join(""):"ابھی کوئی درخواست موجود نہیں۔";
+}
+function shareById(id){
+ const r=getRequests().find(x=>x.id===id);
+ if(r)shareRequest(r);
 }
 function renderAdmin(){
- const attempts=read(KEYS.attempts,[]);
- const requests=read(KEYS.requests,[]);
- document.getElementById("attempts").textContent=attempts.length;
- document.getElementById("eligible").textContent=attempts.filter(x=>x.eligible).length;
- document.getElementById("correct").textContent=attempts.reduce((s,x)=>s+x.score,0);
- document.getElementById("requests").textContent=requests.length;
- const list=document.getElementById("requestList");list.innerHTML="";
- if(!requests.length)addLine(list,"ابھی کوئی درخواست محفوظ نہیں۔");
- requests.slice().reverse().forEach(r=>{
-  addLine(list,
-   "درخواست: "+r.id+" | نام: "+r.name+" | والد: "+r.father+
-   " | عمر: "+r.age+" | جماعت: "+r.studentClass+
-   " | درست جواب: "+r.score+"/20 | رقم: "+r.amount+
-   " روپے | حالت: "+r.status+" | وقت: "+r.time+
-   " | کوئز ثبوت: "+r.quizId);
- });
- const tbody=document.getElementById("resultList");tbody.innerHTML="";
- attempts.slice().reverse().forEach(r=>{
-  const tr=document.createElement("tr");
-  [r.user,r.score+"/20",r.eligible?"اہل":"نااہل",r.time].forEach(v=>{
-   const td=document.createElement("td");td.textContent=v;tr.appendChild(td);
-  });
-  tbody.appendChild(tr);
- });
+ const rs=getRequests();
+ document.getElementById("adminStats").textContent=
+ "Total Applications: "+rs.length+" | Pending: "+
+ rs.filter(r=>r.status==="Pending").length;
+ document.getElementById("adminList").innerHTML=rs.length?
+ rs.map(r=>`
+ <div class="item">
+ <b>Application #${r.id}</b>
+ <p>Name: ${escapeHTML(r.name)}</p>
+ <p>Father: ${escapeHTML(r.father)} | Age: ${escapeHTML(r.age)}</p>
+ <p>Class: ${escapeHTML(r.className)}</p>
+ <p>Correct answers: ${r.correct}/20</p>
+ <p>Status: ${escapeHTML(r.status)}</p>
+ <p>${escapeHTML(r.date)}</p>
+ ${r.image?`<img src="${r.image}" alt="Proof image">`:""}
+ <button class="blue" onclick="updateStatus(${r.id},'Admin Verified')">Verify</button>
+ <button onclick="sendCEO(${r.id})">Send to CEO on WhatsApp</button>
+ <button class="dark" onclick="shareById(${r.id})">Share Form & Image</button>
+ </div>`).join(""):"کوئی درخواست موصول نہیں ہوئی۔";
 }
-function exportRequests(){
- const requests=read(KEYS.requests,[]);
- if(!requests.length){alert("کوئی درخواست موجود نہیں۔");return;}
- const blob=new Blob(["\uFEFF"+JSON.stringify(requests,null,2)],
- {type:"application/json;charset=utf-8"});
- const url=URL.createObjectURL(blob);
- const a=document.createElement("a");
- a.href=url;a.download="Manan360-Cashback-Requests.json";
- a.click();URL.revokeObjectURL(url);
+function renderCEO(){
+ const rs=getRequests();
+ document.getElementById("ceoList").innerHTML=rs.length?
+ rs.map(r=>`
+ <div class="item">
+ <b>Application #${r.id}</b>
+ <p>Name: ${escapeHTML(r.name)}</p>
+ <p>Father: ${escapeHTML(r.father)}</p>
+ <p>Class: ${escapeHTML(r.className)}</p>
+ <p>Correct answers: ${r.correct}/20</p>
+ <p>Status: ${escapeHTML(r.status)}</p>
+ ${r.image?`<img src="${r.image}" alt="Proof image">`:""}
+ <button class="blue" onclick="updateStatus(${r.id},'CEO Approved')">Approve</button>
+ <button class="red" onclick="updateStatus(${r.id},'Rejected')">Reject</button>
+ <button class="dark" onclick="shareById(${r.id})">Share on WhatsApp</button>
+ </div>`).join(""):"کوئی درخواست موجود نہیں۔";
 }
-showPage("loginPage");
+function updateStatus(id,status){
+ const rs=getRequests();
+ const r=rs.find(x=>x.id===id);
+ if(!r)return;
+ r.status=status;saveRequests(rs);
+ if(currentRole==="admin")renderAdmin();else renderCEO();
+}
+function sendCEO(id){
+ const r=getRequests().find(x=>x.id===id);
+ if(!r)return;
+ const msg="Manan360.pk - Admin verified application\n"+
+ "ID: "+r.id+"\nName: "+r.name+"\nFather: "+r.father+
+ "\nClass: "+r.className+"\nCorrect answers: "+r.correct+
+ "/20\nStatus: "+r.status+
+ "\nPlease review. Attach the proof image in WhatsApp.";
+ window.open("https://wa.me/"+WA+"?text="+encodeURIComponent(msg),"_blank");
+}
 </script>
 </body>
- </html>
- 
+</html>
