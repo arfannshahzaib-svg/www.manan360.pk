@@ -7,16 +7,32 @@
 <title>Manan360.pk</title>
 <style>
 *{box-sizing:border-box}
-body{margin:0;min-height:100vh;padding:14px;font-family:Arial,sans-serif;color:white;background:linear-gradient(135deg,#14274e,#087bb5,#00a878)}
+body{
+ margin:0;min-height:100vh;padding:14px;
+ font-family:Arial,sans-serif;color:white;
+ background:linear-gradient(135deg,#14274e,#087bb5,#00a878)
+}
 .wrap{max-width:760px;margin:auto}
 header{text-align:center;padding:18px 5px}
 header h1{font-size:35px;margin:5px}
 header p{color:#e6f5ff}
-.panel{background:#172538ed;border:1px solid #ffffff30;border-radius:17px;padding:19px;margin-bottom:17px;box-shadow:0 7px 22px #001a3540}
+.panel{
+ background:#172538ed;border:1px solid #ffffff30;
+ border-radius:17px;padding:19px;margin-bottom:17px;
+ box-shadow:0 7px 22px #001a3540
+}
 h2{margin:0 0 17px;font-size:24px}
 label{display:block;margin:12px 0 7px}
-input,select,textarea{width:100%;padding:12px;border:1px solid #ddd;border-radius:9px;background:#fff;color:#222;font-size:16px}
-button,.btn{border:0;border-radius:9px;padding:12px 14px;font-size:15px;font-weight:bold;cursor:pointer;display:inline-block;text-decoration:none;text-align:center;background:#168bfa;color:white;margin-top:9px}
+input,select,textarea{
+ width:100%;padding:12px;border:1px solid #ddd;
+ border-radius:9px;background:#fff;color:#222;font-size:16px
+}
+button,.btn{
+ border:0;border-radius:9px;padding:12px 14px;
+ font-size:15px;font-weight:bold;cursor:pointer;
+ display:inline-block;text-decoration:none;text-align:center;
+ background:#168bfa;color:white;margin-top:9px
+}
 button:disabled{opacity:.5;cursor:not-allowed}
 .primary{width:100%}
 .green{background:#00d084;color:#07352b}
@@ -26,7 +42,10 @@ button:disabled{opacity:.5;cursor:not-allowed}
 .small{font-size:13px;line-height:1.7}
 .grid{display:grid;grid-template-columns:1fr 1fr;gap:10px}
 .grid button{width:100%;margin:0}
-.item{padding:14px;background:#ffffff10;border:1px solid #ffffff30;border-radius:12px;margin:12px 0;overflow-wrap:anywhere}
+.item{
+ padding:14px;background:#ffffff10;border:1px solid #ffffff30;
+ border-radius:12px;margin:12px 0;overflow-wrap:anywhere
+}
 .item img{max-width:100%;max-height:260px;border-radius:9px;display:block;margin-top:10px}
 hr{border:0;border-top:1px solid #ffffff40;margin:20px 0}
 footer{text-align:center;padding:12px;font-size:13px}
@@ -34,11 +53,9 @@ footer{text-align:center;padding:12px;font-size:13px}
 .rejected{color:#ff8995}
 .qoption{display:flex;align-items:flex-start;gap:8px}
 .qoption input{width:auto;margin-top:4px}
-a.btn{margin-right:5px}
 @media(max-width:420px){
  header h1{font-size:29px}
  .panel{padding:14px}
- .grid{grid-template-columns:1fr 1fr}
  button,.btn{font-size:14px}
 }
 </style>
@@ -65,7 +82,6 @@ a.btn{margin-right:5px}
 <input id="password" type="password" placeholder="Enter Password" autocomplete="current-password">
 <button id="loginBtn" type="button" class="primary" onclick="login()">Login</button>
 <p id="loginMsg" class="small" role="status"></p>
-<p class="small">اپنا درست Account Type اور Password منتخب کریں۔</p>
 </section>
 
 <section id="home" class="panel hidden">
@@ -83,13 +99,8 @@ a.btn{margin-right:5px}
 
 <section id="employee" class="panel hidden">
 <h2>Employee Dashboard</h2>
-<p>Employee Test: History، Math، English اور اردو۔</p>
-<div class="item">
-<b>کل 20 سوالات</b>
-<p>History: 5 | Math: 5 | English: 5 | اردو: 5</p>
-<p>درخواست فارم کے لیے کم از کم 18 درست جوابات ضروری ہیں۔</p>
+<p>ٹیسٹ مکمل کرکے اپنی درخواست جمع کریں۔</p>
 <button class="primary" onclick="startQuiz()">Start Employee Test</button>
-</div>
 <button class="dark" onclick="show('myrequests')">My Applications</button>
 <button class="dark" onclick="logout()">Sign Out</button>
 </section>
@@ -111,21 +122,21 @@ a.btn{margin-right:5px}
 
 <section id="quiz" class="panel hidden">
 <h2 id="quizHeading">Quality Questions</h2>
-<p id="quizDescription">سوالات کے درست جواب منتخب کریں۔</p>
+<p>کم از کم 18 درست جوابات پر درخواست فارم کھلے گا۔</p>
 <div id="quizArea"></div>
-<button class="primary" id="submitQuizBtn" onclick="submitQuiz()">Submit Answers</button>
-<p id="quizResult" class="small"></p>
+<button class="primary" onclick="submitQuiz()">Submit Answers</button>
+<p id="quizResult" class="small" role="status"></p>
 <button class="dark" onclick="goHome()">Home</button>
 </section>
 
 <section id="application" class="panel hidden">
 <h2>Application Form</h2>
-<p class="small">ٹیسٹ میں کم از کم 18 درست جوابات کے بعد فارم مکمل کریں۔</p>
+<p class="small">ٹیسٹ میں کم از کم 18 درست جوابات ضروری ہیں۔</p>
 <form id="appForm">
 <label for="appName">Full Name</label>
-<input id="appName" required maxlength="100">
+<input id="appName" maxlength="100" required>
 <label for="father">Father Name</label>
-<input id="father" required maxlength="100">
+<input id="father" maxlength="100" required>
 <label for="age">Age</label>
 <input id="age" type="number" min="1" max="120" required>
 <label for="className">Class</label>
@@ -139,10 +150,10 @@ a.btn{margin-right:5px}
 <input id="correct" readonly>
 <label for="proof">Proof Image (maximum 1.5 MB)</label>
 <input id="proof" type="file" accept="image/*" required>
-<p class="small">صرف ضروری ثبوت کی تصویر دیں۔ غیر ضروری ذاتی معلومات شامل نہ کریں۔</p>
+<p class="small">صرف ضروری ثبوت فراہم کریں۔ تصویر درخواست کے ساتھ محفوظ ہوگی۔</p>
 <button class="primary" id="appSubmit" type="submit">Submit Application</button>
 </form>
-<p id="appMsg" class="small"></p>
+<p id="appMsg" class="small" role="status"></p>
 <button class="dark" onclick="goHome()">Home</button>
 </section>
 
@@ -183,6 +194,7 @@ a.btn{margin-right:5px}
 const WA="923447232654";
 const STORE="m360_requests";
 
+/* These are demonstration passwords, not secure server accounts. */
 const ACCOUNTS={
  user:{password:"user123",page:"home",title:"General User"},
  employee:{password:"user123",page:"employee",title:"Employee"},
@@ -195,67 +207,53 @@ let currentRole="";
 let quizPassed=false;
 let lastScore=0;
 let activeQuestions=[];
-let quizAttemptRole="";
 
-const generalQuestions=[
- {cat:"Math",q:"5 + 7 = ?",o:["10","12","14","15"],a:1},
- {cat:"Math",q:"9 × 3 = ?",o:["18","21","27","30"],a:2},
- {cat:"Math",q:"Square of 6?",o:["12","30","36","42"],a:2},
- {cat:"Math",q:"20 ÷ 4 = ?",o:["4","5","6","8"],a:1},
- {cat:"Math",q:"Half of 50?",o:["20","25","30","35"],a:1},
- {cat:"English",q:"Opposite of Hot?",o:["Warm","Cold","Heat","Dry"],a:1},
- {cat:"English",q:"Plural of Child?",o:["Childs","Children","Childes","Childrens"],a:1},
- {cat:"English",q:"Past tense of Go?",o:["Goed","Gone","Went","Going"],a:2},
- {cat:"English",q:"Which is a noun?",o:["Quickly","Beautiful","School","Run"],a:2},
- {cat:"English",q:"Correct spelling?",o:["Becuse","Because","Beacause","Becaus"],a:1},
- {cat:"History",q:"Pakistan became independent in?",o:["1940","1947","1956","1965"],a:1},
- {cat:"History",q:"Founder of Pakistan?",o:["Allama Iqbal","Quaid-e-Azam","Liaquat Ali Khan","Sir Syed"],a:1},
- {cat:"History",q:"Lahore Resolution year?",o:["1930","1940","1947","1950"],a:1},
- {cat:"History",q:"First capital of Pakistan?",o:["Lahore","Karachi","Islamabad","Quetta"],a:1},
- {cat:"History",q:"Pakistan's national language?",o:["Punjabi","English","Urdu","Sindhi"],a:2},
- {cat:"Urdu",q:"'دن' کی ضد کیا ہے؟",o:["صبح","رات","شام","وقت"],a:1},
- {cat:"Urdu",q:"'خوشی' کا متضاد؟",o:["مسرت","غم","ہنسی","آرام"],a:1},
- {cat:"Urdu",q:"پاکستان کا قومی شاعر کون ہے؟",o:["غالب","اقبال","فیض","میر"],a:1},
- {cat:"Urdu",q:"'کتاب' کی جمع کیا ہے؟",o:["کتابیں","کتابوں","مکتب","کاتب"],a:0},
- {cat:"Urdu",q:"جملے کے آخر میں عموماً کیا لگتا ہے؟",o:["سوالیہ نشان","فل اسٹاپ","کاما","واوین"],a:1}
+const questions=[
+ {q:"5 + 7 = ?",o:["10","12","14","15"],a:1},
+ {q:"9 × 3 = ?",o:["18","21","27","30"],a:2},
+ {q:"Square of 6?",o:["12","30","36","42"],a:2},
+ {q:"20 ÷ 4 = ?",o:["4","5","6","8"],a:1},
+ {q:"Half of 50?",o:["20","25","30","35"],a:1},
+ {q:"Opposite of Hot?",o:["Warm","Cold","Heat","Dry"],a:1},
+ {q:"Plural of Child?",o:["Childs","Children","Childes","Childrens"],a:1},
+ {q:"Past tense of Go?",o:["Goed","Gone","Went","Going"],a:2},
+ {q:"Which is a noun?",o:["Quickly","Beautiful","School","Run"],a:2},
+ {q:"Correct spelling?",o:["Becuse","Because","Beacause","Becaus"],a:1},
+ {q:"Pakistan became independent in?",o:["1940","1947","1956","1965"],a:1},
+ {q:"Founder of Pakistan?",o:["Allama Iqbal","Quaid-e-Azam","Liaquat Ali Khan","Sir Syed"],a:1},
+ {q:"Lahore Resolution year?",o:["1930","1940","1947","1950"],a:1},
+ {q:"First capital of Pakistan?",o:["Lahore","Karachi","Islamabad","Quetta"],a:1},
+ {q:"Pakistan's national language?",o:["Punjabi","English","Urdu","Sindhi"],a:2},
+ {q:"'دن' کی ضد کیا ہے؟",o:["صبح","رات","شام","وقت"],a:1},
+ {q:"'خوشی' کا متضاد؟",o:["مسرت","غم","ہنسی","آرام"],a:1},
+ {q:"پاکستان کا قومی شاعر کون ہے؟",o:["غالب","اقبال","فیض","میر"],a:1},
+ {q:"'کتاب' کی جمع کیا ہے؟",o:["کتابیں","کتابوں","مکتب","کاتب"],a:0},
+ {q:"جملے کے آخر میں عموماً کیا لگتا ہے؟",o:["سوالیہ نشان","فل اسٹاپ","کاما","واوین"],a:1}
 ];
 
-const employeeQuestions=[
- {cat:"History",q:"پاکستان کب آزاد ہوا؟",o:["1940","1947","1956","1965"],a:1},
- {cat:"History",q:"بانیٔ پاکستان کون ہیں؟",o:["علامہ اقبال","قائداعظم","سرسید احمد خان","لیاقت علی خان"],a:1},
- {cat:"History",q:"قراردادِ پاکستان کس سال منظور ہوئی؟",o:["1930","1940","1947","1956"],a:1},
- {cat:"History",q:"پاکستان کے پہلے گورنر جنرل کون تھے؟",o:["لیاقت علی خان","قائداعظم","ایوب خان","اسکندر مرزا"],a:1},
- {cat:"History",q:"اسلام آباد پاکستان کا دارالحکومت کب بنا؟",o:["1947","1956","1967","1973"],a:2},
- {cat:"Math",q:"25 + 35 = ?",o:["50","55","60","65"],a:2},
- {cat:"Math",q:"12 × 8 = ?",o:["86","96","108","88"],a:1},
- {cat:"Math",q:"144 کا مربع جذر کیا ہے؟",o:["10","11","12","14"],a:2},
- {cat:"Math",q:"اگر x + 7 = 15 ہو تو x کیا ہے؟",o:["6","7","8","9"],a:2},
- {cat:"Math",q:"200 کا 25 فیصد کتنا ہے؟",o:["25","40","50","75"],a:2},
- {cat:"English",q:"What is the plural of 'Mouse'?",o:["Mouses","Mice","Mousees","Mices"],a:1},
- {cat:"English",q:"Choose the correct spelling.",o:["Beautifull","Beutiful","Beautiful","Beautifal"],a:2},
- {cat:"English",q:"Past tense of 'Write' is:",o:["Writed","Written","Wrote","Writing"],a:2},
- {cat:"English",q:"Which word is a verb?",o:["Happy","Quickly","Run","Blue"],a:2},
- {cat:"English",q:"Choose the correct sentence.",o:["She go to school.","She goes to school.","She going school.","She gone school."],a:1},
- {cat:"Urdu",q:"لفظ 'روشنی' کی ضد کیا ہے؟",o:["چمک","اندھیرا","اجالا","نور"],a:1},
- {cat:"Urdu",q:"لفظ 'بہادر' کا ہم معنی کیا ہے؟",o:["ڈرپوک","دلیر","کمزور","خاموش"],a:1},
- {cat:"Urdu",q:"'لڑکا' کی جمع کیا ہے؟",o:["لڑکی","لڑکے","لڑکیاں","لڑکوں نے"],a:1},
- {cat:"Urdu",q:"اسم کسے کہتے ہیں؟",o:["کام کو","نام کو","خوبی کو","آواز کو"],a:1},
- {cat:"Urdu",q:"پاکستان کی قومی زبان کون سی ہے؟",o:["پنجابی","سندھی","اردو","پشتو"],a:2}
-];
-
-function el(id){return document.getElementById(id)}
+function el(id){
+ return document.getElementById(id);
+}
 
 function esc(s){
- return String(s??"").replace(/[&<>"']/g,c=>({
- "&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"
- })[c]);
+ return String(s??"").replace(/[&<>"']/g,function(c){
+  return {
+   "&":"&amp;",
+   "<":"&lt;",
+   ">":"&gt;",
+   '"':"&quot;",
+   "'":"&#39;"
+  }[c];
+ });
 }
 
 function getRequests(){
  try{
-  const d=JSON.parse(localStorage.getItem(STORE)||"[]");
-  return Array.isArray(d)?d:[];
- }catch(e){return []}
+  const data=JSON.parse(localStorage.getItem(STORE)||"[]");
+  return Array.isArray(data)?data:[];
+ }catch(e){
+  return [];
+ }
 }
 
 function saveRequests(data){
@@ -263,16 +261,21 @@ function saveRequests(data){
   localStorage.setItem(STORE,JSON.stringify(data));
   return true;
  }catch(e){
-  alert("اس ڈیوائس میں جگہ کم ہے۔ چھوٹی تصویر منتخب کریں۔");
+  alert("Storage is full. Please use a smaller image or clear some browser storage.");
   return false;
  }
 }
 
 function show(id){
- document.querySelectorAll(".wrap > section").forEach(s=>s.classList.add("hidden"));
  const target=el(id);
  if(!target)return;
+
+ document.querySelectorAll(".wrap > section").forEach(s=>{
+  s.classList.add("hidden");
+ });
+
  target.classList.remove("hidden");
+
  if(id==="admin")renderAdmin();
  if(id==="ceo")renderCEO();
  if(id==="myrequests")renderMine();
@@ -292,29 +295,38 @@ function login(){
  currentRole=role;
  quizPassed=false;
  lastScore=0;
- quizAttemptRole="";
+ activeQuestions=[];
  el("loginMsg").textContent="";
  el("password").value="";
  el("welcome").textContent="Welcome, "+account.title;
  show(account.page);
 }
 
+el("password").addEventListener("keydown",function(e){
+ if(e.key==="Enter")login();
+});
+
 function logout(){
  currentRole="";
  quizPassed=false;
  lastScore=0;
  activeQuestions=[];
- quizAttemptRole="";
  el("password").value="";
  el("loginMsg").textContent="";
+ el("appMsg").textContent="";
  show("login");
 }
 
 function goHome(){
- if(!currentRole){show("login");return}
- show(currentRole==="employee"?"employee":
- currentRole==="admin"?"admin":
- currentRole==="ceo"?"ceo":"home");
+ if(!currentRole){
+  show("login");
+  return;
+ }
+
+ if(currentRole==="admin")show("admin");
+ else if(currentRole==="ceo")show("ceo");
+ else if(currentRole==="employee")show("employee");
+ else show("home");
 }
 
 function contactSupport(){
@@ -324,15 +336,15 @@ function contactSupport(){
 
 function startQuiz(){
  if(!["employee","user","student"].includes(currentRole)){
-  alert("یہ ٹیسٹ صرف Employee، User یا Student کے لیے ہے۔");
+  alert("یہ ٹیسٹ صرف User، Student یا Employee کے لیے ہے۔");
   return;
  }
- quizAttemptRole=currentRole;
- activeQuestions=currentRole==="employee"?employeeQuestions:generalQuestions;
+
+ activeQuestions=questions;
  quizPassed=false;
  lastScore=0;
- el("quizHeading").textContent=currentRole==="employee"?"Employee Test — 20 MCQs":"Quality Questions — 20 MCQs";
- el("quizDescription").textContent="20 سوالات حل کریں۔ کم از کم 18 درست جوابات پر درخواست فارم کھلے گا۔";
+ el("quizHeading").textContent=
+  currentRole==="employee"?"Employee Test":"Quality Questions";
  el("quizResult").textContent="";
  renderQuiz();
  show("quiz");
@@ -341,28 +353,33 @@ function startQuiz(){
 function renderQuiz(){
  el("quizArea").innerHTML=activeQuestions.map((q,i)=>`
   <div class="item">
-   <small>${esc(q.cat)}</small>
-   <p><b>${i+1}. ${esc(q.q)}</b></p>
+   <b>${i+1}. ${esc(q.q)}</b>
    ${q.o.map((v,j)=>`
     <label class="qoption">
      <input type="radio" name="q${i}" value="${j}">
      <span>${esc(v)}</span>
-    </label>`).join("")}
-  </div>`).join("");
+    </label>
+   `).join("")}
+  </div>
+ `).join("");
 }
 
 function submitQuiz(){
- if(!activeQuestions.length||quizAttemptRole!==currentRole){
-  alert("براہ کرم ٹیسٹ دوبارہ شروع کریں۔");
+ if(!activeQuestions.length){
+  alert("پہلے ٹیسٹ شروع کریں۔");
   return;
  }
+
  let score=0;
+
  activeQuestions.forEach((q,i)=>{
-  const a=document.querySelector('input[name="q'+i+'"]:checked');
-  if(a&&Number(a.value)===q.a)score++;
+  const answer=document.querySelector('input[name="q'+i+'"]:checked');
+  if(answer&&Number(answer.value)===q.a)score++;
  });
+
  lastScore=score;
  el("quizResult").textContent="Correct Answers: "+score+"/20";
+
  if(score>=18){
   quizPassed=true;
   el("correct").value=score;
@@ -375,10 +392,16 @@ function submitQuiz(){
 }
 
 function openApplication(){
- if(!quizPassed||lastScore<18||quizAttemptRole!==currentRole){
+ if(!currentRole){
+  show("login");
+  return;
+ }
+
+ if(!quizPassed||lastScore<18){
   alert("پہلے ٹیسٹ پاس کریں۔ کم از کم 18 درست جوابات ضروری ہیں۔");
   return;
  }
+
  el("correct").value=lastScore;
  show("application");
 }
@@ -386,92 +409,133 @@ function openApplication(){
 function compressImage(file){
  return new Promise((resolve,reject)=>{
   const reader=new FileReader();
+
   reader.onerror=()=>reject(new Error("تصویر پڑھی نہیں جا سکی۔"));
+
   reader.onload=()=>{
    const img=new Image();
+
    img.onerror=()=>reject(new Error("درست تصویر منتخب کریں۔"));
+
    img.onload=()=>{
     const max=900;
     const scale=Math.min(1,max/Math.max(img.width,img.height));
     const canvas=document.createElement("canvas");
+
     canvas.width=Math.max(1,Math.round(img.width*scale));
     canvas.height=Math.max(1,Math.round(img.height*scale));
+
     const ctx=canvas.getContext("2d");
-    if(!ctx){reject(new Error("تصویر تیار نہیں ہو سکی۔"));return}
+
+    if(!ctx){
+     reject(new Error("تصویر تیار نہیں ہو سکی۔"));
+     return;
+    }
+
     ctx.drawImage(img,0,0,canvas.width,canvas.height);
+
     resolve(canvas.toDataURL("image/jpeg",0.55));
    };
+
    img.src=reader.result;
   };
+
   reader.readAsDataURL(file);
  });
 }
 
 el("appForm").addEventListener("submit",async function(e){
  e.preventDefault();
- if(!currentRole||!quizPassed||lastScore<18||quizAttemptRole!==currentRole){
-  alert("درخواست فارم کھولنے کے لیے متعلقہ ٹیسٹ پاس کریں۔");
+
+ if(!currentRole||!quizPassed||lastScore<18){
+  alert("درخواست فارم کے لیے پہلے ٹیسٹ پاس کریں۔");
   return;
  }
+
  const file=el("proof").files[0];
- if(!file){alert("براہ کرم ثبوت کی تصویر منتخب کریں۔");return}
- if(!file.type.startsWith("image/")){alert("تصویر والی فائل منتخب کریں۔");return}
- if(file.size>1500000){alert("براہ کرم 1.5 MB سے چھوٹی تصویر منتخب کریں۔");return}
+
+ if(!file){
+  alert("براہ کرم ثبوت کی تصویر منتخب کریں۔");
+  return;
+ }
+
+ if(!file.type.startsWith("image/")){
+  alert("صرف تصویر والی فائل منتخب کریں۔");
+  return;
+ }
+
+ if(file.size>1500000){
+  alert("براہ کرم 1.5 MB سے چھوٹی تصویر منتخب کریں۔");
+  return;
+ }
 
  const btn=el("appSubmit");
  btn.disabled=true;
- el("appMsg").textContent="درخواست محفوظ ہو رہی ہے...";
+ el("appMsg").textContent="درخواست محفوظ ہو رہی ہے۔۔۔";
 
  try{
   const image=await compressImage(file);
+
   const req={
-   id:Date.now(),role:currentRole,
+   id:Date.now(),
+   role:currentRole,
    name:el("appName").value.trim(),
    father:el("father").value.trim(),
    age:el("age").value,
    className:el("className").value,
-   correct:lastScore,image,status:"Pending",
-   date:new Date().toLocaleString(),createdAt:Date.now()
+   correct:lastScore,
+   image:image,
+   status:"Pending",
+   date:new Date().toLocaleString(),
+   createdAt:Date.now()
   };
-  if(!req.name||!req.father||!req.age||!req.className)
-   throw new Error("تمام معلومات مکمل کریں۔");
 
-  const rs=getRequests();
-  rs.push(req);
-  if(!saveRequests(rs)){
+  if(!req.name||!req.father||!req.age||!req.className){
+   throw new Error("تمام معلومات مکمل کریں۔");
+  }
+
+  const requests=getRequests();
+  requests.push(req);
+
+  if(!saveRequests(requests)){
    el("appMsg").textContent="درخواست محفوظ نہیں ہو سکی۔";
    return;
   }
-  el("appMsg").textContent="درخواست اس ڈیوائس کے براؤزر میں محفوظ ہو گئی ہے۔";
+
+  el("appMsg").textContent=
+   "درخواست محفوظ ہو گئی ہے۔ درخواست نمبر: "+req.id+
+   "۔ Admin کو بھیجنے کے لیے WhatsApp کا بٹن استعمال کریں۔";
+
   el("appForm").reset();
   el("correct").value=lastScore;
   quizPassed=false;
   renderMine();
-  await shareRequest(req);
+
  }catch(err){
   el("appMsg").textContent=err.message||"درخواست محفوظ نہیں ہو سکی۔";
- }finally{btn.disabled=false}
+ }finally{
+  btn.disabled=false;
+ }
 });
 
-async function shareRequest(r){
- const text="Manan360.pk Application"+
- "\nID: "+r.id+
- "\nName: "+r.name+
- "\nFather: "+r.father+
- "\nAge: "+r.age+
- "\nClass: "+r.className+
- "\nCorrect Answers: "+r.correct+"/20"+
- "\nStatus: "+r.status;
- try{
-  const response=await fetch(r.image);
-  const blob=await response.blob();
-  const file=new File([blob],"Manan360-proof.jpg",{type:"image/jpeg"});
-  if(navigator.canShare&&navigator.canShare({files:[file]})&&navigator.share){
-   await navigator.share({title:"Manan360 Application",text,files:[file]});
-   return;
-  }
- }catch(e){}
- window.open("https://wa.me/"+WA+"?text="+encodeURIComponent(text+"\nبراہ کرم ثبوت کی تصویر الگ سے منسلک کریں۔"),"_blank");
+function shareRequest(r){
+ if(!r)return;
+
+ const text=
+  "Manan360.pk Application"+
+  "\nID: "+r.id+
+  "\nName: "+r.name+
+  "\nFather: "+r.father+
+  "\nAge: "+r.age+
+  "\nClass: "+r.className+
+  "\nCorrect Answers: "+r.correct+"/20"+
+  "\nStatus: "+r.status+
+  "\nPlease contact me about this application.";
+
+ window.open(
+  "https://wa.me/"+WA+"?text="+encodeURIComponent(text),
+  "_blank"
+ );
 }
 
 function shareById(id){
@@ -479,12 +543,14 @@ function shareById(id){
  if(r)shareRequest(r);
 }
 
-function statusClass(s){
- return '<p class="status '+(s==="Rejected"?"rejected":"")+'">Status: '+esc(s)+'</p>';
+function statusClass(status){
+ const cls=status==="Rejected"?"rejected":"";
+ return '<p class="status '+cls+'">Status: '+esc(status)+'</p>';
 }
 
 function renderMine(){
  const mine=getRequests().filter(r=>r.role===currentRole);
+
  el("myList").innerHTML=mine.length?mine.map(r=>`
   <div class="item">
    <b>Application #${esc(r.id)}</b>
@@ -492,21 +558,25 @@ function renderMine(){
    ${statusClass(r.status)}
    <p>Submitted: ${esc(r.date)}</p>
    <button onclick="shareById(${Number(r.id)})">Send on WhatsApp</button>
-  </div>`).join(""):"ابھی کوئی درخواست نہیں ملی۔";
+  </div>
+ `).join(""):"ابھی کوئی درخواست نہیں ملی۔";
 }
 
 function renderAdmin(){
- const all=getRequests().slice().sort((a,b)=>(b.createdAt||b.id)-(a.createdAt||a.id));
- const rs=all.filter(r=>r.status!=="Rejected");
- el("adminStats").textContent=
- "Visible: "+rs.length+
- " | Pending: "+rs.filter(r=>r.status==="Pending").length+
- " | Verified: "+rs.filter(r=>r.status==="Admin Verified").length+
- " | Sent to CEO: "+rs.filter(r=>r.status==="Sent to CEO").length+
- " | Approved: "+rs.filter(r=>r.status==="CEO Approved").length;
+ const all=getRequests().slice().sort(
+  (a,b)=>(b.createdAt||b.id)-(a.createdAt||a.id)
+ );
 
- el("adminList").innerHTML=rs.length?rs.map(r=>`
-  <div class="item" id="admin-request-${Number(r.id)}">
+ el("adminStats").textContent=
+  "Total: "+all.length+
+  " | Pending: "+all.filter(r=>r.status==="Pending").length+
+  " | Verified: "+all.filter(r=>r.status==="Admin Verified").length+
+  " | Sent to CEO: "+all.filter(r=>r.status==="Sent to CEO").length+
+  " | Approved: "+all.filter(r=>r.status==="CEO Approved").length+
+  " | Rejected: "+all.filter(r=>r.status==="Rejected").length;
+
+ el("adminList").innerHTML=all.length?all.map(r=>`
+  <div class="item">
    <b>Application #${esc(r.id)}</b>
    <p>Name: ${esc(r.name)}</p>
    <p>Father: ${esc(r.father)}</p>
@@ -517,23 +587,113 @@ function renderAdmin(){
    ${r.image?`<img src="${r.image}" alt="Proof image">`:""}
    <button onclick="updateStatus(${Number(r.id)},'Admin Verified')">Verify</button>
    <button class="green" onclick="sendCEO(${Number(r.id)})">Send to CEO</button>
-   <button class="dark" onclick="shareById(${Number(r.id)})">Share Form &amp; Image</button>
+   <button class="dark" onclick="shareById(${Number(r.id)})">Share Application</button>
    <button class="red" onclick="updateStatus(${Number(r.id)},'Rejected')">Reject</button>
-  </div>`).join(""):"کوئی درخواست موجود نہیں۔";
+  </div>
+ `).join(""):"کوئی درخواست موجود نہیں۔";
 }
 
 function renderCEO(){
- const rs=getRequests().slice().sort((a,b)=>(b.createdAt||b.id)-(a.createdAt||a.id));
- el("ceoStats").textContent=
- "Total: "+rs.length+
- " | Pending: "+rs.filter(r=>r.status==="Pending").length+
- " | Approved: "+rs.filter(r=>r.status==="CEO Approved").length+
- " | Rejected: "+rs.filter(r=>r.status==="Rejected").length;
+ const all=getRequests().slice().sort(
+  (a,b)=>(b.createdAt||b.id)-(a.createdAt||a.id)
+ );
 
- el("ceoList").innerHTML=rs.length?rs.map(r=>`
+ el("ceoStats").textContent=
+  "Total: "+all.length+
+  " | Pending: "+all.filter(r=>r.status==="Pending").length+
+  " | Sent to CEO: "+all.filter(r=>r.status==="Sent to CEO").length+
+  " | Approved: "+all.filter(r=>r.status==="CEO Approved").length+
+  " | Rejected: "+all.filter(r=>r.status==="Rejected").length;
+
+ el("ceoList").innerHTML=all.length?all.map(r=>`
   <div class="item">
    <b>Application #${esc(r.id)}</b>
    <p>Name: ${esc(r.name)}</p>
    <p>Father: ${esc(r.father)}</p>
    <p>Age: ${esc(r.age)} | Class: ${esc(r.className)}</p>
-   <p>Correct Answers: ${esc(r.correct)}/
+   <p>Correct Answers: ${esc(r.correct)}/20</p>
+   ${statusClass(r.status)}
+   <p>Submitted: ${esc(r.date)}</p>
+   ${r.image?`<img src="${r.image}" alt="Proof image">`:""}
+   <button class="green" onclick="updateStatus(${Number(r.id)},'CEO Approved')">Approve</button>
+   <button class="red" onclick="updateStatus(${Number(r.id)},'Rejected')">Reject</button>
+   <button class="dark" onclick="shareById(${Number(r.id)})">Share</button>
+  </div>
+ `).join(""):"کوئی درخواست موجود نہیں۔";
+}
+
+function updateStatus(id,status){
+ if(currentRole!=="admin"&&currentRole!=="ceo"){
+  alert("Access denied.");
+  return;
+ }
+
+ const requests=getRequests();
+ const request=requests.find(r=>Number(r.id)===Number(id));
+
+ if(!request){
+  alert("درخواست نہیں ملی۔");
+  return;
+ }
+
+ request.status=status;
+ request.updatedAt=Date.now();
+
+ if(!saveRequests(requests))return;
+
+ if(currentRole==="admin")renderAdmin();
+ if(currentRole==="ceo")renderCEO();
+
+ alert("درخواست کا اسٹیٹس تبدیل ہو گیا: "+status);
+}
+
+function sendCEO(id){
+ if(currentRole!=="admin"){
+  alert("صرف Admin یہ کارروائی کر سکتا ہے۔");
+  return;
+ }
+
+ const requests=getRequests();
+ const request=requests.find(r=>Number(r.id)===Number(id));
+
+ if(!request)return;
+
+ request.status="Sent to CEO";
+ request.updatedAt=Date.now();
+
+ if(!saveRequests(requests))return;
+
+ renderAdmin();
+
+ const text=
+  "Manan360.pk Admin Review"+
+  "\nApplication ID: "+request.id+
+  "\nName: "+request.name+
+  "\nFather: "+request.father+
+  "\nClass: "+request.className+
+  "\nScore: "+request.correct+"/20"+
+  "\nStatus: Sent to CEO"+
+  "\nPlease review the application.";
+
+ window.open(
+  "https://wa.me/"+WA+"?text="+encodeURIComponent(text),
+  "_blank"
+ );
+}
+
+window.addEventListener("storage",function(e){
+ if(e.key!==STORE)return;
+
+ if(currentRole==="admin")renderAdmin();
+ if(currentRole==="ceo")renderCEO();
+
+ if(["user","student","employee"].includes(currentRole)){
+  renderMine();
+ }
+});
+
+/* Open login screen when the page first loads. */
+show("login");
+</script>
+</body>
+</html>
