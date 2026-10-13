@@ -1,49 +1,70 @@
+
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ur" dir="rtl">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Manan360.pk</title>
 <style>
 *{box-sizing:border-box;margin:0;padding:0}
-body{font-family:Arial,sans-serif;min-height:100vh;padding:12px;color:white;background:linear-gradient(135deg,#061a40,#0077b6,#00a878)}
-.container{max-width:900px;margin:auto}
-header{text-align:center;padding:22px 5px}
+body{
+ font-family:Arial,sans-serif;min-height:100vh;padding:12px;
+ color:#fff;background:linear-gradient(135deg,#061a40,#0077b6,#00a878)
+}
+.container{max-width:850px;margin:auto}
+header{text-align:center;padding:24px 5px}
 header h1{font-size:30px}
-header p{margin-top:8px}
-.card{background:#061a40ed;border:1px solid #ffffff30;border-radius:16px;padding:18px;margin:14px 0;box-shadow:0 8px 25px #00152d40}
-h2{margin-bottom:14px}
+header p{margin-top:10px;font-size:17px}
+.card{
+ background:#061a40ed;border:1px solid #ffffff30;
+ border-radius:17px;padding:18px;margin:14px 0;
+ box-shadow:0 8px 25px #00152d40
+}
+h2{margin-bottom:15px}
 h3{margin:14px 0 9px}
-input,select,button{width:100%;padding:12px;margin:7px 0;border:0;border-radius:9px;font-size:15px}
-input,select{background:white;color:#14243a}
+input,select,button{
+ width:100%;padding:13px;margin:7px 0;
+ border:0;border-radius:9px;font-size:16px
+}
+input,select{background:#fff;color:#14243a}
 button{cursor:pointer;font-weight:bold}
-button:disabled{opacity:.5}
+button:disabled{opacity:.5;cursor:not-allowed}
 .blue{background:#1685ef;color:white}
-.green{background:#13a66a;color:white}
+.green{background:#087b66;color:white}
 .dark{background:#263c58;color:white}
 .red{background:#c93848;color:white}
 .hidden{display:none!important}
-.grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
-.stat,.book,.notice{background:#ffffff12;border:1px solid #ffffff25;border-radius:10px;padding:13px;margin:9px 0;overflow-wrap:anywhere}
-.stat strong{display:block;font-size:25px;margin-top:7px}
-.small{font-size:13px;line-height:1.7;color:#dcecff}
-.subject{background:#0877b9;padding:12px;border-radius:9px;margin:15px 0}
-.timer{font-size:29px;font-weight:bold;text-align:center;margin:14px;color:#ffe66d}
-.question-text{font-size:19px;line-height:1.6;margin:15px 0}
-.option{display:flex;align-items:center;gap:10px;padding:12px;margin:8px 0;border:1px solid #ffffff35;border-radius:10px;line-height:1.5}
-.option input{width:19px;height:19px;margin:0;flex-shrink:0}
+.notice,.book,.stat{
+ background:#ffffff12;border:1px solid #ffffff25;
+ border-radius:11px;padding:14px;margin:11px 0;
+ line-height:1.8;overflow-wrap:anywhere
+}
+.small{font-size:14px;line-height:1.9;color:#dcecff}
+.timer{text-align:center;font-size:30px;font-weight:bold;
+ color:#ffe66d;margin:14px}
+.subject{background:#0877b9;padding:12px;border-radius:9px;margin:14px 0}
+.question-text{font-size:20px;line-height:1.9;margin:15px 0}
+.option{
+ display:flex;align-items:center;gap:10px;padding:13px;
+ margin:9px 0;border:1px solid #ffffff35;border-radius:10px;
+ line-height:1.7;cursor:pointer
+}
+.option input{width:20px;height:20px;margin:0;flex-shrink:0}
 .progress{height:9px;background:#ffffff30;border-radius:20px;overflow:hidden}
 #progressBar{height:100%;width:0;background:#35e69a}
+.grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
+.stat strong{display:block;font-size:25px;margin-top:6px}
 .tablewrap{overflow-x:auto}
-table{width:100%;border-collapse:collapse;min-width:560px;margin:10px 0}
-th,td{padding:10px;text-align:left;border-bottom:1px solid #ffffff25;font-size:13px}
+table{width:100%;border-collapse:collapse;min-width:500px;margin:10px 0}
+th,td{padding:10px;text-align:right;border-bottom:1px solid #ffffff25;font-size:13px}
 th{background:#0877b9}
-.badge{padding:5px 8px;border-radius:7px;background:#ffffff20;display:inline-block}
-.good{color:#76ffc0}
-.bad{color:#ffd0d0}
 footer{text-align:center;padding:18px;font-size:13px}
 a{color:#8ed0ff}
-@media(max-width:480px){.grid{grid-template-columns:1fr}.card{padding:14px}header h1{font-size:26px}}
+@media(max-width:480px){
+ .grid{grid-template-columns:1fr}
+ .card{padding:14px}
+ header h1{font-size:26px}
+}
 </style>
 </head>
 <body>
@@ -51,126 +72,143 @@ a{color:#8ed0ff}
 
 <header>
 <h1>Manan360.pk</h1>
-<p>Books, Notes & Quality Questions</p>
+<p>کتابیں، نوٹس اور معیاری سوالات</p>
 </header>
 
 <section id="loginPage" class="card">
-<h2>Login</h2>
+<h2>لاگ اِن</h2>
 <select id="role">
-<option value="user">General User</option>
-<option value="admin">Admin</option>
+<option value="user">طالب علم</option>
+<option value="admin">ایڈمن</option>
 </select>
-<input id="username" placeholder="Username">
-<input id="password" type="password" placeholder="Password">
-<button class="blue" onclick="login()">Login</button>
+<input id="username" placeholder="یوزر نیم">
+<input id="password" type="password" placeholder="پاس ورڈ">
+<button class="blue" onclick="login()">لاگ اِن کریں</button>
 <div id="loginMessage" class="notice hidden"></div>
+<p class="small">طالب علم: Student / user123</p>
+<p class="small">ایڈمن: Admin1 / 12345</p>
 </section>
 
 <section id="homePage" class="hidden">
 <div class="card">
-<h2 id="welcome">Welcome!</h2>
+<h2 id="welcome">خوش آمدید!</h2>
 <div class="notice">
-<strong>ABDUL MANAN (CEO & FOUNDER)</strong>
-<p class="small">
-Assalamualaikum! My name is Abdul Manan. I am a Class 10th student.
-My dream is to develop my first website. Personally, thanks to ChatGPT
-for helping me with my website project.
-</p>
+<strong>عبد المنان — CEO & Founder</strong>
+<p class="small">السلام علیکم! Manan360.pk پر خوش آمدید۔</p>
 </div>
-<button class="blue" onclick="showPage('booksPage')">Books & Notes</button>
-<button class="green" onclick="startQuiz()">Start 20 Questions Quiz</button>
+<button class="blue" onclick="showPage('booksPage')">کتابیں اور نوٹس</button>
+<button class="green" onclick="startQuiz()">20 سوالات کا کوئز شروع کریں</button>
 <div class="notice">
-<strong>Cashback Rules</strong>
-<p class="small">20 questions, 10 seconds per question. At least 18 correct answers are required to qualify to request Rs.100 cashback.</p>
+<strong>کیش بیک کے قواعد</strong>
+<p class="small">20 سوالات حل کریں۔ کم از کم 18 درست جوابات پر 100 روپے کی درخواست کا فارم کھلے گا۔ درخواست کی جانچ میں 24 گھنٹے لگ سکتے ہیں۔ درخواست جمع ہونا ادائیگی کی ضمانت نہیں ہے۔</p>
 </div>
-<button class="dark" onclick="logout()">Sign Out</button>
+<button class="dark" onclick="logout()">لاگ آؤٹ</button>
 </div>
 </section>
 
 <section id="booksPage" class="hidden">
 <div class="card">
-<h2>Books & Notes</h2>
+<h2>کتابیں اور نوٹس</h2>
 <div class="book">
-<h3>Class 9th Urdu Test Paper</h3>
-<a href="Class-9th-Urdu-Test-Paper.pdf" target="_blank">View / Open PDF</a>
-<button class="green" onclick="downloadPDF('Class-9th-Urdu-Test-Paper.pdf')">Download PDF</button>
+<h3>جماعت نہم — اردو ٹیسٹ پیپر</h3>
+<a href="Class-9th-Urdu-Test-Paper.pdf" target="_blank">پی ڈی ایف کھولیں</a>
+<button class="green" onclick="downloadPDF('Class-9th-Urdu-Test-Paper.pdf')">پی ڈی ایف ڈاؤن لوڈ کریں</button>
 </div>
 <div class="book">
-<h3>Class 10th Urdu Test Paper</h3>
-<a href="Class-10th-Urdu-Test-Paper.pdf" target="_blank">View / Open PDF</a>
-<button class="green" onclick="downloadPDF('Class-10th-Urdu-Test-Paper.pdf')">Download PDF</button>
+<h3>جماعت دہم — اردو ٹیسٹ پیپر</h3>
+<a href="Class-10th-Urdu-Test-Paper.pdf" target="_blank">پی ڈی ایف کھولیں</a>
+<button class="green" onclick="downloadPDF('Class-10th-Urdu-Test-Paper.pdf')">پی ڈی ایف ڈاؤن لوڈ کریں</button>
 </div>
-<button class="dark" onclick="showPage('homePage')">Back to Home</button>
+<button class="dark" onclick="showPage('homePage')">ہوم پیج</button>
 </div>
 </section>
 
 <section id="quizPage" class="hidden">
 <div class="card">
-<h2>Quality Questions & Answers</h2>
+<h2>معیاری سوالات و جوابات</h2>
 <div class="progress"><div id="progressBar"></div></div>
 <p id="questionNumber" class="small"></p>
 <div id="timer" class="timer">10</div>
 <div id="subject" class="subject"></div>
 <div id="questionText" class="question-text"></div>
 <div id="options"></div>
-<button id="nextButton" class="blue" onclick="submitAnswer()" disabled>Submit Answer</button>
-<p class="small">Answer each question within 10 seconds. The next question opens automatically when time runs out.</p>
+<button id="nextButton" class="blue" onclick="submitAnswer()" disabled>جواب جمع کریں</button>
+<p class="small">ہر سوال کے لیے 10 سیکنڈ ہیں۔ وقت ختم ہونے پر اگلا سوال خود کھل جائے گا۔</p>
 </div>
 </section>
 
 <section id="resultPage" class="hidden">
 <div class="card">
-<h2>Quiz Result</h2>
+<h2>کوئز کا نتیجہ</h2>
 <div id="resultMessage" class="notice"></div>
-<button id="cashbackButton" class="green hidden" onclick="requestCashback()">Request Rs.100 Cashback</button>
-<div id="cashbackMessage" class="notice hidden"></div>
-<button class="blue" onclick="showPage('homePage')">Home</button>
+<button id="cashbackButton" class="green hidden" onclick="openRequestForm()">100 روپے کی درخواست دیں</button>
+<button class="blue" onclick="showPage('homePage')">ہوم پیج</button>
+</div>
+</section>
+
+<section id="requestPage" class="hidden">
+<div class="card">
+<h2>کیش بیک درخواست فارم</h2>
+<div class="notice">
+<strong>آپ کے کوئز کا ثبوت</strong>
+<p id="proofScore"></p>
+<p id="proofId" class="small"></p>
+<p class="small">صرف 18 یا اس سے زیادہ درست جوابات والے طالب علم درخواست دے سکتے ہیں۔</p>
+</div>
+
+<form id="requestForm">
+<label for="studentName">آپ کا پورا نام</label>
+<input id="studentName" required maxlength="100" placeholder="اپنا نام لکھیں">
+
+<label for="fatherName">والد کا نام</label>
+<input id="fatherName" required maxlength="100" placeholder="والد کا نام لکھیں">
+
+<label for="studentAge">عمر</label>
+<input id="studentAge" type="number" min="5" max="100" required placeholder="عمر لکھیں">
+
+<label for="studentClass">جماعت</label>
+<select id="studentClass" required>
+<option value="">اپنی جماعت منتخب کریں</option>
+<option>جماعت ششم</option>
+<option>جماعت ہفتم</option>
+<option>جماعت ہشتم</option>
+<option>جماعت نہم</option>
+<option>جماعت دہم</option>
+<option>دیگر</option>
+</select>
+
+<button id="requestSubmit" class="green" type="submit">درخواست جمع کریں</button>
+</form>
+
+<div id="requestReceipt" class="notice hidden"></div>
+<button class="blue" onclick="showPage('homePage')">ہوم پیج</button>
 </div>
 </section>
 
 <section id="adminPage" class="hidden">
 <div class="card">
-<h2>Admin Dashboard</h2>
-<p class="small">Only one admin account is configured. Sample users below are fictional demo records, not verified registrations.</p>
-
+<h2>ایڈمن ڈیش بورڈ</h2>
+<p class="small">یہ ریکارڈ اسی براؤزر میں محفوظ درخواستوں اور کوئز کے نتائج پر مشتمل ہے۔</p>
 <div class="grid">
-<div class="stat">Recorded Visits<strong id="visits">0</strong></div>
-<div class="stat">Quiz Attempts<strong id="attempts">0</strong></div>
-<div class="stat">Eligible Quiz Results<strong id="eligible">0</strong></div>
-<div class="stat">Correct Answers<strong id="correct">0</strong></div>
-<div class="stat">Cashback Requests<strong id="requests">0</strong></div>
-<div class="stat">Pending Requests<strong id="pending">0</strong></div>
+<div class="stat">کوئز کی کوششیں<strong id="attempts">0</strong></div>
+<div class="stat">اہل نتائج<strong id="eligible">0</strong></div>
+<div class="stat">درست جوابات<strong id="correct">0</strong></div>
+<div class="stat">درخواستیں<strong id="requests">0</strong></div>
 </div>
 
-<h3>20 User Demo List</h3>
-<div class="notice">
-<strong>Eligible users count</strong>
-<p class="small">Change this number from 0 to 20 to change the sample roster's displayed status. This does not change real quiz results or approve payments.</p>
-<input id="eligibleCount" type="number" min="0" max="20" value="5">
-<button class="blue" onclick="updateDemoEligibility()">Update Eligible Count</button>
-<p id="demoMessage" class="small">Initial demo count: 5 eligible users.</p>
-</div>
-
-<div class="tablewrap">
-<table>
-<thead>
-<tr><th>#</th><th>User Name</th><th>Demo Points</th><th>Demo Status</th></tr>
-</thead>
-<tbody id="demoUsers"></tbody>
-</table>
-</div>
-
-<h3>Real Quiz Results in This Browser</h3>
-<div id="resultList"></div>
-
-<h3>Cashback Requests in This Browser</h3>
+<h3>درخواستیں اور طلبہ کا ثبوت</h3>
 <div id="requestList"></div>
 
-<h3>Quiz Answer Key</h3>
-<div id="answerReview"></div>
-
-<button class="blue" onclick="showPage('homePage')">Home</button>
-<button class="red" onclick="logout()">Sign Out</button>
+<h3>کوئز کے نتائج</h3>
+<div class="tablewrap">
+<table>
+<thead><tr><th>یوزر</th><th>درست جواب</th><th>نتیجہ</th><th>وقت</th></tr></thead>
+<tbody id="resultList"></tbody>
+</table>
+</div>
+<button class="blue" onclick="exportRequests()">درخواستوں کی فائل بنائیں</button>
+<button class="dark" onclick="showPage('homePage')">ہوم پیج</button>
+<button class="red" onclick="logout()">لاگ آؤٹ</button>
 </div>
 </section>
 
@@ -178,72 +216,40 @@ for helping me with my website project.
 </div>
 
 <script>
-/*
-DEMO ONLY:
-Client-side passwords and answer keys are visible in this source.
-Browser records are not shared between different devices.
-Sample users and demo eligibility are fictional.
-*/
-
 const ADMIN_USERNAME="Admin1";
 const ADMIN_PASSWORD="12345";
 const USERNAME="Student";
 const USER_PASSWORD="user123";
 
 const KEYS={
- visits:"m360_visits_v7",
- attempts:"m360_attempts_v7",
- requests:"m360_requests_v7",
- eligibleCount:"m360_demo_eligible_v7"
+ attempts:"m360_attempts_v8",
+ requests:"m360_requests_v8"
 };
 
-const demoUsers=[
-{name:"ABDUL MANAN (CEO & FOUNDER)",points:20},
-{name:"Ayesha Khan",points:20},
-{name:"Fatima Noor",points:20},
-{name:"Hira Ahmed",points:19},
-{name:"Maryam Ali",points:18},
-{name:"Muhammad Ahmed",points:17},
-{name:"Zainab Malik",points:16},
-{name:"Hamza Khan",points:15},
-{name:"Iqra Hassan",points:14},
-{name:"Usman Ali",points:13},
-{name:"Laiba Noor",points:12},
-{name:"Bilal Ahmed",points:11},
-{name:"Sana Malik",points:10},
-{name:"Abdullah Shah",points:9},
-{name:"Areeba Fatima",points:8},
-{name:"Hassan Raza",points:7},
-{name:"Minal Ahmed",points:6},
-{name:"Ahmad Raza",points:5},
-{name:"Dua Zahra",points:4},
-{name:"Saad Ali",points:3}
-];
-
 const questions=[
-{subject:"Math",q:"What is 12 + 8?",o:["18","20","22","24"],a:1},
-{subject:"Math",q:"What is 9 × 7?",o:["56","63","72","49"],a:1},
-{subject:"Math",q:"What is 100 ÷ 4?",o:["20","25","40","50"],a:1},
-{subject:"Math",q:"What is the square of 6?",o:["12","30","36","42"],a:2},
-{subject:"Math",q:"What is 15 − 9?",o:["5","6","7","8"],a:1},
+{subject:"ریاضی",q:"12 جمع 8 کتنے ہوتے ہیں؟",o:["18","20","22","24"],a:1},
+{subject:"ریاضی",q:"9 ضرب 7 کتنے ہوتے ہیں؟",o:["56","63","72","49"],a:1},
+{subject:"ریاضی",q:"100 کو 4 پر تقسیم کریں۔",o:["20","25","40","50"],a:1},
+{subject:"ریاضی",q:"6 کا مربع کیا ہے؟",o:["12","30","36","42"],a:2},
+{subject:"ریاضی",q:"15 میں سے 9 نکالیں۔",o:["5","6","7","8"],a:1},
 
-{subject:"English",q:"What is the plural of Child?",o:["Childs","Children","Childes","Childrens"],a:1},
-{subject:"English",q:"Choose the correct spelling.",o:["Beautifull","Beutiful","Beautiful","Butiful"],a:2},
-{subject:"English",q:"What is the opposite of Happy?",o:["Joyful","Sad","Kind","Brave"],a:1},
-{subject:"English",q:"Which word is a noun?",o:["Run","Quickly","School","Beautiful"],a:2},
-{subject:"English",q:"Choose the correct sentence.",o:["He go to school.","He goes to school.","He going school.","He gone school."],a:1},
+{subject:"انگریزی",q:"Child کی جمع کیا ہے؟",o:["Childs","Children","Childes","Childrens"],a:1},
+{subject:"انگریزی",q:"درست ہجے منتخب کریں۔",o:["Beautifull","Beutiful","Beautiful","Butiful"],a:2},
+{subject:"انگریزی",q:"Happy کا متضاد کیا ہے؟",o:["Joyful","Sad","Kind","Brave"],a:1},
+{subject:"انگریزی",q:"اسم (Noun) کون سا لفظ ہے؟",o:["Run","Quickly","School","Beautiful"],a:2},
+{subject:"انگریزی",q:"درست جملہ منتخب کریں۔",o:["He go to school.","He goes to school.","He going school.","He gone school."],a:1},
 
-{subject:"History",q:"When did Pakistan become independent?",o:["1940","1947","1956","1965"],a:1},
-{subject:"History",q:"Who is known as the founder of Pakistan?",o:["Allama Iqbal","Quaid-e-Azam Muhammad Ali Jinnah","Liaquat Ali Khan","Sir Syed Ahmad Khan"],a:1},
-{subject:"History",q:"Who presented the Lahore Resolution in 1940?",o:["Liaquat Ali Khan","A. K. Fazlul Huq","Allama Iqbal","Fatima Jinnah"],a:1},
-{subject:"History",q:"Who was Pakistan's first Governor-General?",o:["Ayub Khan","Liaquat Ali Khan","Muhammad Ali Jinnah","Iskander Mirza"],a:2},
-{subject:"History",q:"In which year was the Lahore Resolution passed?",o:["1930","1935","1940","1947"],a:2},
+{subject:"مطالعہ پاکستان",q:"پاکستان کب آزاد ہوا؟",o:["1940ء","1947ء","1956ء","1965ء"],a:1},
+{subject:"مطالعہ پاکستان",q:"بانیٔ پاکستان کون ہیں؟",o:["علامہ اقبال","قائداعظم محمد علی جناح","لیاقت علی خان","سر سید احمد خان"],a:1},
+{subject:"مطالعہ پاکستان",q:"قراردادِ لاہور کس نے پیش کی؟",o:["لیاقت علی خان","اے کے فضل الحق","علامہ اقبال","فاطمہ جناح"],a:1},
+{subject:"مطالعہ پاکستان",q:"پاکستان کے پہلے گورنر جنرل کون تھے؟",o:["ایوب خان","لیاقت علی خان","محمد علی جناح","اسکندر مرزا"],a:2},
+{subject:"مطالعہ پاکستان",q:"قراردادِ لاہور کس سال منظور ہوئی؟",o:["1930ء","1935ء","1940ء","1947ء"],a:2},
 
-{subject:"Urdu",q:"اردو زبان کس رسم الخط میں لکھی جاتی ہے؟",o:["دیوناگری","نستعلیق","رومن","گورمکھی"],a:1},
-{subject:"Urdu",q:"لفظ خوشی کا متضاد کیا ہے؟",o:["مسرت","غم","محبت","آرام"],a:1},
-{subject:"Urdu",q:"لفظ کتاب کی جمع کیا ہے؟",o:["کتابیں","کتابی","کتابچہ","کتابیت"],a:0},
-{subject:"Urdu",q:"علامہ اقبال کو کس لقب سے یاد کیا جاتا ہے؟",o:["بابائے قوم","شاعرِ مشرق","قائدِ ملت","مردِ مجاہد"],a:1},
-{subject:"Urdu",q:"سوالیہ جملے کے آخر میں کون سی علامت آتی ہے؟",o:["۔","،","؟","؛"],a:2}
+{subject:"اردو",q:"اردو کس رسم الخط میں لکھی جاتی ہے؟",o:["دیوناگری","نستعلیق","رومن","گورمکھی"],a:1},
+{subject:"اردو",q:"لفظ خوشی کا متضاد کیا ہے؟",o:["مسرت","غم","محبت","آرام"],a:1},
+{subject:"اردو",q:"لفظ کتاب کی جمع کیا ہے؟",o:["کتابیں","کتابی","کتابچہ","کتابیت"],a:0},
+{subject:"اردو",q:"علامہ اقبال کو کس لقب سے یاد کیا جاتا ہے؟",o:["بابائے قوم","شاعرِ مشرق","قائدِ ملت","مردِ مجاہد"],a:1},
+{subject:"اردو",q:"سوالیہ جملے کے آخر میں کون سی علامت آتی ہے؟",o:["۔","،","؟","؛"],a:2}
 ];
 
 let currentUser="";
@@ -255,12 +261,12 @@ let selected=null;
 let timer=null;
 let quizFinished=false;
 let quizId="";
-let cashbackRequested=false;
+let requestSubmitted=false;
 
 function read(key,fallback){
  try{
-  const value=localStorage.getItem(key);
-  return value===null?fallback:JSON.parse(value);
+  const v=localStorage.getItem(key);
+  return v===null?fallback:JSON.parse(v);
  }catch(e){return fallback;}
 }
 function save(key,value){
@@ -268,9 +274,9 @@ function save(key,value){
 }
 function showPage(id){
  clearInterval(timer);
- ["loginPage","homePage","booksPage","quizPage","resultPage","adminPage"].forEach(p=>{
-  document.getElementById(p).classList.add("hidden");
- });
+ ["loginPage","homePage","booksPage","quizPage","resultPage",
+  "requestPage","adminPage"].forEach(p=>
+   document.getElementById(p).classList.add("hidden"));
  document.getElementById(id).classList.remove("hidden");
  window.scrollTo(0,0);
 }
@@ -282,113 +288,78 @@ function login(){
  msg.classList.add("hidden");
 
  if(!username||!password){
-  msg.textContent="Enter username and password.";
-  msg.classList.remove("hidden");
-  return;
+  msg.textContent="یوزر نیم اور پاس ورڈ درج کریں۔";
+  msg.classList.remove("hidden");return;
  }
-
  if(role==="admin"&&username===ADMIN_USERNAME&&password===ADMIN_PASSWORD){
-  currentUser=username;
-  currentRole="admin";
-  renderAdmin();
-  showPage("adminPage");
-  return;
+  currentUser=username;currentRole="admin";
+  renderAdmin();showPage("adminPage");return;
  }
-
  if(role==="user"&&username===USERNAME&&password===USER_PASSWORD){
-  currentUser=username;
-  currentRole="user";
-  document.getElementById("welcome").textContent="Welcome, "+username+"!";
-  showPage("homePage");
-  return;
+  currentUser=username;currentRole="user";
+  document.getElementById("welcome").textContent="خوش آمدید، "+username;
+  showPage("homePage");return;
  }
-
- msg.textContent="Incorrect username or password.";
+ msg.textContent="یوزر نیم یا پاس ورڈ درست نہیں۔";
  msg.classList.remove("hidden");
 }
 function logout(){
- clearInterval(timer);
- currentUser="";
- currentRole="";
+ clearInterval(timer);currentUser="";currentRole="";
  document.getElementById("username").value="";
  document.getElementById("password").value="";
  showPage("loginPage");
 }
 function downloadPDF(filename){
  const a=document.createElement("a");
- a.href=encodeURI(filename);
- a.download=filename;
- document.body.appendChild(a);
- a.click();
- a.remove();
+ a.href=encodeURI(filename);a.download=filename;
+ document.body.appendChild(a);a.click();a.remove();
 }
 function startQuiz(){
  if(currentRole!=="user")return;
- questionIndex=0;
- score=0;
- selected=null;
- quizFinished=false;
- cashbackRequested=false;
- quizId="quiz_"+Date.now()+"_"+Math.random().toString(36).slice(2);
- document.getElementById("cashbackMessage").classList.add("hidden");
+ questionIndex=0;score=0;selected=null;
+ quizFinished=false;requestSubmitted=false;
+ quizId="M360-"+Date.now().toString(36).toUpperCase();
  document.getElementById("cashbackButton").classList.add("hidden");
- showPage("quizPage");
- showQuestion();
+ showPage("quizPage");showQuestion();
 }
 function showQuestion(){
  clearInterval(timer);
- if(questionIndex>=questions.length){
-  finishQuiz();
-  return;
- }
-
- selected=null;
- seconds=10;
+ if(questionIndex>=questions.length){finishQuiz();return;}
+ selected=null;seconds=10;
  const q=questions[questionIndex];
-
  document.getElementById("questionNumber").textContent=
-  "Question "+(questionIndex+1)+" of 20";
+ "سوال "+(questionIndex+1)+" از 20";
  document.getElementById("progressBar").style.width=
-  (questionIndex/20*100)+"%";
+ (questionIndex/20*100)+"%";
  document.getElementById("timer").textContent=seconds;
  document.getElementById("subject").textContent=q.subject;
  document.getElementById("questionText").textContent=q.q;
- document.getElementById("nextButton").disabled=true;
- document.getElementById("nextButton").textContent=
-  questionIndex===19?"Finish Quiz":"Submit Answer";
-
+ const btn=document.getElementById("nextButton");
+ btn.disabled=true;
+ btn.textContent=questionIndex===19?"کوئز مکمل کریں":"جواب جمع کریں";
  const options=document.getElementById("options");
  options.innerHTML="";
-
  q.o.forEach((answer,i)=>{
   const label=document.createElement("label");
   label.className="option";
   const radio=document.createElement("input");
-  radio.type="radio";
-  radio.name="answer";
-  radio.value=i;
+  radio.type="radio";radio.name="answer";radio.value=i;
   radio.addEventListener("change",()=>{
-   selected=i;
-   document.getElementById("nextButton").disabled=false;
+   selected=i;btn.disabled=false;
   });
   label.appendChild(radio);
   label.appendChild(document.createTextNode(answer));
   options.appendChild(label);
  });
-
  timer=setInterval(()=>{
   seconds--;
   document.getElementById("timer").textContent=seconds;
-  if(seconds<=0){
-   clearInterval(timer);
-   advanceQuestion();
-  }
+  if(seconds<=0){clearInterval(timer);advanceQuestion();}
  },1000);
 }
 function submitAnswer(){
  if(quizFinished||selected===null)return;
- clearInterval(timer);
- advanceQuestion();
+ clearInterval(timer);advanceQuestion();
 }
 function advanceQuestion(){
  if(quizFinished)return;
@@ -399,9 +370,7 @@ function advanceQuestion(){
 }
 function finishQuiz(){
  if(quizFinished)return;
- quizFinished=true;
- clearInterval(timer);
-
+ quizFinished=true;clearInterval(timer);
  const eligible=score>=18;
  const attempts=read(KEYS.attempts,[]);
  attempts.push({
@@ -409,120 +378,93 @@ function finishQuiz(){
   eligible:eligible,time:new Date().toLocaleString()
  });
  save(KEYS.attempts,attempts);
-
  document.getElementById("progressBar").style.width="100%";
- document.getElementById("resultMessage").textContent=eligible
-  ?"Congratulations! You scored "+score+"/20. You qualify to request Rs.100 cashback."
-  :"Your score is "+score+"/20. At least 18 correct answers are required.";
-
+ document.getElementById("resultMessage").textContent=eligible?
+ "مبارک ہو! آپ کے "+score+"/20 جواب درست ہیں۔ آپ 100 روپے کی درخواست دینے کے اہل ہیں۔":
+ "آپ کے "+score+"/20 جواب درست ہیں۔ درخواست کے لیے کم از کم 18 درست جوابات ضروری ہیں۔";
  document.getElementById("cashbackButton").classList.toggle("hidden",!eligible);
- renderAdmin();
- showPage("resultPage");
+ renderAdmin();showPage("resultPage");
 }
-function requestCashback(){
- if(!quizFinished||score<18||cashbackRequested||currentRole!=="user")return;
+function openRequestForm(){
+ if(!quizFinished||score<18||currentRole!=="user"||requestSubmitted)return;
+ document.getElementById("proofScore").textContent=
+ "درست جوابات: "+score+"/20 | درخواست کی رقم: 100 روپے";
+ document.getElementById("proofId").textContent="کوئز ثبوت نمبر: "+quizId;
+ document.getElementById("requestReceipt").classList.add("hidden");
+ document.getElementById("requestSubmit").disabled=false;
+ showPage("requestPage");
+}
+document.getElementById("requestForm").addEventListener("submit",function(e){
+ e.preventDefault();
+ if(!quizFinished||score<18||currentRole!=="user"||requestSubmitted)return;
 
  const requests=read(KEYS.requests,[]);
- if(requests.some(r=>r.attemptId===quizId)){
-  cashbackRequested=true;
-  document.getElementById("cashbackMessage").textContent="A request already exists for this quiz.";
-  document.getElementById("cashbackMessage").classList.remove("hidden");
-  document.getElementById("cashbackButton").disabled=true;
-  return;
+ if(requests.some(r=>r.quizId===quizId)){
+  alert("اس کوئز کی درخواست پہلے جمع ہو چکی ہے۔");return;
  }
-
- requests.push({
-  attemptId:quizId,user:currentUser,score:score,amount:100,
-  status:"Pending admin review",time:new Date().toLocaleString()
- });
- save(KEYS.requests,requests);
- cashbackRequested=true;
- document.getElementById("cashbackMessage").textContent=
-  "Your Rs.100 request is recorded and pending review. This is not a payment confirmation.";
- document.getElementById("cashbackMessage").classList.remove("hidden");
- document.getElementById("cashbackButton").disabled=true;
+ const request={
+  id:"REQ-"+Date.now().toString(36).toUpperCase(),
+  quizId:quizId,user:currentUser,
+  name:document.getElementById("studentName").value.trim(),
+  father:document.getElementById("fatherName").value.trim(),
+  age:document.getElementById("studentAge").value,
+  studentClass:document.getElementById("studentClass").value,
+  score:score,total:20,amount:100,
+  status:"زیرِ جانچ",time:new Date().toLocaleString()
+ };
+ if(!request.name||!request.father||!request.age||!request.studentClass)return;
+ requests.push(request);save(KEYS.requests,requests);
+ requestSubmitted=true;
+ document.getElementById("requestSubmit").disabled=true;
+ const receipt=document.getElementById("requestReceipt");
+ receipt.textContent=
+ "درخواست جمع ہو گئی ہے۔ درخواست نمبر: "+request.id+
+ "۔ آپ کے درست جوابات "+score+"/20 ہیں۔ Support Team کی جانچ کے لیے 24 گھنٹے انتظار کریں۔ یہ ادائیگی کی تصدیق نہیں ہے۔ درخواست اسی براؤزر میں محفوظ ہے؛ Support Team کو خودکار طور پر نہیں بھیجی گئی۔";
+ receipt.classList.remove("hidden");
  renderAdmin();
-}
+});
 function addLine(container,text){
  const div=document.createElement("div");
- div.className="notice";
- div.textContent=text;
- container.appendChild(div);
-}
-function updateDemoEligibility(){
- let count=Number(document.getElementById("eligibleCount").value);
- if(!Number.isFinite(count))count=5;
- count=Math.max(0,Math.min(20,Math.floor(count)));
- save(KEYS.eligibleCount,count);
- document.getElementById("eligibleCount").value=count;
- document.getElementById("demoMessage").textContent=
-  count+" of 20 fictional demo users marked Eligible. This does not change real quiz results.";
- renderDemoUsers();
-}
-function renderDemoUsers(){
- const tbody=document.getElementById("demoUsers");
- tbody.innerHTML="";
- const count=read(KEYS.eligibleCount,5);
-
- demoUsers.forEach((user,i)=>{
-  const tr=document.createElement("tr");
-  const values=[
-   String(i+1),
-   user.name,
-   String(user.points),
-   i<count?"DEMO — Eligible":"DEMO — Not Eligible"
-  ];
-  values.forEach((value,j)=>{
-   const td=document.createElement("td");
-   td.textContent=value;
-   if(j===3)td.className=i<count?"good":"bad";
-   tr.appendChild(td);
-  });
-  tbody.appendChild(tr);
- });
+ div.className="notice";div.textContent=text;container.appendChild(div);
 }
 function renderAdmin(){
  const attempts=read(KEYS.attempts,[]);
  const requests=read(KEYS.requests,[]);
-
- document.getElementById("visits").textContent=read(KEYS.visits,0);
  document.getElementById("attempts").textContent=attempts.length;
  document.getElementById("eligible").textContent=attempts.filter(x=>x.eligible).length;
- document.getElementById("correct").textContent=attempts.reduce((sum,x)=>sum+x.score,0);
+ document.getElementById("correct").textContent=attempts.reduce((s,x)=>s+x.score,0);
  document.getElementById("requests").textContent=requests.length;
- document.getElementById("pending").textContent=
-  requests.filter(x=>x.status==="Pending admin review").length;
-
- document.getElementById("eligibleCount").value=read(KEYS.eligibleCount,5);
- renderDemoUsers();
-
- const resultList=document.getElementById("resultList");
- resultList.innerHTML="";
- if(!attempts.length)addLine(resultList,"No real quiz attempts recorded in this browser.");
- attempts.slice().reverse().slice(0,100).forEach(x=>{
-  addLine(resultList,x.user+" | "+x.score+"/20 | "+
-   (x.eligible?"Eligible":"Not Eligible")+" | "+x.time);
+ const list=document.getElementById("requestList");list.innerHTML="";
+ if(!requests.length)addLine(list,"ابھی کوئی درخواست محفوظ نہیں۔");
+ requests.slice().reverse().forEach(r=>{
+  addLine(list,
+   "درخواست: "+r.id+" | نام: "+r.name+" | والد: "+r.father+
+   " | عمر: "+r.age+" | جماعت: "+r.studentClass+
+   " | درست جواب: "+r.score+"/20 | رقم: "+r.amount+
+   " روپے | حالت: "+r.status+" | وقت: "+r.time+
+   " | کوئز ثبوت: "+r.quizId);
  });
-
- const requestList=document.getElementById("requestList");
- requestList.innerHTML="";
- if(!requests.length)addLine(requestList,"No cashback requests recorded.");
- requests.slice().reverse().forEach(x=>{
-  addLine(requestList,x.user+" | Rs."+x.amount+" | "+x.score+"/20 | "+x.status+" | "+x.time);
- });
-
- const answerReview=document.getElementById("answerReview");
- answerReview.innerHTML="";
- questions.forEach((q,i)=>{
-  addLine(answerReview,(i+1)+". ["+q.subject+"] "+q.q+" | Correct answer: "+q.o[q.a]);
+ const tbody=document.getElementById("resultList");tbody.innerHTML="";
+ attempts.slice().reverse().forEach(r=>{
+  const tr=document.createElement("tr");
+  [r.user,r.score+"/20",r.eligible?"اہل":"نااہل",r.time].forEach(v=>{
+   const td=document.createElement("td");td.textContent=v;tr.appendChild(td);
+  });
+  tbody.appendChild(tr);
  });
 }
-
-/* Local browser-session counter, not global site analytics. */
-if(!sessionStorage.getItem("m360_visit_counted_v7")){
- save(KEYS.visits,read(KEYS.visits,0)+1);
- sessionStorage.setItem("m360_visit_counted_v7","yes");
+function exportRequests(){
+ const requests=read(KEYS.requests,[]);
+ if(!requests.length){alert("کوئی درخواست موجود نہیں۔");return;}
+ const blob=new Blob(["\uFEFF"+JSON.stringify(requests,null,2)],
+ {type:"application/json;charset=utf-8"});
+ const url=URL.createObjectURL(blob);
+ const a=document.createElement("a");
+ a.href=url;a.download="Manan360-Cashback-Requests.json";
+ a.click();URL.revokeObjectURL(url);
 }
+showPage("loginPage");
 </script>
 </body>
-</html>
+ </html>
+ 
