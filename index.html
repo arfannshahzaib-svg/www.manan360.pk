@@ -17,7 +17,7 @@ h2{margin:0 0 17px;font-size:24px}
 label{display:block;margin:12px 0 7px}
 input,select,textarea{width:100%;padding:12px;border:1px solid #ddd;border-radius:9px;background:#fff;color:#222;font-size:16px}
 button,.btn{border:0;border-radius:9px;padding:12px 14px;font-size:15px;font-weight:bold;cursor:pointer;display:inline-block;text-decoration:none;text-align:center;background:#168bfa;color:white;margin-top:9px}
-button:disabled{opacity:.5}
+button:disabled{opacity:.5;cursor:not-allowed}
 .primary{width:100%}
 .green{background:#00d084;color:#07352b}
 .dark{background:#26374d;color:white}
@@ -34,6 +34,7 @@ footer{text-align:center;padding:12px;font-size:13px}
 .rejected{color:#ff8995}
 .qoption{display:flex;align-items:flex-start;gap:8px}
 .qoption input{width:auto;margin-top:4px}
+a.btn{margin-right:5px}
 @media(max-width:420px){
  header h1{font-size:29px}
  .panel{padding:14px}
@@ -52,7 +53,7 @@ footer{text-align:center;padding:12px;font-size:13px}
 
 <section id="login" class="panel">
 <h2>Login</h2>
-<label>Account Type</label>
+<label for="role">Account Type</label>
 <select id="role">
 <option value="user">General User</option>
 <option value="employee">Employee</option>
@@ -60,10 +61,11 @@ footer{text-align:center;padding:12px;font-size:13px}
 <option value="admin">Admin</option>
 <option value="ceo">CEO</option>
 </select>
-<label>Password</label>
+<label for="password">Password</label>
 <input id="password" type="password" placeholder="Enter Password" autocomplete="current-password">
-<button id="loginBtn" type="button" class="primary">Login</button>
+<button id="loginBtn" type="button" class="primary" onclick="login()">Login</button>
 <p id="loginMsg" class="small" role="status"></p>
+<p class="small">اپنا درست Account Type اور Password منتخب کریں۔</p>
 </section>
 
 <section id="home" class="panel hidden">
@@ -120,22 +122,22 @@ footer{text-align:center;padding:12px;font-size:13px}
 <h2>Application Form</h2>
 <p class="small">ٹیسٹ میں کم از کم 18 درست جوابات کے بعد فارم مکمل کریں۔</p>
 <form id="appForm">
-<label>Full Name</label>
+<label for="appName">Full Name</label>
 <input id="appName" required maxlength="100">
-<label>Father Name</label>
+<label for="father">Father Name</label>
 <input id="father" required maxlength="100">
-<label>Age</label>
+<label for="age">Age</label>
 <input id="age" type="number" min="1" max="120" required>
-<label>Class</label>
+<label for="className">Class</label>
 <select id="className" required>
 <option value="">Select Class</option>
 <option>Class 9</option>
 <option>Class 10</option>
 <option>Other</option>
 </select>
-<label>Correct Answers</label>
+<label for="correct">Correct Answers</label>
 <input id="correct" readonly>
-<label>Proof Image (maximum 1.5 MB)</label>
+<label for="proof">Proof Image (maximum 1.5 MB)</label>
 <input id="proof" type="file" accept="image/*" required>
 <p class="small">صرف ضروری ثبوت کی تصویر دیں۔ غیر ضروری ذاتی معلومات شامل نہ کریں۔</p>
 <button class="primary" id="appSubmit" type="submit">Submit Application</button>
@@ -241,9 +243,7 @@ const employeeQuestions=[
  {cat:"Urdu",q:"پاکستان کی قومی زبان کون سی ہے؟",o:["پنجابی","سندھی","اردو","پشتو"],a:2}
 ];
 
-function el(id){
- return document.getElementById(id);
-}
+function el(id){return document.getElementById(id)}
 
 function esc(s){
  return String(s??"").replace(/[&<>"']/g,c=>({
@@ -253,11 +253,9 @@ function esc(s){
 
 function getRequests(){
  try{
-  const data=JSON.parse(localStorage.getItem(STORE)||"[]");
-  return Array.isArray(data)?data:[];
- }catch(e){
-  return [];
- }
+  const d=JSON.parse(localStorage.getItem(STORE)||"[]");
+  return Array.isArray(d)?d:[];
+ }catch(e){return []}
 }
 
 function saveRequests(data){
@@ -265,7 +263,7 @@ function saveRequests(data){
   localStorage.setItem(STORE,JSON.stringify(data));
   return true;
  }catch(e){
-  alert("Storage بھر گئی ہے۔ چھوٹی تصویر منتخب کریں۔");
+  alert("اس ڈیوائس میں جگہ کم ہے۔ چھوٹی تصویر منتخب کریں۔");
   return false;
  }
 }
@@ -275,11 +273,9 @@ function show(id){
  const target=el(id);
  if(!target)return;
  target.classList.remove("hidden");
-
  if(id==="admin")renderAdmin();
  if(id==="ceo")renderCEO();
  if(id==="myrequests")renderMine();
-
  window.scrollTo(0,0);
 }
 
@@ -300,18 +296,8 @@ function login(){
  el("loginMsg").textContent="";
  el("password").value="";
  el("welcome").textContent="Welcome, "+account.title;
-
  show(account.page);
 }
-
-el("loginBtn").addEventListener("click",login);
-
-el("password").addEventListener("keydown",function(e){
- if(e.key==="Enter"){
-  e.preventDefault();
-  login();
- }
-});
 
 function logout(){
  currentRole="";
@@ -325,13 +311,10 @@ function logout(){
 }
 
 function goHome(){
- if(!currentRole){
-  show("login");
-  return;
- }
+ if(!currentRole){show("login");return}
  show(currentRole==="employee"?"employee":
-      currentRole==="admin"?"admin":
-      currentRole==="ceo"?"ceo":"home");
+ currentRole==="admin"?"admin":
+ currentRole==="ceo"?"ceo":"home");
 }
 
 function contactSupport(){
@@ -341,23 +324,15 @@ function contactSupport(){
 
 function startQuiz(){
  if(!["employee","user","student"].includes(currentRole)){
-  alert("یہ ٹیسٹ صرف Employee، User یا Student اکاؤنٹ کے لیے ہے۔");
+  alert("یہ ٹیسٹ صرف Employee، User یا Student کے لیے ہے۔");
   return;
  }
-
  quizAttemptRole=currentRole;
  activeQuestions=currentRole==="employee"?employeeQuestions:generalQuestions;
  quizPassed=false;
  lastScore=0;
-
- el("quizHeading").textContent=
- currentRole==="employee"?"Employee Test — 20 MCQs":"Quality Questions — 20 MCQs";
-
- el("quizDescription").textContent=
- currentRole==="employee"
- ?"History: 5 | Math: 5 | English: 5 | اردو: 5۔ کم از کم 18 درست جوابات پر درخواست فارم کھلے گا۔"
- :"20 سوالات حل کریں۔ کم از کم 18 درست جوابات پر درخواست فارم کھلے گا۔";
-
+ el("quizHeading").textContent=currentRole==="employee"?"Employee Test — 20 MCQs":"Quality Questions — 20 MCQs";
+ el("quizDescription").textContent="20 سوالات حل کریں۔ کم از کم 18 درست جوابات پر درخواست فارم کھلے گا۔";
  el("quizResult").textContent="";
  renderQuiz();
  show("quiz");
@@ -372,10 +347,8 @@ function renderQuiz(){
     <label class="qoption">
      <input type="radio" name="q${i}" value="${j}">
      <span>${esc(v)}</span>
-    </label>
-   `).join("")}
-  </div>
- `).join("");
+    </label>`).join("")}
+  </div>`).join("");
 }
 
 function submitQuiz(){
@@ -383,16 +356,13 @@ function submitQuiz(){
   alert("براہ کرم ٹیسٹ دوبارہ شروع کریں۔");
   return;
  }
-
  let score=0;
  activeQuestions.forEach((q,i)=>{
-  const answer=document.querySelector('input[name="q'+i+'"]:checked');
-  if(answer&&Number(answer.value)===q.a)score++;
+  const a=document.querySelector('input[name="q'+i+'"]:checked');
+  if(a&&Number(a.value)===q.a)score++;
  });
-
  lastScore=score;
  el("quizResult").textContent="Correct Answers: "+score+"/20";
-
  if(score>=18){
   quizPassed=true;
   el("correct").value=score;
@@ -406,7 +376,7 @@ function submitQuiz(){
 
 function openApplication(){
  if(!quizPassed||lastScore<18||quizAttemptRole!==currentRole){
-  alert("پہلے Quality Questions کا ٹیسٹ پاس کریں۔ کم از کم 18 درست جوابات ضروری ہیں۔");
+  alert("پہلے ٹیسٹ پاس کریں۔ کم از کم 18 درست جوابات ضروری ہیں۔");
   return;
  }
  el("correct").value=lastScore;
@@ -416,110 +386,71 @@ function openApplication(){
 function compressImage(file){
  return new Promise((resolve,reject)=>{
   const reader=new FileReader();
-
-  reader.onerror=()=>reject(new Error("Image could not be read"));
-
+  reader.onerror=()=>reject(new Error("تصویر پڑھی نہیں جا سکی۔"));
   reader.onload=()=>{
    const img=new Image();
-
-   img.onerror=()=>reject(new Error("Invalid image"));
-
+   img.onerror=()=>reject(new Error("درست تصویر منتخب کریں۔"));
    img.onload=()=>{
-    const max=1000;
+    const max=900;
     const scale=Math.min(1,max/Math.max(img.width,img.height));
     const canvas=document.createElement("canvas");
-
     canvas.width=Math.max(1,Math.round(img.width*scale));
     canvas.height=Math.max(1,Math.round(img.height*scale));
-
     const ctx=canvas.getContext("2d");
-    if(!ctx){
-     reject(new Error("Canvas unavailable"));
-     return;
-    }
-
+    if(!ctx){reject(new Error("تصویر تیار نہیں ہو سکی۔"));return}
     ctx.drawImage(img,0,0,canvas.width,canvas.height);
-    resolve(canvas.toDataURL("image/jpeg",0.65));
+    resolve(canvas.toDataURL("image/jpeg",0.55));
    };
-
    img.src=reader.result;
   };
-
   reader.readAsDataURL(file);
  });
 }
 
 el("appForm").addEventListener("submit",async function(e){
  e.preventDefault();
-
  if(!currentRole||!quizPassed||lastScore<18||quizAttemptRole!==currentRole){
   alert("درخواست فارم کھولنے کے لیے متعلقہ ٹیسٹ پاس کریں۔");
   return;
  }
-
  const file=el("proof").files[0];
- if(!file){
-  alert("براہ کرم ثبوت کی تصویر منتخب کریں۔");
-  return;
- }
+ if(!file){alert("براہ کرم ثبوت کی تصویر منتخب کریں۔");return}
+ if(!file.type.startsWith("image/")){alert("تصویر والی فائل منتخب کریں۔");return}
+ if(file.size>1500000){alert("براہ کرم 1.5 MB سے چھوٹی تصویر منتخب کریں۔");return}
 
- if(!file.type.startsWith("image/")){
-  alert("براہ کرم تصویر والی فائل منتخب کریں۔");
-  return;
- }
-
- if(file.size>1500000){
-  alert("براہ کرم 1.5 MB سے چھوٹی تصویر منتخب کریں۔");
-  return;
- }
-
- const submitButton=el("appSubmit");
- const msg=el("appMsg");
- submitButton.disabled=true;
- msg.textContent="درخواست محفوظ ہو رہی ہے...";
+ const btn=el("appSubmit");
+ btn.disabled=true;
+ el("appMsg").textContent="درخواست محفوظ ہو رہی ہے...";
 
  try{
   const image=await compressImage(file);
-
   const req={
-   id:Date.now(),
-   role:currentRole,
+   id:Date.now(),role:currentRole,
    name:el("appName").value.trim(),
    father:el("father").value.trim(),
    age:el("age").value,
    className:el("className").value,
-   correct:lastScore,
-   image:image,
-   status:"Pending",
-   date:new Date().toLocaleString(),
-   createdAt:Date.now()
+   correct:lastScore,image,status:"Pending",
+   date:new Date().toLocaleString(),createdAt:Date.now()
   };
-
-  if(!req.name||!req.father||!req.age||!req.className){
-   throw new Error("براہ کرم تمام معلومات مکمل کریں۔");
-  }
+  if(!req.name||!req.father||!req.age||!req.className)
+   throw new Error("تمام معلومات مکمل کریں۔");
 
   const rs=getRequests();
   rs.push(req);
-
   if(!saveRequests(rs)){
-   msg.textContent="درخواست محفوظ نہیں ہو سکی۔";
+   el("appMsg").textContent="درخواست محفوظ نہیں ہو سکی۔";
    return;
   }
-
-  msg.textContent="درخواست اس ڈیوائس پر محفوظ ہو گئی ہے۔";
+  el("appMsg").textContent="درخواست اس ڈیوائس کے براؤزر میں محفوظ ہو گئی ہے۔";
   el("appForm").reset();
   el("correct").value=lastScore;
   quizPassed=false;
-
   renderMine();
   await shareRequest(req);
-
  }catch(err){
-  msg.textContent=err.message||"تصویر محفوظ نہیں ہو سکی۔";
- }finally{
-  submitButton.disabled=false;
- }
+  el("appMsg").textContent=err.message||"درخواست محفوظ نہیں ہو سکی۔";
+ }finally{btn.disabled=false}
 });
 
 async function shareRequest(r){
@@ -531,27 +462,16 @@ async function shareRequest(r){
  "\nClass: "+r.className+
  "\nCorrect Answers: "+r.correct+"/20"+
  "\nStatus: "+r.status;
-
  try{
   const response=await fetch(r.image);
   const blob=await response.blob();
   const file=new File([blob],"Manan360-proof.jpg",{type:"image/jpeg"});
-
   if(navigator.canShare&&navigator.canShare({files:[file]})&&navigator.share){
-   await navigator.share({
-    title:"Manan360 Application",
-    text:text,
-    files:[file]
-   });
+   await navigator.share({title:"Manan360 Application",text,files:[file]});
    return;
   }
  }catch(e){}
-
- window.open(
-  "https://wa.me/"+WA+"?text="+
-  encodeURIComponent(text+"\nبراہ کرم ثبوت کی تصویر الگ سے منسلک کریں۔"),
-  "_blank"
- );
+ window.open("https://wa.me/"+WA+"?text="+encodeURIComponent(text+"\nبراہ کرم ثبوت کی تصویر الگ سے منسلک کریں۔"),"_blank");
 }
 
 function shareById(id){
@@ -565,23 +485,19 @@ function statusClass(s){
 
 function renderMine(){
  const mine=getRequests().filter(r=>r.role===currentRole);
-
- el("myList").innerHTML=mine.length?
- mine.map(r=>`
+ el("myList").innerHTML=mine.length?mine.map(r=>`
   <div class="item">
    <b>Application #${esc(r.id)}</b>
    <p>Name: ${esc(r.name)}</p>
    ${statusClass(r.status)}
    <p>Submitted: ${esc(r.date)}</p>
    <button onclick="shareById(${Number(r.id)})">Send on WhatsApp</button>
-  </div>
- `).join(""):"ابھی کوئی درخواست نہیں ملی۔";
+  </div>`).join(""):"ابھی کوئی درخواست نہیں ملی۔";
 }
 
 function renderAdmin(){
  const all=getRequests().slice().sort((a,b)=>(b.createdAt||b.id)-(a.createdAt||a.id));
  const rs=all.filter(r=>r.status!=="Rejected");
-
  el("adminStats").textContent=
  "Visible: "+rs.length+
  " | Pending: "+rs.filter(r=>r.status==="Pending").length+
@@ -589,8 +505,7 @@ function renderAdmin(){
  " | Sent to CEO: "+rs.filter(r=>r.status==="Sent to CEO").length+
  " | Approved: "+rs.filter(r=>r.status==="CEO Approved").length;
 
- el("adminList").innerHTML=rs.length?
- rs.map(r=>`
+ el("adminList").innerHTML=rs.length?rs.map(r=>`
   <div class="item" id="admin-request-${Number(r.id)}">
    <b>Application #${esc(r.id)}</b>
    <p>Name: ${esc(r.name)}</p>
@@ -604,15 +519,21 @@ function renderAdmin(){
    <button class="green" onclick="sendCEO(${Number(r.id)})">Send to CEO</button>
    <button class="dark" onclick="shareById(${Number(r.id)})">Share Form &amp; Image</button>
    <button class="red" onclick="updateStatus(${Number(r.id)},'Rejected')">Reject</button>
-  </div>
- `).join(""):"کوئی درخواست موجود نہیں۔";
+  </div>`).join(""):"کوئی درخواست موجود نہیں۔";
 }
 
 function renderCEO(){
  const rs=getRequests().slice().sort((a,b)=>(b.createdAt||b.id)-(a.createdAt||a.id));
-
  el("ceoStats").textContent=
  "Total: "+rs.length+
  " | Pending: "+rs.filter(r=>r.status==="Pending").length+
  " | Approved: "+rs.filter(r=>r.status==="CEO Approved").length+
- " | Rejected: "+rs.filt
+ " | Rejected: "+rs.filter(r=>r.status==="Rejected").length;
+
+ el("ceoList").innerHTML=rs.length?rs.map(r=>`
+  <div class="item">
+   <b>Application #${esc(r.id)}</b>
+   <p>Name: ${esc(r.name)}</p>
+   <p>Father: ${esc(r.father)}</p>
+   <p>Age: ${esc(r.age)} | Class: ${esc(r.className)}</p>
+   <p>Correct Answers: ${esc(r.correct)}/
