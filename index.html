@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="ur">
 <head>
@@ -6,38 +7,17 @@
 <title>Manan360.pk</title>
 <style>
 *{box-sizing:border-box}
-body{
- margin:0;min-height:100vh;padding:14px;
- font-family:Arial,sans-serif;color:#fff;
- background:linear-gradient(135deg,#14274e,#087bb5,#00a878);
-}
+body{margin:0;min-height:100vh;padding:14px;font-family:Arial,sans-serif;color:#fff;background:linear-gradient(135deg,#14274e,#087bb5,#00a878)}
 .wrap{max-width:850px;margin:auto}
-header{
- text-align:center;padding:20px 12px;margin-bottom:15px;
- border-radius:18px;background:#071c39d9;
- border:1px solid #ffffff35;
-}
+header{text-align:center;padding:20px 12px;margin-bottom:15px;border-radius:18px;background:#071c39d9;border:1px solid #ffffff35}
 header h1{font-size:30px;margin:0 0 8px}
 header p{margin:0}
-.card{
- padding:17px;margin:13px 0;border-radius:16px;
- background:#071c39bd;border:1px solid #ffffff35;
- box-shadow:0 7px 22px #00152b35;
-}
+.card{padding:17px;margin:13px 0;border-radius:16px;background:#071c39bd;border:1px solid #ffffff35;box-shadow:0 7px 22px #00152b35}
 h2{font-size:21px;margin:0 0 15px}
 h3{font-size:18px}
 p{line-height:1.7}
-input,select,textarea{
- width:100%;padding:12px;margin:7px 0 12px;
- border:1px solid #cbd5e1;border-radius:9px;
- font-size:15px;background:#fff;color:#172033;
-}
-button,.btn{
- display:inline-block;padding:11px 14px;margin:4px 2px;
- border:0;border-radius:9px;background:#087bdf;color:#fff;
- font-size:14px;font-weight:bold;cursor:pointer;
- text-decoration:none;text-align:center;
-}
+input,select,textarea{width:100%;padding:12px;margin:7px 0 12px;border:1px solid #cbd5e1;border-radius:9px;font-size:15px;background:#fff;color:#172033}
+button,.btn{display:inline-block;padding:11px 14px;margin:4px 2px;border:0;border-radius:9px;background:#087bdf;color:#fff;font-size:14px;font-weight:bold;cursor:pointer;text-decoration:none;text-align:center}
 .green{background:#07864c}
 .red{background:#c62828}
 .orange{background:#b96900}
@@ -45,16 +25,9 @@ button,.btn{
 .white{background:#fff;color:#14274e}
 button:active{transform:scale(.98)}
 .hidden{display:none!important}
-.notice{
- padding:12px;border-radius:10px;background:#0c3657;
- margin:10px 0;line-height:1.7;overflow-wrap:anywhere;
-}
+.notice{padding:12px;border-radius:10px;background:#0c3657;margin:10px 0;line-height:1.7;overflow-wrap:anywhere}
 .nav{display:flex;flex-wrap:wrap;gap:5px;margin:12px 0}
-.item{
- padding:13px;margin:12px 0;border-radius:11px;
- background:#ffffff12;border:1px solid #ffffff35;
- overflow-wrap:anywhere;
-}
+.item{padding:13px;margin:12px 0;border-radius:11px;background:#ffffff12;border:1px solid #ffffff35;overflow-wrap:anywhere}
 .status{display:inline-block;background:#ffffff22;padding:5px 8px;border-radius:7px}
 .question{padding:13px;margin:12px 0;border-radius:10px;background:#ffffff12;border:1px solid #ffffff30}
 .question label{display:block;margin:10px 0;line-height:1.5}
@@ -69,164 +42,154 @@ a{overflow-wrap:anywhere}
 <div class="wrap">
 
 <header>
- <h1>Manan360.pk</h1>
- <p>Books, Notes &amp; Quality Questions</p>
+<h1>Manan360.pk</h1>
+<p>Books, Notes &amp; Quality Questions</p>
 </header>
 
 <div id="message" class="notice hidden"></div>
 
-<!-- LOGIN -->
 <section id="loginPage" class="card">
- <h2>Login / لاگ اِن</h2>
- <label for="role">Account Type منتخب کریں</label>
- <select id="role">
-  <option value="user">General User</option>
-  <option value="employee">Employee</option>
-  <option value="student">Student</option>
-  <option value="admin">Admin</option>
-  <option value="ceo">CEO</option>
- </select>
- <label for="password">Password</label>
- <input id="password" type="password" placeholder="اپنا پاس ورڈ درج کریں">
- <button style="width:100%" onclick="login()">Login</button>
- <p class="small">اکاؤنٹ کی حفاظت کے لیے اپنا پاس ورڈ کسی دوسرے شخص کو نہ دیں۔</p>
+<h2>Login / لاگ اِن</h2>
+<label for="role">Account Type منتخب کریں</label>
+<select id="role">
+<option value="user">General User</option>
+<option value="employee">Employee</option>
+<option value="student">Student</option>
+<option value="admin">Admin</option>
+<option value="ceo">CEO</option>
+</select>
+<label for="password">Password</label>
+<input id="password" type="password" placeholder="اپنا پاس ورڈ درج کریں">
+<button style="width:100%" onclick="login()">Login</button>
+<p class="small">اکاؤنٹ کی حفاظت کے لیے اپنا پاس ورڈ کسی دوسرے شخص کو نہ دیں۔</p>
 </section>
 
-<!-- HOME -->
 <section id="homePage" class="hidden">
- <div class="card">
-  <div id="welcome"></div>
-  <div class="nav">
-   <button onclick="page('homePage')">Home</button>
-   <button onclick="page('booksPage')">Books &amp; Notes</button>
-   <button onclick="page('quizPage')">Quality Test</button>
-   <button onclick="page('trackPage')">Track ID</button>
-   <button onclick="page('myAppsPage')">My Applications</button>
-   <button id="employeeNav" class="hidden" onclick="page('employeePage')">Employee Dashboard</button>
-   <button id="adminNav" class="hidden" onclick="page('adminPage')">Admin Dashboard</button>
-   <button id="ceoNav" class="hidden" onclick="page('ceoPage')">CEO Dashboard</button>
-   <button class="dark" onclick="logout()">Sign Out</button>
-  </div>
- </div>
- <div class="card">
-  <h2>Welcome to Manan360.pk</h2>
-  <p>Books اور Test Papers دیکھیں، Quality Test مکمل کریں اور اپنی درخواست کا اسٹیٹس معلوم کریں۔</p>
-  <button onclick="page('booksPage')">Open Books</button>
-  <button onclick="page('quizPage')">Start Test</button>
-  <button onclick="page('trackPage')">Track Application</button>
- </div>
+<div class="card">
+<div id="welcome"></div>
+<div class="nav">
+<button onclick="page('homePage')">Home</button>
+<button onclick="page('booksPage')">Books &amp; Notes</button>
+<button onclick="page('quizPage')">Quality Test</button>
+<button onclick="page('trackPage')">Track ID</button>
+<button onclick="page('myAppsPage')">My Applications</button>
+<button id="employeeNav" class="hidden" onclick="page('employeePage')">Employee Dashboard</button>
+<button id="adminNav" class="hidden" onclick="page('adminPage')">Admin Dashboard</button>
+<button id="ceoNav" class="hidden" onclick="page('ceoPage')">CEO Dashboard</button>
+<button class="dark" onclick="logout()">Sign Out</button>
+</div>
+</div>
+<div class="card">
+<h2>Welcome to Manan360.pk</h2>
+<p>Books اور Test Papers دیکھیں، Quality Test مکمل کریں اور اپنی درخواست کا اسٹیٹس معلوم کریں۔</p>
+<button onclick="page('booksPage')">Open Books</button>
+<button onclick="page('quizPage')">Start Test</button>
+<button onclick="page('trackPage')">Track Application</button>
+</div>
 </section>
 
-<!-- BOOKS -->
 <section id="booksPage" class="card hidden">
- <h2>Books &amp; Notes</h2>
- <div class="item">
-  <h3>Class 9th Urdu Test Paper</h3>
-  <a class="btn" href="Class-9th-Urdu-Test-Paper.pdf" target="_blank">View / Open</a>
-  <a class="btn green" href="Class-9th-Urdu-Test-Paper.pdf" download>Download PDF</a>
- </div>
- <div class="item">
-  <h3>Class 10th Urdu Test Paper</h3>
-  <a class="btn" href="Class-10th-Urdu-Test-Paper.pdf" target="_blank">View / Open</a>
-  <a class="btn green" href="Class-10th-Urdu-Test-Paper.pdf" download>Download PDF</a>
- </div>
- <button class="dark" onclick="page('homePage')">Home</button>
+<h2>Books &amp; Notes</h2>
+<div class="item">
+<h3>Class 9th Urdu Test Paper</h3>
+<a class="btn" href="Class-9th-Urdu-Test-Paper.pdf" target="_blank">View / Open</a>
+<a class="btn green" href="Class-9th-Urdu-Test-Paper.pdf" download>Download PDF</a>
+</div>
+<div class="item">
+<h3>Class 10th Urdu Test Paper</h3>
+<a class="btn" href="Class-10th-Urdu-Test-Paper.pdf" target="_blank">View / Open</a>
+<a class="btn green" href="Class-10th-Urdu-Test-Paper.pdf" download>Download PDF</a>
+</div>
+<button class="dark" onclick="page('homePage')">Home</button>
 </section>
 
-<!-- QUIZ -->
 <section id="quizPage" class="card hidden">
- <h2>Quality Questions Test</h2>
- <p>درخواست فارم کھولنے کے لیے 20 میں سے کم از کم 18 سوال درست کریں۔</p>
- <form id="quizForm">
-  <div id="questions"></div>
-  <button type="submit">Submit Test</button>
- </form>
- <div id="quizResult" class="notice hidden"></div>
- <button class="dark" onclick="page('homePage')">Home</button>
+<h2>Quality Questions Test</h2>
+<p>Answer all 20 questions in English. You must get at least 18 correct answers to open the application form.</p>
+<form id="quizForm">
+<div id="questions"></div>
+<button type="submit">Submit Test</button>
+</form>
+<div id="quizResult" class="notice hidden"></div>
+<button class="dark" onclick="page('homePage')">Home</button>
 </section>
 
-<!-- APPLICATION -->
 <section id="applicationPage" class="card hidden">
- <h2>Application Form</h2>
- <div class="notice">اپنی درست معلومات درج کریں۔</div>
- <form id="applicationForm">
-  <label for="appName">Name</label>
-  <input id="appName" required placeholder="اپنا نام">
-  <label for="fatherName">Father Name</label>
-  <input id="fatherName" required placeholder="والد کا نام">
-  <label for="age">Age</label>
-  <input id="age" type="number" min="1" max="100" required placeholder="عمر">
-  <label for="className">Class</label>
-  <select id="className" required>
-   <option value="">جماعت منتخب کریں</option>
-   <option>Class 9</option>
-   <option>Class 10</option>
-   <option>Other</option>
-  </select>
-  <label for="proof">Proof Image</label>
-  <input id="proof" type="file" accept="image/*">
-  <p class="small">تصویر اختیاری ہے۔ بہتر ہے چھوٹی تصویر منتخب کریں۔</p>
-  <button type="submit">Submit Application</button>
- </form>
- <div id="appResult" class="notice hidden"></div>
- <button class="dark" onclick="page('homePage')">Home</button>
+<h2>Application Form</h2>
+<div class="notice">اپنی درست معلومات درج کریں۔</div>
+<form id="applicationForm">
+<label for="appName">Name</label>
+<input id="appName" required placeholder="اپنا نام">
+<label for="fatherName">Father Name</label>
+<input id="fatherName" required placeholder="والد کا نام">
+<label for="age">Age</label>
+<input id="age" type="number" min="1" max="100" required placeholder="عمر">
+<label for="className">Class</label>
+<select id="className" required>
+<option value="">جماعت منتخب کریں</option>
+<option>Class 9</option>
+<option>Class 10</option>
+<option>Other</option>
+</select>
+<label for="proof">Proof Image</label>
+<input id="proof" type="file" accept="image/*">
+<p class="small">تصویر اختیاری ہے۔ بہتر ہے چھوٹی تصویر منتخب کریں۔</p>
+<button type="submit">Submit Application</button>
+</form>
+<div id="appResult" class="notice hidden"></div>
+<button class="dark" onclick="page('homePage')">Home</button>
 </section>
 
-<!-- TRACK -->
 <section id="trackPage" class="card hidden">
- <h2>Track Application</h2>
- <label for="trackId">اپنا Track ID درج کریں</label>
- <input id="trackId" placeholder="M360-12345678">
- <button onclick="track()">Check Status</button>
- <div id="trackResult"></div>
- <button class="dark" onclick="page('homePage')">Home</button>
+<h2>Track Application</h2>
+<label for="trackId">اپنا Track ID درج کریں</label>
+<input id="trackId" placeholder="M360-12345678">
+<button onclick="track()">Check Status</button>
+<div id="trackResult"></div>
+<button class="dark" onclick="page('homePage')">Home</button>
 </section>
 
-<!-- MY APPLICATIONS -->
 <section id="myAppsPage" class="card hidden">
- <h2>My Applications</h2>
- <div id="myApps"></div>
- <button onclick="renderMyApps()">Refresh</button>
- <button class="dark" onclick="page('homePage')">Home</button>
+<h2>My Applications</h2>
+<div id="myApps"></div>
+<button onclick="renderMyApps()">Refresh</button>
+<button class="dark" onclick="page('homePage')">Home</button>
 </section>
 
-<!-- EMPLOYEE -->
 <section id="employeePage" class="card hidden">
- <h2>Employee Dashboard</h2>
- <div id="employeeList"></div>
- <button onclick="renderEmployee()">Refresh</button>
- <button class="dark" onclick="page('homePage')">Home</button>
+<h2>Employee Dashboard</h2>
+<div id="employeeList"></div>
+<button onclick="renderEmployee()">Refresh</button>
+<button class="dark" onclick="page('homePage')">Home</button>
 </section>
 
-<!-- ADMIN -->
 <section id="adminPage" class="card hidden">
- <h2>Admin Dashboard</h2>
- <input id="adminSearch" placeholder="نام یا Track ID تلاش کریں" oninput="renderAdmin()">
- <select id="adminFilter" onchange="renderAdmin()">
-  <option value="all">تمام درخواستیں</option>
-  <option value="موصول">موصول</option>
-  <option value="Admin Approved">Admin Approved</option>
-  <option value="CEO کے پاس بھیجی گئی">CEO کے پاس بھیجی گئی</option>
-  <option value="Approved">Approved</option>
-  <option value="Rejected">Rejected</option>
- </select>
- <div id="adminList"></div>
- <button onclick="renderAdmin()">Refresh</button>
- <button class="dark" onclick="page('homePage')">Home</button>
+<h2>Admin Dashboard</h2>
+<input id="adminSearch" placeholder="نام یا Track ID تلاش کریں" oninput="renderAdmin()">
+<select id="adminFilter" onchange="renderAdmin()">
+<option value="all">تمام درخواستیں</option>
+<option value="موصول">موصول</option>
+<option value="Admin Approved">Admin Approved</option>
+<option value="CEO کے پاس بھیجی گئی">CEO کے پاس بھیجی گئی</option>
+<option value="Approved">Approved</option>
+<option value="Rejected">Rejected</option>
+</select>
+<div id="adminList"></div>
+<button onclick="renderAdmin()">Refresh</button>
+<button class="dark" onclick="page('homePage')">Home</button>
 </section>
 
-<!-- CEO -->
 <section id="ceoPage" class="card hidden">
- <h2>CEO Dashboard</h2>
- <div id="ceoList"></div>
- <button onclick="renderCEO()">Refresh</button>
- <button class="dark" onclick="page('homePage')">Home</button>
+<h2>CEO Dashboard</h2>
+<div id="ceoList"></div>
+<button onclick="renderCEO()">Refresh</button>
+<button class="dark" onclick="page('homePage')">Home</button>
 </section>
 
 <div class="card">
- <h3>Manan360 Support Team</h3>
- <p>مدد کے لیے WhatsApp پر رابطہ کریں۔</p>
- <a class="btn green" href="https://wa.me/923447232654" target="_blank">WhatsApp Support</a>
+<h3>Manan360 Support Team</h3>
+<p>مدد کے لیے WhatsApp پر رابطہ کریں۔</p>
+<a class="btn green" href="https://wa.me/923447232654" target="_blank">WhatsApp Support</a>
 </div>
 
 <footer>Manan360.pk</footer>
@@ -246,27 +209,28 @@ var passwords = {
  ceo:"user99"
 };
 
+/* All 20 questions and answer options are in English */
 var questionData = [
- {q:"پاکستان کا دارالحکومت کیا ہے؟",o:["کراچی","اسلام آباد","لاہور","کوئٹہ"],a:1},
- {q:"پاکستان کب آزاد ہوا؟",o:["1940","1945","1947","1956"],a:2},
- {q:"پاکستان کی قومی زبان کیا ہے؟",o:["اردو","عربی","فارسی","انگریزی"],a:0},
- {q:"ایک ہفتے میں کتنے دن ہوتے ہیں؟",o:["5","6","7","8"],a:2},
- {q:"سورج کس سمت سے نکلتا ہے؟",o:["مغرب","مشرق","شمال","جنوب"],a:1},
- {q:"2 + 5 کتنے ہوتے ہیں؟",o:["6","7","8","9"],a:1},
- {q:"پاکستان کے بانی کون ہیں؟",o:["علامہ اقبال","قائداعظم","لیاقت علی خان","سر سید"],a:1},
- {q:"پانی کا کیمیائی فارمولا کیا ہے؟",o:["CO2","O2","H2O","NaCl"],a:2},
- {q:"سال میں کتنے مہینے ہوتے ہیں؟",o:["10","11","12","13"],a:2},
- {q:"قرآن مجید کس زبان میں نازل ہوا؟",o:["اردو","عربی","فارسی","انگریزی"],a:1},
- {q:"پاکستان کا قومی جانور کون سا ہے؟",o:["شیر","مارخور","گھوڑا","اونٹ"],a:1},
- {q:"5 × 5 کتنے ہوتے ہیں؟",o:["10","15","20","25"],a:3},
- {q:"زمین کس کے گرد گردش کرتی ہے؟",o:["چاند","مریخ","سورج","زہرہ"],a:2},
- {q:"پاکستان کا قومی پھول کیا ہے؟",o:["گلاب","چنبیلی","کنول","سورج مکھی"],a:1},
- {q:"انگریزی حروف تہجی میں کتنے حروف ہیں؟",o:["24","25","26","27"],a:2},
- {q:"ایک گھنٹے میں کتنے منٹ ہوتے ہیں؟",o:["30","45","60","100"],a:2},
- {q:"سب سے بڑا براعظم کون سا ہے؟",o:["افریقہ","ایشیا","یورپ","آسٹریلیا"],a:1},
- {q:"پاکستان کی کرنسی کیا ہے؟",o:["روپیہ","ریال","ڈالر","دینار"],a:0},
- {q:"10 - 4 کتنے ہوتے ہیں؟",o:["4","5","6","7"],a:2},
- {q:"پودے اپنی خوراک بنانے کے لیے کس کی روشنی استعمال کرتے ہیں؟",o:["چاند","سورج","ستارے","بلب"],a:1}
+ {q:"What is the capital of Pakistan?",o:["Karachi","Islamabad","Lahore","Quetta"],a:1},
+ {q:"In which year did Pakistan gain independence?",o:["1940","1945","1947","1956"],a:2},
+ {q:"What is the national language of Pakistan?",o:["Urdu","Arabic","Persian","English"],a:0},
+ {q:"How many days are there in a week?",o:["5","6","7","8"],a:2},
+ {q:"From which direction does the Sun rise?",o:["West","East","North","South"],a:1},
+ {q:"What is 2 + 5?",o:["6","7","8","9"],a:1},
+ {q:"Who is the founder of Pakistan?",o:["Allama Iqbal","Quaid-e-Azam","Liaquat Ali Khan","Sir Syed Ahmad Khan"],a:1},
+ {q:"What is the chemical formula of water?",o:["CO2","O2","H2O","NaCl"],a:2},
+ {q:"How many months are there in a year?",o:["10","11","12","13"],a:2},
+ {q:"In which language was the Holy Quran revealed?",o:["Urdu","Arabic","Persian","English"],a:1},
+ {q:"What is the national animal of Pakistan?",o:["Lion","Markhor","Horse","Camel"],a:1},
+ {q:"What is 5 × 5?",o:["10","15","20","25"],a:3},
+ {q:"Around which object does the Earth revolve?",o:["The Moon","Mars","The Sun","Venus"],a:2},
+ {q:"What is the national flower of Pakistan?",o:["Rose","Jasmine","Lotus","Sunflower"],a:1},
+ {q:"How many letters are there in the English alphabet?",o:["24","25","26","27"],a:2},
+ {q:"How many minutes are there in one hour?",o:["30","45","60","100"],a:2},
+ {q:"Which is the largest continent?",o:["Africa","Asia","Europe","Australia"],a:1},
+ {q:"What is the currency of Pakistan?",o:["Rupee","Riyal","Dollar","Dinar"],a:0},
+ {q:"What is 10 - 4?",o:["4","5","6","7"],a:2},
+ {q:"Which light do plants use to make their food?",o:["Moonlight","Sunlight","Starlight","Light bulb"],a:1}
 ];
 
 function $(id){return document.getElementById(id)}
@@ -278,8 +242,7 @@ function message(text){
 function clearMessage(){$("message").classList.add("hidden")}
 
 function page(id){
- var ids=["loginPage","homePage","booksPage","quizPage","applicationPage",
- "trackPage","myAppsPage","employeePage","adminPage","ceoPage"];
+ var ids=["loginPage","homePage","booksPage","quizPage","applicationPage","trackPage","myAppsPage","employeePage","adminPage","ceoPage"];
  ids.forEach(function(x){$(x).classList.add("hidden")});
  $(id).classList.remove("hidden");
  clearMessage();
@@ -363,13 +326,13 @@ $("quizForm").addEventListener("submit",function(e){
  box.innerHTML="";
  box.classList.remove("hidden");
  var text=document.createElement("p");
- text.textContent="آپ کے نمبر: "+score+"/20";
+ text.textContent="Your Score: "+score+"/20";
  box.appendChild(text);
 
  if(score>=18){
   passedQuiz=true;
   var note=document.createElement("p");
-  note.textContent="مبارک ہو! آپ کا ٹیسٹ کامیاب ہے۔";
+  note.textContent="Congratulations! You have passed the test.";
   box.appendChild(note);
   var b=document.createElement("button");
   b.textContent="Open Application Form";
@@ -378,7 +341,7 @@ $("quizForm").addEventListener("submit",function(e){
  }else{
   passedQuiz=false;
   var note2=document.createElement("p");
-  note2.textContent="درخواست فارم کھولنے کے لیے کم از کم 18 درست جواب ضروری ہیں۔";
+  note2.textContent="You need at least 18 correct answers to open the application form.";
   box.appendChild(note2);
   var retry=document.createElement("button");
   retry.textContent="Try Again";
@@ -418,8 +381,6 @@ $("applicationForm").addEventListener("submit",function(e){
   if(!saveRequests(arr))return;
   passedQuiz=false;
   $("applicationForm").reset();
-  $("appResult").classList.remove("hidden");
-  $("appResult").textContent="درخواست جمع ہوگئی۔ اپنا Track ID محفوظ کریں: "+record.id;
   page("applicationPage");
   $("appResult").classList.remove("hidden");
   $("appResult").textContent="درخواست جمع ہوگئی۔ اپنا Track ID محفوظ کریں: "+record.id;
@@ -533,7 +494,6 @@ function track(){
 
 drawQuestions();
 
-/* اسی ٹیب کے سیشن میں لاگ اِن برقرار رکھیں */
 var savedRole=sessionStorage.getItem("m360_role");
 if(savedRole&&passwords[savedRole]){
  currentRole=savedRole;
