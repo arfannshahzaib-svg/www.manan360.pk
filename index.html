@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="ur">
 <head>
@@ -22,7 +23,7 @@ button:disabled{opacity:.5;cursor:not-allowed}
 .dark{background:#26374d;color:white}
 .red{background:#d93649;color:white}
 .hidden{display:none!important}
-.small{font-size:13px;line-height:1.7}
+.small{font-size:13px;line-height:1.8}
 .grid{display:grid;grid-template-columns:1fr 1fr;gap:10px}
 .grid button{width:100%;margin:0}
 .item{padding:14px;background:#ffffff10;border:1px solid #ffffff30;border-radius:12px;margin:12px 0;overflow-wrap:anywhere}
@@ -36,18 +37,11 @@ footer{text-align:center;padding:12px;font-size:13px}
 .searchrow{display:grid;grid-template-columns:1fr auto;gap:8px;align-items:end}
 .searchrow button{margin:0}
 .pill{display:inline-block;border-radius:20px;padding:4px 9px;background:#ffffff20;font-size:12px;margin:3px}
-@media(max-width:480px){
- header h1{font-size:29px}
- .panel{padding:14px}
- button,.btn{font-size:14px}
- .grid{grid-template-columns:1fr 1fr}
- .searchrow{grid-template-columns:1fr}
-}
+@media(max-width:480px){header h1{font-size:29px}.panel{padding:14px}button,.btn{font-size:14px}.searchrow{grid-template-columns:1fr}}
 </style>
 </head>
 <body>
 <div class="wrap">
-
 <header>
 <h1>Manan360.pk</h1>
 <p>Books, Notes &amp; Quality Questions</p>
@@ -55,7 +49,7 @@ footer{text-align:center;padding:12px;font-size:13px}
 
 <section id="login" class="panel">
 <h2>Login</h2>
-<label for="role">Account Type</label>
+<label>Account Type</label>
 <select id="role">
 <option value="user">General User</option>
 <option value="employee">Employee</option>
@@ -63,7 +57,7 @@ footer{text-align:center;padding:12px;font-size:13px}
 <option value="admin">Admin</option>
 <option value="ceo">CEO</option>
 </select>
-<label for="password">Password</label>
+<label>Password</label>
 <input id="password" type="password" placeholder="Enter Password">
 <button class="primary" onclick="login()">Login</button>
 <p id="loginMsg" class="small"></p>
@@ -78,7 +72,6 @@ footer{text-align:center;padding:12px;font-size:13px}
 <button onclick="openApplication()">Application Form</button>
 <button onclick="show('myrequests')">My Applications</button>
 </div>
-<hr>
 <button class="dark" onclick="logout()">Sign Out</button>
 </section>
 
@@ -118,29 +111,23 @@ footer{text-align:center;padding:12px;font-size:13px}
 <h2>Application Form</h2>
 <p class="small">ٹیسٹ میں کم از کم 18 درست جواب ضروری ہیں۔</p>
 <form id="appForm">
-<label for="appName">Full Name</label>
+<label>Full Name</label>
 <input id="appName" maxlength="100" required>
-
-<label for="father">Father Name</label>
+<label>Father Name</label>
 <input id="father" maxlength="100" required>
-
-<label for="age">Age</label>
+<label>Age</label>
 <input id="age" type="number" min="1" max="120" required>
-
-<label for="className">Class</label>
+<label>Class</label>
 <select id="className" required>
 <option value="">Select Class</option>
 <option>Class 9</option>
 <option>Class 10</option>
 <option>Other</option>
 </select>
-
-<label for="correct">Correct Answers</label>
+<label>Correct Answers</label>
 <input id="correct" readonly>
-
-<label for="proof">Proof Image (maximum 1.5 MB)</label>
+<label>Proof Image (maximum 1.5 MB)</label>
 <input id="proof" type="file" accept="image/*" required>
-
 <p class="small">درخواست کے لیے ضروری ثبوت کی تصویر منتخب کریں۔</p>
 <button class="primary" id="appSubmit" type="submit">Submit Application</button>
 </form>
@@ -156,58 +143,47 @@ footer{text-align:center;padding:12px;font-size:13px}
 
 <section id="admin" class="panel hidden">
 <h2>Admin Dashboard</h2>
-<p>Admin درخواست Verify کرکے CEO کو بھیجے گا۔</p>
+<p>درخواست Verify کریں، پھر CEO کو بھیجیں۔</p>
 <div id="adminStats" class="item"></div>
-
 <div class="searchrow">
 <div>
-<label for="adminSearch">Track ID یا نام سے تلاش</label>
+<label>Track ID یا نام سے تلاش</label>
 <input id="adminSearch" placeholder="Track ID یا نام لکھیں" oninput="renderAdmin()">
 </div>
 <button onclick="clearSearch('adminSearch','renderAdmin')">Clear</button>
 </div>
-
 <div class="grid">
 <button onclick="setFilter('admin','all')">تمام درخواستیں</button>
 <button onclick="setFilter('admin','pending')">Pending</button>
 <button onclick="setFilter('admin','verified')">Verified</button>
 <button class="red" onclick="setFilter('admin','rejected')">Rejected</button>
 </div>
-
 <div id="adminList"></div>
 <button class="dark" onclick="logout()">Sign Out</button>
 </section>
 
 <section id="ceo" class="panel hidden">
 <h2>CEO Dashboard</h2>
-<p>درخواست کو Track ID سے تلاش کریں اور حتمی فیصلہ کریں۔</p>
-
+<p>Track ID سے درخواست تلاش کرکے حتمی فیصلہ کریں۔</p>
 <div class="item">
 <b>CEO Device Labels</b>
-<p>
-<span class="pill">POCO M5</span>
-<span class="pill">DESKTOP-N2CA883</span>
-</p>
+<p><span class="pill">POCO M5</span><span class="pill">DESKTOP-N2CA883</span></p>
 <p class="small">یہ صرف ڈیوائس کے نام ہیں، محفوظ ڈیوائس تصدیق نہیں۔</p>
 </div>
-
 <div id="ceoStats" class="item"></div>
-
 <div class="searchrow">
 <div>
-<label for="ceoSearch">Track ID، نام یا والد کا نام</label>
+<label>Track ID، نام یا والد کا نام</label>
 <input id="ceoSearch" placeholder="Track ID لکھیں" oninput="renderCEO()">
 </div>
 <button onclick="clearSearch('ceoSearch','renderCEO')">Clear</button>
 </div>
-
 <div class="grid">
 <button onclick="setFilter('ceo','all')">تمام درخواستیں</button>
 <button onclick="setFilter('ceo','sent')">Sent to CEO</button>
 <button class="green" onclick="setFilter('ceo','approved')">Approved</button>
 <button class="red" onclick="setFilter('ceo','rejected')">Rejected</button>
 </div>
-
 <div id="ceoList"></div>
 <button class="dark" onclick="logout()">Sign Out</button>
 </section>
@@ -217,7 +193,6 @@ footer{text-align:center;padding:12px;font-size:13px}
 <p class="small">Manan360 Support Team</p>
 <button class="primary" onclick="contactSupport()">Contact Support Team</button>
 </section>
-
 <footer>Manan360.pk | Student Learning Portal</footer>
 </div>
 
@@ -265,23 +240,19 @@ const questions=[
 {q:"جملے کے آخر میں عموماً کیا لگتا ہے؟",o:["سوالیہ نشان","فل اسٹاپ","کاما","واوین"],a:1}
 ];
 
-function el(id){
- return document.getElementById(id);
-}
+function el(id){return document.getElementById(id)}
 
 function esc(value){
- return String(value??"").replace(/[&<>"']/g,function(c){
-  return {"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c];
- });
+ return String(value??"").replace(/[&<>"']/g,c=>({
+ "&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"
+ })[c]);
 }
 
 function getRequests(){
  try{
-  const data=JSON.parse(localStorage.getItem(STORE)||"[]");
-  return Array.isArray(data)?data:[];
- }catch(e){
-  return [];
- }
+  const d=JSON.parse(localStorage.getItem(STORE)||"[]");
+  return Array.isArray(d)?d:[];
+ }catch(e){return []}
 }
 
 function saveRequests(data){
@@ -301,9 +272,7 @@ function makeTrackId(){
 function show(id){
  const target=el(id);
  if(!target)return;
- document.querySelectorAll(".wrap > section").forEach(function(s){
-  s.classList.add("hidden");
- });
+ document.querySelectorAll(".wrap > section").forEach(s=>s.classList.add("hidden"));
  target.classList.remove("hidden");
  if(id==="admin")renderAdmin();
  if(id==="ceo")renderCEO();
@@ -331,7 +300,7 @@ function login(){
  show(acc.page);
 }
 
-el("password").addEventListener("keydown",function(e){
+el("password").addEventListener("keydown",e=>{
  if(e.key==="Enter")login();
 });
 
@@ -355,10 +324,9 @@ function goHome(){
 }
 
 function contactSupport(){
- window.open(
-  "https://wa.me/"+WA+"?text="+encodeURIComponent("Assalam-o-Alaikum Manan360 Support Team. I need assistance."),
-  "_blank"
- );
+ window.open("https://wa.me/"+WA+"?text="+encodeURIComponent(
+ "Assalam-o-Alaikum Manan360 Support Team. I need assistance."
+ ),"_blank");
 }
 
 function startQuiz(){
@@ -366,7 +334,6 @@ function startQuiz(){
   alert("یہ ٹیسٹ صرف User، Student یا Employee کے لیے ہے۔");
   return;
  }
-
  activeQuestions=questions;
  quizPassed=false;
  lastScore=0;
@@ -377,17 +344,15 @@ function startQuiz(){
 }
 
 function renderQuiz(){
- el("quizArea").innerHTML=activeQuestions.map(function(q,i){
-  return `<div class="item">
-   <b>${i+1}. ${esc(q.q)}</b>
-   ${q.o.map(function(v,j){
-    return `<label class="qoption">
-     <input type="radio" name="q${i}" value="${j}">
-     <span>${esc(v)}</span>
-    </label>`;
-   }).join("")}
-  </div>`;
- }).join("");
+ el("quizArea").innerHTML=activeQuestions.map((q,i)=>`
+ <div class="item">
+ <b>${i+1}. ${esc(q.q)}</b>
+ ${q.o.map((v,j)=>`
+ <label class="qoption">
+ <input type="radio" name="q${i}" value="${j}">
+ <span>${esc(v)}</span>
+ </label>`).join("")}
+ </div>`).join("");
 }
 
 function submitQuiz(){
@@ -395,14 +360,11 @@ function submitQuiz(){
   alert("پہلے ٹیسٹ شروع کریں۔");
   return;
  }
-
  let score=0;
-
- activeQuestions.forEach(function(q,i){
-  const answer=document.querySelector('input[name="q'+i+'"]:checked');
-  if(answer&&Number(answer.value)===q.a)score++;
+ activeQuestions.forEach((q,i)=>{
+  const a=document.querySelector('input[name="q'+i+'"]:checked');
+  if(a&&Number(a.value)===q.a)score++;
  });
-
  lastScore=score;
  el("quizResult").textContent="Correct Answers: "+score+"/20";
 
@@ -418,10 +380,7 @@ function submitQuiz(){
 }
 
 function openApplication(){
- if(!currentRole){
-  show("login");
-  return;
- }
+ if(!currentRole){show("login");return}
  if(!quizPassed||lastScore<18){
   alert("پہلے ٹیسٹ پاس کریں۔ کم از کم 18 درست جوابات ضروری ہیں۔");
   return;
@@ -431,70 +390,39 @@ function openApplication(){
 }
 
 function compressImage(file){
- return new Promise(function(resolve,reject){
+ return new Promise((resolve,reject)=>{
   const reader=new FileReader();
-
-  reader.onerror=function(){
-   reject(new Error("تصویر پڑھی نہیں جا سکی۔"));
-  };
-
-  reader.onload=function(){
+  reader.onerror=()=>reject(new Error("تصویر پڑھی نہیں جا سکی۔"));
+  reader.onload=()=>{
    const img=new Image();
-
-   img.onerror=function(){
-    reject(new Error("درست تصویر منتخب کریں۔"));
-   };
-
-   img.onload=function(){
+   img.onerror=()=>reject(new Error("درست تصویر منتخب کریں۔"));
+   img.onload=()=>{
     const max=900;
     const scale=Math.min(1,max/Math.max(img.width,img.height));
     const canvas=document.createElement("canvas");
-
     canvas.width=Math.max(1,Math.round(img.width*scale));
     canvas.height=Math.max(1,Math.round(img.height*scale));
-
     const ctx=canvas.getContext("2d");
-
-    if(!ctx){
-     reject(new Error("تصویر تیار نہیں ہو سکی۔"));
-     return;
-    }
-
+    if(!ctx){reject(new Error("تصویر تیار نہیں ہو سکی۔"));return}
     ctx.drawImage(img,0,0,canvas.width,canvas.height);
     resolve(canvas.toDataURL("image/jpeg",0.55));
    };
-
    img.src=reader.result;
   };
-
   reader.readAsDataURL(file);
  });
 }
 
-el("appForm").addEventListener("submit",async function(e){
+el("appForm").addEventListener("submit",async e=>{
  e.preventDefault();
-
  if(!currentRole||!quizPassed||lastScore<18){
-  alert("درخواست فارم کے لیے پہلے ٹیسٹ پاس کریں۔");
-  return;
+  alert("درخواست فارم کے لیے پہلے ٹیسٹ پاس کریں۔");return;
  }
 
  const file=el("proof").files[0];
-
- if(!file){
-  alert("براہ کرم ثبوت کی تصویر منتخب کریں۔");
-  return;
- }
-
- if(!file.type.startsWith("image/")){
-  alert("صرف تصویر والی فائل منتخب کریں۔");
-  return;
- }
-
- if(file.size>1500000){
-  alert("براہ کرم 1.5 MB سے چھوٹی تصویر منتخب کریں۔");
-  return;
- }
+ if(!file){alert("براہ کرم ثبوت کی تصویر منتخب کریں۔");return}
+ if(!file.type.startsWith("image/")){alert("صرف تصویر منتخب کریں۔");return}
+ if(file.size>1500000){alert("براہ کرم 1.5 MB سے چھوٹی تصویر منتخب کریں۔");return}
 
  const btn=el("appSubmit");
  btn.disabled=true;
@@ -502,7 +430,6 @@ el("appForm").addEventListener("submit",async function(e){
 
  try{
   const image=await compressImage(file);
-
   const req={
    id:Date.now(),
    trackId:makeTrackId(),
@@ -518,16 +445,13 @@ el("appForm").addEventListener("submit",async function(e){
    createdAt:Date.now()
   };
 
-  if(!req.name||!req.father||!req.age||!req.className){
+  if(!req.name||!req.father||!req.age||!req.className)
    throw new Error("تمام معلومات مکمل کریں۔");
-  }
 
   const requests=getRequests();
   requests.push(req);
-
   if(!saveRequests(requests)){
-   el("appMsg").textContent="درخواست محفوظ نہیں ہو سکی۔";
-   return;
+   el("appMsg").textContent="درخواست محفوظ نہیں ہو سکی۔";return;
   }
 
   el("appMsg").innerHTML=
@@ -539,88 +463,66 @@ el("appForm").addEventListener("submit",async function(e){
   el("correct").value=lastScore;
   quizPassed=false;
   renderMine();
-
  }catch(err){
   el("appMsg").textContent=err.message||"درخواست محفوظ نہیں ہو سکی۔";
- }finally{
-  btn.disabled=false;
- }
+ }finally{btn.disabled=false}
 });
 
 function shareRequest(r){
  if(!r)return;
-
- const text=
-  "Manan360.pk Application\n"+
-  "Track ID: "+(r.trackId||r.id)+"\n"+
-  "Application ID: "+r.id+"\n"+
-  "Name: "+r.name+"\n"+
-  "Father: "+r.father+"\n"+
-  "Age: "+r.age+"\n"+
-  "Class: "+r.className+"\n"+
-  "Correct Answers: "+r.correct+"/20\n"+
-  "Status: "+r.status+"\n"+
-  "Please contact me about this application.";
-
+ const text="Manan360.pk Application\n"+
+ "Track ID: "+(r.trackId||r.id)+"\n"+
+ "Application ID: "+r.id+"\n"+
+ "Name: "+r.name+"\nFather: "+r.father+
+ "\nAge: "+r.age+"\nClass: "+r.className+
+ "\nCorrect Answers: "+r.correct+"/20\nStatus: "+r.status+
+ "\nPlease contact me about this application.";
  window.open("https://wa.me/"+WA+"?text="+encodeURIComponent(text),"_blank");
 }
 
 function shareById(id){
- const r=getRequests().find(function(x){
-  return Number(x.id)===Number(id);
- });
+ const r=getRequests().find(x=>Number(x.id)===Number(id));
  if(r)shareRequest(r);
 }
 
 function statusClass(status){
  return '<p class="status '+(status==="Rejected"?"rejected":"")+
-  '">Status: '+esc(status)+'</p>';
+ '">Status: '+esc(status)+'</p>';
 }
 
 function renderMine(){
- const mine=getRequests().filter(function(r){
-  return r.role===currentRole;
- });
-
- el("myList").innerHTML=mine.length?
-  mine.map(function(r){
-   return `<div class="item">
-    <b>Track ID: ${esc(r.trackId||r.id)}</b>
-    <p>Name: ${esc(r.name)}</p>
-    ${statusClass(r.status)}
-    <p>Submitted: ${esc(r.date)}</p>
-    <button onclick="shareById(${Number(r.id)})">Send on WhatsApp</button>
-   </div>`;
-  }).join(""):
-  "ابھی کوئی درخواست نہیں ملی۔";
+ const mine=getRequests().filter(r=>r.role===currentRole);
+ // Rejected درخواستیں عام صارف کی فہرست میں ظاہر نہیں ہوں گی۔
+ const visible=mine.filter(r=>r.status!=="Rejected");
+ el("myList").innerHTML=visible.length?visible.map(r=>`
+ <div class="item">
+ <b>Track ID: ${esc(r.trackId||r.id)}</b>
+ <p>Name: ${esc(r.name)}</p>
+ ${statusClass(r.status)}
+ <p>Submitted: ${esc(r.date)}</p>
+ <button onclick="shareById(${Number(r.id)})">Send on WhatsApp</button>
+ </div>`).join(""):"ابھی کوئی درخواست نہیں ملی۔";
 }
 
-function matchesFilter(r,filter){
- if(filter==="pending")return r.status==="Pending";
- if(filter==="verified")return r.status==="Admin Verified"||r.status==="Sent to CEO";
- if(filter==="sent")return r.status==="Sent to CEO";
- if(filter==="approved")return r.status==="CEO Approved";
- if(filter==="rejected")return r.status==="Rejected";
+function matchesFilter(r,f){
+ if(f==="pending")return r.status==="Pending";
+ if(f==="verified")return r.status==="Admin Verified"||r.status==="Sent to CEO";
+ if(f==="sent")return r.status==="Sent to CEO";
+ if(f==="approved")return r.status==="CEO Approved";
+ if(f==="rejected")return r.status==="Rejected";
  return true;
 }
 
-function matchesSearch(r,query){
- if(!query)return true;
- query=query.toLowerCase();
-
- return [r.trackId,r.id,r.name,r.father,r.className,r.status].some(function(v){
-  return String(v??"").toLowerCase().includes(query);
- });
+function matchesSearch(r,q){
+ if(!q)return true;
+ q=q.toLowerCase();
+ return [r.trackId,r.id,r.name,r.father,r.className,r.status]
+ .some(v=>String(v??"").toLowerCase().includes(q));
 }
 
 function setFilter(which,filter){
- if(which==="admin"){
-  adminFilter=filter;
-  renderAdmin();
- }else{
-  ceoFilter=filter;
-  renderCEO();
- }
+ if(which==="admin"){adminFilter=filter;renderAdmin()}
+ else{ceoFilter=filter;renderCEO()}
 }
 
 function clearSearch(id,fn){
@@ -630,45 +532,49 @@ function clearSearch(id,fn){
 
 function cardHTML(r,role){
  const isAdmin=role==="admin";
-
+ const canDecide=r.status==="Sent to CEO"||r.status==="CEO Approved"||r.status==="Rejected";
  return `<div class="item">
-  <b>Track ID: ${esc(r.trackId||r.id)}</b>
-  <p>Application #${esc(r.id)}</p>
-  <p>Name: ${esc(r.name)}</p>
-  <p>Father: ${esc(r.father)}</p>
-  <p>Age: ${esc(r.age)} | Class: ${esc(r.className)}</p>
-  <p>Correct Answers: ${esc(r.correct)}/20</p>
-  ${statusClass(r.status)}
-  <p>Submitted: ${esc(r.date)}</p>
-  ${r.image?`<img src="${r.image}" alt="Proof image">`:""}
-  ${isAdmin?
-   `<button onclick="updateStatus(${Number(r.id)},'Admin Verified')">Verify</button>
-    <button class="green" onclick="sendCEO(${Number(r.id)})">Send to CEO</button>
-    <button class="dark" onclick="shareById(${Number(r.id)})">Share Application</button>`:
-   `<button class="green" onclick="updateStatus(${Number(r.id)},'CEO Approved')">Approve</button>
-    <button class="red" onclick="updateStatus(${Number(r.id)},'Rejected')">Reject</button>
-    <button class="dark" onclick="shareById(${Number(r.id)})">Share</button>`
-  }
+ <b>Track ID: ${esc(r.trackId||r.id)}</b>
+ <p>Application #${esc(r.id)}</p>
+ <p>Name: ${esc(r.name)}</p>
+ <p>Father: ${esc(r.father)}</p>
+ <p>Age: ${esc(r.age)} | Class: ${esc(r.className)}</p>
+ <p>Correct Answers: ${esc(r.correct)}/20</p>
+ ${statusClass(r.status)}
+ <p>Submitted: ${esc(r.date)}</p>
+ ${r.image?`<img src="${r.image}" alt="Proof image">`:""}
+ ${isAdmin?
+ `<button onclick="updateStatus(${Number(r.id)},'Admin Verified')">Verify</button>
+ <button class="green" onclick="sendCEO(${Number(r.id)})">Send to CEO</button>
+ <button class="dark" onclick="shareById(${Number(r.id)})">Share Application</button>
+ <button class="red" onclick="updateStatus(${Number(r.id)},'Rejected')">Reject</button>`:
+ `<button class="green" onclick="updateStatus(${Number(r.id)},'CEO Approved')" ${!canDecide?"disabled":""}>Approve</button>
+ <button class="red" onclick="updateStatus(${Number(r.id)},'Rejected')" ${!canDecide?"disabled":""}>Reject</button>
+ <button class="dark" onclick="shareById(${Number(r.id)})">Share</button>`
+ }
  </div>`;
 }
 
 function renderAdmin(){
- const all=getRequests().sort(function(a,b){
-  return (b.createdAt||b.id)-(a.createdAt||a.id);
- });
-
+ const all=getRequests().sort((a,b)=>(b.createdAt||b.id)-(a.createdAt||a.id));
  el("adminStats").textContent=
-  "Total: "+all.length+
-  " | Pending: "+all.filter(r=>r.status==="Pending").length+
-  " | Verified: "+all.filter(r=>r.status==="Admin Verified").length+
-  " | Sent to CEO: "+all.filter(r=>r.status==="Sent to CEO").length+
-  " | Approved: "+all.filter(r=>r.status==="CEO Approved").length+
-  " | Rejected: "+all.filter(r=>r.status==="Rejected").length;
-
- const shown=all.filter(function(r){
-  return matchesFilter(r,adminFilter)&&matchesSearch(r,el("adminSearch").value.trim());
- });
-
+ "Total: "+all.length+
+ " | Pending: "+all.filter(r=>r.status==="Pending").length+
+ " | Verified: "+all.filter(r=>r.status==="Admin Verified").length+
+ " | Sent to CEO: "+all.filter(r=>r.status==="Sent to CEO").length+
+ " | Approved: "+all.filter(r=>r.status==="CEO Approved").length+
+ " | Rejected: "+all.filter(r=>r.status==="Rejected").length;
+ const shown=all.filter(r=>matchesFilter(r,adminFilter)&&matchesSearch(r,el("adminSearch").value.trim()));
  el("adminList").innerHTML=shown.length?
-  shown.map(function(r){return cardHTML(r,"admin")}).join("") :
-  "اس تلاش یا فلٹر کے مطابق کوئی درخواست نہیں ملی
+ shown.map(r=>cardHTML(r,"admin")).join(""):"اس تلاش یا فلٹر کے مطابق کوئی درخواست نہیں ملی۔";
+}
+
+function renderCEO(){
+ const all=getRequests().sort((a,b)=>(b.createdAt||b.id)-(a.createdAt||a.id));
+ el("ceoStats").textContent=
+ "Total: "+all.length+
+ " | Sent to CEO: "+all.filter(r=>r.status==="Sent to CEO").length+
+ " | Approved: "+all.filter(r=>r.status==="CEO Approved").length+
+ " | Rejected: "+all.filter(r=>r.status==="Rejected").length;
+ const shown=all.filter(r=>matchesFilter(r,ceoFilter)&&matchesSearch(r,el("ceoSearch").value.trim()));
+ el("ceoList").innerHTML=show
