@@ -2,579 +2,547 @@
 <html lang="ur">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width,initial-scale=1">
 <title>Manan360.pk</title>
-
 <style>
 *{box-sizing:border-box}
 body{
-  margin:0;padding:15px;min-height:100vh;
-  font-family:Arial,sans-serif;color:#fff;
-  background:linear-gradient(135deg,#101b43,#087bb5,#087d65);
+ margin:0;min-height:100vh;padding:14px;
+ font-family:Arial,sans-serif;color:#fff;
+ background:linear-gradient(135deg,#14274e,#087bb5,#00a878);
 }
-.container{max-width:850px;margin:auto}
+.wrap{max-width:850px;margin:auto}
 header{
-  text-align:center;padding:16px;margin-bottom:15px;
-  border:1px solid #ffffff45;border-radius:16px;
-  background:#071b38a8
+ text-align:center;padding:20px 12px;margin-bottom:15px;
+ border-radius:18px;background:#071c39d9;
+ border:1px solid #ffffff35;
 }
-h1{margin:0 0 7px;font-size:28px}
-h2{font-size:21px;margin:8px 0 15px}
-h3{font-size:18px}
-p{line-height:1.6}
+header h1{font-size:30px;margin:0 0 8px}
+header p{margin:0}
 .card{
-  background:#ffffff12;border:1px solid #ffffff35;
-  padding:17px;border-radius:16px;margin:12px 0;
-  box-shadow:0 5px 20px #00152a35
+ padding:17px;margin:13px 0;border-radius:16px;
+ background:#071c39bd;border:1px solid #ffffff35;
+ box-shadow:0 7px 22px #00152b35;
 }
+h2{font-size:21px;margin:0 0 15px}
+h3{font-size:18px}
+p{line-height:1.7}
 input,select,textarea{
-  display:block;width:100%;padding:12px;margin:9px 0;
-  border:1px solid #cbd5e1;border-radius:9px;
-  background:#fff;color:#172033;font-size:15px
+ width:100%;padding:12px;margin:7px 0 12px;
+ border:1px solid #cbd5e1;border-radius:9px;
+ font-size:15px;background:#fff;color:#172033;
 }
 button,.btn{
-  display:inline-block;border:0;border-radius:9px;
-  padding:11px 15px;margin:4px 2px;
-  background:#087bdf;color:#fff;font-size:15px;
-  font-weight:bold;cursor:pointer;text-decoration:none
+ display:inline-block;padding:11px 14px;margin:4px 2px;
+ border:0;border-radius:9px;background:#087bdf;color:#fff;
+ font-size:14px;font-weight:bold;cursor:pointer;
+ text-decoration:none;text-align:center;
 }
-button:active{transform:scale(.98)}
-.secondary{background:#263449}
 .green{background:#07864c}
 .red{background:#c62828}
 .orange{background:#b96900}
-.light{background:#fff;color:#17314d}
-.small{font-size:13px;opacity:.9}
+.dark{background:#263449}
+.white{background:#fff;color:#14274e}
+button:active{transform:scale(.98)}
 .hidden{display:none!important}
-.nav{display:flex;flex-wrap:wrap;gap:5px;margin:10px 0}
-.status{
-  display:inline-block;padding:5px 9px;border-radius:7px;
-  background:#ffffff24;font-size:13px
-}
-.question{
-  padding:13px;margin:12px 0;border-radius:10px;
-  background:#092c4c88;border:1px solid #ffffff25
-}
-.question label{display:block;margin:9px 0;line-height:1.5}
-.question input{display:inline-block;width:auto;margin:0 7px}
 .notice{
-  padding:11px;border-radius:9px;background:#082d4b;
-  margin:10px 0;line-height:1.7;overflow-wrap:anywhere
+ padding:12px;border-radius:10px;background:#0c3657;
+ margin:10px 0;line-height:1.7;overflow-wrap:anywhere;
 }
-img.proof{display:block;max-width:100%;max-height:240px;margin:10px 0;border-radius:10px}
+.nav{display:flex;flex-wrap:wrap;gap:5px;margin:12px 0}
+.item{
+ padding:13px;margin:12px 0;border-radius:11px;
+ background:#ffffff12;border:1px solid #ffffff35;
+ overflow-wrap:anywhere;
+}
+.status{display:inline-block;background:#ffffff22;padding:5px 8px;border-radius:7px}
+.question{padding:13px;margin:12px 0;border-radius:10px;background:#ffffff12;border:1px solid #ffffff30}
+.question label{display:block;margin:10px 0;line-height:1.5}
+.question input{width:auto;margin:0 7px 0 0}
+.proof{display:block;max-width:100%;max-height:240px;margin:10px 0;border-radius:9px}
+.small{font-size:12px;opacity:.85}
 footer{text-align:center;padding:18px;font-size:13px}
-hr{border:0;border-top:1px solid #ffffff35;margin:15px 0}
+a{overflow-wrap:anywhere}
 </style>
 </head>
-
 <body>
-<div class="container">
+<div class="wrap">
+
 <header>
-  <h1>Manan360.pk</h1>
-  <div>Student Portal · Books · Applications</div>
+ <h1>Manan360.pk</h1>
+ <p>Books, Notes &amp; Quality Questions</p>
 </header>
 
 <div id="message" class="notice hidden"></div>
 
 <!-- LOGIN -->
 <section id="loginPage" class="card">
-  <h2>Login / لاگ اِن</h2>
-  <p>اپنا اکاؤنٹ منتخب کریں اور لاگ اِن کریں۔</p>
-
-  <label for="loginRole">Account Type</label>
-  <select id="loginRole">
-    <option value="user">User</option>
-    <option value="employee">Employee</option>
-    <option value="student">Student</option>
-    <option value="admin">Admin</option>
-    <option value="ceo">CEO</option>
-  </select>
-
-  <label for="loginUsername">Username</label>
-  <input id="loginUsername" placeholder="Username" autocomplete="username">
-
-  <label for="loginPassword">Password</label>
-  <input id="loginPassword" type="password" placeholder="Password"
-         autocomplete="current-password">
-
-  <button type="button" onclick="login()" style="width:100%">Login</button>
-
-  <div class="notice">
-    <b>اکاؤنٹ معلومات</b><br>
-    User: <code>user</code> / <code>user123</code><br>
-    Employee: <code>employee</code> / <code>user123</code><br>
-    Student: <code>student</code> / <code>user123</code><br>
-    Admin: <code>admin</code> / <code>user123</code><br>
-    CEO: <code>ceo</code> / <code>user99</code>
-  </div>
-  <p class="small">یہ اس کوڈ کے اندر مقرر کیے گئے لاگ اِن اکاؤنٹس ہیں۔</p>
+ <h2>Login / لاگ اِن</h2>
+ <label for="role">Account Type منتخب کریں</label>
+ <select id="role">
+  <option value="user">General User</option>
+  <option value="employee">Employee</option>
+  <option value="student">Student</option>
+  <option value="admin">Admin</option>
+  <option value="ceo">CEO</option>
+ </select>
+ <label for="password">Password</label>
+ <input id="password" type="password" placeholder="اپنا پاس ورڈ درج کریں">
+ <button style="width:100%" onclick="login()">Login</button>
+ <p class="small">اکاؤنٹ کی حفاظت کے لیے اپنا پاس ورڈ کسی دوسرے شخص کو نہ دیں۔</p>
 </section>
 
-<!-- MAIN HOME -->
+<!-- HOME -->
 <section id="homePage" class="hidden">
-  <div class="card">
-    <div id="welcomeText"></div>
-    <div class="nav">
-      <button onclick="showPage('homePage')">Home</button>
-      <button onclick="showPage('booksPage')">Books & Notes</button>
-      <button onclick="showPage('quizPage')">Start Test</button>
-      <button onclick="showPage('trackPage')">Track Application</button>
-      <button onclick="showPage('myAppsPage')">My Applications</button>
-      <button id="employeeButton" class="hidden"
-              onclick="showPage('employeePage')">Employee Dashboard</button>
-      <button id="adminButton" class="hidden"
-              onclick="showPage('adminPage')">Admin Dashboard</button>
-      <button id="ceoButton" class="hidden"
-              onclick="showPage('ceoPage')">CEO Dashboard</button>
-      <button class="secondary" onclick="logout()">Sign Out</button>
-    </div>
+ <div class="card">
+  <div id="welcome"></div>
+  <div class="nav">
+   <button onclick="page('homePage')">Home</button>
+   <button onclick="page('booksPage')">Books &amp; Notes</button>
+   <button onclick="page('quizPage')">Quality Test</button>
+   <button onclick="page('trackPage')">Track ID</button>
+   <button onclick="page('myAppsPage')">My Applications</button>
+   <button id="employeeNav" class="hidden" onclick="page('employeePage')">Employee Dashboard</button>
+   <button id="adminNav" class="hidden" onclick="page('adminPage')">Admin Dashboard</button>
+   <button id="ceoNav" class="hidden" onclick="page('ceoPage')">CEO Dashboard</button>
+   <button class="dark" onclick="logout()">Sign Out</button>
   </div>
-
-  <div class="card">
-    <h2>Welcome to Manan360.pk</h2>
-    <p>Books اور Test Papers دیکھنے، ٹیسٹ دینے اور درخواست کی موجودہ حالت معلوم کرنے کے لیے نیچے بٹن استعمال کریں۔</p>
-    <button onclick="showPage('booksPage')">Open Books</button>
-    <button onclick="showPage('quizPage')">Start Test</button>
-    <button onclick="showPage('trackPage')">Track Application</button>
-  </div>
+ </div>
+ <div class="card">
+  <h2>Welcome to Manan360.pk</h2>
+  <p>Books اور Test Papers دیکھیں، Quality Test مکمل کریں اور اپنی درخواست کا اسٹیٹس معلوم کریں۔</p>
+  <button onclick="page('booksPage')">Open Books</button>
+  <button onclick="page('quizPage')">Start Test</button>
+  <button onclick="page('trackPage')">Track Application</button>
+ </div>
 </section>
 
 <!-- BOOKS -->
-<section id="booksPage" class="hidden card">
-  <h2>Books & Notes</h2>
-  <div class="card">
-    <h3>Class 9th Urdu Test Paper</h3>
-    <p>نویں جماعت کا اردو پیپر۔</p>
-    <a class="btn" href="Class-9th-Urdu-Test-Paper.pdf" target="_blank">View / Open</a>
-    <a class="btn green" href="Class-9th-Urdu-Test-Paper.pdf" download>Download PDF</a>
-  </div>
-
-  <div class="card">
-    <h3>Class 10th Urdu Test Paper</h3>
-    <p>دسویں جماعت کا اردو پیپر۔</p>
-    <a class="btn" href="Class-10th-Urdu-Test-Paper.pdf" target="_blank">View / Open</a>
-    <a class="btn green" href="Class-10th-Urdu-Test-Paper.pdf" download>Download PDF</a>
-  </div>
-
-  <button class="secondary" onclick="showPage('homePage')">Home</button>
+<section id="booksPage" class="card hidden">
+ <h2>Books &amp; Notes</h2>
+ <div class="item">
+  <h3>Class 9th Urdu Test Paper</h3>
+  <a class="btn" href="Class-9th-Urdu-Test-Paper.pdf" target="_blank">View / Open</a>
+  <a class="btn green" href="Class-9th-Urdu-Test-Paper.pdf" download>Download PDF</a>
+ </div>
+ <div class="item">
+  <h3>Class 10th Urdu Test Paper</h3>
+  <a class="btn" href="Class-10th-Urdu-Test-Paper.pdf" target="_blank">View / Open</a>
+  <a class="btn green" href="Class-10th-Urdu-Test-Paper.pdf" download>Download PDF</a>
+ </div>
+ <button class="dark" onclick="page('homePage')">Home</button>
 </section>
 
 <!-- QUIZ -->
-<section id="quizPage" class="hidden card">
-  <h2>Quality Questions Test</h2>
-  <p>درخواست فارم کھولنے کے لیے 20 میں سے کم از کم 18 سوال درست کرنا ضروری ہے۔</p>
-  <form id="quizForm">
-    <div id="questions"></div>
-    <button type="submit">Submit Test</button>
-  </form>
-  <div id="quizResult" class="notice hidden"></div>
-  <button class="secondary" onclick="showPage('homePage')">Home</button>
+<section id="quizPage" class="card hidden">
+ <h2>Quality Questions Test</h2>
+ <p>درخواست فارم کھولنے کے لیے 20 میں سے کم از کم 18 سوال درست کریں۔</p>
+ <form id="quizForm">
+  <div id="questions"></div>
+  <button type="submit">Submit Test</button>
+ </form>
+ <div id="quizResult" class="notice hidden"></div>
+ <button class="dark" onclick="page('homePage')">Home</button>
 </section>
 
-<!-- APPLICATION FORM -->
-<section id="applicationPage" class="hidden card">
-  <h2>Application Form</h2>
-  <div class="notice">ٹیسٹ کامیاب ہونے کے بعد اپنی معلومات درج کریں۔</div>
-
-  <form id="applicationForm">
-    <label for="appName">Full Name</label>
-    <input id="appName" required placeholder="اپنا پورا نام">
-
-    <label for="appFather">Father Name</label>
-    <input id="appFather" required placeholder="والد کا نام">
-
-    <label for="appAge">Age</label>
-    <input id="appAge" type="number" min="1" max="100" required placeholder="عمر">
-
-    <label for="appClass">Class</label>
-    <select id="appClass" required>
-      <option value="">جماعت منتخب کریں</option>
-      <option>Class 9</option>
-      <option>Class 10</option>
-      <option>Other</option>
-    </select>
-
-    <label for="appProof">Proof Image (اگر ضروری ہو)</label>
-    <input id="appProof" type="file" accept="image/*">
-    <p class="small">تصویر اس براؤزر میں محفوظ کرنے کی کوشش ہوگی۔</p>
-
-    <button type="submit">Submit Application</button>
-  </form>
-
-  <div id="applicationResult" class="notice hidden"></div>
-  <button class="secondary" onclick="showPage('homePage')">Home</button>
+<!-- APPLICATION -->
+<section id="applicationPage" class="card hidden">
+ <h2>Application Form</h2>
+ <div class="notice">اپنی درست معلومات درج کریں۔</div>
+ <form id="applicationForm">
+  <label for="appName">Name</label>
+  <input id="appName" required placeholder="اپنا نام">
+  <label for="fatherName">Father Name</label>
+  <input id="fatherName" required placeholder="والد کا نام">
+  <label for="age">Age</label>
+  <input id="age" type="number" min="1" max="100" required placeholder="عمر">
+  <label for="className">Class</label>
+  <select id="className" required>
+   <option value="">جماعت منتخب کریں</option>
+   <option>Class 9</option>
+   <option>Class 10</option>
+   <option>Other</option>
+  </select>
+  <label for="proof">Proof Image</label>
+  <input id="proof" type="file" accept="image/*">
+  <p class="small">تصویر اختیاری ہے۔ بہتر ہے چھوٹی تصویر منتخب کریں۔</p>
+  <button type="submit">Submit Application</button>
+ </form>
+ <div id="appResult" class="notice hidden"></div>
+ <button class="dark" onclick="page('homePage')">Home</button>
 </section>
 
 <!-- TRACK -->
-<section id="trackPage" class="hidden card">
-  <h2>Track Application</h2>
-  <p>اپنا Track ID درج کریں۔</p>
-  <input id="trackInput" placeholder="مثلاً M360-123456">
-  <button onclick="trackApplication()">Check Status</button>
-  <div id="trackResult"></div>
-  <button class="secondary" onclick="showPage('homePage')">Home</button>
+<section id="trackPage" class="card hidden">
+ <h2>Track Application</h2>
+ <label for="trackId">اپنا Track ID درج کریں</label>
+ <input id="trackId" placeholder="M360-12345678">
+ <button onclick="track()">Check Status</button>
+ <div id="trackResult"></div>
+ <button class="dark" onclick="page('homePage')">Home</button>
 </section>
 
 <!-- MY APPLICATIONS -->
-<section id="myAppsPage" class="hidden card">
-  <h2>My Applications</h2>
-  <div id="myAppsList"></div>
-  <button onclick="renderMyApps()">Refresh</button>
-  <button class="secondary" onclick="showPage('homePage')">Home</button>
+<section id="myAppsPage" class="card hidden">
+ <h2>My Applications</h2>
+ <div id="myApps"></div>
+ <button onclick="renderMyApps()">Refresh</button>
+ <button class="dark" onclick="page('homePage')">Home</button>
 </section>
 
 <!-- EMPLOYEE -->
-<section id="employeePage" class="hidden card">
-  <h2>Employee Dashboard</h2>
-  <p>یہاں درخواستوں کی فہرست دیکھی جا سکتی ہے۔</p>
-  <div id="employeeList"></div>
-  <button onclick="renderEmployee()">Refresh</button>
-  <button class="secondary" onclick="showPage('homePage')">Home</button>
+<section id="employeePage" class="card hidden">
+ <h2>Employee Dashboard</h2>
+ <div id="employeeList"></div>
+ <button onclick="renderEmployee()">Refresh</button>
+ <button class="dark" onclick="page('homePage')">Home</button>
 </section>
 
 <!-- ADMIN -->
-<section id="adminPage" class="hidden card">
-  <h2>Admin Dashboard</h2>
-  <input id="adminSearch" placeholder="Track ID یا نام تلاش کریں"
-         oninput="renderAdmin()">
-  <select id="adminFilter" onchange="renderAdmin()">
-    <option value="all">تمام درخواستیں</option>
-    <option value="موصول">موصول</option>
-    <option value="Admin Approved">Admin Approved</option>
-    <option value="CEO کے پاس بھیجی گئی">CEO کے پاس بھیجی گئی</option>
-    <option value="Approved">Approved</option>
-    <option value="Rejected">Rejected</option>
-  </select>
-  <div id="adminList"></div>
-  <button onclick="renderAdmin()">Refresh</button>
-  <button class="secondary" onclick="showPage('homePage')">Home</button>
+<section id="adminPage" class="card hidden">
+ <h2>Admin Dashboard</h2>
+ <input id="adminSearch" placeholder="نام یا Track ID تلاش کریں" oninput="renderAdmin()">
+ <select id="adminFilter" onchange="renderAdmin()">
+  <option value="all">تمام درخواستیں</option>
+  <option value="موصول">موصول</option>
+  <option value="Admin Approved">Admin Approved</option>
+  <option value="CEO کے پاس بھیجی گئی">CEO کے پاس بھیجی گئی</option>
+  <option value="Approved">Approved</option>
+  <option value="Rejected">Rejected</option>
+ </select>
+ <div id="adminList"></div>
+ <button onclick="renderAdmin()">Refresh</button>
+ <button class="dark" onclick="page('homePage')">Home</button>
 </section>
 
 <!-- CEO -->
-<section id="ceoPage" class="hidden card">
-  <h2>CEO Dashboard</h2>
-  <div id="ceoList"></div>
-  <button onclick="renderCEO()">Refresh</button>
-  <button class="secondary" onclick="showPage('homePage')">Home</button>
+<section id="ceoPage" class="card hidden">
+ <h2>CEO Dashboard</h2>
+ <div id="ceoList"></div>
+ <button onclick="renderCEO()">Refresh</button>
+ <button class="dark" onclick="page('homePage')">Home</button>
 </section>
 
 <div class="card">
-  <h3>Manan360 Support Team</h3>
-  <p>مدد کے لیے WhatsApp پر رابطہ کریں۔</p>
-  <a class="btn green" href="https://wa.me/923447232654" target="_blank">
-    WhatsApp Support
-  </a>
+ <h3>Manan360 Support Team</h3>
+ <p>مدد کے لیے WhatsApp پر رابطہ کریں۔</p>
+ <a class="btn green" href="https://wa.me/923447232654" target="_blank">WhatsApp Support</a>
 </div>
 
-<footer>Manan360.pk · Student Portal</footer>
+<footer>Manan360.pk</footer>
 </div>
 
 <script>
 "use strict";
 
-var currentUser = null;
+var currentRole = "";
 var passedQuiz = false;
 
-var accounts = {
-  user:     {password:"user123", role:"user"},
-  employee: {password:"user123", role:"employee"},
-  student:  {password:"user123", role:"student"},
-  admin:    {password:"user123", role:"admin"},
-  ceo:      {password:"user99",  role:"ceo"}
+var passwords = {
+ user:"user123",
+ employee:"user123",
+ student:"user123",
+ admin:"user123",
+ ceo:"user99"
 };
 
-var questionsData = [
+var questionData = [
  {q:"پاکستان کا دارالحکومت کیا ہے؟",o:["کراچی","اسلام آباد","لاہور","کوئٹہ"],a:1},
  {q:"پاکستان کب آزاد ہوا؟",o:["1940","1945","1947","1956"],a:2},
  {q:"پاکستان کی قومی زبان کیا ہے؟",o:["اردو","عربی","فارسی","انگریزی"],a:0},
  {q:"ایک ہفتے میں کتنے دن ہوتے ہیں؟",o:["5","6","7","8"],a:2},
  {q:"سورج کس سمت سے نکلتا ہے؟",o:["مغرب","مشرق","شمال","جنوب"],a:1},
  {q:"2 + 5 کتنے ہوتے ہیں؟",o:["6","7","8","9"],a:1},
- {q:"پاکستان کے بانی کون ہیں؟",o:["علامہ اقبال","قائداعظم","سر سید احمد خان","لیاقت علی خان"],a:1},
+ {q:"پاکستان کے بانی کون ہیں؟",o:["علامہ اقبال","قائداعظم","لیاقت علی خان","سر سید"],a:1},
  {q:"پانی کا کیمیائی فارمولا کیا ہے؟",o:["CO2","O2","H2O","NaCl"],a:2},
  {q:"سال میں کتنے مہینے ہوتے ہیں؟",o:["10","11","12","13"],a:2},
  {q:"قرآن مجید کس زبان میں نازل ہوا؟",o:["اردو","عربی","فارسی","انگریزی"],a:1},
  {q:"پاکستان کا قومی جانور کون سا ہے؟",o:["شیر","مارخور","گھوڑا","اونٹ"],a:1},
  {q:"5 × 5 کتنے ہوتے ہیں؟",o:["10","15","20","25"],a:3},
  {q:"زمین کس کے گرد گردش کرتی ہے؟",o:["چاند","مریخ","سورج","زہرہ"],a:2},
- {q:"پاکستان کا قومی پھول کیا ہے؟",o:["گلاب","چنبیلی","سورج مکھی","کنول"],a:1},
+ {q:"پاکستان کا قومی پھول کیا ہے؟",o:["گلاب","چنبیلی","کنول","سورج مکھی"],a:1},
  {q:"انگریزی حروف تہجی میں کتنے حروف ہیں؟",o:["24","25","26","27"],a:2},
  {q:"ایک گھنٹے میں کتنے منٹ ہوتے ہیں؟",o:["30","45","60","100"],a:2},
- {q:"دنیا کا سب سے بڑا براعظم کون سا ہے؟",o:["افریقہ","ایشیا","یورپ","آسٹریلیا"],a:1},
+ {q:"سب سے بڑا براعظم کون سا ہے؟",o:["افریقہ","ایشیا","یورپ","آسٹریلیا"],a:1},
  {q:"پاکستان کی کرنسی کیا ہے؟",o:["روپیہ","ریال","ڈالر","دینار"],a:0},
  {q:"10 - 4 کتنے ہوتے ہیں؟",o:["4","5","6","7"],a:2},
- {q:"پودے اپنی خوراک بنانے کے لیے کس چیز کی روشنی استعمال کرتے ہیں؟",o:["چاند","سورج","ستارے","بلب"],a:1}
+ {q:"پودے اپنی خوراک بنانے کے لیے کس کی روشنی استعمال کرتے ہیں؟",o:["چاند","سورج","ستارے","بلب"],a:1}
 ];
 
-function el(id){return document.getElementById(id)}
+function $(id){return document.getElementById(id)}
 
-function showMessage(text){
-  el("message").textContent=text;
-  el("message").classList.remove("hidden");
-  window.scrollTo(0,0);
+function message(text){
+ $("message").textContent=text;
+ $("message").classList.remove("hidden");
 }
+function clearMessage(){$("message").classList.add("hidden")}
 
-function hideMessage(){
-  el("message").classList.add("hidden");
-}
-
-function showPage(id){
-  var pages=[
-    "loginPage","homePage","booksPage","quizPage",
-    "applicationPage","trackPage","myAppsPage",
-    "employeePage","adminPage","ceoPage"
-  ];
-  pages.forEach(function(p){el(p).classList.add("hidden")});
-  el(id).classList.remove("hidden");
-  hideMessage();
-
-  if(id==="myAppsPage") renderMyApps();
-  if(id==="adminPage") renderAdmin();
-  if(id==="ceoPage") renderCEO();
-  if(id==="employeePage") renderEmployee();
-
-  window.scrollTo(0,0);
+function page(id){
+ var ids=["loginPage","homePage","booksPage","quizPage","applicationPage",
+ "trackPage","myAppsPage","employeePage","adminPage","ceoPage"];
+ ids.forEach(function(x){$(x).classList.add("hidden")});
+ $(id).classList.remove("hidden");
+ clearMessage();
+ if(id==="myAppsPage")renderMyApps();
+ if(id==="employeePage")renderEmployee();
+ if(id==="adminPage")renderAdmin();
+ if(id==="ceoPage")renderCEO();
+ window.scrollTo(0,0);
 }
 
 function login(){
-  var role=el("loginRole").value;
-  var username=el("loginUsername").value.trim().toLowerCase();
-  var password=el("loginPassword").value;
-
-  if(!username || !password){
-    showMessage("براہ کرم Username اور Password دونوں درج کریں۔");
-    return;
-  }
-
-  var account=accounts[username];
-  if(!account || account.password!==password || account.role!==role){
-    showMessage("Username، Password یا Account Type درست نہیں۔ دوبارہ کوشش کریں۔");
-    return;
-  }
-
-  currentUser={username:username,role:role};
-  sessionStorage.setItem("m360_current_user",JSON.stringify(currentUser));
-
-  el("welcomeText").textContent="Welcome, "+username+" ("+role+")";
-
-  el("adminButton").classList.toggle("hidden",role!=="admin");
-  el("ceoButton").classList.toggle("hidden",role!=="ceo");
-  el("employeeButton").classList.toggle("hidden",role!=="employee");
-
-  showPage("homePage");
-  showMessage("Login کامیاب ہو گیا۔");
+ var role=$("role").value;
+ var password=$("password").value;
+ if(password!==passwords[role]){
+  message("پاس ورڈ درست نہیں۔ دوبارہ کوشش کریں۔");
+  return;
+ }
+ currentRole=role;
+ sessionStorage.setItem("m360_role",role);
+ $("welcome").textContent="Welcome to Manan360.pk — "+role.toUpperCase();
+ $("employeeNav").classList.toggle("hidden",role!=="employee");
+ $("adminNav").classList.toggle("hidden",role!=="admin");
+ $("ceoNav").classList.toggle("hidden",role!=="ceo");
+ page("homePage");
+ message("Login کامیاب ہو گیا۔");
 }
 
 function logout(){
-  currentUser=null;
-  sessionStorage.removeItem("m360_current_user");
-  passedQuiz=false;
-  el("loginPassword").value="";
-  showPage("loginPage");
-  showMessage("آپ لاگ آؤٹ ہو گئے ہیں۔");
+ currentRole="";
+ passedQuiz=false;
+ sessionStorage.removeItem("m360_role");
+ $("password").value="";
+ page("loginPage");
+ message("آپ لاگ آؤٹ ہو گئے ہیں۔");
 }
 
 function getRequests(){
-  try{
-    var data=JSON.parse(localStorage.getItem("m360_requests")||"[]");
-    return Array.isArray(data)?data:[];
-  }catch(e){return []}
+ try{
+  var arr=JSON.parse(localStorage.getItem("m360_requests")||"[]");
+  return Array.isArray(arr)?arr:[];
+ }catch(e){return []}
+}
+function saveRequests(arr){
+ try{
+  localStorage.setItem("m360_requests",JSON.stringify(arr));
+  return true;
+ }catch(e){
+  message("ڈیٹا محفوظ نہیں ہو سکا۔ تصویر کا سائز کم کرکے دوبارہ کوشش کریں۔");
+  return false;
+ }
+}
+function makeId(){
+ return "M360-"+Date.now().toString().slice(-8)+"-"+Math.floor(100+Math.random()*900);
+}
+function esc(v){
+ return String(v==null?"":v).replace(/[&<>"']/g,function(c){
+  return {"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c];
+ });
 }
 
-function saveRequests(list){
-  try{
-    localStorage.setItem("m360_requests",JSON.stringify(list));
-    return true;
-  }catch(e){
-    showMessage("براؤزر کی جگہ کم ہے۔ تصویر کا سائز کم کریں یا دوبارہ کوشش کریں۔");
-    return false;
-  }
-}
-
-function renderQuestions(){
-  var html="";
-  questionsData.forEach(function(q,i){
-    html+='<div class="question"><b>'+(i+1)+'. '+q.q+'</b>';
-    q.o.forEach(function(option,j){
-      html+='<label><input type="radio" name="q'+i+'" value="'+j+'" required> '+option+'</label>';
-    });
-    html+="</div>";
+function drawQuestions(){
+ var html="";
+ questionData.forEach(function(q,i){
+  html+='<div class="question"><b>'+(i+1)+'. '+esc(q.q)+'</b>';
+  q.o.forEach(function(opt,j){
+   html+='<label><input type="radio" name="q'+i+'" value="'+j+'" required> '+esc(opt)+'</label>';
   });
-  el("questions").innerHTML=html;
-}
-
-el("quizForm").addEventListener("submit",function(event){
-  event.preventDefault();
-  var score=0;
-
-  questionsData.forEach(function(q,i){
-    var chosen=document.querySelector('input[name="q'+i+'"]:checked');
-    if(chosen && Number(chosen.value)===q.a) score++;
-  });
-
-  el("quizResult").classList.remove("hidden");
-
-  if(score>=18){
-    passedQuiz=true;
-    el("quizResult").textContent="آپ کے "+score+"/20 نمبر ہیں۔ ٹیسٹ کامیاب! اب درخواست فارم کھول سکتے ہیں۔";
-    var btn=document.createElement("button");
-    btn.textContent="Open Application Form";
-    btn.onclick=function(){showPage("applicationPage")};
-    el("quizResult").appendChild(document.createElement("br"));
-    el("quizResult").appendChild(btn);
-  }else{
-    passedQuiz=false;
-    el("quizResult").textContent="آپ کے "+score+"/20 نمبر ہیں۔ درخواست فارم کھولنے کے لیے کم از کم 18 درست جواب ضروری ہیں۔ دوبارہ کوشش کریں۔";
-    var retry=document.createElement("button");
-    retry.textContent="Try Again";
-    retry.onclick=function(){
-      el("quizForm").reset();
-      el("quizResult").classList.add("hidden");
-      window.scrollTo(0,0);
-    };
-    el("quizResult").appendChild(document.createElement("br"));
-    el("quizResult").appendChild(retry);
-  }
-});
-
-function makeTrackId(){
-  return "M360-"+Date.now().toString().slice(-8)+"-"+Math.floor(100+Math.random()*900);
-}
-
-el("applicationForm").addEventListener("submit",function(event){
-  event.preventDefault();
-
-  if(!passedQuiz){
-    showMessage("درخواست فارم کھولنے سے پہلے ٹیسٹ میں کم از کم 18 نمبر حاصل کریں۔");
-    showPage("quizPage");
-    return;
-  }
-
-  var file=el("appProof").files[0];
-
-  function saveApplication(proof){
-    var requests=getRequests();
-    var record={
-      id:makeTrackId(),
-      username:currentUser?currentUser.username:"user",
-      name:el("appName").value.trim(),
-      father:el("appFather").value.trim(),
-      age:el("appAge").value,
-      className:el("appClass").value,
-      proof:proof||"",
-      status:"موصول",
-      adminNote:"",
-      ceoNote:"",
-      createdAt:new Date().toLocaleString(),
-      scorePassed:true
-    };
-
-    requests.unshift(record);
-
-    if(!saveRequests(requests)) return;
-
-    el("applicationForm").reset();
-    passedQuiz=false;
-    el("applicationResult").classList.remove("hidden");
-    el("applicationResult").textContent=
-      "درخواست جمع ہو گئی ہے۔ اپنا Track ID محفوظ کر لیں: "+record.id+
-      "۔ درخواست پر کارروائی کا انتظار کریں۔";
-    showPage("applicationPage");
-    el("applicationResult").classList.remove("hidden");
-    el("applicationResult").textContent=
-      "درخواست جمع ہو گئی ہے۔ اپنا Track ID محفوظ کر لیں: "+record.id+
-      "۔ درخواست پر کارروائی کا انتظار کریں۔";
-  }
-
-  if(file){
-    if(!file.type.startsWith("image/")){
-      showMessage("براہ کرم تصویر والی فائل منتخب کریں۔");
-      return;
-    }
-    var reader=new FileReader();
-    reader.onload=function(){
-      var img=new Image();
-      img.onload=function(){
-        var canvas=document.createElement("canvas");
-        var scale=Math.min(1,600/Math.max(img.width,img.height));
-        canvas.width=Math.max(1,Math.round(img.width*scale));
-        canvas.height=Math.max(1,Math.round(img.height*scale));
-        var ctx=canvas.getContext("2d");
-        ctx.drawImage(img,0,0,canvas.width,canvas.height);
-        var compressed=canvas.toDataURL("image/jpeg",0.55);
-        saveApplication(compressed);
-      };
-      img.onerror=function(){saveApplication("")};
-      img.src=reader.result;
-    };
-    reader.onerror=function(){saveApplication("")};
-    reader.readAsDataURL(file);
-  }else{
-    saveApplication("");
-  }
-});
-
-function escapeHTML(value){
-  return String(value==null?"":value).replace(/[&<>"']/g,function(ch){
-    return {"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[ch];
-  });
-}
-
-function cardHTML(r,mode){
-  var html='<div class="card">';
-  html+='<b>Track ID:</b> '+escapeHTML(r.id)+'<br>';
-  html+='<b>نام:</b> '+escapeHTML(r.name)+'<br>';
-  html+='<b>والد کا نام:</b> '+escapeHTML(r.father)+'<br>';
-  html+='<b>عمر:</b> '+escapeHTML(r.age)+'<br>';
-  html+='<b>جماعت:</b> '+escapeHTML(r.className)+'<br>';
-  html+='<b>تاریخ:</b> '+escapeHTML(r.createdAt)+'<br>';
-  html+='<b>حالت:</b> <span class="status">'+escapeHTML(r.status)+'</span><br>';
-
-  if(r.adminNote) html+='<b>Admin Note:</b> '+escapeHTML(r.adminNote)+'<br>';
-  if(r.ceoNote) html+='<b>CEO Note:</b> '+escapeHTML(r.ceoNote)+'<br>';
-
-  if(r.proof){
-    html+='<img class="proof" src="'+r.proof+'" alt="Proof Image">';
-  }
-
-  if(mode==="admin"){
-    html+='<hr><label>Admin Note</label>';
-    html+='<input id="anote_'+r.id+'" placeholder="اختیاری نوٹ" value="'+escapeHTML(r.adminNote)+'">';
-    html+='<button class="green" onclick="adminApprove(\''+r.id+'\')">Approve</button>';
-    html+='<button class="orange" onclick="sendToCEO(\''+r.id+'\')">Send to CEO</button>';
-    html+='<button class="red" onclick="adminReject(\''+r.id+'\')">Reject</button>';
-  }
-
-  if(mode==="ceo" && r.status==="CEO کے پاس بھیجی گئی"){
-    html+='<hr><label>CEO Note</label>';
-    html+='<input id="cnote_'+r.id+'" placeholder="اختیاری نوٹ" value="'+escapeHTML(r.ceoNote)+'">';
-    html+='<button class="green" onclick="ceoApprove(\''+r.id+'\')">Approve</button>';
-    html+='<button class="red" onclick="ceoReject(\''+r.id+'\')">Reject</button>';
-  }
-
   html+="</div>";
-  return html;
+ });
+ $("questions").innerHTML=html;
+}
+
+$("quizForm").addEventListener("submit",function(e){
+ e.preventDefault();
+ var score=0;
+ questionData.forEach(function(q,i){
+  var chosen=document.querySelector('input[name="q'+i+'"]:checked');
+  if(chosen&&Number(chosen.value)===q.a)score++;
+ });
+ var box=$("quizResult");
+ box.innerHTML="";
+ box.classList.remove("hidden");
+ var text=document.createElement("p");
+ text.textContent="آپ کے نمبر: "+score+"/20";
+ box.appendChild(text);
+
+ if(score>=18){
+  passedQuiz=true;
+  var note=document.createElement("p");
+  note.textContent="مبارک ہو! آپ کا ٹیسٹ کامیاب ہے۔";
+  box.appendChild(note);
+  var b=document.createElement("button");
+  b.textContent="Open Application Form";
+  b.onclick=function(){page("applicationPage")};
+  box.appendChild(b);
+ }else{
+  passedQuiz=false;
+  var note2=document.createElement("p");
+  note2.textContent="درخواست فارم کھولنے کے لیے کم از کم 18 درست جواب ضروری ہیں۔";
+  box.appendChild(note2);
+  var retry=document.createElement("button");
+  retry.textContent="Try Again";
+  retry.onclick=function(){
+   $("quizForm").reset();
+   box.classList.add("hidden");
+  };
+  box.appendChild(retry);
+ }
+});
+
+$("applicationForm").addEventListener("submit",function(e){
+ e.preventDefault();
+ if(!passedQuiz){
+  message("پہلے Quality Test میں کم از کم 18 نمبر حاصل کریں۔");
+  page("quizPage");
+  return;
+ }
+
+ var file=$("proof").files[0];
+ function finish(proofData){
+  var arr=getRequests();
+  var record={
+   id:makeId(),
+   role:currentRole,
+   name:$("appName").value.trim(),
+   father:$("fatherName").value.trim(),
+   age:$("age").value,
+   className:$("className").value,
+   proof:proofData||"",
+   status:"موصول",
+   adminNote:"",
+   ceoNote:"",
+   createdAt:new Date().toLocaleString()
+  };
+  arr.unshift(record);
+  if(!saveRequests(arr))return;
+  passedQuiz=false;
+  $("applicationForm").reset();
+  $("appResult").classList.remove("hidden");
+  $("appResult").textContent="درخواست جمع ہوگئی۔ اپنا Track ID محفوظ کریں: "+record.id;
+  page("applicationPage");
+  $("appResult").classList.remove("hidden");
+  $("appResult").textContent="درخواست جمع ہوگئی۔ اپنا Track ID محفوظ کریں: "+record.id;
+ }
+ if(!file){finish("");return}
+ if(!file.type.startsWith("image/")){
+  message("براہ کرم تصویر کی فائل منتخب کریں۔");
+  return;
+ }
+ var reader=new FileReader();
+ reader.onload=function(){
+  var img=new Image();
+  img.onload=function(){
+   var canvas=document.createElement("canvas");
+   var scale=Math.min(1,600/Math.max(img.width,img.height));
+   canvas.width=Math.max(1,Math.round(img.width*scale));
+   canvas.height=Math.max(1,Math.round(img.height*scale));
+   canvas.getContext("2d").drawImage(img,0,0,canvas.width,canvas.height);
+   finish(canvas.toDataURL("image/jpeg",0.5));
+  };
+  img.onerror=function(){finish("")};
+  img.src=reader.result;
+ };
+ reader.onerror=function(){finish("")};
+ reader.readAsDataURL(file);
+});
+
+function card(r,mode){
+ var h='<div class="item">';
+ h+='<b>Track ID:</b> '+esc(r.id)+'<br>';
+ h+='<b>نام:</b> '+esc(r.name)+'<br>';
+ h+='<b>والد کا نام:</b> '+esc(r.father)+'<br>';
+ h+='<b>عمر:</b> '+esc(r.age)+'<br>';
+ h+='<b>جماعت:</b> '+esc(r.className)+'<br>';
+ h+='<b>تاریخ:</b> '+esc(r.createdAt)+'<br>';
+ h+='<b>حالت:</b> <span class="status">'+esc(r.status)+'</span><br>';
+ if(r.adminNote)h+='<b>Admin Note:</b> '+esc(r.adminNote)+'<br>';
+ if(r.ceoNote)h+='<b>CEO Note:</b> '+esc(r.ceoNote)+'<br>';
+ if(r.proof)h+='<img class="proof" src="'+r.proof+'" alt="Proof">';
+ if(mode==="admin"){
+  h+='<hr><label>Admin Note</label><input id="an_'+r.id+'" placeholder="اختیاری نوٹ" value="'+esc(r.adminNote)+'">';
+  h+='<button class="green" onclick="adminApprove(\''+r.id+'\')">Approve</button>';
+  h+='<button class="orange" onclick="sendCEO(\''+r.id+'\')">Send to CEO</button>';
+  h+='<button class="red" onclick="adminReject(\''+r.id+'\')">Reject</button>';
+ }
+ if(mode==="ceo"&&r.status==="CEO کے پاس بھیجی گئی"){
+  h+='<hr><label>CEO Note</label><input id="cn_'+r.id+'" placeholder="اختیاری نوٹ" value="'+esc(r.ceoNote)+'">';
+  h+='<button class="green" onclick="ceoApprove(\''+r.id+'\')">Approve</button>';
+  h+='<button class="red" onclick="ceoReject(\''+r.id+'\')">Reject</button>';
+ }
+ h+="</div>";
+ return h;
 }
 
 function renderAdmin(){
-  var list=getRequests();
-  var search=(el("adminSearch").value||"").toLowerCase().trim();
-  var filter=el("adminFilter").value;
-
-  var shown=list.filter(function(r){
-    var matches=(String(r.name).toLowerCase().includes(search)||
-                 String(r.id).toLowerCase().includes(search)||
-                 String(r.father).toLowerCase().includes(search));
-    return matches&&(filter==="all"||r.status===filter);
-  });
-
-  el("adminList").innerHTML=shown.length?
-    shown.map(function(r){return cardHTML(r,"admin")}).join("") :
-    '<div class="notice">اس تلاش یا فلٹر کے مطابق کوئی درخواست نہیں ملی۔</div>';
+ var search=($("adminSearch").value||"").toLowerCase().trim();
+ var filter=$("adminFilter").value;
+ var arr=getRequests().filter(function(r){
+  var found=String(r.name).toLowerCase().includes(search)||
+            String(r.id).toLowerCase().includes(search)||
+            String(r.father).toLowerCase().includes(search);
+  return found&&(filter==="all"||r.status===filter);
+ });
+ $("adminList").innerHTML=arr.length?arr.map(function(r){return card(r,"admin")}).join(""):'<div class="notice">اس فلٹر کے مطابق کوئی درخواست نہیں ملی۔</div>';
+}
+function renderCEO(){
+ var arr=getRequests().filter(function(r){return r.status==="CEO کے پاس بھیجی گئی"});
+ $("ceoList").innerHTML=arr.length?arr.map(function(r){return card(r,"ceo")}).join(""):'<div class="notice">CEO کے پاس کوئی زیرِ کارروائی درخواست نہیں۔</div>';
+}
+function renderEmployee(){
+ var arr=getRequests();
+ $("employeeList").innerHTML=arr.length?arr.map(function(r){return card(r,"view")}).join(""):'<div class="notice">ابھی کوئی درخواست موجود نہیں۔</div>';
+}
+function renderMyApps(){
+ var arr=getRequests().filter(function(r){return r.role===currentRole});
+ $("myApps").innerHTML=arr.length?arr.map(function(r){return card(r,"view")}).join(""):'<div class="notice">آپ کے اکاؤنٹ کی کوئی درخواست نہیں ملی۔</div>';
 }
 
-function renderCEO(){
-  var list=getRequests().filter(function(r){
-    return r.status==="CEO کے پاس بھیجی گئی";
-  });
-  el("ceo
+function updateStatus(id,status,who){
+ var arr=getRequests();
+ var r=arr.find(function(x){return x.id===id});
+ if(!r){message("درخواست نہیں ملی۔");return}
+ if(who==="admin"){
+  var an=$("an_"+id);
+  r.adminNote=an?an.value.trim():"";
+ }
+ if(who==="ceo"){
+  var cn=$("cn_"+id);
+  r.ceoNote=cn?cn.value.trim():"";
+ }
+ r.status=status;
+ if(!saveRequests(arr))return;
+ message("درخواست کی حالت تبدیل ہوگئی: "+status);
+ renderAdmin();renderCEO();renderEmployee();renderMyApps();
+}
+function adminApprove(id){updateStatus(id,"Admin Approved","admin")}
+function sendCEO(id){updateStatus(id,"CEO کے پاس بھیجی گئی","admin")}
+function adminReject(id){updateStatus(id,"Rejected","admin")}
+function ceoApprove(id){updateStatus(id,"Approved","ceo")}
+function ceoReject(id){updateStatus(id,"Rejected","ceo")}
+
+function track(){
+ var id=$("trackId").value.trim().toLowerCase();
+ var r=getRequests().find(function(x){return String(x.id).toLowerCase()===id});
+ if(!id){
+  $("trackResult").innerHTML='<div class="notice">Track ID درج کریں۔</div>';
+  return;
+ }
+ $("trackResult").innerHTML=r?card(r,"view"):'<div class="notice">یہ Track ID اس براؤزر میں نہیں ملی۔</div>';
+}
+
+drawQuestions();
+
+/* اسی ٹیب کے سیشن میں لاگ اِن برقرار رکھیں */
+var savedRole=sessionStorage.getItem("m360_role");
+if(savedRole&&passwords[savedRole]){
+ currentRole=savedRole;
+ $("welcome").textContent="Welcome to Manan360.pk — "+currentRole.toUpperCase();
+ $("employeeNav").classList.toggle("hidden",currentRole!=="employee");
+ $("adminNav").classList.toggle("hidden",currentRole!=="admin");
+ $("ceoNav").classList.toggle("hidden",currentRole!=="ceo");
+ page("homePage");
+}
+</script>
+</body>
+</html>
