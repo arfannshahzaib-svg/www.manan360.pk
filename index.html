@@ -3,21 +3,21 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="theme-color" content="#102b59">
-<meta name="description" content="Manan360.pk - Books, Notes and Quality Questions">
+<meta name="description" content="Manan360.pk - Books, Notes & Quality Questions">
 <title>Manan360.pk</title>
 <style>
 *{box-sizing:border-box}
 body{margin:0;font-family:Arial,sans-serif;background:#eef3fb;color:#182740}
-header{background:linear-gradient(125deg,#102653,#087fc1,#08a878);color:#fff;text-align:center;padding:24px 12px}
+header{background:linear-gradient(125deg,#102653,#087fc1,#08a878);color:white;text-align:center;padding:24px 12px}
 header h1{margin:0;font-size:30px}
 header p{margin:8px 0 0}
 main{max-width:950px;margin:20px auto;padding:0 12px}
-.panel{background:#fff;border-radius:15px;padding:18px;margin-bottom:15px;box-shadow:0 4px 18px #14284c12}
+.panel{background:white;border-radius:15px;padding:18px;margin-bottom:15px;box-shadow:0 4px 18px #14284c12}
 h2{color:#102b59;margin-top:0}
-input,select,textarea{width:100%;padding:12px;border:1px solid #d1dceb;border-radius:9px;margin:7px 0 13px;font-size:15px}
-button,.btn{display:inline-block;border:0;border-radius:9px;padding:11px 15px;background:#1768d1;color:#fff;font-weight:bold;cursor:pointer;text-decoration:none;margin:3px 2px}
+input,select{display:block;width:100%;padding:12px;border:1px solid #d1dceb;border-radius:9px;margin:7px 0 13px;font-size:15px}
+button,.btn{display:inline-block;border:0;border-radius:9px;padding:11px 15px;background:#1768d1;color:white;font-weight:bold;cursor:pointer;text-decoration:none;margin:3px 2px}
 .green{background:#079768}.red{background:#d83b48}.dark{background:#102b59}
 .hidden{display:none!important}
 .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(155px,1fr));gap:12px}
@@ -27,12 +27,12 @@ button,.btn{display:inline-block;border:0;border-radius:9px;padding:11px 15px;ba
 .notice{background:#eaf5ff;padding:12px;border-radius:9px;margin:12px 0;overflow-wrap:anywhere}
 .question{padding:12px 0;border-bottom:1px solid #e0e7f0}
 .option{display:block;margin:10px 0}
-.option input{width:auto;margin:0 6px 0 0}
+.option input{display:inline;width:auto;margin:0 6px 0 0}
 .topline{display:flex;justify-content:space-between;align-items:center;gap:8px;flex-wrap:wrap}
 .status{display:inline-block;padding:5px 9px;border-radius:15px;background:#fff0c8;color:#775300;font-size:12px}
 .ad{padding:15px;border:1px dashed #9aabc1;text-align:center;border-radius:10px;color:#718096;margin-bottom:15px}
 footer{text-align:center;padding:22px;color:#68788e;font-size:13px}
-img.proof{max-width:100%;height:auto}
+.proof{max-width:100%;height:auto}
 @media(max-width:480px){header h1{font-size:25px}.panel{padding:14px}}
 </style>
 </head>
@@ -47,7 +47,7 @@ img.proof{max-width:100%;height:auto}
 <h2>Welcome to Manan360.pk</h2>
 <form id="loginForm">
 <label for="role">Select Role</label>
-<select id="role" required>
+<select id="role">
 <option value="user">General User</option>
 <option value="student">Student</option>
 <option value="employee">Employee</option>
@@ -55,12 +55,12 @@ img.proof{max-width:100%;height:auto}
 <option value="ceo">CEO</option>
 </select>
 <label for="username">Username</label>
-<input id="username" autocomplete="username" required>
+<input id="username" placeholder="Enter any username" required>
 <label for="password">Password</label>
-<input id="password" type="password" autocomplete="current-password" required>
-<button type="submit" class="green">Login</button>
+<input id="password" type="password" placeholder="Enter any password" required>
+<button class="green" type="submit">Login</button>
 </form>
-<p class="muted">Enter your account details to continue.</p>
+<p class="muted">Enter any username and password to continue.</p>
 </section>
 
 <section id="app" class="hidden">
@@ -74,22 +74,22 @@ img.proof{max-width:100%;height:auto}
 
 <div id="adArea" class="ad">
 <strong>Advertisement</strong>
-<p class="muted">Google AdSense ads can appear here after approval and setup.</p>
+<p class="muted">AdSense advertisements can be added after approval.</p>
 </div>
 
 <section id="home" class="panel hidden">
 <h2>Student Dashboard</h2>
 <div class="grid">
 <div class="tile"><h3>Quality Questions</h3><p>20 MCQs</p><button onclick="startTest()">Start Test</button></div>
-<div class="tile"><h3>Application</h3><p>Pass the test to open the form.</p><button onclick="startTest()">Start Application</button></div>
-<div class="tile"><h3>Track Application</h3><p>Check status using Track ID.</p><button onclick="show('track')">Track Now</button></div>
-<div class="tile"><h3>Books &amp; Notes</h3><p>Class 9 and 10 PDFs</p><button onclick="show('books')">Open Books</button></div>
+<div class="tile"><h3>Application</h3><p>Pass the test first.</p><button onclick="startTest()">Start Application</button></div>
+<div class="tile"><h3>Track Application</h3><p>Check your status.</p><button onclick="show('track')">Track Now</button></div>
+<div class="tile"><h3>Books &amp; Notes</h3><p>Class 9 and 10</p><button onclick="show('books')">Open Books</button></div>
 </div>
 </section>
 
 <section id="quiz" class="panel hidden">
 <h2>Quality Questions Test</h2>
-<p class="muted">Answer all 20 questions. You need at least 18 correct answers to pass.</p>
+<p class="muted">You need 18 correct answers out of 20 to pass.</p>
 <div id="questions"></div>
 <button class="green" onclick="submitQuiz()">Submit Test</button>
 <button class="dark" onclick="show('home')">Back</button>
@@ -98,7 +98,7 @@ img.proof{max-width:100%;height:auto}
 
 <section id="application" class="panel hidden">
 <h2>Application Dashboard</h2>
-<p class="muted">Your test has been passed. Complete your application below.</p>
+<p class="muted">Complete the form below to submit your application.</p>
 <form id="applicationForm">
 <label>Full Name</label>
 <input name="name" required maxlength="100">
@@ -126,7 +126,7 @@ img.proof{max-width:100%;height:auto}
 
 <section id="track" class="panel hidden">
 <h2>Track Application</h2>
-<label>Enter Track ID</label>
+<label>Track ID</label>
 <input id="trackInput" placeholder="M360-ABC123">
 <button onclick="trackApplication()">Search</button>
 <div id="trackResult"></div>
@@ -134,16 +134,12 @@ img.proof{max-width:100%;height:auto}
 
 <section id="books" class="panel hidden">
 <h2>Books &amp; Notes</h2>
-<div class="item">
-<strong>Class 9th Urdu Test Paper</strong><br>
+<div class="item"><strong>Class 9th Urdu Test Paper</strong><br>
 <a class="btn" href="Class-9th-Urdu-Test-Paper.pdf" target="_blank" rel="noopener">Open PDF</a>
-<a class="btn green" href="Class-9th-Urdu-Test-Paper.pdf" download>Download</a>
-</div>
-<div class="item">
-<strong>Class 10th Urdu Test Paper</strong><br>
+<a class="btn green" href="Class-9th-Urdu-Test-Paper.pdf" download>Download</a></div>
+<div class="item"><strong>Class 10th Urdu Test Paper</strong><br>
 <a class="btn" href="Class-10th-Urdu-Test-Paper.pdf" target="_blank" rel="noopener">Open PDF</a>
-<a class="btn green" href="Class-10th-Urdu-Test-Paper.pdf" download>Download</a>
-</div>
+<a class="btn green" href="Class-10th-Urdu-Test-Paper.pdf" download>Download</a></div>
 </section>
 
 <section id="employee" class="panel hidden">
@@ -153,44 +149,37 @@ img.proof{max-width:100%;height:auto}
 
 <section id="admin" class="panel hidden">
 <h2>Admin Dashboard</h2>
-<p class="muted">Review pending applications and send them to the CEO.</p>
-<button onclick="loadRequests().then(renderAdmin)">Refresh Applications</button>
+<p class="muted">Review applications and send them to CEO.</p>
+<button onclick="loadRequests().then(renderAdmin)">Refresh</button>
 <div id="adminList"></div>
 </section>
 
 <section id="ceo" class="panel hidden">
 <h2>CEO Dashboard</h2>
-<label>Search by Track ID, name or father name</label>
-<input id="search" oninput="renderCEO()" placeholder="Search applications">
-<label>Filter Applications</label>
+<label>Search Track ID, name or father name</label>
+<input id="search" oninput="renderCEO()" placeholder="Search">
+<label>Filter</label>
 <select id="filter" onchange="renderCEO()">
 <option value="all">All Applications</option>
 <option value="sent">Sent to CEO</option>
 <option value="approved">Approved</option>
 <option value="rejected">Rejected</option>
 </select>
-<button onclick="loadRequests().then(renderCEO)">Refresh Applications</button>
+<button onclick="loadRequests().then(renderCEO)">Refresh</button>
 <div id="ceoList"></div>
 </section>
 
-<section class="panel" id="support">
+<section id="support" class="panel">
 <h2>Manan360 Support Team</h2>
 <p>Need help with login, tests or applications?</p>
-<a class="btn green" id="supportLink" href="https://wa.me/" target="_blank" rel="noopener">Contact Support Team</a>
-<p class="muted">Set your official WhatsApp number in the code to activate support contact.</p>
+<a class="btn green" href="https://wa.me/923447232654" target="_blank" rel="noopener">Contact Support Team on WhatsApp</a>
 </section>
 </section>
 </main>
 <footer>Manan360.pk<br>Manan360 Support Team</footer>
 
 <script>
-/*
-Existing Apps Script deployment URL.
-The server-side Code.gs must implement the matching API
-for applications to sync across devices.
-*/
 const SCRIPT_URL="https://script.google.com/macros/s/AKfycbze-jOhnw5tFXEQ3UOIotAgjkA7HtrN9Lbq6oJ1BcsFL4_80gjlJmIlTjHMye3rcbIT/exec";
-
 const $=id=>document.getElementById(id);
 let roleNow="",score=0,passed=false,requests=[];
 const LOCAL_KEY="m360_requests";
@@ -239,12 +228,14 @@ ${q[1].map((o,j)=>`<label class="option"><input type="radio" name="q${i}" value=
 }
 drawQuestions();
 
+/* This login accepts any non-empty username/password.
+   It is not secure authentication for real admin/CEO data. */
 $("loginForm").addEventListener("submit",async function(e){
 e.preventDefault();
 const username=$("username").value.trim();
 const password=$("password").value;
 if(!username||!password){
-alert("Please enter your username and password.");
+alert("Enter any username and password.");
 return;
 }
 roleNow=$("role").value;
@@ -261,8 +252,7 @@ else{show("home")}
 });
 
 $("logout").addEventListener("click",()=>{
-roleNow="";
-passed=false;
+roleNow="";passed=false;
 $("app").classList.add("hidden");
 $("login").classList.remove("hidden");
 $("password").value="";
@@ -284,7 +274,7 @@ $("appResult").classList.add("hidden");
 show("application");
 }else{
 passed=false;
-$("quizResult").textContent="Your score is "+score+"/20. You need at least 18 correct answers. Please try again.";
+$("quizResult").textContent="Your score is "+score+"/20. You need 18 correct answers. Please try again.";
 }
 }
 
@@ -299,7 +289,7 @@ return response.json();
 }
 function saveLocal(){
 try{localStorage.setItem(LOCAL_KEY,JSON.stringify(requests))}
-catch(e){alert("Storage is full. Please use a smaller proof image.")}
+catch(e){alert("Storage is full. Use a smaller image.")}
 }
 async function loadRequests(){
 try{
@@ -320,122 +310,78 @@ return false;
 
 $("applicationForm").addEventListener("submit",async function(e){
 e.preventDefault();
-if(!passed){
-alert("Please pass the test before applying.");
-show("quiz");
-return;
-}
-const form=this;
-const d=new FormData(form);
-const file=form.elements.proof.files[0];
-if(file&&file.size>500000){
-alert("Please choose an image smaller than 500 KB.");
-return;
-}
+if(!passed){alert("Please pass the test first.");show("quiz");return}
+const form=this,d=new FormData(form),file=form.elements.proof.files[0];
+if(file&&file.size>500000){alert("Please select an image smaller than 500 KB.");return}
 let proof="";
 if(file){
 proof=await new Promise(resolve=>{
-const reader=new FileReader();
-reader.onload=()=>resolve(String(reader.result||""));
-reader.onerror=()=>resolve("");
-reader.readAsDataURL(file);
+const r=new FileReader();r.onload=()=>resolve(String(r.result||""));r.onerror=()=>resolve("");r.readAsDataURL(file);
 });
 }
 const item={
 id:"M360-"+Math.random().toString(36).slice(2,8).toUpperCase(),
-name:d.get("name").trim(),
-father:d.get("father").trim(),
-age:d.get("age"),
-className:d.get("className"),
-phone:d.get("phone").trim(),
-correct:score,
-proof:proof,
-status:"Pending",
-sentToCEO:false,
-created:new Date().toISOString()
+name:d.get("name").trim(),father:d.get("father").trim(),
+age:d.get("age"),className:d.get("className"),phone:d.get("phone").trim(),
+correct:score,proof,status:"Pending",sentToCEO:false,created:new Date().toISOString()
 };
 requests.push(item);
 saveLocal();
 let synced=false;
-try{
-const result=await api("submit",{application:item});
-synced=!!result&&result.ok!==false;
-}catch(e){}
+try{const r=await api("submit",{application:item});synced=!!r&&r.ok!==false}catch(e){}
 $("appResult").classList.remove("hidden");
-$("appResult").innerHTML=`<strong>Application Result</strong>
+$("appResult").innerHTML=`<strong>Application submitted</strong>
 <p>Your Track ID:</p><h3>${esc(item.id)}</h3>
 <p>Status: Pending</p>
 <button type="button" onclick="copyTrack('${item.id}')">Copy Track ID</button>
-<p class="muted">${synced?"Server response received.":"Saved on this device only. Shared server storage has not been confirmed."}</p>`;
-form.reset();
-passed=false;
+<p class="muted">${synced?"Server response received.":"Saved on this device only; server sync is not confirmed."}</p>`;
+form.reset();passed=false;
 });
-
 function copyTrack(id){
-if(navigator.clipboard){
-navigator.clipboard.writeText(id).then(()=>alert("Track ID copied."))
-.catch(()=>prompt("Copy your Track ID",id));
-}else{prompt("Copy your Track ID",id)}
+if(navigator.clipboard)navigator.clipboard.writeText(id).then(()=>alert("Track ID copied.")).catch(()=>prompt("Copy Track ID",id));
+else prompt("Copy Track ID",id);
 }
-
 async function trackApplication(){
 await loadRequests();
 const id=$("trackInput").value.trim().toUpperCase();
 const x=requests.find(a=>String(a.id||"").toUpperCase()===id);
-$("trackResult").innerHTML=x?
-`<div class="item"><strong>${esc(x.name)}</strong><p>Track ID: ${esc(x.id)}</p><p>Status: ${esc(x.status)}</p></div>`:
-"<div class='notice'>Application not found. It may be stored on another device or the server may not be connected.</div>";
+$("trackResult").innerHTML=x?`<div class="item"><strong>${esc(x.name)}</strong><p>Track ID: ${esc(x.id)}</p><p>Status: ${esc(x.status)}</p></div>`:"<div class='notice'>Application not found. The server may not be connected or this application may be stored on another device.</div>";
 }
-
 function renderAdmin(){
 $("adminList").innerHTML=requests.length?requests.map(x=>`<div class="item">
 <strong>${esc(x.name)}</strong>
-<p>Track ID: ${esc(x.id)}<br>Father: ${esc(x.father)}<br>
-Class: ${esc(x.className)}<br>Score: ${esc(x.correct)}/20<br>
-Status: ${esc(x.status)}</p>
-${x.proof?`<details><summary>View proof</summary><img class="proof" src="${x.proof}" alt="Application proof"></details>`:""}
+<p>Track ID: ${esc(x.id)}<br>Father: ${esc(x.father)}<br>Class: ${esc(x.className)}<br>Score: ${esc(x.correct)}/20<br>Status: ${esc(x.status)}</p>
+${x.proof?`<details><summary>View proof</summary><img class="proof" src="${x.proof}" alt="Proof"></details>`:""}
 ${!x.sentToCEO&&x.status==="Pending"?`<button class="green" onclick="forwardCEO('${esc(x.id)}')">Send to CEO</button>`:""}
 </div>`).join(""):"<p>No applications found.</p>";
 }
 async function forwardCEO(id){
-const x=requests.find(a=>a.id===id);
-if(!x)return;
-x.sentToCEO=true;
-saveLocal();
+const x=requests.find(a=>a.id===id);if(!x)return;
+x.sentToCEO=true;saveLocal();
 try{await api("update",{id,changes:{sentToCEO:true}})}catch(e){}
 renderAdmin();
 }
 function renderCEO(){
-const q=($("search").value||"").toLowerCase();
-const filter=$("filter").value;
+const q=($("search").value||"").toLowerCase(),filter=$("filter").value;
 const list=requests.filter(x=>{
 const match=[x.id,x.name,x.father].some(v=>String(v||"").toLowerCase().includes(q));
-const matchStatus=filter==="all"||
-(filter==="sent"&&x.sentToCEO)||
-(filter==="approved"&&x.status==="Approved")||
-(filter==="rejected"&&x.status==="Rejected");
-return match&&matchStatus;
+const st=filter==="all"||(filter==="sent"&&x.sentToCEO)||(filter==="approved"&&x.status==="Approved")||(filter==="rejected"&&x.status==="Rejected");
+return match&&st;
 });
 $("ceoList").innerHTML=list.length?list.map(x=>`<div class="item">
 <strong>${esc(x.name)}</strong>
-<p>Track ID: ${esc(x.id)}<br>Father: ${esc(x.father)}<br>
-Age: ${esc(x.age)}<br>Class: ${esc(x.className)}<br>
-Contact: ${esc(x.phone)}<br>Score: ${esc(x.correct)}/20<br>
-Status: <span class="status">${esc(x.status)}</span></p>
-${x.proof?`<details><summary>View proof</summary><img class="proof" src="${x.proof}" alt="Application proof"></details>`:""}
+<p>Track ID: ${esc(x.id)}<br>Father: ${esc(x.father)}<br>Age: ${esc(x.age)}<br>Class: ${esc(x.className)}<br>Contact: ${esc(x.phone)}<br>Score: ${esc(x.correct)}/20<br>Status: <span class="status">${esc(x.status)}</span></p>
+${x.proof?`<details><summary>View proof</summary><img class="proof" src="${x.proof}" alt="Proof"></details>`:""}
 <button class="green" onclick="decision('${esc(x.id)}','Approved')">Approve</button>
 <button class="red" onclick="decision('${esc(x.id)}','Rejected')">Reject</button>
 <button class="dark" onclick="removeItem('${esc(x.id)}')">Delete</button>
 </div>`).join(""):"<p>No matching applications found.</p>";
 }
 async function decision(id,status){
-const x=requests.find(a=>a.id===id);
-if(!x)return;
-if(!confirm("Change application status to "+status+"?"))return;
-x.status=status;
-if(status==="Rejected"){
-requests=requests.filter(a=>a.id!==id);
-}
+const x=requests.find(a=>a.id===id);if(!x)return;
+if(!confirm("Change status to "+status+"?"))return;
+if(status==="Rejected"){requests=requests.filter(a=>a.id!==id)}
+else{x.status=status}
 saveLocal();
 try{
 if(status==="Rejected")await api("delete",{id});
@@ -445,8 +391,7 @@ renderCEO();
 }
 async function removeItem(id){
 if(!confirm("Delete this application?"))return;
-requests=requests.filter(a=>a.id!==id);
-saveLocal();
+requests=requests.filter(a=>a.id!==id);saveLocal();
 try{await api("delete",{id})}catch(e){}
 renderCEO();
 }
