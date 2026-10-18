@@ -1,0 +1,135 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Manan360.com</title>
+<meta name="description" content="Manan360.com - Books, Notes & Quality Questions">
+<style>
+*{box-sizing:border-box}
+body{
+ margin:0;
+ font-family:Arial,sans-serif;
+ color:white;
+ min-height:100vh;
+ background:linear-gradient(135deg,#101d45,#087bb5,#00a878);
+}
+header{
+ text-align:center;
+ padding:35px 15px;
+}
+header h1{font-size:36px;margin:0 0 10px}
+header p{margin:0;color:#e1f5ff}
+.container{max-width:850px;margin:auto;padding:15px}
+.card{
+ background:rgba(255,255,255,.12);
+ border:1px solid rgba(255,255,255,.25);
+ border-radius:18px;
+ padding:22px;
+ margin-bottom:18px;
+ box-shadow:0 8px 25px #0002;
+}
+h2{margin-top:0}
+.grid{
+ display:grid;
+ grid-template-columns:repeat(auto-fit,minmax(210px,1fr));
+ gap:15px;
+}
+.tile{
+ padding:20px;
+ border-radius:14px;
+ background:linear-gradient(135deg,#1765b5,#078b9b);
+}
+.tile h3{margin-top:0}
+button,a.button{
+ display:inline-block;
+ border:0;
+ border-radius:9px;
+ background:#16c784;
+ color:#062d32;
+ padding:12px 17px;
+ font-weight:bold;
+ text-decoration:none;
+ cursor:pointer;
+}
+input,select{
+ width:100%;
+ padding:13px;
+ border-radius:9px;
+ border:1px solid #cbd5e1;
+ margin:8px 0 15px;
+ font-size:16px;
+}
+#message{margin-top:15px;overflow-wrap:anywhere}
+footer{text-align:center;padding:25px 12px;color:#e1f5ff}
+</style>
+</head>
+<body>
+
+<header>
+ <h1>Manan360.com</h1>
+ <p>Books, Notes & Quality Questions</p>
+</header>
+
+<main class="container">
+
+ <section class="card">
+  <h2>Welcome to Manan360</h2>
+  <p>Your student portal for books, notes and quality questions.</p>
+  <div class="grid">
+   <div class="tile">
+    <h3>📚 Books & Notes</h3>
+    <p>Study materials and learning resources.</p>
+   </div>
+   <div class="tile">
+    <h3>📝 Quality Questions</h3>
+    <p>Practice questions to improve your knowledge.</p>
+   </div>
+   <div class="tile">
+    <h3>📋 Track Application</h3>
+    <p>Check an application using its Track ID.</p>
+   </div>
+  </div>
+ </section>
+
+ <section class="card">
+  <h2>Track Your Application</h2>
+  <label for="trackId">Enter Track ID</label>
+  <input id="trackId" type="text" placeholder="Example: M360-123456">
+  <button type="button" onclick="trackApplication()">Check Status</button>
+  <div id="message" aria-live="polite"></div>
+ </section>
+
+ <section class="card">
+  <h2>Contact Support</h2>
+  <p>For assistance with the website, contact the Manan360 Support Team.</p>
+  <a class="button" href="https://wa.me/923447232654" target="_blank" rel="noopener">
+   Contact Support Team
+  </a>
+ </section>
+
+</main>
+
+<footer>
+ © 2026 Manan360.com — All rights reserved.
+</footer>
+
+<script>
+function trackApplication(){
+ const id=document.getElementById("trackId").value.trim();
+ const message=document.getElementById("message");
+
+ if(!id){
+  message.textContent="Please enter your Track ID.";
+  return;
+ }
+
+ message.textContent=
+  "Track ID entered: "+id+
+  ". Application tracking will work after the application database is connected.";
+}
+</script>
+
+</body>
+</html>
