@@ -3,39 +3,38 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="viewport" content="width=device-width,initial-scale=1">
 <meta name="theme-color" content="#102b59">
 <meta name="description" content="Manan360.pk - Books, Notes and Quality Questions">
 <title>Manan360.pk</title>
 <style>
 *{box-sizing:border-box}
-body{margin:0;font-family:Arial,sans-serif;background:#eef4fc;color:#17243b}
-header{background:linear-gradient(120deg,#102b59,#087fc2,#08a878);color:white;text-align:center;padding:24px 12px}
+body{margin:0;font-family:Arial,sans-serif;background:#eef3fb;color:#182740}
+header{background:linear-gradient(125deg,#102653,#087fc1,#08a878);color:#fff;text-align:center;padding:24px 12px}
 header h1{margin:0;font-size:30px}
 header p{margin:8px 0 0}
 main{max-width:950px;margin:20px auto;padding:0 12px}
-.panel{background:white;border-radius:16px;padding:20px;margin-bottom:15px;box-shadow:0 4px 18px #102b5912}
+.panel{background:#fff;border-radius:15px;padding:18px;margin-bottom:15px;box-shadow:0 4px 18px #14284c12}
 h2{color:#102b59;margin-top:0}
-input,select,textarea{display:block;width:100%;padding:12px;border:1px solid #d4dfed;border-radius:9px;margin:8px 0 14px;font-size:15px}
-button,.btn{border:0;border-radius:9px;padding:11px 15px;background:#1768d1;color:white;cursor:pointer;font-weight:bold;margin:4px 2px;text-decoration:none;display:inline-block}
+input,select,textarea{width:100%;padding:12px;border:1px solid #d1dceb;border-radius:9px;margin:7px 0 13px;font-size:15px}
+button,.btn{display:inline-block;border:0;border-radius:9px;padding:11px 15px;background:#1768d1;color:#fff;font-weight:bold;cursor:pointer;text-decoration:none;margin:3px 2px}
 .green{background:#079768}.red{background:#d83b48}.dark{background:#102b59}
 .hidden{display:none!important}
-.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:12px}
-.tile{background:linear-gradient(135deg,#e4efff,#e2fff4);padding:16px;border-radius:12px}
-.item{padding:14px;border:1px solid #dce5f0;border-radius:11px;margin:12px 0;overflow-wrap:anywhere}
-.muted{color:#68788e;font-size:13px;line-height:1.6}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(155px,1fr));gap:12px}
+.tile{padding:16px;border-radius:12px;background:linear-gradient(135deg,#e5efff,#e1fff3)}
+.item{border:1px solid #dce5f0;padding:14px;border-radius:11px;margin:12px 0;overflow-wrap:anywhere}
+.muted{color:#6b788b;font-size:13px;line-height:1.6}
 .notice{background:#eaf5ff;padding:12px;border-radius:9px;margin:12px 0;overflow-wrap:anywhere}
-.ad{padding:15px;border:1px dashed #9aabc1;border-radius:10px;text-align:center;color:#728096;margin:14px 0}
-.question{padding:14px 0;border-bottom:1px solid #e0e8f2}
-label{display:block;margin:8px 0}
+.question{padding:12px 0;border-bottom:1px solid #e0e7f0}
+.option{display:block;margin:10px 0}
+.option input{width:auto;margin:0 6px 0 0}
+.topline{display:flex;justify-content:space-between;align-items:center;gap:8px;flex-wrap:wrap}
+.status{display:inline-block;padding:5px 9px;border-radius:15px;background:#fff0c8;color:#775300;font-size:12px}
+.ad{padding:15px;border:1px dashed #9aabc1;text-align:center;border-radius:10px;color:#718096;margin-bottom:15px}
 footer{text-align:center;padding:22px;color:#68788e;font-size:13px}
-.status{display:inline-block;padding:5px 9px;border-radius:20px;background:#fff0c8;color:#835400;font-size:12px;font-weight:bold}
-.topline{display:flex;justify-content:space-between;align-items:center;gap:10px;flex-wrap:wrap}
-@media(max-width:480px){header h1{font-size:25px}.panel{padding:15px}}
+img.proof{max-width:100%;height:auto}
+@media(max-width:480px){header h1{font-size:25px}.panel{padding:14px}}
 </style>
-
-<!-- Google AdSense: add your approved publisher script after approval. -->
-<!-- Replace YOUR_PUBLISHER_ID with your actual ca-pub ID. -->
 </head>
 <body>
 <header>
@@ -47,7 +46,7 @@ footer{text-align:center;padding:22px;color:#68788e;font-size:13px}
 <section id="login" class="panel">
 <h2>Welcome to Manan360.pk</h2>
 <form id="loginForm">
-<label>Select Role</label>
+<label for="role">Select Role</label>
 <select id="role" required>
 <option value="user">General User</option>
 <option value="student">Student</option>
@@ -55,94 +54,107 @@ footer{text-align:center;padding:22px;color:#68788e;font-size:13px}
 <option value="admin">Admin</option>
 <option value="ceo">CEO</option>
 </select>
-<label>Username</label>
-<input id="username" required autocomplete="username">
-<label>Password</label>
-<input id="password" type="password" required autocomplete="current-password">
-<button class="green">Sign In</button>
+<label for="username">Username</label>
+<input id="username" autocomplete="username" required>
+<label for="password">Password</label>
+<input id="password" type="password" autocomplete="current-password" required>
+<button type="submit" class="green">Login</button>
 </form>
-<p class="muted">Real account security requires server-side authentication.</p>
+<p class="muted">Enter your account details to continue.</p>
 </section>
 
 <section id="app" class="hidden">
 <div class="panel">
 <div class="topline">
 <strong id="welcome">Dashboard</strong>
-<button id="logout" class="dark">Sign Out</button>
+<button id="logout" class="dark" type="button">Sign Out</button>
 </div>
 <p id="roleLabel" class="muted"></p>
 </div>
 
 <div id="adArea" class="ad">
 <strong>Advertisement</strong>
-<p class="muted">Your approved Google AdSense ad unit goes here.</p>
-<!-- Insert the ad unit code supplied by your AdSense account here. -->
+<p class="muted">Google AdSense ads can appear here after approval and setup.</p>
 </div>
 
 <section id="home" class="panel hidden">
-<h2>Student Portal</h2>
+<h2>Student Dashboard</h2>
 <div class="grid">
-<div class="tile"><h3>Quality Questions</h3><p>20 MCQs</p><button onclick="show('quiz')">Start Test</button></div>
-<div class="tile"><h3>Application</h3><p>Apply after passing.</p><button onclick="openApplication()">Apply Now</button></div>
-<div class="tile"><h3>Track ID</h3><p>Check application status.</p><button onclick="show('track')">Track Application</button></div>
-<div class="tile"><h3>Books &amp; Notes</h3><p>Study PDFs</p><button onclick="show('books')">Open Books</button></div>
+<div class="tile"><h3>Quality Questions</h3><p>20 MCQs</p><button onclick="startTest()">Start Test</button></div>
+<div class="tile"><h3>Application</h3><p>Pass the test to open the form.</p><button onclick="startTest()">Start Application</button></div>
+<div class="tile"><h3>Track Application</h3><p>Check status using Track ID.</p><button onclick="show('track')">Track Now</button></div>
+<div class="tile"><h3>Books &amp; Notes</h3><p>Class 9 and 10 PDFs</p><button onclick="show('books')">Open Books</button></div>
 </div>
 </section>
 
 <section id="quiz" class="panel hidden">
 <h2>Quality Questions Test</h2>
-<p class="muted">Answer 20 MCQs. You need at least 18 correct answers.</p>
+<p class="muted">Answer all 20 questions. You need at least 18 correct answers to pass.</p>
 <div id="questions"></div>
 <button class="green" onclick="submitQuiz()">Submit Test</button>
+<button class="dark" onclick="show('home')">Back</button>
 <div id="quizResult" class="notice hidden"></div>
 </section>
 
 <section id="application" class="panel hidden">
-<h2>Application Form</h2>
+<h2>Application Dashboard</h2>
+<p class="muted">Your test has been passed. Complete your application below.</p>
 <form id="applicationForm">
-<label>Full Name</label><input name="name" required maxlength="100">
-<label>Father Name</label><input name="father" required maxlength="100">
-<label>Age</label><input name="age" type="number" min="5" max="100" required>
+<label>Full Name</label>
+<input name="name" required maxlength="100">
+<label>Father Name</label>
+<input name="father" required maxlength="100">
+<label>Age</label>
+<input name="age" type="number" min="5" max="100" required>
 <label>Class</label>
 <select name="className" required>
 <option value="">Select Class</option>
 <option>Class 6</option><option>Class 7</option><option>Class 8</option>
 <option>Class 9</option><option>Class 10</option><option>Other</option>
 </select>
-<label>Contact Number</label><input name="phone" required maxlength="25">
-<label>Correct Answers</label><input id="score" readonly>
-<label>Proof Image (optional, max 500 KB)</label><input name="proof" type="file" accept="image/*">
-<button class="green">Submit Application</button>
+<label>Contact Number</label>
+<input name="phone" required maxlength="25">
+<label>Correct Answers</label>
+<input id="score" readonly>
+<label>Proof Image (optional, maximum 500 KB)</label>
+<input name="proof" type="file" accept="image/*">
+<button class="green" type="submit">Submit Application</button>
+<button class="dark" type="button" onclick="show('home')">Back</button>
 </form>
 <div id="appResult" class="notice hidden"></div>
 </section>
 
 <section id="track" class="panel hidden">
 <h2>Track Application</h2>
-<label>Track ID</label><input id="trackInput" placeholder="M360-ABC123">
+<label>Enter Track ID</label>
+<input id="trackInput" placeholder="M360-ABC123">
 <button onclick="trackApplication()">Search</button>
 <div id="trackResult"></div>
 </section>
 
 <section id="books" class="panel hidden">
 <h2>Books &amp; Notes</h2>
-<div class="item"><strong>Class 9th Urdu Test Paper</strong><br>
+<div class="item">
+<strong>Class 9th Urdu Test Paper</strong><br>
 <a class="btn" href="Class-9th-Urdu-Test-Paper.pdf" target="_blank" rel="noopener">Open PDF</a>
-<a class="btn green" href="Class-9th-Urdu-Test-Paper.pdf" download>Download</a></div>
-<div class="item"><strong>Class 10th Urdu Test Paper</strong><br>
+<a class="btn green" href="Class-9th-Urdu-Test-Paper.pdf" download>Download</a>
+</div>
+<div class="item">
+<strong>Class 10th Urdu Test Paper</strong><br>
 <a class="btn" href="Class-10th-Urdu-Test-Paper.pdf" target="_blank" rel="noopener">Open PDF</a>
-<a class="btn green" href="Class-10th-Urdu-Test-Paper.pdf" download>Download</a></div>
+<a class="btn green" href="Class-10th-Urdu-Test-Paper.pdf" download>Download</a>
+</div>
 </section>
 
 <section id="employee" class="panel hidden">
 <h2>Employee Dashboard</h2>
-<button onclick="show('quiz')">Quality Questions</button>
+<button onclick="startTest()">Quality Questions</button>
 </section>
 
 <section id="admin" class="panel hidden">
 <h2>Admin Dashboard</h2>
-<p class="muted">Review applications and forward them to the CEO.</p>
-<button onclick="loadRequests().then(renderAdmin)">Refresh</button>
+<p class="muted">Review pending applications and send them to the CEO.</p>
+<button onclick="loadRequests().then(renderAdmin)">Refresh Applications</button>
 <div id="adminList"></div>
 </section>
 
@@ -150,28 +162,38 @@ footer{text-align:center;padding:22px;color:#68788e;font-size:13px}
 <h2>CEO Dashboard</h2>
 <label>Search by Track ID, name or father name</label>
 <input id="search" oninput="renderCEO()" placeholder="Search applications">
-<label>Status Filter</label>
+<label>Filter Applications</label>
 <select id="filter" onchange="renderCEO()">
 <option value="all">All Applications</option>
 <option value="sent">Sent to CEO</option>
 <option value="approved">Approved</option>
 <option value="rejected">Rejected</option>
 </select>
-<button onclick="loadRequests().then(renderCEO)">Refresh</button>
+<button onclick="loadRequests().then(renderCEO)">Refresh Applications</button>
 <div id="ceoList"></div>
+</section>
+
+<section class="panel" id="support">
+<h2>Manan360 Support Team</h2>
+<p>Need help with login, tests or applications?</p>
+<a class="btn green" id="supportLink" href="https://wa.me/" target="_blank" rel="noopener">Contact Support Team</a>
+<p class="muted">Set your official WhatsApp number in the code to activate support contact.</p>
 </section>
 </section>
 </main>
-
 <footer>Manan360.pk<br>Manan360 Support Team</footer>
 
 <script>
-/* Your previously supplied Manan360 Apps Script deployment. */
-const SCRIPT_URL =
-"https://script.google.com/macros/s/AKfycbze-jOhnw5tFXEQ3UOIotAgjkA7HtrN9Lbq6oJ1BcsFL4_80gjlJmIlTjHMye3rcbIT/exec";
+/*
+Existing Apps Script deployment URL.
+The server-side Code.gs must implement the matching API
+for applications to sync across devices.
+*/
+const SCRIPT_URL="https://script.google.com/macros/s/AKfycbze-jOhnw5tFXEQ3UOIotAgjkA7HtrN9Lbq6oJ1BcsFL4_80gjlJmIlTjHMye3rcbIT/exec";
 
 const $=id=>document.getElementById(id);
 let roleNow="",score=0,passed=false,requests=[];
+const LOCAL_KEY="m360_requests";
 
 const qs=[
 ["5 + 7 = ?",["10","12","13","14"],1],
@@ -204,142 +226,174 @@ function show(id){
 $(id).classList.remove("hidden");
 window.scrollTo(0,0);
 }
+function startTest(){
+$("quizResult").classList.add("hidden");
+$("questions").querySelectorAll("input").forEach(x=>x.checked=false);
+show("quiz");
+}
 function drawQuestions(){
 $("questions").innerHTML=qs.map((q,i)=>`<div class="question">
 <strong>${i+1}. ${esc(q[0])}</strong>
-${q[1].map((o,j)=>`<label><input type="radio" style="display:inline;width:auto" name="q${i}" value="${j}"> ${esc(o)}</label>`).join("")}
+${q[1].map((o,j)=>`<label class="option"><input type="radio" name="q${i}" value="${j}"> ${esc(o)}</label>`).join("")}
 </div>`).join("");
 }
 drawQuestions();
 
-/*
-Expected Apps Script API:
-GET ?action=list -> {"ok":true,"requests":[...]}
-POST JSON {action:"submit",application:{...}}
-POST JSON {action:"update",id:"...",changes:{...}}
-POST JSON {action:"delete",id:"..."}
-Your existing Code.gs may use a different contract. Match it before relying on shared storage.
-*/
-async function api(action,data={}){
-const response=await fetch(SCRIPT_URL+"?action="+encodeURIComponent(action),{
-method:"POST",
-headers:{"Content-Type":"text/plain;charset=utf-8"},
-body:JSON.stringify({action,...data})
-});
-if(!response.ok)throw new Error("Apps Script request failed");
-return response.json();
-}
-async function loadRequests(){
-try{
-const response=await fetch(SCRIPT_URL+"?action=list");
-if(!response.ok)throw new Error("List failed");
-const result=await response.json();
-if(result&&result.ok&&Array.isArray(result.requests)){
-requests=result.requests;
-saveLocal();
-return true;
-}
-throw new Error("Unexpected Apps Script response");
-}catch(error){
-try{requests=JSON.parse(localStorage.getItem("m360_requests")||"[]")}catch(e){requests=[]}
-return false;
-}
-}
-function saveLocal(){
-try{localStorage.setItem("m360_requests",JSON.stringify(requests))}
-catch(e){alert("Storage is full. Use a smaller image.")}
-}
-$("loginForm").addEventListener("submit",async e=>{
+$("loginForm").addEventListener("submit",async function(e){
 e.preventDefault();
+const username=$("username").value.trim();
+const password=$("password").value;
+if(!username||!password){
+alert("Please enter your username and password.");
+return;
+}
 roleNow=$("role").value;
 $("login").classList.add("hidden");
 $("app").classList.remove("hidden");
-$("welcome").textContent="Welcome, "+$("username").value.trim();
+$("welcome").textContent="Welcome, "+username;
 $("roleLabel").textContent="Role: "+roleNow.toUpperCase();
 $("adArea").classList.toggle("hidden",roleNow==="admin"||roleNow==="ceo");
 await loadRequests();
 if(roleNow==="admin"){show("admin");renderAdmin()}
 else if(roleNow==="ceo"){show("ceo");renderCEO()}
-else if(roleNow==="employee")show("employee");
-else show("home");
+else if(roleNow==="employee"){show("employee")}
+else{show("home")}
 });
-$("logout").onclick=()=>{
+
+$("logout").addEventListener("click",()=>{
 roleNow="";
+passed=false;
 $("app").classList.add("hidden");
 $("login").classList.remove("hidden");
 $("password").value="";
 $("username").value="";
-};
+});
+
 function submitQuiz(){
 score=0;
 qs.forEach((q,i)=>{
 const a=document.querySelector(`input[name="q${i}"]:checked`);
 if(a&&Number(a.value)===q[2])score++;
 });
-passed=score>=18;
+$("score").value=score;
 $("quizResult").classList.remove("hidden");
-$("quizResult").textContent=`Your score: ${score}/20. `+
-(passed?"You passed. The application form is unlocked.":"You need at least 18 correct answers. Try again.");
-$("score").value=score;
-}
-function openApplication(){
-if(!passed){show("quiz");return}
-$("score").value=score;
+if(score>=18){
+passed=true;
+$("quizResult").textContent="Congratulations! You passed. Opening Application Dashboard...";
+$("appResult").classList.add("hidden");
 show("application");
+}else{
+passed=false;
+$("quizResult").textContent="Your score is "+score+"/20. You need at least 18 correct answers. Please try again.";
 }
-$("applicationForm").addEventListener("submit",async e=>{
+}
+
+async function api(action,data={}){
+const response=await fetch(SCRIPT_URL+"?action="+encodeURIComponent(action),{
+method:"POST",
+headers:{"Content-Type":"text/plain;charset=utf-8"},
+body:JSON.stringify({action,...data})
+});
+if(!response.ok)throw new Error("Server request failed");
+return response.json();
+}
+function saveLocal(){
+try{localStorage.setItem(LOCAL_KEY,JSON.stringify(requests))}
+catch(e){alert("Storage is full. Please use a smaller proof image.")}
+}
+async function loadRequests(){
+try{
+const r=await fetch(SCRIPT_URL+"?action=list");
+const data=await r.json();
+if(data&&data.ok&&Array.isArray(data.requests)){
+requests=data.requests;
+saveLocal();
+return true;
+}
+throw new Error("Unexpected response");
+}catch(e){
+try{requests=JSON.parse(localStorage.getItem(LOCAL_KEY)||"[]")}
+catch(err){requests=[]}
+return false;
+}
+}
+
+$("applicationForm").addEventListener("submit",async function(e){
 e.preventDefault();
-if(!passed){alert("Please pass the test first.");return}
-const f=e.target,d=new FormData(f),file=f.elements.proof.files[0];
-if(file&&file.size>500000){alert("Choose an image smaller than 500 KB.");return}
+if(!passed){
+alert("Please pass the test before applying.");
+show("quiz");
+return;
+}
+const form=this;
+const d=new FormData(form);
+const file=form.elements.proof.files[0];
+if(file&&file.size>500000){
+alert("Please choose an image smaller than 500 KB.");
+return;
+}
 let proof="";
 if(file){
 proof=await new Promise(resolve=>{
-const r=new FileReader();
-r.onload=()=>resolve(String(r.result||""));
-r.onerror=()=>resolve("");
-r.readAsDataURL(file);
+const reader=new FileReader();
+reader.onload=()=>resolve(String(reader.result||""));
+reader.onerror=()=>resolve("");
+reader.readAsDataURL(file);
 });
 }
 const item={
 id:"M360-"+Math.random().toString(36).slice(2,8).toUpperCase(),
-name:d.get("name").trim(),father:d.get("father").trim(),
-age:d.get("age"),className:d.get("className"),
-phone:d.get("phone").trim(),correct:score,proof,
-status:"Pending",sentToCEO:false,created:new Date().toISOString()
+name:d.get("name").trim(),
+father:d.get("father").trim(),
+age:d.get("age"),
+className:d.get("className"),
+phone:d.get("phone").trim(),
+correct:score,
+proof:proof,
+status:"Pending",
+sentToCEO:false,
+created:new Date().toISOString()
 };
-let synced=false;
-try{
-const r=await api("submit",{application:item});
-if(r&&r.ok!==false)synced=true;
-}catch(error){}
 requests.push(item);
 saveLocal();
+let synced=false;
+try{
+const result=await api("submit",{application:item});
+synced=!!result&&result.ok!==false;
+}catch(e){}
 $("appResult").classList.remove("hidden");
-$("appResult").innerHTML=`Application recorded.<p>Your Track ID:</p><h3>${esc(item.id)}</h3>
-<button onclick="copyID('${item.id}')">Copy Track ID</button>
-<p class="muted">${synced?"Server accepted the request.":"Saved on this device only; server sync not confirmed."}</p>`;
-f.reset();
+$("appResult").innerHTML=`<strong>Application Result</strong>
+<p>Your Track ID:</p><h3>${esc(item.id)}</h3>
+<p>Status: Pending</p>
+<button type="button" onclick="copyTrack('${item.id}')">Copy Track ID</button>
+<p class="muted">${synced?"Server response received.":"Saved on this device only. Shared server storage has not been confirmed."}</p>`;
+form.reset();
 passed=false;
 });
-function copyID(id){
-if(navigator.clipboard)navigator.clipboard.writeText(id).then(()=>alert("Copied")).catch(()=>prompt("Copy Track ID",id));
-else prompt("Copy Track ID",id);
+
+function copyTrack(id){
+if(navigator.clipboard){
+navigator.clipboard.writeText(id).then(()=>alert("Track ID copied."))
+.catch(()=>prompt("Copy your Track ID",id));
+}else{prompt("Copy your Track ID",id)}
 }
+
 async function trackApplication(){
 await loadRequests();
 const id=$("trackInput").value.trim().toUpperCase();
-const x=requests.find(a=>String(a.id).toUpperCase()===id);
+const x=requests.find(a=>String(a.id||"").toUpperCase()===id);
 $("trackResult").innerHTML=x?
 `<div class="item"><strong>${esc(x.name)}</strong><p>Track ID: ${esc(x.id)}</p><p>Status: ${esc(x.status)}</p></div>`:
-"<p class='notice'>Application not found. Check the Track ID and server connection.</p>";
+"<div class='notice'>Application not found. It may be stored on another device or the server may not be connected.</div>";
 }
+
 function renderAdmin(){
 $("adminList").innerHTML=requests.length?requests.map(x=>`<div class="item">
-<strong>${esc(x.name)}</strong><p>Track ID: ${esc(x.id)}<br>
-Father: ${esc(x.father)}<br>Class: ${esc(x.className)}<br>
-Score: ${esc(x.correct)}/20<br>Status: ${esc(x.status)}</p>
-${x.proof?`<details><summary>View proof</summary><img src="${x.proof}" alt="Proof" style="max-width:100%"></details>`:""}
+<strong>${esc(x.name)}</strong>
+<p>Track ID: ${esc(x.id)}<br>Father: ${esc(x.father)}<br>
+Class: ${esc(x.className)}<br>Score: ${esc(x.correct)}/20<br>
+Status: ${esc(x.status)}</p>
+${x.proof?`<details><summary>View proof</summary><img class="proof" src="${x.proof}" alt="Application proof"></details>`:""}
 ${!x.sentToCEO&&x.status==="Pending"?`<button class="green" onclick="forwardCEO('${esc(x.id)}')">Send to CEO</button>`:""}
 </div>`).join(""):"<p>No applications found.</p>";
 }
@@ -347,8 +401,8 @@ async function forwardCEO(id){
 const x=requests.find(a=>a.id===id);
 if(!x)return;
 x.sentToCEO=true;
-try{await api("update",{id,changes:{sentToCEO:true}})}catch(e){}
 saveLocal();
+try{await api("update",{id,changes:{sentToCEO:true}})}catch(e){}
 renderAdmin();
 }
 function renderCEO(){
@@ -356,35 +410,44 @@ const q=($("search").value||"").toLowerCase();
 const filter=$("filter").value;
 const list=requests.filter(x=>{
 const match=[x.id,x.name,x.father].some(v=>String(v||"").toLowerCase().includes(q));
-const status=filter==="all"||(filter==="sent"&&x.sentToCEO)||
-(filter==="approved"&&x.status==="Approved")||(filter==="rejected"&&x.status==="Rejected");
-return match&&status;
+const matchStatus=filter==="all"||
+(filter==="sent"&&x.sentToCEO)||
+(filter==="approved"&&x.status==="Approved")||
+(filter==="rejected"&&x.status==="Rejected");
+return match&&matchStatus;
 });
 $("ceoList").innerHTML=list.length?list.map(x=>`<div class="item">
-<strong>${esc(x.name)}</strong><p>Track ID: ${esc(x.id)}<br>
-Father: ${esc(x.father)}<br>Age: ${esc(x.age)}<br>Class: ${esc(x.className)}<br>
-Phone: ${esc(x.phone)}<br>Score: ${esc(x.correct)}/20<br>
+<strong>${esc(x.name)}</strong>
+<p>Track ID: ${esc(x.id)}<br>Father: ${esc(x.father)}<br>
+Age: ${esc(x.age)}<br>Class: ${esc(x.className)}<br>
+Contact: ${esc(x.phone)}<br>Score: ${esc(x.correct)}/20<br>
 Status: <span class="status">${esc(x.status)}</span></p>
-${x.proof?`<details><summary>View proof</summary><img src="${x.proof}" alt="Proof" style="max-width:100%"></details>`:""}
+${x.proof?`<details><summary>View proof</summary><img class="proof" src="${x.proof}" alt="Application proof"></details>`:""}
 <button class="green" onclick="decision('${esc(x.id)}','Approved')">Approve</button>
 <button class="red" onclick="decision('${esc(x.id)}','Rejected')">Reject</button>
 <button class="dark" onclick="removeItem('${esc(x.id)}')">Delete</button>
-</div>`).join(""):"<p>No matching applications.</p>";
+</div>`).join(""):"<p>No matching applications found.</p>";
 }
 async function decision(id,status){
 const x=requests.find(a=>a.id===id);
 if(!x)return;
-if(!confirm("Set status to "+status+"?"))return;
+if(!confirm("Change application status to "+status+"?"))return;
 x.status=status;
-try{await api("update",{id,changes:{status}})}catch(e){}
+if(status==="Rejected"){
+requests=requests.filter(a=>a.id!==id);
+}
 saveLocal();
+try{
+if(status==="Rejected")await api("delete",{id});
+else await api("update",{id,changes:{status}});
+}catch(e){}
 renderCEO();
 }
 async function removeItem(id){
 if(!confirm("Delete this application?"))return;
-requests=requests.filter(x=>x.id!==id);
-try{await api("delete",{id})}catch(e){}
+requests=requests.filter(a=>a.id!==id);
 saveLocal();
+try{await api("delete",{id})}catch(e){}
 renderCEO();
 }
 </script>
