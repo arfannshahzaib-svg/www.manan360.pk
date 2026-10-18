@@ -3,50 +3,41 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="theme-color" content="#102b59">
-<meta name="description" content="Manan360.pk - Books, Notes & Quality Questions">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Manan360.pk</title>
 <style>
 *{box-sizing:border-box}
-body{margin:0;font-family:Arial,sans-serif;background:#eef3fb;color:#182740}
-header{background:linear-gradient(125deg,#102653,#087fc1,#08a878);color:white;text-align:center;padding:24px 12px}
-header h1{margin:0;font-size:30px}
-header p{margin:8px 0 0}
-main{max-width:950px;margin:20px auto;padding:0 12px}
-.panel{background:white;border-radius:15px;padding:18px;margin-bottom:15px;box-shadow:0 4px 18px #14284c12}
-h2{color:#102b59;margin-top:0}
-input,select{display:block;width:100%;padding:12px;border:1px solid #d1dceb;border-radius:9px;margin:7px 0 13px;font-size:15px}
-button,.btn{display:inline-block;border:0;border-radius:9px;padding:11px 15px;background:#1768d1;color:white;font-weight:bold;cursor:pointer;text-decoration:none;margin:3px 2px}
-.green{background:#079768}.red{background:#d83b48}.dark{background:#102b59}
+body{margin:0;font-family:Arial,sans-serif;background:linear-gradient(135deg,#10234b,#087bb5,#00a878);color:#fff;min-height:100vh;padding:16px}
+.wrap{max-width:900px;margin:auto}
+header,.panel{background:#ffffff15;border:1px solid #ffffff35;border-radius:18px;padding:20px;margin-bottom:16px;box-shadow:0 8px 25px #00152b30}
+header{text-align:center}
+h1{margin:0 0 8px}
+h2{margin-top:0}
+input,select,button,textarea{width:100%;padding:12px;border-radius:10px;border:1px solid #d5dce8;margin:7px 0;font-size:15px}
+button{border:0;background:#00d39b;color:#052d36;font-weight:bold;cursor:pointer}
+button.secondary{background:#fff;color:#15365b}
+button.danger{background:#ff7777;color:#401111}
+button.small{width:auto;padding:7px 12px}
 .hidden{display:none!important}
-.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(155px,1fr));gap:12px}
-.tile{padding:16px;border-radius:12px;background:linear-gradient(135deg,#e5efff,#e1fff3)}
-.item{border:1px solid #dce5f0;padding:14px;border-radius:11px;margin:12px 0;overflow-wrap:anywhere}
-.muted{color:#6b788b;font-size:13px;line-height:1.6}
-.notice{background:#eaf5ff;padding:12px;border-radius:9px;margin:12px 0;overflow-wrap:anywhere}
-.question{padding:12px 0;border-bottom:1px solid #e0e7f0}
-.option{display:block;margin:10px 0}
-.option input{display:inline;width:auto;margin:0 6px 0 0}
-.topline{display:flex;justify-content:space-between;align-items:center;gap:8px;flex-wrap:wrap}
-.status{display:inline-block;padding:5px 9px;border-radius:15px;background:#fff0c8;color:#775300;font-size:12px}
-.ad{padding:15px;border:1px dashed #9aabc1;text-align:center;border-radius:10px;color:#718096;margin-bottom:15px}
-footer{text-align:center;padding:22px;color:#68788e;font-size:13px}
-.proof{max-width:100%;height:auto}
-@media(max-width:480px){header h1{font-size:25px}.panel{padding:14px}}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:12px}
+.card{background:#071d3b55;border-radius:12px;padding:15px;margin:10px 0;overflow-wrap:anywhere}
+.muted{opacity:.85;font-size:13px}
+.good{color:#aaffd7}.bad{color:#ffd0d0}
+a{color:#fff}
+label{display:block;margin-top:8px}
 </style>
 </head>
 <body>
+<div class="wrap">
 <header>
 <h1>Manan360.pk</h1>
 <p>Books, Notes &amp; Quality Questions</p>
+<p class="muted">Manan360 Support Team</p>
 </header>
-<main>
 
 <section id="login" class="panel">
-<h2>Welcome to Manan360.pk</h2>
-<form id="loginForm">
-<label for="role">Select Role</label>
+<h2>Login</h2>
+<label>Choose Role</label>
 <select id="role">
 <option value="user">General User</option>
 <option value="student">Student</option>
@@ -54,347 +45,324 @@ footer{text-align:center;padding:22px;color:#68788e;font-size:13px}
 <option value="admin">Admin</option>
 <option value="ceo">CEO</option>
 </select>
-<label for="username">Username</label>
-<input id="username" placeholder="Enter any username" required>
-<label for="password">Password</label>
-<input id="password" type="password" placeholder="Enter any password" required>
-<button class="green" type="submit">Login</button>
-</form>
-<p class="muted">Enter any username and password to continue.</p>
+<input id="username" placeholder="Username" autocomplete="username">
+<input id="password" type="password" placeholder="Password" autocomplete="current-password">
+<button onclick="loginUser()">Login</button>
+<p class="muted">Enter your assigned login details.</p>
+<p id="loginMsg" class="bad"></p>
 </section>
 
-<section id="app" class="hidden">
+<section id="home" class="hidden">
 <div class="panel">
-<div class="topline">
-<strong id="welcome">Dashboard</strong>
-<button id="logout" class="dark" type="button">Sign Out</button>
+<div style="display:flex;justify-content:space-between;align-items:center;gap:10px">
+<h2>Student Portal</h2><button class="small secondary" onclick="logout()">Sign Out</button>
 </div>
-<p id="roleLabel" class="muted"></p>
-</div>
-
-<div id="adArea" class="ad">
-<strong>Advertisement</strong>
-<p class="muted">AdSense advertisements can be added after approval.</p>
-</div>
-
-<section id="home" class="panel hidden">
-<h2>Student Dashboard</h2>
 <div class="grid">
-<div class="tile"><h3>Quality Questions</h3><p>20 MCQs</p><button onclick="startTest()">Start Test</button></div>
-<div class="tile"><h3>Application</h3><p>Pass the test first.</p><button onclick="startTest()">Start Application</button></div>
-<div class="tile"><h3>Track Application</h3><p>Check your status.</p><button onclick="show('track')">Track Now</button></div>
-<div class="tile"><h3>Books &amp; Notes</h3><p>Class 9 and 10</p><button onclick="show('books')">Open Books</button></div>
+<div class="card"><h3>Quality Questions</h3><p>Complete the 20-question test.</p><button onclick="startTest()">Start Test</button></div>
+<div class="card"><h3>Books &amp; Notes</h3><p>Class 9 Urdu Test Paper</p><a href="Class-9th-Urdu-Test-Paper.pdf" target="_blank">Open PDF</a><br><a href="Class-9th-Urdu-Test-Paper.pdf" download>Download PDF</a><hr><p>Class 10 Urdu Test Paper</p><a href="Class-10th-Urdu-Test-Paper.pdf" target="_blank">Open PDF</a><br><a href="Class-10th-Urdu-Test-Paper.pdf" download>Download PDF</a></div>
+<div class="card"><h3>Track Application</h3><input id="trackSearch" placeholder="Enter Track ID"><button onclick="trackApplication()">Track</button><div id="trackResult"></div></div>
+<div class="card"><h3>Contact Support</h3><a href="https://wa.me/923447232654" target="_blank">Contact Support Team on WhatsApp</a></div>
+</div>
 </div>
 </section>
 
-<section id="quiz" class="panel hidden">
+<section id="testPanel" class="panel hidden">
 <h2>Quality Questions Test</h2>
-<p class="muted">You need 18 correct answers out of 20 to pass.</p>
-<div id="questions"></div>
-<button class="green" onclick="submitQuiz()">Submit Test</button>
-<button class="dark" onclick="show('home')">Back</button>
-<div id="quizResult" class="notice hidden"></div>
+<p>Pass mark: 18 out of 20.</p>
+<div id="questionArea"></div>
+<button onclick="submitTest()">Submit Test</button>
+<p id="testMsg"></p>
 </section>
 
 <section id="application" class="panel hidden">
-<h2>Application Dashboard</h2>
-<p class="muted">Complete the form below to submit your application.</p>
+<h2>Application Form</h2>
+<p>Complete your details below.</p>
 <form id="applicationForm">
-<label>Full Name</label>
-<input name="name" required maxlength="100">
-<label>Father Name</label>
-<input name="father" required maxlength="100">
-<label>Age</label>
-<input name="age" type="number" min="5" max="100" required>
-<label>Class</label>
-<select name="className" required>
-<option value="">Select Class</option>
-<option>Class 6</option><option>Class 7</option><option>Class 8</option>
-<option>Class 9</option><option>Class 10</option><option>Other</option>
-</select>
-<label>Contact Number</label>
-<input name="phone" required maxlength="25">
-<label>Correct Answers</label>
-<input id="score" readonly>
-<label>Proof Image (optional, maximum 500 KB)</label>
-<input name="proof" type="file" accept="image/*">
-<button class="green" type="submit">Submit Application</button>
-<button class="dark" type="button" onclick="show('home')">Back</button>
+<input id="fullName" placeholder="Full Name" required>
+<input id="fatherName" placeholder="Father Name" required>
+<input id="age" type="number" min="1" max="100" placeholder="Age" required>
+<input id="className" placeholder="Class" required>
+<input id="correctAnswers" type="number" readonly placeholder="Correct Answers">
+<label>Proof Image (optional)</label>
+<input id="proof" type="file" accept="image/*">
+<textarea id="details" placeholder="Additional Details (optional)"></textarea>
+<button type="submit">Submit Application</button>
 </form>
-<div id="appResult" class="notice hidden"></div>
-</section>
-
-<section id="track" class="panel hidden">
-<h2>Track Application</h2>
-<label>Track ID</label>
-<input id="trackInput" placeholder="M360-ABC123">
-<button onclick="trackApplication()">Search</button>
-<div id="trackResult"></div>
-</section>
-
-<section id="books" class="panel hidden">
-<h2>Books &amp; Notes</h2>
-<div class="item"><strong>Class 9th Urdu Test Paper</strong><br>
-<a class="btn" href="Class-9th-Urdu-Test-Paper.pdf" target="_blank" rel="noopener">Open PDF</a>
-<a class="btn green" href="Class-9th-Urdu-Test-Paper.pdf" download>Download</a></div>
-<div class="item"><strong>Class 10th Urdu Test Paper</strong><br>
-<a class="btn" href="Class-10th-Urdu-Test-Paper.pdf" target="_blank" rel="noopener">Open PDF</a>
-<a class="btn green" href="Class-10th-Urdu-Test-Paper.pdf" download>Download</a></div>
+<p id="applicationMsg"></p>
 </section>
 
 <section id="employee" class="panel hidden">
 <h2>Employee Dashboard</h2>
-<button onclick="startTest()">Quality Questions</button>
+<p>Employee portal</p>
+<button onclick="logout()" class="secondary">Sign Out</button>
 </section>
 
 <section id="admin" class="panel hidden">
-<h2>Admin Dashboard</h2>
-<p class="muted">Review applications and send them to CEO.</p>
-<button onclick="loadRequests().then(renderAdmin)">Refresh</button>
+<div style="display:flex;justify-content:space-between;align-items:center;gap:10px">
+<h2>Admin Dashboard</h2><button class="small secondary" onclick="logout()">Sign Out</button>
+</div>
+<p>Review applications and send them to the CEO.</p>
+<button onclick="loadApplications()">Refresh Applications</button>
 <div id="adminList"></div>
 </section>
 
 <section id="ceo" class="panel hidden">
-<h2>CEO Dashboard</h2>
-<label>Search Track ID, name or father name</label>
-<input id="search" oninput="renderCEO()" placeholder="Search">
-<label>Filter</label>
-<select id="filter" onchange="renderCEO()">
+<div style="display:flex;justify-content:space-between;align-items:center;gap:10px">
+<h2>CEO Dashboard</h2><button class="small secondary" onclick="logout()">Sign Out</button>
+</div>
+<input id="ceoSearch" placeholder="Search Track ID, name or father name">
+<select id="ceoFilter" onchange="loadApplications()">
 <option value="all">All Applications</option>
-<option value="sent">Sent to CEO</option>
-<option value="approved">Approved</option>
-<option value="rejected">Rejected</option>
+<option value="Sent to CEO">Sent to CEO</option>
+<option value="Approved">Approved</option>
+<option value="Rejected">Rejected</option>
 </select>
-<button onclick="loadRequests().then(renderCEO)">Refresh</button>
+<button onclick="loadApplications()">Search / Refresh</button>
 <div id="ceoList"></div>
 </section>
 
-<section id="support" class="panel">
-<h2>Manan360 Support Team</h2>
-<p>Need help with login, tests or applications?</p>
-<a class="btn green" href="https://wa.me/923447232654" target="_blank" rel="noopener">Contact Support Team on WhatsApp</a>
-</section>
-</section>
-</main>
-<footer>Manan360.pk<br>Manan360 Support Team</footer>
+<footer class="muted" style="text-align:center;padding:12px">© 2026 Manan360.pk · Manan360 Support Team</footer>
+</div>
 
 <script>
-const SCRIPT_URL="https://script.google.com/macros/s/AKfycbze-jOhnw5tFXEQ3UOIotAgjkA7HtrN9Lbq6oJ1BcsFL4_80gjlJmIlTjHMye3rcbIT/exec";
-const $=id=>document.getElementById(id);
-let roleNow="",score=0,passed=false,requests=[];
-const LOCAL_KEY="m360_requests";
+/* Google Apps Script endpoint */
+const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbze-jOhnw5tFXEQ3UOIotAgjkA7HtrN9Lbq6oJ1BcsFL4_80gjlJmIlTjHMye3rcbIT/exec";
 
-const qs=[
-["5 + 7 = ?",["10","12","13","14"],1],
-["9 × 3 = ?",["18","21","27","36"],2],
-["100 ÷ 4 = ?",["20","25","30","40"],1],
-["15 - 6 = ?",["7","8","9","10"],2],
-["Square of 5?",["10","15","20","25"],3],
-["Opposite of hot?",["Warm","Cold","Dry","Bright"],1],
-["Which is a noun?",["Run","Beautiful","School","Quickly"],2],
-["Plural of child?",["Childs","Children","Childes","Childrens"],1],
-["Past tense of go?",["Goed","Going","Gone","Went"],3],
-["Which is a vowel?",["B","D","A","G"],2],
-["Pakistan independence year?",["1940","1947","1956","1965"],1],
-["National language of Pakistan?",["Punjabi","Sindhi","Urdu","English"],2],
-["Days in a week?",["5","6","7","8"],2],
-["Planet we live on?",["Mars","Earth","Venus","Jupiter"],1],
-["The Sun is a?",["Planet","Star","Moon","Comet"],1],
-["Urdu is written from?",["Left to right","Right to left","Top to bottom","Both ways"],1],
-["Urdu word for book?",["Qalam","Kitaab","Darakht","Paani"],1],
-["Months in a year?",["10","11","12","13"],2],
-["Used for writing?",["Pencil","Plate","Spoon","Cup"],0],
-["10 + 10 = ?",["10","15","20","25"],2]
-];
+/* Local browser storage is a fallback, not shared storage. */
+const STORE_KEY = "m360_requests";
+let currentRole = "";
+let lastScore = 0;
+let questions = [];
+let answers = {};
 
-function esc(v){
-return String(v??"").replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
+function getRequests(){
+ try{return JSON.parse(localStorage.getItem(STORE_KEY)||"[]")}
+ catch(e){return []}
 }
-function show(id){
-["home","quiz","application","track","books","employee","admin","ceo"].forEach(x=>$(x).classList.add("hidden"));
-$(id).classList.remove("hidden");
-window.scrollTo(0,0);
+function saveRequests(items){
+ localStorage.setItem(STORE_KEY,JSON.stringify(items));
+}
+function showOnly(id){
+ ["login","home","testPanel","application","employee","admin","ceo"].forEach(x=>{
+  document.getElementById(x).classList.toggle("hidden",x!==id);
+ });
+}
+function loginUser(){
+ const role=document.getElementById("role").value;
+ const username=document.getElementById("username").value.trim();
+ const password=document.getElementById("password").value;
+ if(!username||!password){
+  document.getElementById("loginMsg").textContent="Enter username and password.";
+  return;
+ }
+ currentRole=role;
+ sessionStorage.setItem("m360_role",role);
+ if(role==="admin"){showOnly("admin");loadApplications()}
+ else if(role==="ceo"){showOnly("ceo");loadApplications()}
+ else if(role==="employee"){showOnly("employee")}
+ else{showOnly("home")}
+}
+document.getElementById("password").addEventListener("keydown",e=>{
+ if(e.key==="Enter")loginUser();
+});
+function logout(){
+ currentRole="";
+ sessionStorage.removeItem("m360_role");
+ showOnly("login");
 }
 function startTest(){
-$("quizResult").classList.add("hidden");
-$("questions").querySelectorAll("input").forEach(x=>x.checked=false);
-show("quiz");
+ const bank=[
+ ["5 + 7 = ?",["10","11","12","13"],2],
+ ["9 × 3 = ?",["18","27","21","24"],1],
+ ["36 ÷ 6 = ?",["5","6","7","8"],1],
+ ["15 - 8 = ?",["6","7","8","9"],1],
+ ["Square of 4?",["8","12","16","20"],2],
+ ["Opposite of hot?",["Warm","Cold","Dry","Bright"],1],
+ ["Plural of child?",["Childs","Children","Childes","Childrens"],1],
+ ["Past tense of go?",["Goed","Gone","Went","Going"],2],
+ ["Synonym of quick?",["Slow","Fast","Late","Weak"],1],
+ ["Which is a vowel?",["B","D","E","T"],2],
+ ["Pakistan became independent in?",["1940","1947","1950","1956"],1],
+ ["Capital of Pakistan?",["Lahore","Karachi","Islamabad","Quetta"],2],
+ ["How many days in a week?",["5","6","7","8"],2],
+ ["Largest planet?",["Earth","Mars","Jupiter","Venus"],2],
+ ["The Sun is a?",["Planet","Star","Moon","Comet"],1],
+ ["'کتاب' means?",["Pen","Book","Door","House"],1],
+ ["'پانی' means?",["Fire","Water","Air","Earth"],1],
+ ["Urdu is written generally from?",["Left to right","Right to left","Top to bottom","None"],1],
+ ["One dozen equals?",["10","11","12","13"],2],
+ ["A year usually has how many days?",["360","365","366 every year","300"],1]
+ ];
+ questions=bank.map((q,i)=>({q:q[0],options:q[1],correct:q[2],subject:i<5?"Math":i<10?"English":i<15?"General Knowledge":"Urdu"}));
+ answers={};
+ renderQuestionList();
+ document.getElementById("testMsg").textContent="";
+ showOnly("testPanel");
 }
-function drawQuestions(){
-$("questions").innerHTML=qs.map((q,i)=>`<div class="question">
-<strong>${i+1}. ${esc(q[0])}</strong>
-${q[1].map((o,j)=>`<label class="option"><input type="radio" name="q${i}" value="${j}"> ${esc(o)}</label>`).join("")}
-</div>`).join("");
+function renderQuestionList(){
+ const area=document.getElementById("questionArea");
+ area.innerHTML="";
+ questions.forEach((q,i)=>{
+  const box=document.createElement("div");
+  box.className="card";
+  const title=document.createElement("p");
+  title.textContent=(i+1)+". "+q.q;
+  box.appendChild(title);
+  q.options.forEach((opt,j)=>{
+   const label=document.createElement("label");
+   const radio=document.createElement("input");
+   radio.type="radio";radio.name="q"+i;radio.value=j;
+   radio.style.width="auto";radio.style.marginRight="8px";
+   radio.addEventListener("change",()=>answers[i]=j);
+   label.appendChild(radio);label.appendChild(document.createTextNode(opt));
+   box.appendChild(label);
+  });
+  area.appendChild(box);
+ });
 }
-drawQuestions();
-
-/* This login accepts any non-empty username/password.
-   It is not secure authentication for real admin/CEO data. */
-$("loginForm").addEventListener("submit",async function(e){
-e.preventDefault();
-const username=$("username").value.trim();
-const password=$("password").value;
-if(!username||!password){
-alert("Enter any username and password.");
-return;
+function submitTest(){
+ let score=0;
+ questions.forEach((q,i)=>{if(Number(answers[i])===q.correct)score++});
+ lastScore=score;
+ document.getElementById("correctAnswers").value=score;
+ if(score>=18){
+  document.getElementById("testMsg").textContent="Passed! You scored "+score+"/20. Application form unlocked.";
+  document.getElementById("testMsg").className="good";
+  showOnly("application");
+ }else{
+  document.getElementById("testMsg").textContent="You scored "+score+"/20. You need at least 18 correct answers. Please try again.";
+  document.getElementById("testMsg").className="bad";
+ }
 }
-roleNow=$("role").value;
-$("login").classList.add("hidden");
-$("app").classList.remove("hidden");
-$("welcome").textContent="Welcome, "+username;
-$("roleLabel").textContent="Role: "+roleNow.toUpperCase();
-$("adArea").classList.toggle("hidden",roleNow==="admin"||roleNow==="ceo");
-await loadRequests();
-if(roleNow==="admin"){show("admin");renderAdmin()}
-else if(roleNow==="ceo"){show("ceo");renderCEO()}
-else if(roleNow==="employee"){show("employee")}
-else{show("home")}
+async function sendToScript(payload){
+ try{
+  await fetch(SCRIPT_URL,{
+   method:"POST",
+   mode:"no-cors",
+   headers:{"Content-Type":"text/plain;charset=utf-8"},
+   body:JSON.stringify(payload)
+  });
+  return "sent";
+ }catch(error){return "local-only"}
+}
+document.getElementById("applicationForm").addEventListener("submit",async function(e){
+ e.preventDefault();
+ if(lastScore<18){alert("Please pass the test first.");return}
+ const file=document.getElementById("proof").files[0];
+ if(file&&file.size>1500000){alert("Please choose an image smaller than 1.5 MB.");return}
+ const trackId="M360-"+Date.now().toString(36).toUpperCase();
+ const item={
+  trackId,
+  username:document.getElementById("username").value.trim(),
+  fullName:document.getElementById("fullName").value.trim(),
+  fatherName:document.getElementById("fatherName").value.trim(),
+  age:document.getElementById("age").value,
+  className:document.getElementById("className").value.trim(),
+  correctAnswers:lastScore,
+  details:document.getElementById("details").value.trim(),
+  proofName:file?file.name:"",
+  status:"Pending",
+  createdAt:new Date().toISOString()
+ };
+ const items=getRequests();
+ items.unshift(item);
+ saveRequests(items);
+ const msg=document.getElementById("applicationMsg");
+ msg.textContent="Submitting application...";
+ const result=await sendToScript({action:"submitApplication",application:item});
+ msg.textContent="Application submitted. Track ID: "+trackId+". Please save this ID and contact support if needed.";
+ msg.className="good";
+ document.getElementById("trackSearch").value=trackId;
+ this.reset();
+ document.getElementById("correctAnswers").value=lastScore;
 });
-
-$("logout").addEventListener("click",()=>{
-roleNow="";passed=false;
-$("app").classList.add("hidden");
-$("login").classList.remove("hidden");
-$("password").value="";
-$("username").value="";
+function trackApplication(){
+ const id=document.getElementById("trackSearch").value.trim().toUpperCase();
+ const found=getRequests().find(x=>String(x.trackId).toUpperCase()===id);
+ const out=document.getElementById("trackResult");
+ out.textContent="";
+ if(!id){out.textContent="Enter your Track ID.";return}
+ if(!found){out.textContent="No local record found. Contact Support Team to check your request.";return}
+ out.textContent="Track ID: "+found.trackId+" | Status: "+found.status;
+}
+function element(tag,text){
+ const el=document.createElement(tag);el.textContent=text;return el;
+}
+function loadApplications(){
+ const items=getRequests();
+ const adminList=document.getElementById("adminList");
+ const ceoList=document.getElementById("ceoList");
+ adminList.innerHTML="";ceoList.innerHTML="";
+ items.forEach((item,index)=>{
+  const card=document.createElement("div");card.className="card";
+  const details=element("p",
+   "Track ID: "+item.trackId+
+   "\nName: "+item.fullName+
+   "\nFather: "+item.fatherName+
+   "\nAge: "+item.age+
+   "\nClass: "+item.className+
+   "\nScore: "+item.correctAnswers+"/20"+
+   "\nStatus: "+item.status+
+   "\nDetails: "+(item.details||"None")
+  );
+  details.style.whiteSpace="pre-line";card.appendChild(details);
+  if(currentRole==="admin"){
+   if(item.status==="Pending"){
+    const send=element("button","Send to CEO");
+    send.onclick=async()=>{
+     item.status="Sent to CEO";saveRequests(items);
+     await sendToScript({action:"updateStatus",trackId:item.trackId,status:item.status});
+     loadApplications();
+    };
+    card.appendChild(send);
+   }
+  }
+  if(currentRole==="ceo"){
+   const query=(document.getElementById("ceoSearch").value||"").toLowerCase();
+   const filter=document.getElementById("ceoFilter").value;
+   const hay=(item.trackId+" "+item.fullName+" "+item.fatherName).toLowerCase();
+   if(query&&!hay.includes(query))return;
+   if(filter!=="all"&&item.status!==filter)return;
+   if(item.status!=="Rejected"){
+    const approve=element("button","Approve");
+    approve.onclick=()=>updateStatus(item,"Approved");
+    card.appendChild(approve);
+    const reject=element("button","Reject");
+    reject.className="danger";
+    reject.onclick=()=>updateStatus(item,"Rejected");
+    card.appendChild(reject);
+   }
+   const del=element("button","Delete Record");
+   del.className="secondary";
+   del.onclick=()=>{
+    if(confirm("Delete this application?")){
+     saveRequests(getRequests().filter(x=>x.trackId!==item.trackId));
+     loadApplications();
+    }
+   };
+   card.appendChild(del);
+  }
+  if(currentRole==="admin")adminList.appendChild(card);
+  if(currentRole==="ceo")ceoList.appendChild(card);
+ });
+}
+async function updateStatus(item,status){
+ item.status=status;
+ saveRequests(getRequests().map(x=>x.trackId===item.trackId?item:x));
+ await sendToScript({action:"updateStatus",trackId:item.trackId,status});
+ loadApplications();
+}
+document.getElementById("ceoSearch").addEventListener("input",()=>{
+ if(currentRole==="ceo")loadApplications();
 });
-
-function submitQuiz(){
-score=0;
-qs.forEach((q,i)=>{
-const a=document.querySelector(`input[name="q${i}"]:checked`);
-if(a&&Number(a.value)===q[2])score++;
-});
-$("score").value=score;
-$("quizResult").classList.remove("hidden");
-if(score>=18){
-passed=true;
-$("quizResult").textContent="Congratulations! You passed. Opening Application Dashboard...";
-$("appResult").classList.add("hidden");
-show("application");
-}else{
-passed=false;
-$("quizResult").textContent="Your score is "+score+"/20. You need 18 correct answers. Please try again.";
-}
-}
-
-async function api(action,data={}){
-const response=await fetch(SCRIPT_URL+"?action="+encodeURIComponent(action),{
-method:"POST",
-headers:{"Content-Type":"text/plain;charset=utf-8"},
-body:JSON.stringify({action,...data})
-});
-if(!response.ok)throw new Error("Server request failed");
-return response.json();
-}
-function saveLocal(){
-try{localStorage.setItem(LOCAL_KEY,JSON.stringify(requests))}
-catch(e){alert("Storage is full. Use a smaller image.")}
-}
-async function loadRequests(){
-try{
-const r=await fetch(SCRIPT_URL+"?action=list");
-const data=await r.json();
-if(data&&data.ok&&Array.isArray(data.requests)){
-requests=data.requests;
-saveLocal();
-return true;
-}
-throw new Error("Unexpected response");
-}catch(e){
-try{requests=JSON.parse(localStorage.getItem(LOCAL_KEY)||"[]")}
-catch(err){requests=[]}
-return false;
-}
-}
-
-$("applicationForm").addEventListener("submit",async function(e){
-e.preventDefault();
-if(!passed){alert("Please pass the test first.");show("quiz");return}
-const form=this,d=new FormData(form),file=form.elements.proof.files[0];
-if(file&&file.size>500000){alert("Please select an image smaller than 500 KB.");return}
-let proof="";
-if(file){
-proof=await new Promise(resolve=>{
-const r=new FileReader();r.onload=()=>resolve(String(r.result||""));r.onerror=()=>resolve("");r.readAsDataURL(file);
-});
-}
-const item={
-id:"M360-"+Math.random().toString(36).slice(2,8).toUpperCase(),
-name:d.get("name").trim(),father:d.get("father").trim(),
-age:d.get("age"),className:d.get("className"),phone:d.get("phone").trim(),
-correct:score,proof,status:"Pending",sentToCEO:false,created:new Date().toISOString()
-};
-requests.push(item);
-saveLocal();
-let synced=false;
-try{const r=await api("submit",{application:item});synced=!!r&&r.ok!==false}catch(e){}
-$("appResult").classList.remove("hidden");
-$("appResult").innerHTML=`<strong>Application submitted</strong>
-<p>Your Track ID:</p><h3>${esc(item.id)}</h3>
-<p>Status: Pending</p>
-<button type="button" onclick="copyTrack('${item.id}')">Copy Track ID</button>
-<p class="muted">${synced?"Server response received.":"Saved on this device only; server sync is not confirmed."}</p>`;
-form.reset();passed=false;
-});
-function copyTrack(id){
-if(navigator.clipboard)navigator.clipboard.writeText(id).then(()=>alert("Track ID copied.")).catch(()=>prompt("Copy Track ID",id));
-else prompt("Copy Track ID",id);
-}
-async function trackApplication(){
-await loadRequests();
-const id=$("trackInput").value.trim().toUpperCase();
-const x=requests.find(a=>String(a.id||"").toUpperCase()===id);
-$("trackResult").innerHTML=x?`<div class="item"><strong>${esc(x.name)}</strong><p>Track ID: ${esc(x.id)}</p><p>Status: ${esc(x.status)}</p></div>`:"<div class='notice'>Application not found. The server may not be connected or this application may be stored on another device.</div>";
-}
-function renderAdmin(){
-$("adminList").innerHTML=requests.length?requests.map(x=>`<div class="item">
-<strong>${esc(x.name)}</strong>
-<p>Track ID: ${esc(x.id)}<br>Father: ${esc(x.father)}<br>Class: ${esc(x.className)}<br>Score: ${esc(x.correct)}/20<br>Status: ${esc(x.status)}</p>
-${x.proof?`<details><summary>View proof</summary><img class="proof" src="${x.proof}" alt="Proof"></details>`:""}
-${!x.sentToCEO&&x.status==="Pending"?`<button class="green" onclick="forwardCEO('${esc(x.id)}')">Send to CEO</button>`:""}
-</div>`).join(""):"<p>No applications found.</p>";
-}
-async function forwardCEO(id){
-const x=requests.find(a=>a.id===id);if(!x)return;
-x.sentToCEO=true;saveLocal();
-try{await api("update",{id,changes:{sentToCEO:true}})}catch(e){}
-renderAdmin();
-}
-function renderCEO(){
-const q=($("search").value||"").toLowerCase(),filter=$("filter").value;
-const list=requests.filter(x=>{
-const match=[x.id,x.name,x.father].some(v=>String(v||"").toLowerCase().includes(q));
-const st=filter==="all"||(filter==="sent"&&x.sentToCEO)||(filter==="approved"&&x.status==="Approved")||(filter==="rejected"&&x.status==="Rejected");
-return match&&st;
-});
-$("ceoList").innerHTML=list.length?list.map(x=>`<div class="item">
-<strong>${esc(x.name)}</strong>
-<p>Track ID: ${esc(x.id)}<br>Father: ${esc(x.father)}<br>Age: ${esc(x.age)}<br>Class: ${esc(x.className)}<br>Contact: ${esc(x.phone)}<br>Score: ${esc(x.correct)}/20<br>Status: <span class="status">${esc(x.status)}</span></p>
-${x.proof?`<details><summary>View proof</summary><img class="proof" src="${x.proof}" alt="Proof"></details>`:""}
-<button class="green" onclick="decision('${esc(x.id)}','Approved')">Approve</button>
-<button class="red" onclick="decision('${esc(x.id)}','Rejected')">Reject</button>
-<button class="dark" onclick="removeItem('${esc(x.id)}')">Delete</button>
-</div>`).join(""):"<p>No matching applications found.</p>";
-}
-async function decision(id,status){
-const x=requests.find(a=>a.id===id);if(!x)return;
-if(!confirm("Change status to "+status+"?"))return;
-if(status==="Rejected"){requests=requests.filter(a=>a.id!==id)}
-else{x.status=status}
-saveLocal();
-try{
-if(status==="Rejected")await api("delete",{id});
-else await api("update",{id,changes:{status}});
-}catch(e){}
-renderCEO();
-}
-async function removeItem(id){
-if(!confirm("Delete this application?"))return;
-requests=requests.filter(a=>a.id!==id);saveLocal();
-try{await api("delete",{id})}catch(e){}
-renderCEO();
-}
+const savedRole=sessionStorage.getItem("m360_role");
+if(savedRole){
+ currentRole=savedRole;
+ if(savedRole==="admin"){showOnly("admin");loadApplications()}
+ else if(savedRole==="ceo"){showOnly("ceo");loadApplications()}
+ else if(savedRole==="employee")showOnly("employee");
+ else showOnly("home");
+}else{showOnly("login")}
 </script>
 </body>
 </html>
