@@ -3,133 +3,408 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Manan360.com</title>
-<meta name="description" content="Manan360.com - Books, Notes & Quality Questions">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#102b59">
+<meta name="description" content="Manan365.com - Books, Notes, Quality Questions and Student Applications">
+<title>Manan365.com | Student Portal</title>
+
+<!-- GOOGLE ADSENSE
+Replace YOUR_PUBLISHER_ID with your approved AdSense publisher ID.
+Remove this comment and enable the script after approval.
+-->
+<!--
+<script async
+src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-YOUR_PUBLISHER_ID"
+crossorigin="anonymous"></script>
+-->
+
 <style>
 *{box-sizing:border-box}
-body{
- margin:0;
- font-family:Arial,sans-serif;
- color:white;
- min-height:100vh;
- background:linear-gradient(135deg,#101d45,#087bb5,#00a878);
-}
-header{
- text-align:center;
- padding:35px 15px;
-}
-header h1{font-size:36px;margin:0 0 10px}
-header p{margin:0;color:#e1f5ff}
-.container{max-width:850px;margin:auto;padding:15px}
-.card{
- background:rgba(255,255,255,.12);
- border:1px solid rgba(255,255,255,.25);
- border-radius:18px;
- padding:22px;
- margin-bottom:18px;
- box-shadow:0 8px 25px #0002;
-}
-h2{margin-top:0}
-.grid{
- display:grid;
- grid-template-columns:repeat(auto-fit,minmax(210px,1fr));
- gap:15px;
-}
-.tile{
- padding:20px;
- border-radius:14px;
- background:linear-gradient(135deg,#1765b5,#078b9b);
-}
-.tile h3{margin-top:0}
-button,a.button{
- display:inline-block;
- border:0;
- border-radius:9px;
- background:#16c784;
- color:#062d32;
- padding:12px 17px;
- font-weight:bold;
- text-decoration:none;
- cursor:pointer;
-}
-input,select{
- width:100%;
- padding:13px;
- border-radius:9px;
- border:1px solid #cbd5e1;
- margin:8px 0 15px;
- font-size:16px;
-}
-#message{margin-top:15px;overflow-wrap:anywhere}
-footer{text-align:center;padding:25px 12px;color:#e1f5ff}
+:root{--navy:#102b59;--blue:#1768d1;--green:#08a878;--bg:#eef4fc}
+body{margin:0;font-family:Arial,sans-serif;background:var(--bg);color:#17243b}
+header{background:linear-gradient(120deg,#102b59,#087fc2,#08a878);color:white;padding:23px 15px;text-align:center}
+header h1{margin:0;font-size:30px}
+header p{margin:8px 0 0}
+main{max-width:950px;margin:20px auto;padding:0 12px}
+.panel{background:white;padding:20px;border-radius:17px;margin-bottom:16px;box-shadow:0 5px 22px #16345a12}
+h2{color:var(--navy);margin-top:0}
+input,select,textarea{width:100%;padding:12px;border:1px solid #d6dfec;border-radius:9px;margin:7px 0 13px;font-size:15px;background:white}
+button,.btn{display:inline-block;border:0;border-radius:9px;padding:12px 16px;background:var(--blue);color:white;font-weight:bold;font-size:14px;cursor:pointer;text-decoration:none;margin:4px 2px}
+button:hover,.btn:hover{opacity:.9}
+.green{background:#079768}
+.red{background:#d83b48}
+.dark{background:var(--navy)}
+.small{padding:7px 10px;font-size:12px}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:12px}
+.tile{padding:18px;border-radius:13px;background:linear-gradient(135deg,#e5efff,#e1fff4);border:1px solid #dbe9f6}
+.tile h3{margin:0 0 8px;color:var(--navy)}
+.muted{color:#66758b;font-size:13px;line-height:1.6}
+.hidden{display:none!important}
+.notice{padding:12px;background:#e9f5ff;border-radius:9px;margin:12px 0;overflow-wrap:anywhere}
+.status{padding:5px 9px;border-radius:20px;background:#fff0c8;color:#835400;font-size:12px;font-weight:bold}
+.item{border:1px solid #e0e8f2;border-radius:12px;padding:14px;margin:12px 0;overflow-wrap:anywhere}
+.item p{line-height:1.6}
+.question{padding:15px 0;border-bottom:1px solid #e1e8f1}
+label{display:block;margin:8px 0;line-height:1.5}
+.adbox{border:1px dashed #9aabc1;border-radius:10px;text-align:center;padding:15px;color:#728096;margin:14px 0}
+footer{text-align:center;padding:22px;color:#65738a;font-size:13px}
+hr{border:0;border-top:1px solid #e2e8f0;margin:18px 0}
 </style>
 </head>
 <body>
 
 <header>
- <h1>Manan360.com</h1>
- <p>Books, Notes & Quality Questions</p>
+<h1>Manan365.com</h1>
+<p>Books, Notes &amp; Quality Questions</p>
 </header>
 
-<main class="container">
+<main>
+<!-- LOGIN -->
+<section id="login" class="panel">
+<h2>Welcome to Manan365</h2>
+<p class="muted">Sign in to open your portal.</p>
+<form id="loginForm">
+<label for="role">Select Role</label>
+<select id="role" required>
+<option value="user">General User</option>
+<option value="student">Student</option>
+<option value="employee">Employee</option>
+<option value="admin">Admin</option>
+<option value="ceo">CEO</option>
+</select>
+<label for="username">Username</label>
+<input id="username" autocomplete="username" required placeholder="Enter username">
+<label for="password">Password</label>
+<input id="password" type="password" autocomplete="current-password" required placeholder="Enter password">
+<button type="submit" class="green">Sign In</button>
+</form>
+<p class="muted">Note: Secure accounts require a server-side authentication system.</p>
+</section>
 
- <section class="card">
-  <h2>Welcome to Manan360</h2>
-  <p>Your student portal for books, notes and quality questions.</p>
-  <div class="grid">
-   <div class="tile">
-    <h3>📚 Books & Notes</h3>
-    <p>Study materials and learning resources.</p>
-   </div>
-   <div class="tile">
-    <h3>📝 Quality Questions</h3>
-    <p>Practice questions to improve your knowledge.</p>
-   </div>
-   <div class="tile">
-    <h3>📋 Track Application</h3>
-    <p>Check an application using its Track ID.</p>
-   </div>
-  </div>
- </section>
+<!-- APP -->
+<section id="app" class="hidden">
+<div class="panel">
+<div style="display:flex;justify-content:space-between;align-items:center;gap:10px;flex-wrap:wrap">
+<div><h2 id="welcome">Dashboard</h2><span id="roleLabel" class="muted"></span></div>
+<button class="dark small" id="logout">Sign Out</button>
+</div>
+</div>
 
- <section class="card">
-  <h2>Track Your Application</h2>
-  <label for="trackId">Enter Track ID</label>
-  <input id="trackId" type="text" placeholder="Example: M360-123456">
-  <button type="button" onclick="trackApplication()">Check Status</button>
-  <div id="message" aria-live="polite"></div>
- </section>
+<!-- ADS PLACEHOLDER -->
+<div class="adbox" id="adArea">
+<strong>Advertisement</strong>
+<p class="muted">Google AdSense ad placement</p>
+<!-- Add your approved AdSense ad unit code here. -->
+</div>
 
- <section class="card">
-  <h2>Contact Support</h2>
-  <p>For assistance with the website, contact the Manan360 Support Team.</p>
-  <a class="button" href="https://wa.me/923447232654" target="_blank" rel="noopener">
-   Contact Support Team
-  </a>
- </section>
+<!-- HOME -->
+<section id="home" class="panel">
+<h2>Student Portal</h2>
+<div class="grid">
+<div class="tile"><h3>Quality Questions</h3><p>Test your knowledge with 20 MCQs.</p><button onclick="show('quiz')">Start Test</button></div>
+<div class="tile"><h3>Application</h3><p>Submit an application after passing the test.</p><button onclick="openApplication()">Open Application</button></div>
+<div class="tile"><h3>Track Application</h3><p>Check your application status.</p><button onclick="show('track')">Track ID</button></div>
+<div class="tile"><h3>Books &amp; Notes</h3><p>Access available study PDFs.</p><button onclick="show('books')">Open Books</button></div>
+</div>
+</section>
 
+<!-- QUIZ -->
+<section id="quiz" class="panel hidden">
+<h2>Quality Questions Test</h2>
+<p class="muted">20 MCQs. You need at least 18 correct answers to unlock the application form.</p>
+<div id="quizQuestions"></div>
+<button onclick="submitQuiz()" class="green">Submit Test</button>
+<button onclick="show('home')" class="dark">Back</button>
+<div id="quizResult" class="notice hidden"></div>
+</section>
+
+<!-- APPLICATION -->
+<section id="application" class="panel hidden">
+<h2>Application Form</h2>
+<p class="muted">Complete the form after passing the test.</p>
+<form id="applicationForm">
+<label>Full Name</label><input name="name" required maxlength="100">
+<label>Father Name</label><input name="father" required maxlength="100">
+<label>Age</label><input name="age" type="number" min="5" max="100" required>
+<label>Class</label>
+<select name="class" required>
+<option value="">Select Class</option>
+<option>Class 6</option><option>Class 7</option><option>Class 8</option>
+<option>Class 9</option><option>Class 10</option><option>Other</option>
+</select>
+<label>Correct Answers</label><input id="correctAnswers" name="correct" readonly required>
+<label>Contact Number</label><input name="phone" type="tel" required maxlength="25">
+<label>Proof Image (optional)</label><input name="proof" type="file" accept="image/*">
+<button type="submit" class="green">Submit Application</button>
+</form>
+<div id="applicationResult" class="notice hidden"></div>
+</section>
+
+<!-- TRACK -->
+<section id="track" class="panel hidden">
+<h2>Track Your Application</h2>
+<label>Track ID</label><input id="trackInput" placeholder="Example: M365-ABC123">
+<button onclick="trackApplication()">Search Application</button>
+<div id="trackResult"></div>
+</section>
+
+<!-- BOOKS -->
+<section id="books" class="panel hidden">
+<h2>Books &amp; Notes</h2>
+<div class="item">
+<strong>Class 9th Urdu Test Paper</strong><br>
+<a class="btn" href="Class-9th-Urdu-Test-Paper.pdf" target="_blank">Open PDF</a>
+<a class="btn green" href="Class-9th-Urdu-Test-Paper.pdf" download>Download</a>
+</div>
+<div class="item">
+<strong>Class 10th Urdu Test Paper</strong><br>
+<a class="btn" href="Class-10th-Urdu-Test-Paper.pdf" target="_blank">Open PDF</a>
+<a class="btn green" href="Class-10th-Urdu-Test-Paper.pdf" download>Download</a>
+</div>
+<p class="muted">Upload the PDF files into the same GitHub repository as this index.html file.</p>
+</section>
+
+<!-- EMPLOYEE -->
+<section id="employee" class="panel hidden">
+<h2>Employee Dashboard</h2>
+<p>Welcome to the employee portal.</p>
+<button onclick="show('quiz')">Open Quality Questions</button>
+</section>
+
+<!-- ADMIN -->
+<section id="admin" class="panel hidden">
+<h2>Admin Dashboard</h2>
+<p class="muted">Review applications and forward them to the CEO.</p>
+<div id="adminRequests"></div>
+</section>
+
+<!-- CEO -->
+<section id="ceo" class="panel hidden">
+<h2>CEO Dashboard</h2>
+<p class="muted">Final decision panel.</p>
+<label>Search by Track ID, name or father name</label>
+<input id="ceoSearch" placeholder="Search applications" oninput="renderCEO()">
+<label>Filter applications</label>
+<select id="ceoFilter" onchange="renderCEO()">
+<option value="all">All Applications</option>
+<option value="sent">Sent to CEO</option>
+<option value="approved">Approved</option>
+<option value="rejected">Rejected</option>
+</select>
+<div id="ceoRequests"></div>
+</section>
+</section>
 </main>
 
 <footer>
- © 2026 Manan360.com — All rights reserved.
+<strong>Manan365.com</strong><br>
+Books, Notes &amp; Quality Questions<br>
+Manan360 Support Team
 </footer>
 
 <script>
+const $=id=>document.getElementById(id);
+let currentRole='',correctCount=0,passed=false;
+
+const questions=[
+{q:"What is 5 + 7?",o:["10","12","13","14"],a:1},
+{q:"What is 9 × 3?",o:["18","21","27","36"],a:2},
+{q:"What is 100 ÷ 4?",o:["20","25","30","40"],a:1},
+{q:"What is 15 - 6?",o:["7","8","9","10"],a:2},
+{q:"What is the square of 5?",o:["10","15","20","25"],a:3},
+{q:"What is the opposite of hot?",o:["Warm","Cold","Dry","Bright"],a:1},
+{q:"Which word is a noun?",o:["Run","Beautiful","School","Quickly"],a:2},
+{q:"Plural of child?",o:["Childs","Children","Childes","Childrens"],a:1},
+{q:"Past tense of go?",o:["Goed","Going","Gone","Went"],a:3},
+{q:"Which is a vowel?",o:["B","D","A","G"],a:2},
+{q:"Pakistan became independent in?",o:["1940","1947","1956","1965"],a:1},
+{q:"Pakistan's national language is?",o:["Punjabi","Sindhi","Urdu","English"],a:2},
+{q:"How many days are in a week?",o:["5","6","7","8"],a:2},
+{q:"Which planet do we live on?",o:["Mars","Earth","Venus","Jupiter"],a:1},
+{q:"The Sun is a?",o:["Planet","Star","Moon","Comet"],a:1},
+{q:"Urdu is written from?",o:["Left to right","Right to left","Top to bottom","Both ways"],a:1},
+{q:"The Urdu word for book is?",o:["Qalam","Kitaab","Darakht","Paani"],a:1},
+{q:"How many months are in a year?",o:["10","11","12","13"],a:2},
+{q:"Which is used for writing?",o:["Pencil","Plate","Spoon","Cup"],a:0},
+{q:"What is 10 + 10?",o:["10","15","20","25"],a:2}
+];
+
+function show(id){
+['home','quiz','application','track','books','employee','admin','ceo'].forEach(x=>$(x).classList.add('hidden'));
+$(id).classList.remove('hidden');
+window.scrollTo({top:0,behavior:'smooth'});
+}
+function getRequests(){
+try{return JSON.parse(localStorage.getItem('m365_requests')||'[]')}catch(e){return []}
+}
+function saveRequests(list){
+localStorage.setItem('m365_requests',JSON.stringify(list));
+}
+function escapeHTML(s){
+return String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+}
+
+$('loginForm').addEventListener('submit',e=>{
+e.preventDefault();
+currentRole=$('role').value;
+const username=$('username').value.trim();
+if(!username)return;
+$('login').classList.add('hidden');
+$('app').classList.remove('hidden');
+$('welcome').textContent='Welcome, '+username;
+$('roleLabel').textContent='Role: '+currentRole.toUpperCase();
+$('adArea').classList.toggle('hidden',currentRole==='admin'||currentRole==='ceo');
+if(currentRole==='admin'){show('admin');renderAdmin()}
+else if(currentRole==='ceo'){show('ceo');renderCEO()}
+else if(currentRole==='employee'){show('employee')}
+else{show('home')}
+});
+
+$('logout').onclick=()=>{
+currentRole='';
+$('app').classList.add('hidden');
+$('login').classList.remove('hidden');
+$('password').value='';
+$('username').value='';
+};
+
+function drawQuiz(){
+$('quizQuestions').innerHTML=questions.map((q,i)=>`
+<div class="question">
+<strong>${i+1}. ${escapeHTML(q.q)}</strong>
+${q.o.map((o,j)=>`<label><input style="width:auto;margin:0 6px 0 0" type="radio" name="q${i}" value="${j}"> ${escapeHTML(o)}</label>`).join('')}
+</div>`).join('');
+}
+drawQuiz();
+
+function submitQuiz(){
+correctCount=0;
+questions.forEach((q,i)=>{
+const a=document.querySelector('input[name="q'+i+'"]:checked');
+if(a&&Number(a.value)===q.a)correctCount++;
+});
+passed=correctCount>=18;
+$('quizResult').classList.remove('hidden');
+$('quizResult').textContent='Your score: '+correctCount+'/20. '+(passed?'Congratulations! You passed. The application form is unlocked.':'You need at least 18 correct answers. Please try again.');
+if(passed){$('correctAnswers').value=correctCount}
+}
+
+function openApplication(){
+if(!passed){show('quiz');return}
+$('correctAnswers').value=correctCount;
+show('application');
+}
+
+$('applicationForm').addEventListener('submit',async e=>{
+e.preventDefault();
+if(!passed){alert('Please pass the test first.');return}
+const form=e.target,fd=new FormData(form);
+const file=form.elements.proof.files[0];
+if(file&&file.size>1500000){alert('Please select an image smaller than 1.5 MB.');return}
+let proof='';
+if(file){
+proof=await new Promise(resolve=>{
+const r=new FileReader();
+r.onload=()=>resolve(String(r.result));
+r.onerror=()=>resolve('');
+r.readAsDataURL(file);
+});
+}
+const trackId='M365-'+Math.random().toString(36).slice(2,8).toUpperCase();
+const item={
+id:trackId,
+name:fd.get('name').trim(),
+father:fd.get('father').trim(),
+age:fd.get('age'),
+className:fd.get('class'),
+phone:fd.get('phone').trim(),
+correct:correctCount,
+proof:proof,
+status:'Pending',
+sentToCEO:false,
+created:new Date().toISOString()
+};
+try{
+const list=getRequests();
+list.push(item);
+saveRequests(list);
+$('applicationResult').classList.remove('hidden');
+$('applicationResult').innerHTML='<strong>Application submitted!</strong><p>Please save your Track ID:</p><h3>'+escapeHTML(trackId)+'</h3><button onclick="copyTrack(\''+trackId+'\')">Copy Track ID</button><p class="muted">Send this ID to the support team if required.</p>';
+form.reset();
+passed=false;
+}catch(err){
+alert('Storage is full. Please use a smaller proof image.');
+}
+});
+
+function copyTrack(id){
+if(navigator.clipboard&&navigator.clipboard.writeText){
+navigator.clipboard.writeText(id).then(()=>alert('Track ID copied.')).catch(()=>prompt('Copy your Track ID:',id));
+}else{prompt('Copy your Track ID:',id)}
+}
+
 function trackApplication(){
- const id=document.getElementById("trackId").value.trim();
- const message=document.getElementById("message");
+const id=$('trackInput').value.trim().toUpperCase();
+const item=getRequests().find(x=>x.id.toUpperCase()===id);
+$('trackResult').innerHTML=item?
+`<div class="item"><strong>${escapeHTML(item.name)}</strong><p>Track ID: ${escapeHTML(item.id)}</p><p>Status: <span class="status">${escapeHTML(item.status)}</span></p><p>Submitted: ${escapeHTML(new Date(item.created).toLocaleDateString())}</p></div>`:
+'<p class="notice">Application not found on this device.</p>';
+}
 
- if(!id){
-  message.textContent="Please enter your Track ID.";
-  return;
- }
+function renderAdmin(){
+const list=getRequests();
+$('adminRequests').innerHTML=list.length?list.map(x=>`
+<div class="item">
+<strong>${escapeHTML(x.name)}</strong>
+<p>Track ID: ${escapeHTML(x.id)}<br>Father: ${escapeHTML(x.father)}<br>Class: ${escapeHTML(x.className)}<br>Score: ${escapeHTML(x.correct)}/20<br>Status: ${escapeHTML(x.status)}</p>
+${x.proof?`<details><summary>View proof image</summary><img src="${x.proof}" alt="Proof image" style="max-width:100%;margin-top:10px"></details>`:''}
+${!x.sentToCEO&&x.status==='Pending'?`<button class="green" onclick="forwardCEO('${x.id}')">Send to CEO</button>`:''}
+</div>`).join(''):'<p>No applications found on this device.</p>';
+}
 
- message.textContent=
-  "Track ID entered: "+id+
-  ". Application tracking will work after the application database is connected.";
+function forwardCEO(id){
+const list=getRequests();
+const x=list.find(a=>a.id===id);
+if(x){x.sentToCEO=true;saveRequests(list);renderAdmin()}
+}
+
+function renderCEO(){
+const search=($('ceoSearch').value||'').trim().toLowerCase();
+const filter=$('ceoFilter').value;
+const list=getRequests().filter(x=>{
+const matches=[x.id,x.name,x.father].some(v=>String(v||'').toLowerCase().includes(search));
+const matchesFilter=filter==='all'||
+(filter==='sent'&&x.sentToCEO)||
+(filter==='approved'&&x.status==='Approved')||
+(filter==='rejected'&&x.status==='Rejected');
+return matches&&matchesFilter;
+});
+$('ceoRequests').innerHTML=list.length?list.map(x=>`
+<div class="item">
+<strong>${escapeHTML(x.name)}</strong>
+<p>Track ID: ${escapeHTML(x.id)}<br>Father: ${escapeHTML(x.father)}<br>Age: ${escapeHTML(x.age)}<br>Class: ${escapeHTML(x.className)}<br>Phone: ${escapeHTML(x.phone)}<br>Correct Answers: ${escapeHTML(x.correct)}/20<br>Status: <span class="status">${escapeHTML(x.status)}</span><br>Sent to CEO: ${x.sentToCEO?'Yes':'No'}</p>
+${x.proof?`<details><summary>View proof image</summary><img src="${x.proof}" alt="Proof image" style="max-width:100%;margin-top:10px"></details>`:''}
+<button class="green" onclick="decision('${x.id}','Approved')">Approve</button>
+<button class="red" onclick="decision('${x.id}','Rejected')">Reject</button>
+<button class="dark" onclick="deleteRequest('${x.id}')">Delete</button>
+</div>`).join(''):'<p>No matching applications found.</p>';
+}
+
+function decision(id,status){
+const list=getRequests();
+const x=list.find(a=>a.id===id);
+if(!x)return;
+if(!confirm('Set application status to '+status+'?'))return;
+x.status=status;
+saveRequests(list);
+renderCEO();
+}
+
+function deleteRequest(id){
+if(!confirm('Delete this application from this device?'))return;
+saveRequests(getRequests().filter(x=>x.id!==id));
+renderCEO();
 }
 </script>
-
 </body>
 </html>
