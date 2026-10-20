@@ -6,369 +6,39 @@
 <title>Manan360.pk</title>
 <style>
 *{box-sizing:border-box}
-:root{--blue:#1769e0;--green:#00b894;--dark:#101a35;--card:#fff}
-body{margin:0;font-family:Arial,sans-serif;background:linear-gradient(135deg,#101a35,#087db5,#00a878);min-height:100vh;color:#17233c}
-header{padding:19px 14px;text-align:center;color:white}
-header h1{margin:0;font-size:29px}
-header p{margin:8px 0 0}
-main{width:min(100% - 22px,1000px);margin:0 auto 30px}
-.card{background:white;border-radius:18px;padding:20px;margin:14px 0;box-shadow:0 8px 26px #07182b38}
-h2{margin:0 0 15px;color:#123b70}
-h3{color:#164d80}
-input,select,textarea{width:100%;padding:12px;margin:6px 0 12px;border:1px solid #ccd7e4;border-radius:10px;font-size:15px;background:#fff}
-textarea{min-height:90px;resize:vertical}
-button{border:0;border-radius:10px;padding:12px 16px;background:var(--blue);color:white;font-weight:bold;font-size:14px;cursor:pointer;margin:4px 3px 4px 0}
-button.green{background:#008f70}
-button.red{background:#d93450}
-button.gray{background:#64748b}
-button:disabled{opacity:.55}
-.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:12px}
-.stat{padding:17px;border-radius:13px;background:linear-gradient(135deg,#e7f3ff,#e5fff5);border:1px solid #d8e8f3}
-.stat strong{font-size:25px;display:block;margin-top:7px}
-.small{font-size:13px;color:#617086}
-.hidden{display:none!important}
-.notice{padding:12px;border-radius:10px;margin:10px 0;background:#eaf4ff;overflow-wrap:anywhere}
-.error{background:#fff0f0;color:#9c2020}
-.success{background:#e5fff3;color:#086c4f}
-.item{border:1px solid #dce5ef;padding:15px;border-radius:13px;margin:12px 0;overflow-wrap:anywhere}
-.item p{line-height:1.5}
-.tag{display:inline-block;padding:5px 9px;border-radius:20px;background:#e8f2ff;color:#164b91;font-size:12px;font-weight:bold}
-hr{border:0;border-top:1px solid #e2e8f0;margin:16px 0}
-footer{text-align:center;color:white;padding:10px 12px 25px;font-size:13px}
-label{font-weight:bold;font-size:14px}
+body{
+margin:0;min-height:100vh;display:flex;align-items:center;
+justify-content:center;padding:20px;font-family:Arial,sans-serif;
+text-align:center;color:white;
+background:linear-gradient(135deg,#10234d,#087bb5,#00a878)
+}
+.card{
+max-width:430px;width:100%;padding:30px 20px;
+border-radius:18px;background:#ffffff18;
+box-shadow:0 8px 25px #00152b44
+}
+h1{font-size:30px}
+p{line-height:1.7}
+a{
+display:inline-block;padding:14px 22px;margin-top:12px;
+border-radius:10px;background:#00a878;color:white;
+text-decoration:none;font-weight:bold
+}
 </style>
 </head>
 <body>
-<header>
+<div class="card">
 <h1>Manan360.pk</h1>
 <p>Books, Notes &amp; Quality Questions</p>
-</header>
-<main>
-<div id="message" class="notice hidden"></div>
-
-<section id="auth" class="card">
-<h2>Welcome Back</h2>
-<label>Account Type</label>
-<select id="role">
-<option value="user">General User / Student</option>
-<option value="admin">Admin</option>
-<option value="ceo">CEO</option>
-</select>
-<label>Email / Username</label>
-<input id="username" type="text" autocomplete="username" placeholder="Enter your email">
-<label>Password</label>
-<input id="password" type="password" autocomplete="current-password" placeholder="Enter password">
-<button id="loginBtn" onclick="login()">Login</button>
-<button class="gray" onclick="showRegister()">Create Student Account</button>
-<div class="small">Use your own registered account. Admin and CEO use their assigned credentials.</div>
-</section>
-
-<section id="register" class="card hidden">
-<h2>Create Student Account</h2>
-<label>Full Name</label><input id="rName" placeholder="Full name">
-<label>Father Name</label><input id="rFather" placeholder="Father name">
-<label>Email</label><input id="rEmail" type="email" placeholder="Email address">
-<label>Contact Number</label><input id="rContact" placeholder="Contact number">
-<label>Password (at least 8 characters)</label><input id="rPassword" type="password" placeholder="Create password">
-<button onclick="register()">Create Account</button>
-<button class="gray" onclick="showLogin()">Back to Login</button>
-</section>
-
-<section id="student" class="hidden">
-<div class="card">
-<h2 id="welcome">Student Dashboard</h2>
-<p>Welcome to Manan360.pk. Access your learning tools and applications here.</p>
-<div class="grid">
-<div class="stat">Learning Resources<strong>Books &amp; Notes</strong></div>
-<div class="stat">Application Tracking<strong>Track ID</strong></div>
+<p>Click below to open your website.</p>
+<a href="https://script.google.com/macros/s/AKfycbwsa4G4oF9y9vMnBpvuZ3ZXU4BETzACNRss6vjvIQPtm_BWY9_ZArgdvvodKgWC7QUBhg/exec">
+Open Website
+</a>
 </div>
-</div>
-
-<div class="card">
-<h2>Books &amp; Notes</h2>
-<p>Open or download your study material.</p>
-<a href="Class-9th-Urdu-Test-Paper.pdf" target="_blank"><button>Class 9 Urdu Paper — Open</button></a>
-<a href="Class-9th-Urdu-Test-Paper.pdf" download><button class="green">Download Class 9</button></a>
-<hr>
-<a href="Class-10th-Urdu-Test-Paper.pdf" target="_blank"><button>Class 10 Urdu Paper — Open</button></a>
-<a href="Class-10th-Urdu-Test-Paper.pdf" download><button class="green">Download Class 10</button></a>
-<p class="small">Upload these PDF files to the same website folder for the links to work.</p>
-</div>
-
-<div class="card">
-<h2>Quality Questions</h2>
-<p>Answer all questions. You need at least 4 correct answers out of 5 to unlock the application form.</p>
-<div id="quizArea"><button onclick="loadQuiz()">Start Questions</button></div>
-</div>
-
-<div id="applicationCard" class="card hidden">
-<h2>Application Form</h2>
-<p class="small">Complete the form after passing the quiz.</p>
-<label>Age</label><input id="age" type="number" min="5" max="100" placeholder="Your age">
-<label>Class</label><input id="className" placeholder="Your class">
-<label>Reason for Application</label><textarea id="reason" maxlength="1000" placeholder="Write your reason"></textarea>
-<button class="green" onclick="submitApplication()">Submit Application</button>
-</div>
-
-<div class="card">
-<h2>My Applications</h2>
-<button onclick="loadMyApplications()">Refresh Applications</button>
-<div id="myApps"></div>
-</div>
-</section>
-
-<section id="dashboard" class="hidden">
-<div class="card">
-<h2 id="dashboardTitle">Management Dashboard</h2>
-<div class="grid">
-<div class="stat">Total Users<strong id="totalUsers">0</strong></div>
-<div class="stat">Applications<strong id="totalApps">0</strong></div>
-<div class="stat">Pending<strong id="pendingApps">0</strong></div>
-</div>
-<hr>
-<input id="search" placeholder="Search Track ID, name or father name" oninput="renderDashboard()">
-<label>Filter Applications</label>
-<select id="filter" onchange="renderDashboard()">
-<option value="all">All Applications</option>
-<option value="Pending">Pending</option>
-<option value="Sent to CEO">Sent to CEO</option>
-<option value="Approved">Approved</option>
-<option value="Rejected">Rejected</option>
-</select>
-<button onclick="loadDashboard()">Refresh Dashboard</button>
-<div id="appList"></div>
-</div>
-</section>
-
-<div id="bottom" class="card hidden">
-<button class="gray" onclick="logout()">Sign Out</button>
-</div>
-</main>
-<footer>Manan360 Support Team</footer>
-
 <script>
-let token = '';
-let currentUser = null;
-let quizData = null;
-let quizPassed = false;
-let dashboardData = [];
-
-function showMessage(text, type) {
-  const el = document.getElementById('message');
-  el.textContent = text;
-  el.className = 'notice ' + (type || '');
-  el.classList.remove('hidden');
-  window.scrollTo({top:0,behavior:'smooth'});
-}
-function hideMessage(){
-  document.getElementById('message').classList.add('hidden');
-}
-function callServer(fn, args, success) {
-  if (!(window.google && google.script && google.script.run)) {
-    showMessage('This page must be opened through the deployed Google Apps Script web app URL, not directly as a GitHub HTML page.', 'error');
-    return;
-  }
-  google.script.run
-    .withSuccessHandler(function(result){
-      if(success) success(result);
-    })
-    .withFailureHandler(function(error){
-      showMessage(error && error.message ? error.message : 'Something went wrong. Please try again.', 'error');
-    })[fn].apply(null,args || []);
-}
-function showOnly(id) {
-  ['auth','register','student','dashboard','bottom'].forEach(function(x){
-    document.getElementById(x).classList.toggle('hidden',x!==id);
-  });
-}
-function showRegister(){hideMessage();showOnly('register');}
-function showLogin(){hideMessage();showOnly('auth');}
-function login(){
-  hideMessage();
-  const btn=document.getElementById('loginBtn');
-  btn.disabled=true;
-  const form={
-    username:document.getElementById('username').value.trim(),
-    password:document.getElementById('password').value,
-    role:document.getElementById('role').value
-  };
-  callServer('loginUser',[form],function(result){
-    btn.disabled=false;
-    token=result.token;
-    currentUser=result.user;
-    if(currentUser.role==='admin'||currentUser.role==='ceo'){
-      document.getElementById('dashboardTitle').textContent=
-        currentUser.role==='admin'?'Admin Dashboard':'CEO Dashboard';
-      showOnly('dashboard');
-      loadDashboard();
-    } else {
-      document.getElementById('welcome').textContent='Welcome, '+currentUser.fullName;
-      quizPassed=false;
-      document.getElementById('applicationCard').classList.add('hidden');
-      showOnly('student');
-      loadMyApplications();
-    }
-    showMessage('Login successful.','success');
-  });
-  setTimeout(function(){btn.disabled=false;},8000);
-}
-function register(){
-  hideMessage();
-  const form={
-    fullName:document.getElementById('rName').value.trim(),
-    fatherName:document.getElementById('rFather').value.trim(),
-    email:document.getElementById('rEmail').value.trim(),
-    contact:document.getElementById('rContact').value.trim(),
-    password:document.getElementById('rPassword').value
-  };
-  callServer('registerUser',[form],function(r){
-    showLogin();
-    document.getElementById('username').value=form.email;
-    showMessage(r.message || 'Account created. Please log in.','success');
-  });
-}
-function loadQuiz(){
-  callServer('getQuiz',[token],function(data){
-    quizData=data;
-    const area=document.getElementById('quizArea');
-    area.innerHTML='';
-    data.questions.forEach(function(q,i){
-      const box=document.createElement('div');
-      box.className='item';
-      const title=document.createElement('h3');
-      title.textContent=(i+1)+'. '+q.q;
-      box.appendChild(title);
-      q.options.forEach(function(option,j){
-        const label=document.createElement('label');
-        label.style.display='block';
-        label.style.fontWeight='normal';
-        const radio=document.createElement('input');
-        radio.type='radio';radio.name='q'+i;radio.value=j;
-        radio.style.width='auto';radio.style.margin='8px';
-        label.appendChild(radio);
-        label.appendChild(document.createTextNode(option));
-        box.appendChild(label);
-      });
-      area.appendChild(box);
-    });
-    const btn=document.createElement('button');
-    btn.textContent='Submit Answers';
-    btn.onclick=submitQuiz;
-    area.appendChild(btn);
-  });
-}
-function submitQuiz(){
-  const answers=[];
-  for(let i=0;i<quizData.questions.length;i++){
-    const selected=document.querySelector('input[name="q'+i+'"]:checked');
-    if(!selected){showMessage('Please answer all questions.','error');return;}
-    answers.push(Number(selected.value));
-  }
-  callServer('submitQuiz',[token,answers],function(r){
-    if(r.passed){
-      quizPassed=true;
-      document.getElementById('applicationCard').classList.remove('hidden');
-      showMessage('You passed! You can now submit an application. Score: '+r.score+'/'+r.total,'success');
-    }else{
-      showMessage('You scored '+r.score+'/'+r.total+'. You need '+r.passMark+' correct answers. Please try again.','error');
-    }
-  });
-}
-function submitApplication(){
-  if(!quizPassed){showMessage('Pass the questions test first.','error');return;}
-  const form={
-    age:document.getElementById('age').value,
-    className:document.getElementById('className').value.trim(),
-    reason:document.getElementById('reason').value.trim()
-  };
-  callServer('submitApplication',[token,form],function(r){
-    showMessage(r.message+' Track ID: '+r.trackId,'success');
-    document.getElementById('reason').value='';
-    document.getElementById('age').value='';
-    document.getElementById('className').value='';
-    loadMyApplications();
-  });
-}
-function loadMyApplications(){
-  if(!token)return;
-  callServer('getMyApplications',[token],function(items){
-    const el=document.getElementById('myApps');
-    el.innerHTML='';
-    if(!items.length){el.textContent='No applications submitted yet.';return;}
-    items.forEach(function(a){
-      const box=document.createElement('div');box.className='item';
-      const h=document.createElement('h3');h.textContent=a.trackId;box.appendChild(h);
-      const p=document.createElement('p');p.textContent='Date: '+a.createdAt+' | Status: '+a.status;box.appendChild(p);
-      if(a.adminNote){const n=document.createElement('p');n.textContent='Admin note: '+a.adminNote;box.appendChild(n);}
-      if(a.ceoNote){const n=document.createElement('p');n.textContent='CEO note: '+a.ceoNote;box.appendChild(n);}
-      el.appendChild(box);
-    });
-  });
-}
-function loadDashboard(){
-  callServer('getDashboard',[token],function(data){
-    dashboardData=data.applications || [];
-    document.getElementById('totalUsers').textContent=data.totalUsers;
-    document.getElementById('totalApps').textContent=data.totalApplications;
-    document.getElementById('pendingApps').textContent=data.pending;
-    renderDashboard();
-  });
-}
-function renderDashboard(){
-  const list=document.getElementById('appList');
-  list.innerHTML='';
-  const term=document.getElementById('search').value.trim().toLowerCase();
-  const filter=document.getElementById('filter').value;
-  const items=dashboardData.filter(function(a){
-    const text=[a.trackId,a.fullName,a.fatherName,a.email].join(' ').toLowerCase();
-    return (!term||text.includes(term))&&(filter==='all'||a.status===filter);
-  });
-  if(!items.length){list.textContent='No matching applications.';return;}
-  items.forEach(function(a){
-    const box=document.createElement('div');box.className='item';
-    const title=document.createElement('h3');title.textContent=a.fullName+' — '+a.trackId;box.appendChild(title);
-    const status=document.createElement('span');status.className='tag';status.textContent=a.status;box.appendChild(status);
-    const details=document.createElement('p');
-    details.textContent='Father: '+a.fatherName+' | Email: '+a.email+' | Contact: '+a.contact+
-      ' | Age: '+a.age+' | Class: '+a.className+' | Date: '+a.createdAt;
-    box.appendChild(details);
-    const reason=document.createElement('p');reason.textContent='Reason: '+a.reason;box.appendChild(reason);
-    if(a.adminNote){const n=document.createElement('p');n.textContent='Admin note: '+a.adminNote;box.appendChild(n);}
-    if(a.ceoNote){const n=document.createElement('p');n.textContent='CEO note: '+a.ceoNote;box.appendChild(n);}
-    const note=document.createElement('textarea');
-    note.placeholder=currentUser.role==='admin'?'Optional note for CEO':'Optional final decision note';
-    box.appendChild(note);
-    if(currentUser.role==='admin'&&a.status==='Pending'){
-      const btn=document.createElement('button');btn.className='green';btn.textContent='Verify & Send to CEO';
-      btn.onclick=function(){updateApp(a.trackId,'sendtoceo',note.value);};
-      box.appendChild(btn);
-    }
-    if(currentUser.role==='ceo'&&a.status==='Sent to CEO'){
-      const yes=document.createElement('button');yes.className='green';yes.textContent='Approve';
-      yes.onclick=function(){updateApp(a.trackId,'approve',note.value);};
-      const no=document.createElement('button');no.className='red';no.textContent='Reject';
-      no.onclick=function(){updateApp(a.trackId,'reject',note.value);};
-      box.appendChild(yes);box.appendChild(no);
-    }
-    list.appendChild(box);
-  });
-}
-function updateApp(id,action,note){
-  callServer('updateApplication',[token,id,action,note],function(r){
-    showMessage(r.message || 'Application updated.','success');
-    loadDashboard();
-  });
-}
-function logout(){
-  const oldToken=token;
-  token='';currentUser=null;quizData=null;quizPassed=false;dashboardData=[];
-  callServer('logoutUser',[oldToken],function(){
-    showLogin();showMessage('You have signed out.','success');
-  });
-}
-document.getElementById('password').addEventListener('keydown',function(e){
-  if(e.key==='Enter')login();
-});
+window.location.replace(
+"https://script.google.com/macros/s/AKfycbwsa4G4oF9y9vMnBpvuZ3ZXU4BETzACNRss6vjvIQPtm_BWY9_ZArgdvvodKgWC7QUBhg/exec"
+);
 </script>
 </body>
 </html>
