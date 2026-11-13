@@ -1,25 +1,39 @@
-Manan360.pk
+# School Quiz Portal
 
-Welcome to Manan360.pk 🌐
+An English-language online quiz website for students
+from Class 3 to Class 8.
 
-یہ ویب سائٹ تعلیمی مواد، نوٹس، ٹیسٹ پیپرز اور PDF فائلز کے لیے بنائی گئی ہے۔
+## Features
 
-📚 Website Sections
+- Mobile Responsive Design
+- Class Selection
+- Subject Selection
+- MCQ Quiz System
+- Automatic Result Calculation
+- Student Result History
+- CSV Result Export
+- WhatsApp Support
 
-- 📝 Class 9th Notes
-- 📖 Class 10th Notes
-- 📄 Test Papers
-- 📥 PDF Downloads
-- 🔎 Online PDF Viewing
+## Quiz Questions
 
-💻 Technology
+Class 3 and Class 4:
+10 Questions per Quiz
 
-یہ ویب سائٹ HTML, CSS اور JavaScript کی مدد سے تیار کی گئی ہے اور GitHub Pages پر ہوسٹ کی جا سکتی ہے۔
+Class 5, Class 6, Class 7 and Class 8:
+29 Questions per Quiz
 
-🌐 Website
+## Support
 
-Manan360.pk
+WhatsApp: 0344 7232654
 
-📌 About
+## Deployment
 
-Manan360.pk کا مقصد طلبہ کو تعلیمی مواد آسانی سے آن لائن فراہم کرنا ہے۔
+1. Create a GitHub repository.
+2. Upload index.html.
+3. Open repository Settings.
+4. Select Pages.
+5. Choose main branch.
+6. Select root folder.
+7. Click Save.
+
+Your website will be published using GitHub Pages.
