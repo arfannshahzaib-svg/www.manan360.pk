@@ -2,43 +2,432 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Manan360.pk</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>School Quiz Portal</title>
+
 <style>
 *{box-sizing:border-box}
 body{
-margin:0;min-height:100vh;display:flex;align-items:center;
-justify-content:center;padding:20px;font-family:Arial,sans-serif;
-text-align:center;color:white;
-background:linear-gradient(135deg,#10234d,#087bb5,#00a878)
+ margin:0;font-family:Arial,sans-serif;
+ background:#eef3f8;color:#17324d
 }
+header{
+ background:#12385d;color:white;text-align:center;
+ padding:25px 12px;border-bottom:4px solid #d8b34a
+}
+header h1{margin:0 0 10px;font-size:26px}
+.support{
+ display:inline-block;background:#fff;color:#087f83;
+ padding:10px 15px;border-radius:10px;font-weight:bold
+}
+main{max-width:850px;margin:20px auto;padding:12px}
 .card{
-max-width:430px;width:100%;padding:30px 20px;
-border-radius:18px;background:#ffffff18;
-box-shadow:0 8px 25px #00152b44
+ background:white;border-radius:18px;padding:20px;
+ box-shadow:0 5px 20px #0001;margin-bottom:18px
 }
-h1{font-size:30px}
-p{line-height:1.7}
-a{
-display:inline-block;padding:14px 22px;margin-top:12px;
-border-radius:10px;background:#00a878;color:white;
-text-decoration:none;font-weight:bold
+h2{color:#12385d}
+input{
+ width:100%;padding:14px;margin:8px 0 15px;
+ border:1px solid #ccd5df;border-radius:10px;font-size:16px
+}
+.grid{
+ display:grid;grid-template-columns:repeat(2,1fr);gap:12px
+}
+button{
+ border:0;border-radius:12px;padding:15px;
+ font-size:16px;font-weight:bold;cursor:pointer
+}
+.tile{background:#eaf2f8;color:#12385d}
+.primary{background:#087f83;color:white}
+.secondary{background:#e4ebf1;color:#17324d}
+.option{
+ display:block;width:100%;text-align:left;
+ margin:10px 0;background:#f1f6fa;color:#17324d
+}
+.option.selected{background:#ccefe8;border:2px solid #087f83}
+.hidden{display:none}
+.row{
+ display:flex;justify-content:space-between;
+ align-items:center;gap:10px;flex-wrap:wrap
+}
+.score{
+ text-align:center;font-size:40px;font-weight:bold;
+ padding:20px;background:#12385d;color:white;border-radius:15px
+}
+.stats{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}
+.stat{background:#eaf2f8;padding:14px;text-align:center;border-radius:10px}
+footer{text-align:center;background:#12385d;color:white;padding:20px}
+@media(max-width:500px){
+ .grid{grid-template-columns:1fr}
+ .card{padding:15px}
 }
 </style>
 </head>
+
 <body>
-<div class="card">
-<h1>Manan360.pk</h1>
-<p>Books, Notes &amp; Quality Questions</p>
-<p>Click below to open your website.</p>
-<a href="https://script.google.com/macros/s/AKfycbwsa4G4oF9y9vMnBpvuZ3ZXU4BETzACNRss6vjvIQPtm_BWY9_ZArgdvvodKgWC7QUBhg/exec">
-Open Website
-</a>
+
+<header>
+<h1>School Quiz Portal</h1>
+<p>Learn • Practice • Improve</p>
+<div class="support">WhatsApp Support: 0344 7232654</div>
+</header>
+
+<main>
+
+<section id="home" class="card">
+<h2>Student Information</h2>
+
+<label>Student Name</label>
+<input id="studentName" placeholder="Enter Student Name">
+
+<label>School Name</label>
+<input id="schoolName" placeholder="Enter School Name">
+
+<h2>Select Your Class</h2>
+<div class="grid" id="classList"></div>
+</section>
+
+<section id="subjectsPage" class="card hidden">
+<div class="row">
+<h2 id="classTitle"></h2>
+<button class="secondary" onclick="goHome()">Back</button>
 </div>
+<div class="grid" id="subjectList"></div>
+</section>
+
+<section id="quizPage" class="card hidden">
+<div class="row">
+<h2 id="quizTitle"></h2>
+<span id="progress"></span>
+</div>
+
+<h3 id="question"></h3>
+<div id="options"></div>
+
+<div class="row">
+<button class="secondary" onclick="previousQuestion()">Previous</button>
+<button class="primary" onclick="nextQuestion()" id="nextBtn">Next</button>
+</div>
+</section>
+
+<section id="resultPage" class="card hidden">
+<h2 style="text-align:center">Quiz Result</h2>
+
+<div id="score" class="score"></div>
+
+<div class="stats">
+<div class="stat"><b id="total"></b><br>Total</div>
+<div class="stat"><b id="correct"></b><br>Correct</div>
+<div class="stat"><b id="wrong"></b><br>Wrong</div>
+</div>
+
+<h3 id="message"></h3>
+<div id="review"></div>
+
+<div class="grid">
+<button class="primary" onclick="backSubjects()">Another Quiz</button>
+<button class="secondary" onclick="goHome()">Home</button>
+<button class="secondary" onclick="downloadCSV()">Download Results</button>
+</div>
+
+<h3>Previous Results</h3>
+<div id="history"></div>
+</section>
+
+</main>
+
+<footer>
+School Quiz Portal<br>
+Support: 0344 7232654
+</footer>
+
 <script>
-window.location.replace(
-"https://script.google.com/macros/s/AKfycbwsa4G4oF9y9vMnBpvuZ3ZXU4BETzACNRss6vjvIQPtm_BWY9_ZArgdvvodKgWC7QUBhg/exec"
-);
+const subjects={
+3:["English","Mathematics","General Science"],
+4:["English","Mathematics","General Science"],
+5:["English","Mathematics","Science","Computer"],
+6:["English","Mathematics","Science","Computer"],
+7:["English","Mathematics","Science","Computer"],
+8:["English","Mathematics","Science","Computer"]
+};
+
+const quizCount={3:10,4:10,5:29,6:29,7:29,8:29};
+
+let selectedClass=0;
+let selectedSubject="";
+let student="";
+let school="";
+let questions=[];
+let answers=[];
+let index=0;
+
+const $=id=>document.getElementById(id);
+
+function showPage(id){
+["home","subjectsPage","quizPage","resultPage"].forEach(p=>{
+$(p).classList.toggle("hidden",p!==id);
+});
+window.scrollTo(0,0);
+}
+
+Object.keys(subjects).forEach(c=>{
+let btn=document.createElement("button");
+btn.className="tile";
+btn.textContent="Class "+c;
+btn.onclick=()=>chooseClass(+c);
+$("classList").appendChild(btn);
+});
+
+function goHome(){showPage("home")}
+
+function chooseClass(c){
+student=$("studentName").value.trim();
+school=$("schoolName").value.trim();
+
+if(!student){
+alert("Please enter your name.");
+return;
+}
+
+selectedClass=c;
+$("classTitle").textContent="Class "+c+" — Select Subject";
+$("subjectList").innerHTML="";
+
+subjects[c].forEach(s=>{
+let btn=document.createElement("button");
+btn.className="tile";
+btn.textContent=s;
+btn.onclick=()=>startQuiz(s);
+$("subjectList").appendChild(btn);
+});
+
+showPage("subjectsPage");
+}
+
+function backSubjects(){chooseClass(selectedClass)}
+
+/* Question Bank */
+const bank={
+English:[
+["Choose the plural of child",["Childs","Children","Childes","Childrens"],1],
+["Opposite of hot",["Warm","Cold","Heat","Boiling"],1],
+["Which is a noun?",["Run","Beautiful","Teacher","Quickly"],2],
+["Choose the article: ___ apple",["A","An","The","No article"],1],
+["Past tense of go",["Goed","Gone","Went","Going"],2],
+["Synonym of happy",["Sad","Joyful","Angry","Tired"],1],
+["Which is a verb?",["Book","Run","Blue","Tall"],1],
+["Plural of book",["Bookes","Books","Bookies","Book"],1],
+["Opposite of big",["Large","Huge","Small","Tall"],2],
+["Choose correct spelling",["School","Skool","Scool","Shcool"],0]
+],
+
+Mathematics:[
+["8 × 7 = ?",["54","56","64","48"],1],
+["100 ÷ 4 = ?",["20","25","40","50"],1],
+["15 + 27 = ?",["32","42","52","41"],1],
+["9² = ?",["18","72","81","99"],2],
+["Half of 50",["20","25","30","15"],1],
+["12 × 5 = ?",["50","60","70","55"],1],
+["45 - 19 = ?",["24","26","28","30"],1],
+["Square of 6",["12","30","36","42"],2],
+["1 kilometer equals",["100 m","1000 m","10 m","500 m"],1],
+["3/4 is equal to",["0.25","0.5","0.75","1"],2]
+],
+
+Science:[
+["Red Planet is",["Earth","Mars","Venus","Jupiter"],1],
+["Plants absorb",["Oxygen","Nitrogen","Carbon dioxide","Hydrogen"],2],
+["Water freezes at",["0°C","10°C","50°C","100°C"],0],
+["Blood is pumped by",["Lungs","Brain","Heart","Kidney"],2],
+["Sun is a",["Planet","Star","Moon","Comet"],1],
+["Human breathing organ",["Heart","Lungs","Stomach","Kidney"],1],
+["Plants make food by",["Digestion","Photosynthesis","Respiration","Evaporation"],1],
+["Earth revolves around",["Moon","Sun","Mars","Venus"],1],
+["Water boils at",["0°C","50°C","100°C","200°C"],2],
+["Force can change",["Shape","Motion","Direction","All of these"],3]
+],
+
+"General Science":[
+["Which organ pumps blood?",["Lungs","Brain","Heart","Kidney"],2],
+["Water freezes at",["0°C","10°C","50°C","100°C"],0],
+["Plants absorb",["Oxygen","Nitrogen","CO2","Hydrogen"],2],
+["Sun is a",["Planet","Star","Moon","Comet"],1],
+["Sense organ for seeing",["Ear","Eye","Nose","Skin"],1],
+["The Earth is a",["Star","Planet","Comet","Satellite"],1],
+["We breathe in",["Carbon dioxide","Oxygen","Smoke","Helium"],1],
+["Largest body organ",["Heart","Skin","Liver","Brain"],1],
+["A magnet attracts",["Wood","Plastic","Iron","Paper"],2],
+["Main energy source for Earth",["Moon","Sun","Stars","Wind"],1]
+],
+
+Computer:[
+["CPU stands for",["Central Processing Unit","Computer Personal Unit","Central Program Utility","Control Processing User"],0],
+["Device used for typing",["Monitor","Keyboard","Speaker","Mouse pad"],1],
+["Output device",["Mouse","Keyboard","Monitor","Scanner"],2],
+["Computer stores data in",["Memory","Paper only","Water","Air"],0],
+["Web browser",["Chrome","Excel","Paint","Calculator"],0],
+["Computer brain",["Monitor","CPU","Mouse","Keyboard"],1],
+["Input device",["Printer","Speaker","Mouse","Monitor"],2],
+["Full form of RAM",["Random Access Memory","Read Access Machine","Run Any Memory","Rapid Action Mode"],0],
+["Which is an operating system?",["Windows","Keyboard","Mouse","Printer"],0],
+["Computer is an",["Electronic machine","Animal","Plant","Book"],0]
+]
+};
+
+function buildQuestions(subject,count){
+let source=bank[subject]||bank.English;
+let list=[];
+
+for(let i=0;i<count;i++){
+let item=source[i%source.length];
+list.push({
+q:item[0],
+options:[...item[1]],
+answer:item[2]
+});
+}
+
+return list;
+}
+
+function startQuiz(subject){
+selectedSubject=subject;
+questions=buildQuestions(subject,quizCount[selectedClass]);
+answers=Array(questions.length).fill(null);
+index=0;
+
+$("quizTitle").textContent="Class "+selectedClass+" — "+subject;
+showPage("quizPage");
+renderQuestion();
+}
+
+function renderQuestion(){
+let q=questions[index];
+
+$("progress").textContent=
+"Question "+(index+1)+" of "+questions.length;
+
+$("question").textContent=q.q;
+$("options").innerHTML="";
+
+q.options.forEach((option,i)=>{
+let btn=document.createElement("button");
+btn.className="option";
+
+if(answers[index]===i)btn.classList.add("selected");
+
+btn.textContent=String.fromCharCode(65+i)+". "+option;
+
+btn.onclick=()=>{
+answers[index]=i;
+renderQuestion();
+};
+
+$("options").appendChild(btn);
+});
+
+$("nextBtn").textContent=
+index===questions.length-1?"Finish Quiz":"Next";
+}
+
+function previousQuestion(){
+if(index>0){
+index--;
+renderQuestion();
+}
+}
+
+function nextQuestion(){
+if(index<questions.length-1){
+index++;
+renderQuestion();
+}else{
+finishQuiz();
+}
+}
+
+function finishQuiz(){
+let correct=0;
+
+questions.forEach((q,i)=>{
+if(answers[i]===q.answer)correct++;
+});
+
+let total=questions.length;
+let wrong=total-correct;
+let percent=Math.round(correct/total*100);
+
+$("score").textContent=percent+"%";
+$("total").textContent=total;
+$("correct").textContent=correct;
+$("wrong").textContent=wrong;
+
+$("message").textContent=
+percent>=80?"Excellent Performance!":
+percent>=50?"Good Work! Keep Practicing!":
+"Keep Learning and Try Again!";
+
+$("review").innerHTML="";
+
+questions.forEach((q,i)=>{
+let div=document.createElement("div");
+div.style.padding="12px";
+div.style.borderBottom="1px solid #ddd";
+
+div.innerHTML=
+"<b>"+(i+1)+". "+q.q+"</b><br>"+
+"Your Answer: "+(answers[i]===null?"Not Answered":q.options[answers[i]])+"<br>"+
+"Correct Answer: "+q.options[q.answer];
+
+$("review").appendChild(div);
+});
+
+let result={
+name:student,
+school:school,
+class:selectedClass,
+subject:selectedSubject,
+total:total,
+correct:correct,
+wrong:wrong,
+percent:percent,
+date:new Date().toLocaleString()
+};
+
+let saved=JSON.parse(localStorage.getItem("quizResults")||"[]");
+saved.unshift(result);
+localStorage.setItem("quizResults",JSON.stringify(saved));
+
+renderHistory();
+showPage("resultPage");
+}
+
+function renderHistory(){
+let saved=JSON.parse(localStorage.getItem("quizResults")||"[]");
+
+$("history").innerHTML=saved.slice(0,30).map(r=>
+"<p>"+r.name+" | Class "+r.class+" | "+r.subject+
+" | "+r.correct+"/"+r.total+" | "+r.percent+"%</p>"
+).join("");
+}
+
+function downloadCSV(){
+let saved=JSON.parse(localStorage.getItem("quizResults")||"[]");
+
+let csv="Name,School,Class,Subject,Total,Correct,Wrong,Percent,Date\n";
+
+saved.forEach(r=>{
+csv+=`${r.name},${r.school},${r.class},${r.subject},${r.total},${r.correct},${r.wrong},${r.percent},${r.date}\n`;
+});
+
+let blob=new Blob([csv],{type:"text/csv"});
+let a=document.createElement("a");
+a.href=URL.createObjectURL(blob);
+a.download="quiz-results.csv";
+a.click();
+}
+
+renderHistory();
 </script>
 </body>
 </html>
